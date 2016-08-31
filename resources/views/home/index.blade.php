@@ -44,6 +44,56 @@
         </div>
     </div>
 </div>
+<div class="clearfix"></div>
+<!-- Section : List Classified and Icons -->
+<div class="list-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">List</div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Items 1</li>
+                                    <li class="list-group-item">Items 2</li>
+                                    <li class="list-group-item">Items 3</li>
+                                    <li class="list-group-item">Items 4</li>
+                                    <li class="list-group-item">Items 5</li>
+                                </ul> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                                        <div class="panel panel-default">
+                        <div class="panel-heading">List</div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Items 1</li>
+                                <li class="list-group-item">Items 2</li>
+                                <li class="list-group-item">Items 3</li>
+                                <li class="list-group-item">Items 4</li>
+                                <li class="list-group-item">Items 5</li>
+                            </ul> 
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+            <ul class="circle-icons">
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- eof section : list classified and icons -->
+<div class="clearfix"></div>
 @stop
 @section('modals')
 

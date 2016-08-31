@@ -54,3 +54,33 @@
         }
     }
 }
+
+.list-wrapper {
+    padding: 40px;
+    background: #eee;
+}
+
+.circle-icons {
+    display: block;
+    margin: 0;
+    padding: 0;
+    li {
+        width: 25%;
+        float: left;
+        display: block;
+        padding: 10px;
+        a {
+            @include c-border-radius(50%, 50%, 50%, 50%);
+            display: block;
+            border: 1px solid #ddd;
+            background: #2cab8f;
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+            line-height: 110px;
+            text-decoration: none;
+        }
+    }
+}
