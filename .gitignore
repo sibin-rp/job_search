@@ -7,7 +7,6 @@ Homestead.yaml
 .env
 .idea
 /bower_components
-/tests
 
 # Laravel 4 specific
 bootstrap/compiled.php
