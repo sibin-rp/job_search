@@ -1,6 +1,5 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +12,14 @@ require('laravel-elixir-vue');
  |
  */
 
+elixir.config.sourcemaps = false;
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+    mix.scripts([
+      './node_modules/jquery/dist/jquery.js',
+      './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+      './node_modules/owl.carousel/dist/owl.carousel.min.js',
+      'main.js'
+    ],
+    'public/js/main.js')
 });

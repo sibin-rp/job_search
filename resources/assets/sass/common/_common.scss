@@ -1,0 +1,20 @@
+@import 'variables';
+/** HEADER SECTION **/   
+.c-navbar{
+  height: 80px;
+  background: $TOP_HEADER_BG;
+  h1,h2,h3{
+    margin:0;
+    padding: 10px 0;
+  }
+  .navbar-nav{
+    li{
+      a{
+        padding-top: 29px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+/** EOF HEADER **/
