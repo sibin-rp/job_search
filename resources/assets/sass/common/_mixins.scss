@@ -1,0 +1,23 @@
+@mixin c-border-radius($tr,$br,$bl,$tl){
+    -webkit-border-top-right-radius: $tr;
+    -webkit-border-bottom-right-radius: $br;
+    -webkit-border-bottom-left-radius: $bl;
+    -webkit-border-top-left-radius: $tl;
+
+    -moz-border-radius-topright: $tr;
+    -moz-border-radius-bottomright: $br;
+    -moz-border-radius-bottomleft: $bl;
+    -moz-border-radius-topleft: $tl;
+
+    border-top-right-radius: $tr;
+    border-bottom-right-radius: $br;
+    border-bottom-left-radius: $bl;
+    border-top-left-radius: $tl;
+}
+
+@mixin c-transition($p,$du,$f,$dl){
+    -webkit-transition: $p $du $f $dl;
+    -moz-transition: $p $du $f $dl;
+    -ms-transition: $p $du $f $dl;
+    transition: $p $du $f $dl;
+}

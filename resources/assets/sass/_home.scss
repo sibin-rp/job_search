@@ -1,0 +1,56 @@
+.home-slider-inner {
+    display: block;
+    position: relative;
+}
+
+#home-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    z-index: 1;
+    .image-item {
+        overflow: hidden;
+        height: calc(100vh - 80px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.home-content-section {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    left: 0;
+    width: 100%;
+    .content-section {
+        width: 60%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        background: rgba($HOME_CAROUSEL_CONTENT_BG, 0.7);
+        color: $HOME_CAROUSLE_CONTENT_TEXT;
+    }
+    .box-section {
+        a.register {
+            margin-top: 30px;
+            font-size: 14px;
+            pointer-events: all;
+            font-weight: bold;
+            @include c-border-radius(4px, 4px, 4px, 4px);
+            border: none;
+            padding: 14px 20px;
+            @include c-transition(all, 0.4s, ease-out, 0.05s);
+            &:hover,
+            &:active,
+            &:focus {
+                background: #378a77;
+                color: #fff;
+            }
+        }
+    }
+}
