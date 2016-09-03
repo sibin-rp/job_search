@@ -20,7 +20,7 @@
                             <h3>Register as a Student</h3>
                             <section>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie lacinia pulvinar. In sed neque ornare, convallis mi a, vehicula eros.</section>
                             <div class="clearfix"></div>
-                            <a class="btn btn-lg btn-default student register" data-toggle="modal" href='#modal-id'>
+                            <a class="btn btn-lg btn-default student register" data-toggle="modal" href='#student-modal-id'>
                             <span class="glyphicon glyphicon-user"></span>
                             Register</a>       
                         </div>    
@@ -30,7 +30,7 @@
                             <h3>Register as a Student</h3>
                             <section>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie lacinia pulvinar. In sed neque ornare, convallis mi a, vehicula eros.</section>
                             <div class="clearfix"></div>
-                            <a  class="btn btn-lg btn-default company register" data-toggle="modal" href='#modal-id'>
+                            <a  class="btn btn-lg btn-default company register" data-toggle="modal" href='#company-modal-id'>
                             <span class="glyphicon glyphicon-blackboard"></span>
                             Register</a>       
                         </div>    
@@ -96,26 +96,59 @@
 <div class="clearfix"></div>
 @stop
 @section('modals')
-
-<div class="modal fade" id="modal-id">
+<!-- Student Modal -->
+<div class="modal fade" id="student-modal-id">
     <div class="modal-dialog">
         <div class="modal-content">
+            <form action="{{route('send_student_confirmation')}}" class="" id="student-register" method="POST">
+            {{csrf_field()}}
+            {{method_field('POST')}}
+                <input type="hidden" value="0" name="type">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title">Register
+                <h3 class="modal-title">Student Register
                 </h3>
             </div>
             <div class="modal-body">
-                <div class="form-group"><label for="" class="control-label">Email Address</label><input type="text" class="form-control" placeholder="Enter your Email ID"></div>
-                <div class="form-group"><label for="" class="control-label">Password</label><input type="text" class="form-control" placeholder="Enter your Password"></div>
+                <div class="form-group"><label for="" class="control-label">Email Address</label><input type="email" required="required" class="form-control" placeholder="Enter your Email ID" name="email"></div>
+                <div class="form-group"><label for="" class="control-label">Password</label><input type="password" required="required" class="form-control" placeholder="Enter your Password" name="password"></div>
         
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Register</button>
+                <button type="submit" class="btn btn-success">Register</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
+<!-- eof student modal -->
+<!-- Company Modal -->
 
+<div class="modal fade" id="company-modal-id">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{route('send_student_confirmation')}}" class="" id="student-register" method="POST">
+                {{csrf_field()}}
+                {{method_field('POST')}}
+                <input type="hidden" value="1" name="type">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Register Company
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group"><label for="" class="control-label">Email Address</label><input type="email" required="required" class="form-control" placeholder="Enter your Email ID" name="email"></div>
+                    <div class="form-group"><label for="" class="control-label">Password</label><input type="password" required="required" class="form-control" placeholder="Enter your Password" name="password"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- eof company modal -->
 @stop 

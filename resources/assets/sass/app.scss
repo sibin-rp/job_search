@@ -6,7 +6,9 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/owl.carousel/src/scss/owl.carousel";
 @import "node_modules/animate.css/animate";
+@import "node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build";
 // Common styles, mixins, keyframes 
 @import "common/common";
 // Pages 
 @import "home";
+@import "register";

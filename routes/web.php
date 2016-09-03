@@ -12,3 +12,5 @@
 */
 
 Route::get('/',['uses'=>'HomeController@index','as'=>'home']);
+Route::get('/register/{token}/continue',['uses'=>'HomeController@continueRegistration','as'=>'continue_registration']);
+Route::post('/send-student-confirmation',['uses'=>'HomeController@sendStudentConfirmation','as'=>'send_student_confirmation']);

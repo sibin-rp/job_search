@@ -19,9 +19,11 @@ elixir(mix => {
             './node_modules/jquery/dist/jquery.js',
             './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
             './node_modules/owl.carousel/dist/owl.carousel.min.js',
+            './node_modules/moment/moment.js',
+            './node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
             'main.js'
         ],
-        'public/js/main.js')
+        'public/js/main.js');
 
-    mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts')
+    // mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts');
 });

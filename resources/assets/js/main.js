@@ -9,6 +9,28 @@ $(document).ready(function() {
         loop: true,
         dots: false,
         autoplay: true
+    });
+    // Student register 
+    $('#student-register').submit(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('action');
+        var data = $(this).serialize();
+        $.post(url, data).then(function(result) {
+            if (result.status == 200) {
+                console.log("It is working")
+            }
+        }, function(error) {
+            console.log(error.statusText)
+        });
+        return false; // prevent 
+    });
+    // Set Date Picker
+    $('.date-picker').datetimepicker({
+        format:'DD/MM/YYYY',
+        // debug:true
+    });
+    $('#show-living-address').click(function(){
+        $('#live-address-fields').toggleClass('hidden')
     })
 });
 

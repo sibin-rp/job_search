@@ -9,15 +9,15 @@
       <span class="icon-bar"></span>
     </button>
       <a class="navbar-brand" href="#">
-        <h2 class="text-uppercase">Job Board</h2>
+        <h2 class="text-uppercase">Accelaar</h2>
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Post a Service</a></li>
         <li><a href="#about-us">About Us</a></li>
+        <li class="login"><a href="#">Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->

@@ -5,14 +5,15 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
-    "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-9",
     "lodash": "^4.14.0"
   },
   "dependencies": {
     "animate.css": "^3.5.1",
+    "bootstrap-sass": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "git+https://github.com/Eonasdan/bootstrap-datetimepicker.git",
+    "jquery": "^1.12.4",
     "owl.carousel": "^2.1.4"
   }
 }

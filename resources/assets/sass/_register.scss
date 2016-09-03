@@ -1,0 +1,43 @@
+.register-wrapper{
+  display: block;
+  padding: 80px 0 120px;
+  background: #f5f5f5;
+  .register{
+
+  }
+}
+
+.register{
+  .panel-default{
+    margin-bottom: 20px;
+    .panel-heading{
+      padding: 15px 20px;
+      background: $REGISTER_PANEL_BG;
+      @include c-border-radius(0,0,0,0);
+      .panel-title{
+        color: $REGISTER_PANEL_HEADING;
+        a{
+          display: block;
+          width: 100%;
+          font-size: 16px;
+          font-weight: bold;
+          text-decoration: none;
+        }
+      }
+
+    }
+    .panel-body{
+      padding: 25px 30px;
+      .btn{
+        background: $REGISTER_PANEL_BG;
+        color: #fff;
+        @include c-transition(all,0.3s,linear,0.03s);
+        @include c-border-radius(0,0,0,0);
+        &:hover,&:active,&:focus{
+          background: darken($REGISTER_PANEL_BG,5%);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
