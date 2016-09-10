@@ -42,6 +42,10 @@ class LoginController extends Controller
 
   }
   public function admin_logout(){
-
+    if(Auth::user()){
+      Auth::logout();
+      return redirect()->route('home')
+        ->with(['class'=>'alert-warning','message' => "User logout successfully"]);
+    }
   }
 }

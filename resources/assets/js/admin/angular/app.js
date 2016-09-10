@@ -6,5 +6,10 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
     url:'/',
     templateUrl:'/js/admin/templates/home.html',
     controller:'HomeController'
-  });
+  })
+    .state('internship_settings',{
+      url:'/internship_settings',
+      templateUrl:'/js/admin/templates/internship-settings.html',
+      controller:'HomeInternshipController'
+    })
 }]);

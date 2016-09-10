@@ -1,0 +1,30 @@
+<div class="content">
+  <table class="table table-stripe">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Field</th>
+      <th>Skills</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="internship in intership_fileds">
+      <td></td>
+      <td>{{internship.name}}</td>
+      <td>
+        <ul>
+          <li ng-repeat="skill in internship.skills track by $index"> {{skill}}</li>
+        </ul>
+      </td>
+      <td>
+        <form action="">
+          <a href="" class="btn btn-sm">
+            <span class="fa fa-edit"></span>
+          </a>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

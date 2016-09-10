@@ -14,6 +14,7 @@
 Route::get('/',['uses'=>'HomeController@index','as'=>'home']);
 Route::get('/admin_login',['uses'=>'LoginController@admin_login','as'=>'admin_login']);
 Route::post('/login_admin',['uses'=>'LoginController@login_admin','as'=>'login_admin']);
+Route::get('/admin_logout',['uses'=>'LoginController@admin_logout','as'=>'admin_logout']);
 Route::get('/register/{token}/continue',['uses'=>'HomeController@continueRegistration','as'=>'continue_registration']);
 Route::post('/send-student-confirmation',['uses'=>'HomeController@sendStudentConfirmation','as'=>'send_student_confirmation']);
 /* Save Students Form */
