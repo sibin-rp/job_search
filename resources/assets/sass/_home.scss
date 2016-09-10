@@ -84,3 +84,14 @@
         }
     }
 }
+.parsley-errors-list{
+    &.filled{
+        margin: 0;
+        padding: 0;
+        li{
+            background: #db3b3b;
+            color: #fff;
+            padding: 5px;
+        }
+    }
+}

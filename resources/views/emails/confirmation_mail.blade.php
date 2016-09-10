@@ -641,7 +641,7 @@ http://kb.mailchimp.com/article/template-language-creating-editable-content-area
                                   style="padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px;">
                                 <a
                                   style="color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%;"
-                                  href="{{route('continue_registration')}}" target="_blank">Confirmation</a>
+                                  href="{{route('continue_registration',$user->token)}}" target="_blank">Confirmation</a>
                               </td>
                             </tr>
                           </table>

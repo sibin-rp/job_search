@@ -7,13 +7,22 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "laravel-elixir": "^6.0.0-9",
+    "laravel-elixir-browsersync-official": "^1.0.0",
     "lodash": "^4.14.0"
   },
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-ui-bootstrap": "^2.1.3",
+    "angular-ui-router": "^1.0.0-beta.2",
     "animate.css": "^3.5.1",
     "bootstrap-sass": "^3.3.7",
     "eonasdan-bootstrap-datetimepicker": "git+https://github.com/Eonasdan/bootstrap-datetimepicker.git",
+    "handlebars": "^4.0.5",
     "jquery": "^1.12.4",
-    "owl.carousel": "^2.1.4"
+    "owl.carousel": "^2.1.4",
+    "parsleyjs": "^2.4.4",
+    "select2": "^4.0.3",
+    "toastr": "^2.1.2"
   }
 }

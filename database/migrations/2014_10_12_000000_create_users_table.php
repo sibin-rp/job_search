@@ -30,10 +30,10 @@ class CreateUsersTable extends Migration
             $table->string('profile_image')->nullable();
             // Home Address
             $table->text('home_address')->nullable();
-            $table->string('home_city')->nullable();
+            $table->string('home_state')->nullable();
             // Live Address
             $table->text('live_address')->nullable();
-            $table->string('live_city');
+            $table->string('live_state')->nullable();
             // Contact
             $table->bigInteger('phone_no')->nullable();
             $table->bigInteger('alternate_contact')->nullable();
