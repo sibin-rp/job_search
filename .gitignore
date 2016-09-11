@@ -21,3 +21,6 @@ bootstrap/cache/
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 .vscode
+resources/assets/js/admin/angular/dir/directives/
+resources/assets/js/admin/angular/dir/filters/
+resources/assets/js/admin/angular/dir/service/
