@@ -25,6 +25,7 @@ elixir(mix => {
             './node_modules/parsleyjs/dist/parsley.js',
             './node_modules/toastr/build/toastr.min.js',
             './node_modules/select2/dist/js/select2.min.js',
+            './node_modules/dropzone/dist/min/dropzone.min.js',
             'main.js'
         ],
         'public/js/main.js');
@@ -51,6 +52,6 @@ elixir(mix => {
     // mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts');
 
   mix.browserSync({
-    proxy: 'job_search.dev'
+    proxy: 'job_search.dev',
   })
 });

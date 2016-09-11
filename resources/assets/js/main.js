@@ -3,6 +3,7 @@
  * @RedPanther 
  */
 $(document).ready(function() {
+    Dropzone.autoDiscover = false;
     // Home carousel by OWL Carousel 
     $('#home-slider').owlCarousel({
         items: 1,
@@ -13,20 +14,7 @@ $(document).ready(function() {
     // Student register 
     $('#student-register').submit(function(e) {
         e.preventDefault();
-        var url = $(this).attr('action');
-        var data = $(this).serialize();
-        $.post(url, data).then(function(result) {
-            if (result.status == 200) {
-                $('#student-modal-id').modal('hide');
-                toastr.success("We have send confirmation email. Please check your Email inbox.")
-            }else{
-                $('#student-modal-id').modal('hide');
-                toastr.error("We found unknown errors. Please come back later.")
-            }
-        }, function(error) {
-            console.log(error.statusText)
-        });
-        return false; // prevent 
+        return true
     });
     // Set Date Picker
     $('.date-picker').datetimepicker({
@@ -115,6 +103,28 @@ $(document).ready(function() {
     }
 
     /** EOF INTERNSHIP INFO FORM **/
+
+
+    /**
+     * ------------------------------------------
+     *  COMPANY REGISTER FORM
+     * ------------------------------------------
+     */
+     $('#company-logo').dropzone({
+         url:'/company-logo-upload',
+         dictDefaultMessage: 'Upload your Company Logo',
+         dictFallbackMessage:"Use IE9+, Latest Chrome, Firefox browsers",
+         maxFilesize: 2,
+         maxFiles: 1,
+         paramName:"logo",
+         headers:{
+             "X-CSRF-TOKEN" : $('meta[name="csrf_token"]').attr('content')
+         }
+
+     });
+
+
+    /** =========================================*/
 });
 
 $(window).on('load', function() {

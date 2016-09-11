@@ -16,10 +16,10 @@ class AddFieldsToCommpanyTable extends Migration
         //
       Schema::table('companies', function(Blueprint $table){
         $table->text('logo')->nullable();
-        $table->string('linkedin_id');
+        $table->string('linkedin_id')->nullable();
         $table->enum('organization_type',['start_up','non_profit','mnc','ngo','other'])->default('other');
-        $table->string('city');
-        $table->string('state');
+        $table->string('city')->nullable();
+        $table->string('state')->nullable();
       });
     }
 

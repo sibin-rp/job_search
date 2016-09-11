@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "laravel/socialite": "^2.0",
         "doctrine/dbal": "^2.5",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "nesbot/carbon": "^1.21"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
