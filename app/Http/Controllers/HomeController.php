@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Helpers;
+use App\InternshipField;
 use App\Mail\ConfirmationMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
@@ -190,7 +191,9 @@ class HomeController extends Controller
     }
 
     public function companyInternshipForm(){
-      return view('register.company_internship');
+      $internship_fields = InternshipField::all()->toArray();
+
+      return view('register.company_internship',compact(['internship_fields']));
     }
 
 }

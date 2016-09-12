@@ -125,6 +125,12 @@ $(document).ready(function() {
 
 
     /** =========================================*/
+
+    /* COMMON SELECT 2 BOX */
+    $('.select-2-select').select2({
+        theme:'bootstrap'
+    });
+    /* EOF COMMON SELECT 2 BOX */
 });
 
 $(window).on('load', function() {
