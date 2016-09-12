@@ -16,4 +16,8 @@ class Internship extends Model
   public function company(){
     return $this->belongsTo('App\Company');
   }
+
+  public function qualification(){
+    return $this->hasOne('App\Qualification');
+  }
 }
