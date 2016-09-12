@@ -10268,6 +10268,31 @@ h3 {
   .form-horizontal .form-inline .form-group:last-child {
     margin-right: 0; }
 
+/**
+*dev: reshma
+*date: 12/9/2016
+*feature: page footer
+
+**/
+.footer-wrapper {
+  background-color: #000011;
+  color: white;
+  padding-top: 50px; }
+  .footer-wrapper a span {
+    color: grey; }
+  .footer-wrapper p {
+    color: grey; }
+  .footer-wrapper h4 {
+    padding-left: 40px; }
+
+.red {
+  color: red; }
+
+.foot {
+  margin-bottom: 40px;
+  text-align: center; }
+
+/**eof footer **/
 .home-slider-inner {
   display: block;
   position: relative; }

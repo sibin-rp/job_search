@@ -64,3 +64,42 @@ h3 {
         }
     }
 }
+
+
+
+/**
+*dev: reshma
+*date: 12/9/2016
+*feature: page footer
+
+**/
+
+.footer-wrapper{
+    background-color: #000011;
+    color: white;
+    padding-top: 50px;
+    a {
+        span {
+            color: grey;
+
+        }
+    }
+    p{
+        color: grey;
+    }
+    h4{
+        padding-left: 40px;
+    }
+
+}
+.red {
+    color: red;
+}
+
+
+.foot{
+    margin-bottom: 40px;
+    text-align: center;
+}
+/**eof footer **/
+
