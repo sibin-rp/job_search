@@ -202,4 +202,8 @@ class HomeController extends Controller
       return view('home.thanks');
     }
 
+    public function listInternship(){
+      return view('home.internship_list');
+    }
+
 }

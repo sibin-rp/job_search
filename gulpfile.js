@@ -19,6 +19,7 @@ elixir(mix => {
     mix.scripts([
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+            './node_modules/bootstrap-slider/dist/bootstrap-slider.min.js',
             './node_modules/owl.carousel/dist/owl.carousel.min.js',
             './node_modules/moment/moment.js',
             './node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',

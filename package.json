@@ -17,6 +17,7 @@
     "angular-ui-router": "^1.0.0-beta.2",
     "animate.css": "^3.5.1",
     "bootstrap-sass": "^3.3.7",
+    "bootstrap-slider": "^9.2.0",
     "dropzone": "^4.3.0",
     "eonasdan-bootstrap-datetimepicker": "git+https://github.com/Eonasdan/bootstrap-datetimepicker.git",
     "font-awesome": "^4.6.3",
