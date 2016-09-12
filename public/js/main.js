@@ -6820,7 +6820,11 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
  * @RedPanther 
  */
 $(document).ready(function() {
+    /** DEFAULTS **/
     Dropzone.autoDiscover = false;
+    $.fn.select2.defaults.set( "theme", "bootstrap" );
+    $('[data-toggle="popover"]').popover();
+    /** EOF DEFAULTS **/
     // Home carousel by OWL Carousel 
     $('#home-slider').owlCarousel({
         items: 1,
@@ -6937,9 +6941,19 @@ $(document).ready(function() {
          headers:{
              "X-CSRF-TOKEN" : $('meta[name="csrf_token"]').attr('content')
          }
-
      });
 
+     $('.internship-duration').datetimepicker({
+       format:'YYYY-MM-DD',
+       useCurrent: true ,
+       minDate: moment().format()
+     });
+      $('#internship-duration-start').on('dp.change', function (e) {
+        var newDate = e.date;
+        $('#internship-duration-end').data('DateTimePicker').minDate(newDate)
+      });
+
+      $('#internship-state').select2()
 
     /** =========================================*/
 
