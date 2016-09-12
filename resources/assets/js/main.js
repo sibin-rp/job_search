@@ -145,6 +145,26 @@ $(document).ready(function() {
         theme:'bootstrap'
     });
     /* EOF COMMON SELECT 2 BOX */
+
+    /* Select2 box intership_list*/
+    $('.select-2-internlist').select2({
+        theme:'bootstrap'
+    });
+    $(".js-placeholder-multiple").select2({
+        placeholder: "Select a state"
+    });
+    /* EOF select2 box intership_list */
+
+
+    /* salary ranger*/
+    $('#ex1').slider({
+        formatter: function(value) {
+            return 'Current value: ' + value;
+        }
+    });
+
+    /*EOF salary ranger*/
+
 });
 
 $(window).on('load', function() {

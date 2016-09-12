@@ -28,6 +28,7 @@ Route::post('/company-logo-upload',['uses'=>'HomeController@companyLogoUpload','
 Route::get('/company-internship-form',['uses'=>'HomeController@companyInternshipForm','as'=>'company_internship_form']);
 /* eof company form */
 
+Route::match(['GET','POST'],"/list-internship",['uses'=>'HomeController@listInternship','as'=>'internship_list']);
 
 /**
  * ====================================

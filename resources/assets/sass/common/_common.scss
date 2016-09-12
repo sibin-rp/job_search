@@ -1,5 +1,6 @@
 @import 'variables';
 @import '_mixins';
+@import './node_modules/bootstrap-slider/src/sass/bootstrap-slider.scss';
 
 /** HEADER SECTION **/
 
@@ -103,3 +104,19 @@ h3 {
 }
 /**eof footer **/
 
+/**
+*dev: reshma
+*date: 12/9/2016
+*feature: page internship_list
+
+**/
+
+.intern_wrapper{
+    padding-bottom: 50px;
+}
+
+#ex1Slider .slider-selection {
+    background: #BABABA;
+}
+
+/**eof internship_list **/
