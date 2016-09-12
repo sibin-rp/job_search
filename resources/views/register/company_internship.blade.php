@@ -118,7 +118,20 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6"></div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label for="" class="control-label">Minimum Eligibility</label>
+                        <div class="clearfix">
+                          <label for="" class="control-label"><input type="radio">&nbsp;Any&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;10 <sup>th</sup>&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;12 <sup>th</sup>&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;Post Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;Diploma&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio">&nbsp;PhD&nbsp;</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="row"></div>
                   <div class="section-divider"></div>
@@ -175,6 +188,12 @@
                     </div>
                   </div>
                   <!-- END FURTHER DETAILS -->
+                  <hr>
+                  <div class="row">
+                    <div class="col-xs-12 finish text-right">
+                      <button type="submit" class="btn btn-success">Complete Registration</button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
