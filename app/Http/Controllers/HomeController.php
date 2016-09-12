@@ -192,8 +192,14 @@ class HomeController extends Controller
 
     public function companyInternshipForm(){
       $internship_fields = InternshipField::all()->toArray();
+      $states = Helpers::getStates();
+      return view('register.company_internship',compact(['internship_fields','states']));
+    }
 
-      return view('register.company_internship',compact(['internship_fields']));
+
+
+    public function showThanksPage(){
+      return view('home.thanks');
     }
 
 }

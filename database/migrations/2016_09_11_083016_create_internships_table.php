@@ -20,7 +20,7 @@ class CreateInternshipsTable extends Migration
         $table->text('description');
         $table->float('stipend_from')->default(0);
         $table->float('stipend_to')->default(0);
-        $table->integer('duration');
+        $table->string('duration',50);
         $table->enum('type',['any','full_time_office','full_time_home','part_time_office','part_time_home'])->default('any');
         $table->integer('company_id');
         $table->integer('internship_field_id')->unsigned();
