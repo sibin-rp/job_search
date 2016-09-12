@@ -45,13 +45,13 @@ elixir(mix => {
     ],
     'public/js/admin/admin.min.js');
 
-    mix.scriptsIn(
-    'resources/assets/js/admin/angular/dir',
-      'public/js/admin/admin-angular.min.js'
-    );
+    //mix.scriptsIn(
+    //'resources/assets/js/admin/angular/dir',
+    //  'public/js/admin/admin-angular.min.js'
+    //);
     // mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts');
 
-  mix.browserSync({
-    proxy: 'job_search.dev',
-  })
+  //mix.browserSync({
+  //  proxy: 'job_search.dev',
+  //})
 });
