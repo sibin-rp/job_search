@@ -196,4 +196,10 @@ class HomeController extends Controller
       return view('register.company_internship',compact(['internship_fields','states']));
     }
 
+
+
+    public function showThanksPage(){
+      return view('home.thanks');
+    }
+
 }
