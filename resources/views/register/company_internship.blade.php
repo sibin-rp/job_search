@@ -17,9 +17,10 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="" class="control-label">Field of Internship</label>
-                        <select name="internship[field]" id="" class="form-control select-2-select">
+                        <select name="internship[field]" id="internship-field" class="form-control select-2-select" data-url="{{route('api_get_skills_by_id')}}">
+
                           @foreach($internship_fields as $field)
-                            <option value="{{$field['id']}}">{{$field['name']}}</option>
+                            <option value="{{$field['id']}}" @if($loop->index == 0) selected="selected" @endif>{{$field['name']}}</option>
                           @endforeach
                         </select>
                       </div>
@@ -120,7 +121,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label for="" class="control-label">Minimum Eligibility</label>
+                        <label for="" class="control-label">Minimum Qualification</label>
                         <div class="clearfix">
                           <label for="" class="control-label"><input type="radio">&nbsp;Any&nbsp;</label>
                           <label for="" class="control-label"><input type="radio">&nbsp;10 <sup>th</sup>&nbsp;</label>
@@ -129,6 +130,98 @@
                           <label for="" class="control-label"><input type="radio">&nbsp;Post Graduation&nbsp;</label>
                           <label for="" class="control-label"><input type="radio">&nbsp;Diploma&nbsp;</label>
                           <label for="" class="control-label"><input type="radio">&nbsp;PhD&nbsp;</label>
+                        </div>
+                        <div class="clearfix">
+                          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Degree
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                  <div class="form-group">
+                                    <label for="">Degree</label>
+                                    <select name="" id="" class="form-control">
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Stream
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                  <div class="form-group">
+                                    <label for="">Stream</label>
+                                    <select name="" id="" class="form-control">
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Performance
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                  <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                      <label for="">Choose</label>
+                                      <select name="" id="" class="form-control">
+                                        <option value="">CGPA</option>
+                                        <option value="">Percentage</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="" class="control-label">Eligibility</label>
+                        <div class="clearfix">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                              <div class="form-group"><input type="number" class="form-control" name="internship[eligible_min]" min="15" max="40" placeholder="Minimum eligibility Age"></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                              <div class="form-group"><input type="number" class="form-control" name="internship[eligible_max]" min="15" max="40" placeholder="Maximum eligibilty Age"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Skills Required</label>
+                        <div class="skills-box hidden">
+                          <p>
+                            Choose Skills from Below
+                          </p>
+                          <div class="well" id="skill-well">
+
+                          </div>
                         </div>
                       </div>
                     </div>

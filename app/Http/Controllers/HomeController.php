@@ -209,4 +209,26 @@ class HomeController extends Controller
       return view('home.internship_list');
     }
 
+
+    /* AJAX CALLS FORM REGISTER FORMS */
+
+    public function getSkillsFromId(Request $request){
+      try{
+        $id = $request->get('id');
+        $skills =  InternshipField::find($id)->skills()->get()->toJson();
+        $skills = json_decode($skills);
+        return response()->json([
+          'status' => 200,
+          'data'   => $skills?$skills:[]
+        ]);
+      }catch(\Exception $e){
+        return response()->json([
+          'status' => 404,
+          'data'   => [],
+          'error_line' => $e->getLine(),
+          'message'    => $e->getMessage()
+        ]);
+      }
+    }
+
 }

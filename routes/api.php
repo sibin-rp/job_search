@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/get-skills-by-id',['uses'=>'HomeController@getSkillsFromId','as'=>'api_get_skills_by_id']);

@@ -6982,7 +6982,48 @@ $(document).ready(function() {
         $('#internship-duration-end').data('DateTimePicker').minDate(newDate)
       });
 
-      $('#internship-state').select2()
+      $('#internship-state').select2();
+
+      /* Update Skills set when user select internship field */
+      $('#internship-field').change(function(){
+          var internshipFieldId = $(this).val();
+          var url = $(this).data('url');
+          if($('.skills-box').find('.well').children().length > 0){
+              $('.skills-box').find('.well').children().remove();
+          }
+          $.get(url,{id: internshipFieldId}).done(function(result){
+              if(result.status == 200 && result.data.length > 0){
+                  var skillList = result.data.map(function(value,index){
+                      return "<label><input type='checkbox' class='skill-checkbox' data-name='"+value.name+"' name='internship_skills["+index+"]' value='"+value.id+"'>"+value.name+"</label>"
+                  });
+                  $('.skills-box').removeClass('hidden').find('.well').append(skillList)
+              }else{
+
+                  toastr.warning("Sorry no Skills found for this field")
+              }
+          });
+      });
+        $('.skills-box').find('#skill-well').on('click','.skill-checkbox', function(){
+            var skillUserSelect = $('.skills-box').find('.skill-user-select');
+            if(skillUserSelect.length > 0){
+                skillUserSelect.remove()
+            }
+            var checkedSkillsSet = [];
+            $('.skills-box .skill-checkbox:checked').each(function(index,value){
+                var nameValue = $(value).val();
+                checkedSkillsSet.push("<li>"+nameValue+"</li>" +
+                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",beginner'>&nbsp;Beginner" +
+                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",intermediate'>&nbsp;Intermediate" +
+                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",expert'>&nbsp;Expert")
+            })
+            var skillUserSelectBox = $('<div/>',{
+                class:"skill-user-select",
+                id:'skill-user-select'
+            });
+            skillUserSelectBox.append(checkedSkillsSet);
+            $('.skills-box').find('#skill-well').after(skillUserSelectBox)
+
+        });
 
     /** =========================================*/
 
