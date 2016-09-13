@@ -142,8 +142,32 @@
         }
     }
 }
-
-
-
-
 /**eof Admin login page**/
+
+/**
+*  Company Registration
+*  13-09-2016
+*/
+.skills-box{
+    .well{
+        label{
+            vertical-align: middle;
+            margin-right: 5px;
+            input[type="checkbox"],input[type="radio"]{
+                margin-right: 3px;
+                margin-left: 5px;
+                vertical-align: middle;
+            }
+        }
+    }
+    .skill-user-select{
+        input[type="radio"]{
+            position: relative;
+            margin-left: 5px;
+        }
+    }
+}
+#qualification-extra{
+    margin-top: 10px;
+}
+/** end company registration */

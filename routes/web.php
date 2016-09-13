@@ -26,6 +26,7 @@ Route::post('/student/save-personal-form',['uses'=>'HomeController@saveStudentPe
 Route::post('/save-company-info',['uses'=>'HomeController@saveCompanyInfo','as'=>'save_company_info']);
 Route::post('/company-logo-upload',['uses'=>'HomeController@companyLogoUpload','as'=>'company_logo_upload']);
 Route::get('/company-internship-form',['uses'=>'HomeController@companyInternshipForm','as'=>'company_internship_form']);
+Route::post('/save-company-internship-form',['uses'=>'HomeController@saveCompanyInternshipForm','as'=>'save_company_internship_form']);
 /* eof company form */
 
 Route::match(['GET','POST'],"/list-internship",['uses'=>'HomeController@listInternship','as'=>'internship_list']);

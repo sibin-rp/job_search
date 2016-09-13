@@ -8,7 +8,7 @@ class Skill extends Model
 {
     //
   protected $fillable = ['id','name','internship_field_id'];
-
+  public  $timestamps = false;
 
   public function internship_field(){
     return $this->hasOne('App\InternshipField');

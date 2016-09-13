@@ -10662,6 +10662,26 @@ h3 {
       background: #43A047; }
 
 /**eof Admin login page**/
+/**
+*  Company Registration
+*  13-09-2016
+*/
+.skills-box .well label {
+  vertical-align: middle;
+  margin-right: 5px; }
+  .skills-box .well label input[type="checkbox"], .skills-box .well label input[type="radio"] {
+    margin-right: 3px;
+    margin-left: 5px;
+    vertical-align: middle; }
+
+.skills-box .skill-user-select input[type="radio"] {
+  position: relative;
+  margin-left: 5px; }
+
+#qualification-extra {
+  margin-top: 10px; }
+
+/** end company registration */
 .register-wrapper {
   display: block;
   padding: 80px 0 120px;

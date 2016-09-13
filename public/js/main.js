@@ -6984,9 +6984,18 @@ $(document).ready(function() {
 
       $('#internship-state').select2();
 
+      $('.internship-qualification-select').click(function(){
+        var extraFieldExist = $(this).data('extra');
+          if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
+              $('#qualification-extra').addClass('hidden');
+          }else{
+              $('#qualification-extra').removeClass('hidden');
+          }
+      });
       /* Update Skills set when user select internship field */
       $('#internship-field').change(function(){
           var internshipFieldId = $(this).val();
+          $('#skill-info-box').addClass('hidden');
           var url = $(this).data('url');
           if($('.skills-box').find('.well').children().length > 0){
               $('.skills-box').find('.well').children().remove();
@@ -6998,7 +7007,7 @@ $(document).ready(function() {
                   });
                   $('.skills-box').removeClass('hidden').find('.well').append(skillList)
               }else{
-
+                  $('.skills-box').addClass('hidden');
                   toastr.warning("Sorry no Skills found for this field")
               }
           });
@@ -7010,14 +7019,17 @@ $(document).ready(function() {
             }
             var checkedSkillsSet = [];
             $('.skills-box .skill-checkbox:checked').each(function(index,value){
-                var nameValue = $(value).val();
-                checkedSkillsSet.push("<li>"+nameValue+"</li>" +
-                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",beginner'>&nbsp;Beginner" +
-                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",intermediate'>&nbsp;Intermediate" +
-                  "<input type='radio' name='internship[skills][index]' value='"+dataValue+",expert'>&nbsp;Expert")
-            })
-            var skillUserSelectBox = $('<div/>',{
-                class:"skill-user-select",
+                var dataName = $(value).data('name')
+                var idValue = $(value).val();
+                checkedSkillsSet.push("<li class='list-group-item clearfix'>"+dataName +
+                  "<div class='pull-right'> <input type='radio' name='internship[skills][index]' value='"+idValue+",beginner'>&nbsp;Beginner" +
+                  "<input type='radio' name='internship[skills][index]' value='"+idValue+",intermediate'>&nbsp;Intermediate" +
+                  "<input type='radio' name='internship[skills][index]' value='"+idValue+",expert'>&nbsp;Expert" +
+                  "</div></li>"
+                )
+            });
+            var skillUserSelectBox = $('<ul/>',{
+                class:"skill-user-select list-group",
                 id:'skill-user-select'
             });
             skillUserSelectBox.append(checkedSkillsSet);
@@ -7029,7 +7041,8 @@ $(document).ready(function() {
 
     /* COMMON SELECT 2 BOX */
     $('.select-2-select').select2({
-        theme:'bootstrap'
+        theme:'bootstrap',
+        placeholder: "Select from options",
     });
     /* EOF COMMON SELECT 2 BOX */
 

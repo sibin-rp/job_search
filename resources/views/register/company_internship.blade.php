@@ -10,7 +10,7 @@
                 <h3 class="">Add Internship</h3>
               </div>
               <div class="panel-body">
-                <form action="" method="post">
+                <form action="{{route('save_company_internship_form')}}" method="post">
                   {{csrf_field()}}
                   {{method_field('POST')}}
                   <div class="row">
@@ -18,9 +18,9 @@
                       <div class="form-group">
                         <label for="" class="control-label">Field of Internship</label>
                         <select name="internship[field]" id="internship-field" class="form-control select-2-select" data-url="{{route('api_get_skills_by_id')}}">
-
+                          <option value="" selected="selected">None</option>
                           @foreach($internship_fields as $field)
-                            <option value="{{$field['id']}}" @if($loop->index == 0) selected="selected" @endif>{{$field['name']}}</option>
+                            <option value="{{$field['id']}}">{{$field['name']}}</option>
                           @endforeach
                         </select>
                       </div>
@@ -123,15 +123,15 @@
                       <div class="form-group">
                         <label for="" class="control-label">Minimum Qualification</label>
                         <div class="clearfix">
-                          <label for="" class="control-label"><input type="radio">&nbsp;Any&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;10 <sup>th</sup>&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;12 <sup>th</sup>&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;Graduation&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;Post Graduation&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;Diploma&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio">&nbsp;PhD&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="any">&nbsp;Any&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="10th">&nbsp;10 <sup>th</sup>&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="12th">&nbsp;12 <sup>th</sup>&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="graduation">&nbsp;Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="post-graduation">&nbsp;Post Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="diploma">&nbsp;Diploma&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="phd">&nbsp;PhD&nbsp;</label>
                         </div>
-                        <div class="clearfix">
+                        <div class="clearfix hidden" id="qualification-extra">
                           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="headingOne">
@@ -214,7 +214,10 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="">Skills Required</label>
+                        <label for="">Skills Required </label>
+                        <div class="alert alert-info" id="skill-info-box">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          Please select Internship field</div>
                         <div class="skills-box hidden">
                           <p>
                             Choose Skills from Below
