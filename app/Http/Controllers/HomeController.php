@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Helpers;
+use App\Internship;
 use App\InternshipField;
 use App\Mail\ConfirmationMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -200,7 +201,48 @@ class HomeController extends Controller
     }
 
     public function saveCompanyInternshipForm(Request $request){
-      dd($request->all());
+      try{
+        $reg_token = $request->session()->get('register_token');
+        $getUser = User::where('token',$reg_token)->get()->first();
+        $getCompany = $getUser->company()->get()->first();
+        $internshipDetails = $request->get('internship');
+        $internshipDefault = $internshipDetails['default'];
+        if($getCompany->internships()->count() == 0){
+          $internshipRow = $getCompany->internships()->create($internshipDefault);
+        }else{
+          $internshipRow = $getCompany->internships()->first()->update($internshipDefault);
+        }
+        if(isset($internshipDetails['skills']) && sizeof($internshipDetails['skills']) > 0){
+          $internship = $getCompany->internships()->get()->first();
+          $internship->skills()->detach();
+          foreach ($internshipDetails['skills'] as $skill_id => $expertise){
+            try{
+              $internship->skills()->attach($skill_id,[
+                'expertise_level' => $expertise
+              ]);
+            }catch (\Exception $es){
+              dd($es);
+            }
+          }
+        }
+        if(isset($internshipDetails['qualification']) && sizeof($internshipDetails['qualification']) > 0){
+          $qualificationData = $internshipDetails['qualification'];
+          $internship = $getCompany->internships()->get()->first();
+
+          $qualification = $internship->qualification()->get()->first();
+          if($qualification){
+            $qualification->update($qualificationData);
+          }else{}
+            $internship->qualification()->create($qualificationData);
+        }
+        return redirect()->route('home');
+
+      }catch (QueryException $q){
+        dd($q);
+      }catch (\Exception $e){
+        dd($e);
+      }
+
     }
 
 

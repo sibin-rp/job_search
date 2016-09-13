@@ -168,25 +168,27 @@ $(document).ready(function() {
       });
         $('.skills-box').find('#skill-well').on('click','.skill-checkbox', function(){
             var skillUserSelect = $('.skills-box').find('.skill-user-select');
-            if(skillUserSelect.length > 0){
-                skillUserSelect.remove()
-            }
             var checkedSkillsSet = [];
-            $('.skills-box .skill-checkbox:checked').each(function(index,value){
-                var dataName = $(value).data('name')
-                var idValue = $(value).val();
-                checkedSkillsSet.push("<li class='list-group-item clearfix'>"+dataName +
-                  "<div class='pull-right'> <input type='radio' name='internship[skills][index]' value='"+idValue+",beginner'>&nbsp;Beginner" +
-                  "<input type='radio' name='internship[skills][index]' value='"+idValue+",intermediate'>&nbsp;Intermediate" +
-                  "<input type='radio' name='internship[skills][index]' value='"+idValue+",expert'>&nbsp;Expert" +
-                  "</div></li>"
-                )
-            });
-            var skillUserSelectBox = $('<ul/>',{
-                class:"skill-user-select list-group",
-                id:'skill-user-select'
-            });
-            skillUserSelectBox.append(checkedSkillsSet);
+            var dataName = $(this).data('name')
+            var idValue = $(this).val();
+            if($(this).prop('checked')){
+                var codeToPush = "<li class='list-group-item clearfix' id='user-skill-set-"+idValue+"'>"+dataName +
+                  "<div class='pull-right'> <input type='radio' name='internship[skills]["+idValue+"]' value='beginner'>&nbsp;Beginner" +
+                  "<input type='radio' name='internship[skills]["+idValue+"]' value='intermediate'>&nbsp;Intermediate" +
+                  "<input type='radio' name='internship[skills]["+idValue+"]' value='expert'>&nbsp;Expert" +
+                  "</div></li>";
+
+            }else{
+                $(document).find('#user-skill-set-'+idValue).remove();
+            }
+            var skillUserSelectBox = $(document).find('#skill-user-select');
+            if(skillUserSelectBox.length == 0){
+                skillUserSelectBox= $('<ul/>',{
+                    class:"skill-user-select list-group",
+                    id:'skill-user-select'
+                });
+            }
+            skillUserSelectBox.append(codeToPush);
             $('.skills-box').find('#skill-well').after(skillUserSelectBox)
 
         });

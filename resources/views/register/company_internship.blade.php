@@ -17,7 +17,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label for="" class="control-label">Field of Internship</label>
-                        <select name="internship[field]" id="internship-field" class="form-control select-2-select" data-url="{{route('api_get_skills_by_id')}}">
+                        <select name="internship[default][internship_field_id]" id="internship-field" class="form-control select-2-select" data-url="{{route('api_get_skills_by_id')}}">
                           <option value="" selected="selected">None</option>
                           @foreach($internship_fields as $field)
                             <option value="{{$field['id']}}">{{$field['name']}}</option>
@@ -26,17 +26,17 @@
                       </div>
                       <div class="form-group">
                         <label for="" class="control-label">Job Title</label>
-                        <input type="text" name="internship[]" class="form-control" placeholder="Job Title">
+                        <input type="text" name="internship[default][title]" class="form-control" placeholder="Job Title">
                       </div>
                       <div class="form-group">
                         <label for="" class="control-label">Description</label>
-                        <textarea name="internship[description]" id="" cols="30" rows="5" class="form-control" placeholder="Joob description"></textarea>
+                        <textarea name="internship[default][description]" id="" cols="30" rows="5" class="form-control" placeholder="Joob description"></textarea>
                       </div>
                       <div class="form-group"><label for="" class="control-label">Stipend <small>(From - To (In Rupees))</small></label>
                         <div class="div clearfix">
                           <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                              <select name="internship[stipend_from]" id="" class="form-control">
+                              <select name="internship[default][stipend_from]" id="" class="form-control">
                                 <option value="1000">1000</option>
                                 <option value="2000">2000</option>
                                 <option value="3000">3000</option>
@@ -50,7 +50,7 @@
                               </select>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                              <select name="internship[stipend_to]" id="" class="form-control">
+                              <select name="internship[default][stipend_to]" id="" class="form-control">
                                 <option value="1000">1000</option>
                                 <option value="2000">2000</option>
                                 <option value="3000">3000</option>
@@ -70,12 +70,12 @@
                         <label for="" class="control-label">Duration of Internship</label>
                         <div class="clearfix">
                           <p>
-                            <label for=""><input type="radio" name="internship[duration]">&nbsp;Any</label>
-                            <label for="">&nbsp;<input type="radio" name="internship[duration]">&nbsp;0-3 Month</label>
-                            <label for="">&nbsp;<input type="radio" name="internship[duration]">&nbsp;3-6 Month</label>
-                            <label for="">nbsp;<input type="radio" name="internship[duration]">&nbsp;6-9 Month&</label>
-                            <label for="">&nbsp;<input type="radio" name="internship[duration]">&nbsp;9-12 Month</label>
-                            <label for="">&nbsp;<input type="radio" name="internship[duration]">&nbsp;1 Year +</label>
+                            <label for=""><input type="radio" name="internship[default][duration]">&nbsp;Any</label>
+                            <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;0-3 Month</label>
+                            <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;3-6 Month</label>
+                            <label for="">nbsp;<input type="radio" name="internship[default][duration]">&nbsp;6-9 Month&</label>
+                            <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;9-12 Month</label>
+                            <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;1 Year +</label>
                           </p>
                           <p>
                             Or Select Date
@@ -90,11 +90,11 @@
                         <label for="" class="control-label">Type Of Internship</label>
                         <div class="clearfix">
                           <p>
-                            <label for="" class="control-label"><input type="radio" name="internship[type]" value="any">&nbsp;Any&nbsp;</label>
-                            <label for="" class="control-label"><input type="radio" name="internship[type]" value="full_time_office">Full Time (Office)&nbsp;</label>
-                            <label for="" class="control-label"><input type="radio" name="internship[type]" value="part_time_office">&nbsp;Part Time (Office)&nbsp;</label>
-                            <label for="" class="control-label"><input type="radio" name="internship[type]" value="full_time_home">&nbsp;Work from Home (Full time)&nbsp;</label>
-                            <label for="" class="control-label"><input type="radio" name="internship[type]" value="part_time_home">&nbsp;Work from Home (Part time)&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="any">&nbsp;Any&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="full_time_office">Full Time (Office)&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="part_time_office">&nbsp;Part Time (Office)&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="full_time_home">&nbsp;Work from Home (Full time)&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="part_time_home">&nbsp;Work from Home (Part time)&nbsp;</label>
                           </p>
                         </div>
                       </div>
@@ -104,11 +104,11 @@
                           <div class="row">
                             <div class="col-xs-12 col-sm-6"><p>City</p>
                             <p>
-                              <input type="text" class="form-control" name="internship[city]" placeholder="Internship City">
+                              <input type="text" class="form-control" name="internship[default][city]" placeholder="Internship City">
                             </p></div>
                             <div class="col-xs-12 col-sm-6"><p>State</p>
                               <p>
-                                <select name="internship[state]" id="internship-state" class="form-control">
+                                <select name="internship[default][state]" id="internship-state" class="form-control">
                                   @foreach($states as $code => $state)
                                   <option value="{{$code}}">{{$state}}</option>
                                   @endforeach
@@ -123,13 +123,13 @@
                       <div class="form-group">
                         <label for="" class="control-label">Minimum Qualification</label>
                         <div class="clearfix">
-                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="any">&nbsp;Any&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="any" checked="checked">&nbsp;Any&nbsp;</label>
                           <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="10th">&nbsp;10 <sup>th</sup>&nbsp;</label>
                           <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="12th">&nbsp;12 <sup>th</sup>&nbsp;</label>
-                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="graduation">&nbsp;Graduation&nbsp;</label>
-                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="post-graduation">&nbsp;Post Graduation&nbsp;</label>
-                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="diploma">&nbsp;Diploma&nbsp;</label>
-                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" value="phd">&nbsp;PhD&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="graduation">&nbsp;Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="post-graduation">&nbsp;Post Graduation&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="diploma">&nbsp;Diploma&nbsp;</label>
+                          <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="phd">&nbsp;PhD&nbsp;</label>
                         </div>
                         <div class="clearfix hidden" id="qualification-extra">
                           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -145,10 +145,10 @@
                                 <div class="panel-body">
                                   <div class="form-group">
                                     <label for="">Degree</label>
-                                    <select name="" id="" class="form-control">
-                                      <option value=""></option>
-                                      <option value=""></option>
-                                      <option value=""></option>
+                                    <select name="internship[qualification][degree]" id="" class="form-control">
+                                      <option value="en">Engineering</option>
+                                      <option value="me">Medical</option>
+                                      <option value="ar">Architecture</option>
                                     </select>
                                   </div>
                                 </div>
@@ -166,10 +166,10 @@
                                 <div class="panel-body">
                                   <div class="form-group">
                                     <label for="">Stream</label>
-                                    <select name="" id="" class="form-control">
-                                      <option value=""></option>
-                                      <option value=""></option>
-                                      <option value=""></option>
+                                    <select name="internship[qualification][stream]" id="" class="form-control">
+                                      option value="en">Engineering</option>
+                                      <option value="me">Medical</option>
+                                      <option value="ar">Architecture</option>
                                     </select>
                                   </div>
                                 </div>
@@ -188,7 +188,7 @@
                                   <div class="row">
                                     <div class="col-xs-12 col-sm-4">
                                       <label for="">Choose</label>
-                                      <select name="" id="" class="form-control">
+                                      <select name="internship[qualification][type]" id="" class="form-control">
                                         <option value="">CGPA</option>
                                         <option value="">Percentage</option>
                                       </select>
@@ -205,10 +205,10 @@
                         <div class="clearfix">
                           <div class="row">
                             <div class="col-xs-12 col-sm-6">
-                              <div class="form-group"><input type="number" class="form-control" name="internship[eligible_min]" min="15" max="40" placeholder="Minimum eligibility Age"></div>
+                              <div class="form-group"><input type="number" class="form-control" name="internship[default][eligible_min]" min="15" max="40" placeholder="Minimum eligibility Age"></div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                              <div class="form-group"><input type="number" class="form-control" name="internship[eligible_max]" min="15" max="40" placeholder="Maximum eligibilty Age"></div>
+                              <div class="form-group"><input type="number" class="form-control" name="internship[default][eligible_max]" min="15" max="40" placeholder="Maximum eligibilty Age"></div>
                             </div>
                           </div>
                         </div>
@@ -238,7 +238,7 @@
                         <p>
                           Number of resume to be sent in a single round.
                         </p>
-                        <select name="internship[num_resume]" id="" class="form-control">
+                        <select name="internship[default][num_resume]" id="" class="form-control">
                           @for($i=1;$i<10;$i++)
                             <option value="{{$i*5}}">{{$i*5}} Resumes</option>
                           @endfor
@@ -247,13 +247,13 @@
                       <div class="form-group">
                         <p>Pre Recruitment exercise for intern</p>
                         <p>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="none">&nbsp;None&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="sample_work">&nbsp;Sample Work&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="telephone_interview">&nbsp;Telephone Interview&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="one_on_one_interview">&nbsp;One to One Interview&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="video_interview">&nbsp;Video Interview&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="chat">&nbsp;Chat&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="other">&nbsp;Other&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="none">&nbsp;None&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="sample_work">&nbsp;Sample Work&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="telephone_interview">&nbsp;Telephone Interview&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="one_on_one_interview">&nbsp;One to One Interview&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="video_interview">&nbsp;Video Interview&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="chat">&nbsp;Chat&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="other">&nbsp;Other&nbsp;</label>
                         </p>
                       </div>
                     </div>
@@ -261,9 +261,9 @@
                       <div class="form-group">
                         <p>Payment to Intern</p>
                         <p>
-                          <label for="" class="control-label"><input type="radio" name="internship[payment]" value="weekly">&nbsp;Weekly&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[payment]" value="fortnightly">&nbsp;Fortnighlty&nbsp;</label>
-                          <label for="" class="control-label"><input type="radio" name="internship[payment]" value="monthly">&nbsp;Monthly&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][payment]" value="weekly">&nbsp;Weekly&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][payment]" value="fortnightly">&nbsp;Fortnighlty&nbsp;</label>
+                          <label for="" class="control-label"><input type="radio" name="internship[default][payment]" value="monthly">&nbsp;Monthly&nbsp;</label>
                         </p>
                       </div>
                       <div class="form-group">
@@ -278,7 +278,7 @@
                           </a>
                         </p>
                         <p>
-                          <input type="text" class="form-control date-picker" placeholder="Validity of Internship" value="">
+                          <input type="text" class="form-control date-picker" placeholder="Validity of Internship" value="" name="internship[default][validity]">
                         </p>
                       </div>
                     </div>
