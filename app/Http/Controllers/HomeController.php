@@ -115,6 +115,11 @@ class HomeController extends Controller
       dd($request->all());
     }
 
+
+    public function saveStudentQualificationData(Request $request){
+      dd($request->all());
+    }
+
   /**
    * Company Logo Upload
    *

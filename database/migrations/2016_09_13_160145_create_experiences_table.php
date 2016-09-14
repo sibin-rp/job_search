@@ -20,6 +20,7 @@ class CreateExperiencesTable extends Migration
         $table->enum('experience_type',['internship','job','project','freelance','training','other'])
           ->nullable();
         $table->string('company_name')->nullable();
+        $table->integer('internship_field_id')->unsigned();
         $table->enum('work_type',['any','full_time_office','part_time_office','full_time_home','part_time_home'])->default('any');
         $table->date('work_from')->nullable();
         $table->date('work_to')->nullable();

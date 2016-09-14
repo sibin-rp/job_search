@@ -21,6 +21,8 @@ Route::post('/send-student-confirmation',['uses'=>'HomeController@sendStudentCon
 /* Save Students Form */
 Route::post('/student/save-personal-form',['uses'=>'HomeController@saveStudentPersonalData','as'=>'save_student_personal_data']);
 Route::post('/student/save-internship-form',['uses'=>'HomeController@saveStudentInternshipPreferenceData','as'=>'save_student_internship_data']);
+Route::post('/student/save-qualification-form',['uses'=>'HomeController@saveStudentQualificationData','as'=>"save_student_qualification"]);
+Route::post('/student/save-experience-form',['uses'=>'HomeController@saveStudentExperienceData','as'=>'save_student_experience_data']);
 /* eof student form */
 
 /* Save Company Form */

@@ -128,9 +128,9 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#internshipInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
+                    <a class="collapsed clearfix" role="button" data-toggle="collapse" data-parent="#accordion" href="#internshipInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
                       Internship Preferences
-                      <span class="glyphicon glyphicon-blackboard"></span>
+                      <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                   </h4>
                 </div>
@@ -138,12 +138,20 @@
                   <div class="panel-body">
                     <form action="{{route('save_student_internship_data')}}" method="POST" id="internship_info_form">
                       {{csrf_field()}} {{method_field('POST')}}
+
                       <div id="vue-js-form-field">
+                        <div class="row" v-if="internships.length == 0">
+                          <div class="col-xs-12">
+                            <div class="alert alert-warning">
+                              Please Select Internship field to get form.
+                            </div>
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="col-xs-12 col-sm-3">
                             <div v-if="internshipExist">
-                              <ul class="list-group">
-                                <li class="list-group-item" v-for="internship in internships">
+                              <ul class="list-group form-list">
+                                <li class="list-group-item" v-for="internship in internships" v-bind:class="{'active':(($index+1) == internships.length)}">
                                   <a href="#internship-field-@{{ internship.id }}" data-toggle="tab" class="clearfix">
                                     @{{internship.name}}
                                     <span class="glyphicon glyphicon-trash" v-on:click="removeFromList(internship,$event)"></span>
@@ -207,14 +215,14 @@
                                       <div class="clearfix">
                                         <div class="row">
                                           <div class="col-xs-12 col-sm-6">
-                                            <vue-datetime-picker class="vue-start-picker" :vid="internship.id" name="from_date"
+                                            <vue-datetime-picker class="vue-start-picker" :vid="internship.id" name="from_date" prefix="internship"
                                                                  v-ref:start-picker
                                                                  :model.sync="startDatetime"
                                                                  :on-change="onStartDatetimeChanged">
                                             </vue-datetime-picker>
                                           </div>
                                           <div class="col-xs-12 col-sm-6">
-                                            <vue-datetime-picker class="vue-end-picker" :vid="internship.id" name="to_date"
+                                            <vue-datetime-picker class="vue-end-picker" :vid="internship.id" name="to_date" prefix="internship"
                                                                  v-ref:end-picker
                                                                  :model.sync="endDatetime"
                                                                  :on-change="onEndDatetimeChanged">
@@ -298,18 +306,20 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#qualificationInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
+                    <a class="collapsed clearfix" role="button" data-toggle="collapse" data-parent="#accordion" href="#qualificationInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
                       Qualification Preferences
-                      <span class="glyphicon glyphicon-blackboard"></span>
+                      <span class="glyphicon glyphicon-education pull-right"></span>
                     </a>
                   </h4>
                 </div>
                 <div id="qualificationInfoCollapse" class="panel-collapse collapse">
                   <div class="panel-body">
-                    <form action="">
+                    <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+                      {{csrf_field()}}
+                      {{method_field('POST')}}
                       <div class="row">
                         <div class="col-xs-12 col-sm-4 col-lg-3">
-                          <ul class="list-group">
+                          <ul class="list-group form-list">
                             <li class="list-group-item active"><a href="#10_th" data-toggle="tab">10<sup>th</sup> Standard</a></li>
                             <li class="list-group-item"><a href="#12_th" data-toggle="tab">12<sup>th</sup> Standard</a></li>
                             <li class="list-group-item"><a href="#graduation" data-toggle="tab">Graduation</a></li>
@@ -337,6 +347,50 @@
                   </div>
                 </div>
                 </div>
+
+              <!-- Experience Section -->
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed clearfix" role="button" data-toggle="collapse" data-parent="#accordion" href="#experienceInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
+                      Experience Preferences
+                      <span class="glyphicon glyphicon-blackboard pull-right"></span>
+                    </a>
+                  </h4>
+                </div>
+                <div id="experienceInfoCollapse" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <form action="{{route('save_student_experience_data')}}" method="post" id="internship-experience-form">
+                        {{csrf_field()}}
+                        {{method_field('POST')}}
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4 col-lg-3">
+                            <ul class="list-group form-list">
+                              <li class="list-group-item active"><a href="#exp-internship" data-toggle="tab">Internship</a></li>
+                              <li class="list-group-item"><a href="#exp-job" data-toggle="tab">Job</a></li>
+                              <li class="list-group-item"><a href="#exp-project" data-toggle="tab">Project</a></li>
+                              <li class="list-group-item"><a href="#exp-freelancer" data-toggle="tab">Freelancer</a></li>
+                              <li class="list-group-item"><a href="#exp-training" data-toggle="tab">Training</a></li>
+                              <li class="list-group-item"><a href="#exp-other" data-toggle="tab">Other</a></li>
+                            </ul>
+                          </div>
+                          <div class="col-xs-12 col-sm-8 col-lg-9">
+                            <div class="tab-content">
+                              @include('register.student._experience_fields')
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 text-right">
+                            <button class="btn" type="submit">Continue</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+              <!-- end expereince section -->
             </div>
           </div>
         </div>

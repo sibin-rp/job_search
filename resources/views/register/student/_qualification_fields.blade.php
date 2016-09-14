@@ -6,7 +6,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
-        <input type="text" class="form-control" placeholder="Year of completion"
+        <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
                name="internship[experience][10_th][type]">
       </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
-        <input type="text" class="form-control" placeholder="Year of completion"
+        <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
                name="internship[experience][12_th][type]">
       </div>
       <div class="form-group">
@@ -87,14 +87,14 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control" name="internship[experience][graduation][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][graduation][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control" name="internship[experience][graduation][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][graduation][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -130,7 +130,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][graduation][mark]">
+          <input type="text" class="form-control" name="internship[experience][graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -151,14 +151,14 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control" name="internship[experience][post_graduation][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][post_graduation][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control" name="internship[experience][post_graduation][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][post_graduation][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -185,7 +185,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][post_graduation][mark]">
+          <input type="text" class="form-control" name="internship[experience][post_graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -206,14 +206,14 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control" name="internship[experience][diploma][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][diploma][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control" name="internship[experience][diploma][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][diploma][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -240,7 +240,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[diploma][graduation][mark]">
+          <input type="text" class="form-control" name="internship[diploma][graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -261,14 +261,14 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control" name="internship[experience][phd][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][phd][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control" name="internship[experience][phd][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[experience][phd][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -295,7 +295,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][phd][mark]">
+          <input type="text" class="form-control" name="internship[experience][phd][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -314,9 +314,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <fieldset v-for="aca in academics">
-          <lagend> Academic @{{ $index + 1 }}
-          <span class="glyphicon glyphicon-trash" v-on:click="remove(aca)"></span>
-          </lagend>
+          <legend class="clearfix"> Academic @{{ $index + 1 }}
+          <span class="glyphicon glyphicon-trash pull-right" v-on:click="remove(aca)"></span>
+          </legend>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
@@ -352,9 +352,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <fieldset v-for="sport in sports">
-          <lagend> Sports @{{ $index + 1 }}
-            <span class="glyphicon glyphicon-trash" v-on:click="remove(sport)"></span>
-          </lagend>
+          <legend class="clearfix"> Sports @{{ $index + 1 }}
+            <span class="glyphicon glyphicon-trash pull-right" v-on:click="remove(sport)"></span>
+          </legend>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
@@ -390,9 +390,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <fieldset v-for="sport in arts">
-          <lagend> Arts @{{ $index + 1 }}
-            <span class="glyphicon glyphicon-trash" v-on:click="remove(sport)"></span>
-          </lagend>
+          <legend class="clearfix"> Arts @{{ $index + 1 }}
+            <span class="glyphicon glyphicon-trash pull-right" v-on:click="remove(sport)"></span>
+          </legend>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
@@ -428,9 +428,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <fieldset v-for="sport in others">
-          <lagend> Sports @{{ $index + 1 }}
-            <span class="glyphicon glyphicon-trash" v-on:click="remove(sport)"></span>
-          </lagend>
+          <legend class="clearfix"> Others @{{ $index + 1 }}
+            <span class="glyphicon glyphicon-trash pull-right" v-on:click="remove(sport)"></span>
+          </legend>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>

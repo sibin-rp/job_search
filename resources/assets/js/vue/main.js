@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var VueDatetimePicker = Vue.extend({
-    props:['name','vid'],
-    template:"<input class='form-control' name='internship[{{vid}}][{{name}}]' placeholder='Date Picker'/>",
+    props:['name','vid','prefix'],
+    template:"<input class='form-control' name='{{prefix}}[{{vid}}][{{name}}]' placeholder='Date Picker'/>",
     created: function(){
     },
     ready: function(){
@@ -11,7 +11,7 @@ $(document).ready(function(){
       })
     }
   });
-
+  Vue.component('vue-datetime-picker', VueDatetimePicker)
   new Vue({
     el:'#vue-js-form-field',
     created: function(){
@@ -184,4 +184,36 @@ $(document).ready(function(){
     }
   });
   /** EOF QUALIFICATION SECTION */
+
+  /** EXPERIENCE SECTION */
+  var internshipExperience = new Vue({
+    el:"#vue-experience-internship",
+    data:{
+      internshipList:[0]
+    },
+    methods:{
+      addMoreInternship: function(ele){
+        var element = $(ele.target);
+        var numInternship = element.val();
+        this.internshipList = _.range(numInternship)
+
+      }
+    }
+  });
+  var jobExperience = new Vue({
+    el:"#vue-experience-job",
+    data:{
+      internshipList:[0]
+    },
+    methods:{
+      addMoreInternship: function(ele){
+        var element = $(ele.target);
+        var numInternship = element.val();
+        this.internshipList = _.range(numInternship)
+
+      }
+    }
+  });
+
+  /** EOF EXPERIENCE SECTION */
 });

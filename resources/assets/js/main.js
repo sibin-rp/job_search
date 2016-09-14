@@ -7,6 +7,9 @@ $(document).ready(function() {
     Dropzone.autoDiscover = false;
     $.fn.select2.defaults.set( "theme", "bootstrap" );
     $('[data-toggle="popover"]').popover();
+    $('.year-datepicker').datetimepicker({
+      format:'YYYY'
+    })
     /** EOF DEFAULTS **/
     // Home carousel by OWL Carousel 
     $('#home-slider').owlCarousel({
@@ -94,6 +97,32 @@ $(document).ready(function() {
         /* EOF INTERNSHIP INFO FORM **/
     }
 
+  var internshipExperienceForm = $('#internship-experience-form');
+  if(internshipExperienceForm.length > 0){
+    internshipExperienceForm.submit(function(e){
+      e.preventDefault();
+      var formUrl = $(this).attr('actione');
+      var formData = $(this).serialize();
+      $.post(formUrl,formData).then(function(result){
+
+      }, function(error){
+
+      })
+    })
+  }
+  var internshipQualificationForm = $('#internship-qualification-form');
+  if(internshipQualificationForm.length > 0){
+    internshipQualificationForm.submit(function(e){
+      e.preventDefault();
+      var formUrl = $(this).attr('action');
+      var formData = $(this).serialize();
+      $.post(formUrl,formData).then(function(result){
+
+      }, function(error){
+
+      })
+    })
+  }
     /** EOF INTERNSHIP INFO FORM **/
 
 
