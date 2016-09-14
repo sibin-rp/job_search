@@ -111,6 +111,10 @@ class HomeController extends Controller
       }
     }
 
+    public function saveStudentInternshipPreferenceData(Request $request){
+      dd($request->all());
+    }
+
   /**
    * Company Logo Upload
    *

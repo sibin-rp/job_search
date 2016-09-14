@@ -20,6 +20,7 @@ Route::get('/register/{token}/continue',['uses'=>'HomeController@continueRegistr
 Route::post('/send-student-confirmation',['uses'=>'HomeController@sendStudentConfirmation','as'=>'send_student_confirmation']);
 /* Save Students Form */
 Route::post('/student/save-personal-form',['uses'=>'HomeController@saveStudentPersonalData','as'=>'save_student_personal_data']);
+Route::post('/student/save-internship-form',['uses'=>'HomeController@saveStudentInternshipPreferenceData','as'=>'save_student_internship_data']);
 /* eof student form */
 
 /* Save Company Form */

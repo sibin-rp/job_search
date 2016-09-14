@@ -136,7 +136,7 @@
                 </div>
                 <div id="internshipInfoCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
-                    <form action="" method="POST" id="internship_info_form">
+                    <form action="{{route('save_student_internship_data')}}" method="POST" id="internship_info_form">
                       {{csrf_field()}} {{method_field('POST')}}
                       <div id="vue-js-form-field">
                         <div class="row">
@@ -269,9 +269,9 @@
                                           <li class="list-group-item clearfix" v-for="skill in internship.mySkills">
                                             @{{ skill.name }}
                                             <div class="pull-right">
-                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="beginner">&nbsp;Beginner&nbsp;
-                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="intermediate">&nbsp;Intermediate&nbsp;
-                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="expert">&nbsp;Expert&nbsp;
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill][@{{ skill.id }}]" value="beginner">&nbsp;Beginner&nbsp;
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill][@{{ skill.id }}]" value="intermediate">&nbsp;Intermediate&nbsp;
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill][@{{ skill.id }}]" value="expert">&nbsp;Expert&nbsp;
                                             </div>
                                           </li>
                                         </ul>
@@ -289,12 +289,54 @@
                         </div>
                       </div>
                       <div class="form-group text-right">
-                        <button class="btn" type="submit">Save</button>
+                        <button class="btn" type="submit">Continue</button>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#qualificationInfoCollapse" aria-expanded="false" aria-controls="collapseTwo">
+                      Qualification Preferences
+                      <span class="glyphicon glyphicon-blackboard"></span>
+                    </a>
+                  </h4>
+                </div>
+                <div id="qualificationInfoCollapse" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <form action="">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-lg-3">
+                          <ul class="list-group">
+                            <li class="list-group-item active"><a href="#10_th" data-toggle="tab">10<sup>th</sup> Standard</a></li>
+                            <li class="list-group-item"><a href="#12_th" data-toggle="tab">12<sup>th</sup> Standard</a></li>
+                            <li class="list-group-item"><a href="#graduation" data-toggle="tab">Graduation</a></li>
+                            <li class="list-group-item"><a href="#post_graduation" data-toggle="tab">Post Graduation</a></li>
+                            <li class="list-group-item"><a href="#diploma" data-toggle="tab">Diploma</a></li>
+                            <li class="list-group-item"><a href="#phd" data-toggle="tab">PhD</a></li>
+                            <li class="list-group-item"><a href="#academic" data-toggle="tab">Academic</a></li>
+                            <li class="list-group-item"><a href="#sports" data-toggle="tab">Sports</a></li>
+                            <li class="list-group-item"><a href="#arts" data-toggle="tab">Arts</a></li>
+                            <li class="list-group-item"><a href="#other" data-toggle="tab">Other</a></li>
+                          </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-lg-9">
+                          <div class="tab-content">
+                            @include('register.student._qualification_fields')
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 text-right">
+                          <button type="submit" class="btn">Continue</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                </div>
             </div>
           </div>
         </div>

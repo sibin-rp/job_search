@@ -71,6 +71,8 @@ $(document).ready(function() {
         });
         /* EOF STUDENT REGISTER FORM */
     };
+
+
     /** EOF STUDENT REGISTER FORM **/
 
 
@@ -79,26 +81,17 @@ $(document).ready(function() {
     if(internshipInfoForm.length > 0){
         /* INTERNSHIP INFO FORM EVENTS */
         internshipInfoForm.submit(function(e){
-            console.log($(this).serialize());
             e.preventDefault();
+          var formUrl = $(this).attr('action');
+          var formData = $(this).serialize();
+            $.post(formUrl,formData).then(function(result){
+              console.log(result)
+            }, function(error){
+              console.log(error)
+            })
         });
         internshipInfoForm.parsley();
         /* EOF INTERNSHIP INFO FORM **/
-
-        $('.date-from').datetimepicker({
-            format:'YYYY-MM-DD',
-            minDate: moment().format()
-        });
-        $('.date-to').datetimepicker({
-            format:'YYYY-MM-DD',
-            minDate: moment().format()
-        });
-
-        $('.date-from').on('dp.change', function(event){
-            var newDate = event.date;
-            var idElement = $(event.target).data('to')
-            $(idElement).data('DateTimePicker').minDate(newDate);
-        });
     }
 
     /** EOF INTERNSHIP INFO FORM **/
