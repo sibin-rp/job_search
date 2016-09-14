@@ -5,10 +5,15 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
     "gulp": "^3.9.1",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-browsersync-official": "^1.0.0",
-    "lodash": "^4.14.0"
+    "laravel-elixir-vue": "^0.1.7",
+    "laravel-elixir-webpack-official": "^1.0.5",
+    "lodash": "^4.14.0",
+    "vue": "^1.0.26",
+    "vue-resource": "^1.0.2"
   },
   "dependencies": {
     "angular": "^1.5.8",
@@ -21,12 +26,15 @@
     "dropzone": "^4.3.0",
     "eonasdan-bootstrap-datetimepicker": "git+https://github.com/Eonasdan/bootstrap-datetimepicker.git",
     "font-awesome": "^4.6.3",
-    "handlebars": "^4.0.5",
     "jquery": "^1.12.4",
     "owl.carousel": "^2.1.4",
     "parsleyjs": "^2.4.4",
     "select2": "^4.0.3",
     "select2-bootstrap-theme": "0.1.0-beta.9",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "underscore": "^1.8.3",
+    "vue": "^1.0.26",
+    "vue-datetime-picker": "^0.2.1",
+    "webpack-stream": "^3.2.0"
   }
 }

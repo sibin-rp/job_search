@@ -15,11 +15,6 @@ $(document).ready(function() {
         dots: false,
         autoplay: true
     });
-    // Student register 
-    $('#student-register').submit(function(e) {
-        e.preventDefault();
-        return true
-    });
     // Set Date Picker
     $('.date-picker').datetimepicker({
         format:'YYYY-MM-DD',

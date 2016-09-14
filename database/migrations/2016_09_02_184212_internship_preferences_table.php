@@ -14,16 +14,18 @@ class InternshipPreferencesTable extends Migration
     public function up()
     {
         //
-        Schema::create('internship_preference', function(Blueprint $table){
+        Schema::create('internship_preferences', function(Blueprint $table){
           $table->increments('id');
           $table->integer('user_id');
-          $table->tinyInteger('company_type')->default(0)->nullable(); // [ANY,STARTUP,MNC,NGO,OTHER]
-          $table->tinyInteger('duration')->default(0)->nullable(); // [ANY,0-3MONTH, 3-6MONTH,6-9MONTH,9-12MONTH, 1+YEAR]
+          $table->enum('company_type',['any','startup','mnc','ngo','other'])->default('any')->nullable(); // [ANY,STARTUP,MNC,NGO,OTHER]
+          $table->string('duration',10)->default(0)->nullable(); // [ANY,0-3MONTH, 3-6MONTH,6-9MONTH,9-12MONTH, 1+YEAR]
           $table->date('from_date');
           $table->date('to_date');
-          $table->tinyInteger('internship_type');// [FO,PO, WF,WP]
+          $table->enum('internship_type',['any','full_time_office','full_time_home','part_time_office','part_time_home'])->default('any');// [FO,PO, WF,WP]
           $table->float('stipend_from');
           $table->float('stipend_to');
+          $table->text('city')->nullable();
+          $table->integer('internship_field_id')->nullable();
           $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ class InternshipPreferencesTable extends Migration
     public function down()
     {
         //
-      Schema::drop('internship_preference');
+      Schema::drop('internship_preferences');
     }
 }

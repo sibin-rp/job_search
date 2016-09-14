@@ -128,7 +128,7 @@
 <div class="modal fade" id="company-modal-id">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('send_student_confirmation')}}" class="" id="student-register" method="POST">
+            <form action="{{route('send_student_confirmation')}}" class="" id="company-register" method="POST">
                 {{csrf_field()}}
                 {{method_field('POST')}}
                 <input type="hidden" value="1" name="type">

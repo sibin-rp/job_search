@@ -1,5 +1,5 @@
 const elixir = require('laravel-elixir');
-
+require('laravel-elixir-vue');
 
 /*
  |--------------------------------------------------------------------------
@@ -31,8 +31,12 @@ elixir(mix => {
         ],
         'public/js/main.js');
     mix.scripts([
-      './node_modules/handlebars/dist/handlebars.min.js'
-    ],'public/js/handlebar.min.js');
+      './node_modules/vue/dist/vue.min.js'
+    ],'public/js/vue.min.js');
+    mix.scripts([
+      './node_modules/underscore/underscore-min.js',
+      'vue/main.js'
+    ],'public/js/main-vue.min.js');
     // Admin Section
     mix.scripts([
         './node_modules/jquery/dist/jquery.min.js',

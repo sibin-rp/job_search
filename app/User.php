@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function company(){
       return $this->hasOne('App\Company');
     }
+
+    public function internship_preferences(){
+      return $this->hasMany('App\InternshipPreference');
+    }
 }

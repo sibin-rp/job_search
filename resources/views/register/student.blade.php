@@ -137,89 +137,156 @@
                 <div id="internshipInfoCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
                     <form action="" method="POST" id="internship_info_form">
-                      {{csrf_field()}}
-                      <div class="form-horizontal">
-                        <div class="form-group">
-                          <label for="type-of-company-fields" class="col-xs-12 col-sm-4 col-md-3 control-label text-left">
-                            Type of Company
-                            <br>
-                            <small>tick against box</small>
-                          </label>
-                          <div class="col-xs-12 col-sm-8 col-md-9">
-                            <div class="clearfix" id="type-of-company-fields">
-                              <p>
-                                <label for="type-any"><input name="type_of_company" type="radio" value="any" id="type-any" data-parsley-multiple=""
-                                                                 required=""  data-parsley-errors-container="#type-of-company-error"
-                                                                 data-parsley-required-message="Please check at least one duration.">&nbsp;Any</label>
-                                &nbsp;<label for="type-startup"><input name="type_of_company" type="radio" value="startup" id="type-startup" data-parsley-multiple="">&nbsp;StartUp</label>
-                                &nbsp;<label for="type-mnc"><input name="type_of_company" type="radio" value="mnc" id="type-mnc" data-parsley-multiple="">&nbsp;MNC</label>
-                                &nbsp;<label for="type-ngo"><input name="type_of_company" type="radio" value="ngo" id="type-ngo" data-parsley-multiple="">&nbsp;NGO</label>
-                                &nbsp;<label for="type-other"><input name="type_of_company" type="radio" value="other" id="type-other" data-parsley-multiple="">&nbsp;Other</label>
-                              </p>
-                            </div>
-                            <div id="type-of-company-error">
+                      {{csrf_field()}} {{method_field('POST')}}
+                      <div id="vue-js-form-field">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-3">
+                            <div v-if="internshipExist">
+                              <ul class="list-group">
+                                <li class="list-group-item" v-for="internship in internships">
+                                  <a href="#internship-field-@{{ internship.id }}" data-toggle="tab" class="clearfix">
+                                    @{{internship.name}}
+                                    <span class="glyphicon glyphicon-trash" v-on:click="removeFromList(internship,$event)"></span>
+                                  </a>
 
+                                </li>
+                              </ul>
+                            </div>
+                            <div>
+                              @if(isset($get_fields))
+                                <select name="" id="internship-field-selector" class="form-control " v-on:change="insertDataToField($event)">
+                                  @foreach($get_fields as $field)
+                                    <option value="{{$field['id']}}" data-name="{{$field['name']}}">{{$field['name']}}</option>
+                                  @endforeach
+                                </select>
+                              @endif
                             </div>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="duration-fields" class="col-xs-12 col-sm-4 col-md-3 control-label text-left">
-                            Duration (Year +)
-                            <br>
-                            <small>tick against the box</small>
-                          </label>
-                          <div class="col-xs-12 col-sm-8 col-md-9">
-                            <div class="clearfix" id="duration-fields">
-                              <p>
-                                <label for="type-0"><input name="duration" type="radio" value="any" id="type-0" data-parsley-multiple=""
-                                                                 required=""  data-parsley-errors-container="#duration-error"
-                                                                 data-parsley-required-message="Please check  Duration.">&nbsp; Any</label>
-                                &nbsp;<label for="type-3-6"><input name="duration" type="radio" value="3-6" id="type-3-6" data-parsley-multiple="">&nbsp;3-6 Months</label>
-                                &nbsp;<label for="type-6-9"><input name="duration" type="radio" value="6-9" id="type-6-9" data-parsley-multiple="">&nbsp;6-9 Months</label>
-                                &nbsp;<label for="type-9-12"><input name="duration" type="radio" value="9-12" id="type-9-12" data-parsley-multiple="">&nbsp;9-12 Months</label>
-                              </p>
-                            </div>
-                            <div id="duration-error">
+                          <div class="col-xs-12 col-sm-9">
+                            <div class="tab-content">
+                              <div role="tabpanel" class="tab-pane" v-bind:class="{'active':(($index+1) == internships.length)}" v-for="internship in internships"
+                                   id="internship-field-@{{ internship.id }}">
+                                <div class="page-header">
+                                  <h3>@{{ internship.name }}</h3>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group">
+                                      <label for="" class="control-label">Type of Company</label>
+                                      <div class="clearfix">
+                                        <label for="" class="control-label"><input type="radio" value="any" checked="checked" name="internship[@{{ internship.id }}][company_type]">&nbsp;Any&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="startup" name="internship[@{{ internship.id }}][company_type]">&nbsp;Startup&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="mnc" name="internship[@{{ internship.id }}][company_type]">&nbsp;MNC&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="ngo" name="internship[@{{ internship.id }}][company_type]">&nbsp;NGO&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="other" name="internship[@{{ internship.id }}][company_type]">&nbsp;Other&nbsp;</label>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="" class="control-label">Duration of Internship</label>
+                                      <div class="clearfix">
+                                        <label for="" class="control-label"><input type="radio" value="any" name="internship[@{{ internship.id }}][duration]">&nbsp;Any&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="0_3" name="internship[@{{ internship.id }}][duration]">&nbsp;0-3 Months&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="3_6" name="internship[@{{ internship.id }}][duration]">&nbsp;3-6 Months&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="6_9" name="internship[@{{ internship.id }}][duration]">&nbsp;6-9 Months&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="9_12" name="internship[@{{ internship.id }}][duration]">&nbsp;9-12 Months&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="1_year_plus" name="internship[@{{ internship.id }}][duration]">&nbsp;1 Year +&nbsp;</label>
+                                      </div>
+                                    </div>
+                                    <!-- City of Internship -->
+                                    <div class="form-group"><label for="" class="control-label">City of Internship</label>
+                                      <div class="clearfix">
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city"></div>
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city (optional)"></div>
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city (optional)"></div>
+                                      </div>
+                                    </div>
+                                    <!-- eof city of internship -->
+                                    <!-- Available from -->
+                                    <div class="form-group">
+                                      <label for="" class="control-label">Available (From - To)</label>
+                                      <div class="clearfix">
+                                        <div class="row">
+                                          <div class="col-xs-12 col-sm-6">
+                                            <vue-datetime-picker class="vue-start-picker" :vid="internship.id" name="from_date"
+                                                                 v-ref:start-picker
+                                                                 :model.sync="startDatetime"
+                                                                 :on-change="onStartDatetimeChanged">
+                                            </vue-datetime-picker>
+                                          </div>
+                                          <div class="col-xs-12 col-sm-6">
+                                            <vue-datetime-picker class="vue-end-picker" :vid="internship.id" name="to_date"
+                                                                 v-ref:end-picker
+                                                                 :model.sync="endDatetime"
+                                                                 :on-change="onEndDatetimeChanged">
+                                            </vue-datetime-picker>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- eof available from -->
 
+                                  </div>
+                                  <div class="col-xs-12 col-sm-6">
+                                    <!-- Type of internship -->
+                                    <div class="form-group">
+                                      <label for="" class="control-label">Internship type</label>
+                                      <div class="clearfix">
+                                        <label for="" class="control-label"><input type="radio" value="any" name="internship[@{{ internship.id }}][internship_type]">&nbsp;Any&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="full_time_office" name="internship[@{{ internship.id }}][internship_type]">&nbsp;Full Time (In Office)&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="part_time_office" name="internship[@{{ internship.id }}][internship_type]">&nbsp;Part Time (In Office)&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="full_time_home" name="internship[@{{ internship.id }}][internship_type]">&nbsp;Work from Home (Full time)&nbsp;</label>
+                                        <label for="" class="control-label"><input type="radio" value="part_time_home" name="internship[@{{ internship.id }}][internship_type]">&nbsp;Work from Home (Part time)&nbsp;</label>
+                                      </div>
+                                    </div>
+                                    <!-- eof type of internship -->
+                                    <!-- Expected Stipend -->
+                                    <div class="form-group"><label for="" class="control-label">Expected
+                                        Stipend</label>
+                                      <div class="clearfix">
+                                        <div class="row">
+                                          <div class="col-xs-12 col-sm-6">
+                                            <div class="form-group"><input type="text" class="form-control" placeholder="Stipend from" value=""
+                                                                           name="internship[@{{ internship.id }}][stipend_from]"></div>
+                                          </div>
+                                          <div class="col-xs-12 col-sm-6">
+                                            <div class="form-group"><input type="text" class="form-control" placeholder="Stipend to" value=""
+                                                                           name="internship[@{{ internship.id }}][stipend_to]"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- end expected stipend -->
+                                    <!-- Skill Available -->
+                                    <div class="form-group">
+                                      <label for="" class="control-label">Select Skills</label>
+                                      <div class="clearfix">
+                                        <div class="well" v-if="internship.skills.length > 0">
+                                          <label for="" v-for="skill in internship.skills" id="@{{ skill.id }}">
+                                            <input type="checkbox" value="@{{ skill.id }}" v-on:click="addSkillToField(skill, $parent.$index, $event)"> @{{ skill.name }}
+                                          </label>
+                                        </div>
+                                        <ul class="list-group" v-if="internship.mySkills.length > 0">
+                                          <li class="list-group-item clearfix" v-for="skill in internship.mySkills">
+                                            @{{ skill.name }}
+                                            <div class="pull-right">
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="beginner">&nbsp;Beginner&nbsp;
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="intermediate">&nbsp;Intermediate&nbsp;
+                                              <input type="radio" name="internship[@{{ internship.id }}][skill]" value="expert">&nbsp;Expert&nbsp;
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <div class="alert alert-warning" v-if="!(internship.skills.length > 0)">
+                                          Sorry We don't find any skills with this Internship field
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- end skill available -->
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="" class="col-xs-12 col-sm-4 col-md-3 control-label text-left">Available From</label>
-                          <div class="col-xs-12 col-sm-8 col-md-9">
-                            <div class="form-inline">
-                              <div class="form-group">
-                                <label for="date-from">From</label>
-                                <input type="text" class="form-control date-from" id="date-from-1" data-to="#date-to-1" placeholder="Date from" required>
-                              </div>
-                              <div class="form-group">
-                                <label for="date-to">To</label>
-                                <input type="email" class="form-control date-to" id="date-to-1" placeholder="Date to" required>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Type Of Internship !-->
-                        <div class="form-group"><label for=""
-                                                       class="col-xs-12 col-sm-4 col-md-3 control-label text-left">Type
-                            of Internship</label>
-                          <div class="col-xs-12 col-sm-8 col-md-9">
-                            <p>
-                              <label for="type-internship-any"><input name="type_of_internship" type="radio" value="any" id="type-internship-any" data-parsley-multiple=""
-                                                         required=""  data-parsley-errors-container="#duration-error"
-                                                         data-parsley-required-message="Please check type of internship.">&nbsp; Any</label>
-                              &nbsp;<label for="type-internship-full-time-office"><input name="type_of_internship" type="radio"
-                                                                                         value="full_time_office" id="type-internship-full-time-office" data-parsley-multiple="">&nbsp;Full Time (in office)</label>
-                              &nbsp;<label for="type-internship-part-time-office"><input name="type_of_internship" type="radio"
-                                                                                         value="part_time_office" id="type-internship-part-time-office" data-parsley-multiple="">&nbsp;Part time (in office)</label>
-                              &nbsp;<label for="type-internship-full-time-home"><input name="type_of_internship" type="radio"
-                                                                                       value="full_time_home" id="type-internship-full-time-home" data-parsley-multiple="">&nbsp;Work from Home (full time)</label>
-                              &nbsp;<label for="type-internship-part-time-home"><input name="type_of_internship" type="radio"
-                                                                                       value="part_time_home" id="type-internship-part-time-home" data-parsley-multiple="">&nbsp;Work from Home (part time)</label>
-                            </p>
-                          </div>
-                        </div>
-                        <!-- EOF Type of Internship -->
                       </div>
                       <div class="form-group text-right">
                         <button class="btn" type="submit">Save</button>
@@ -234,4 +301,8 @@
       </div>
     </div>
   </div>
+@stop
+@section('extra_js')
+  <script type="text/javascript" src="{{asset('js/vue.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('js/main-vue.min.js')}}"></script>
 @stop

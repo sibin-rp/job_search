@@ -72,7 +72,8 @@ class HomeController extends Controller
         if($getUser->type==1){// company user
           return view('register.company',compact(['states']));
         }else{ // student
-          return view('register.student',compact(['states']));
+          $get_fields = InternshipField::all()->toArray();
+          return view('register.student',compact(['states','get_fields']));
         }
       }else{
         return redirect()->route('home');
@@ -276,5 +277,16 @@ class HomeController extends Controller
         ]);
       }
     }
+
+    public function getFieldJson(){
+      try{
+        $fields = InternshipField::all()->toJson();
+        $fields = json_decode($fields);
+        return response()->json($fields);
+      }catch (\Exception $e){
+        return response()->json([]);
+      }
+    }
+
 
 }

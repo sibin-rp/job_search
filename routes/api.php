@@ -18,3 +18,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/get-skills-by-id',['uses'=>'HomeController@getSkillsFromId','as'=>'api_get_skills_by_id']);
+Route::get('/get_fields','HomeController@getFieldJson');
