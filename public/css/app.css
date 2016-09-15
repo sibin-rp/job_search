@@ -10814,3 +10814,28 @@ h3 {
       .register .panel-default .panel-body .btn:hover, .register .panel-default .panel-body .btn:active, .register .panel-default .panel-body .btn:focus {
         background: #3fb199;
         color: #fff; }
+
+.internship-lists {
+  display: block;
+  padding-top: 30px; }
+  .internship-lists .internship-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px; }
+    .internship-lists .internship-item article {
+      font-size: 14px;
+      line-height: 24px;
+      color: #444;
+      margin-bottom: 15px; }
+    .internship-lists .internship-item h3 {
+      margin-top: 0; }
+    .internship-lists .internship-item .divider {
+      margin: 5px 0;
+      width: 100%;
+      height: 2px;
+      background: #e3e3e3; }
+  .internship-lists .more-details p {
+    margin-right: 5px; }
+
+.slider.slider-horizontal {
+  width: 100%; }

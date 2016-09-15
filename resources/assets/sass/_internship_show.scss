@@ -1,0 +1,32 @@
+.internship-lists{
+  display: block;
+  padding-top: 30px;
+  .internship-item{
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    article{
+      font-size: 14px;
+      line-height: 24px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+    h3{
+      margin-top: 0;
+    }
+    .divider{
+      margin: 5px 0;
+      width: 100%;
+      height: 2px;
+      background: #e3e3e3;
+    }
+  }
+  .more-details{
+    p{
+      margin-right: 5px;
+    }
+  }
+}
+.slider.slider-horizontal{
+  width: 100%;
+}

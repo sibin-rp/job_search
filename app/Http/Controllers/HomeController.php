@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -384,8 +385,34 @@ class HomeController extends Controller
       return view('home.thanks');
     }
 
-    public function listInternship(){
-      return view('home.internship_list');
+    public function listInternship(Request $request){
+      $internship_fields = InternshipField::all()->toArray();
+      $states = Helpers::getStates();
+      $internships = [];
+      $search_params = array_filter($request->all());
+      if($search_params){
+        $search_params = array_except($search_params,'stipend');
+        if($search_params['type']=='any'){
+          $search_params = array_except($search_params,'type');
+        }
+        if(isset($search_params['duration']) && $search_params['duration']=='any'){
+          $search_params = array_except($search_params,'duration');
+        }
+        $internships = Internship::where($search_params);
+        $stipend = explode(",",$request->get('stipend'));
+        if(isset($stipend[0]) && isset($stipend[1])){
+          $internships = $internships->where('stipend_from','<=', $stipend[1]);
+          $internships = $internships->where('stipend_to','>=', $stipend[0]);
+        }
+        $internships = $internships->paginate(12);
+      }else{
+        $internships = Internship::paginate(12);
+      }
+
+      $min_and_max_stipend = DB::table('internships')
+        ->select(DB::raw('MIN(stipend_from) as min_s'), DB::raw('MAX(stipend_to) as max_s'))
+        ->first();
+      return view('home.internship_list',compact(['internships','internship_fields','states','min_and_max_stipend']));
     }
 
 
