@@ -34,7 +34,7 @@ Route::post('/save-company-internship-form',['uses'=>'HomeController@saveCompany
 /* eof company form */
 
 Route::match(['GET','POST'],"/list-internship",['uses'=>'HomeController@listInternship','as'=>'internship_list']);
-
+Route::get('/show-internship/{id}',['uses'=>'HomeController@showInternship','as'=>'show_internship']);
 /**
  * ====================================
  * ADMIN ROUTES

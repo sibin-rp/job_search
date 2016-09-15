@@ -10517,6 +10517,9 @@ h3 {
   background: #BABABA; }
 
 /**eof internship_list **/
+table.table.table-bordered tr td[rowspan] {
+  vertical-align: middle; }
+
 .home-slider-inner {
   display: block;
   position: relative; }

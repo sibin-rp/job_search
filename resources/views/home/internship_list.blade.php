@@ -39,7 +39,7 @@
                   Internship Expire on
                   <label for="">{{$internship->validity}}</label>
                 </p>
-                <a href="" class="btn btn-success btn-sm pull-right">
+                <a href="{{route('show_internship',$internship->id)}}" class="btn btn-success btn-sm pull-right">
                   <span class="glyphicon glyphicon-link"></span>
                   View More
                 </a>

@@ -34,12 +34,12 @@
       <h3>Internship Salary <small>in Rupee</small></h3>
       <p>
         @php
-          $stipend = explode(",", app('request')->input('stipend'))
+          $stipend = explode(",", app('request')->input('stipend'));
+          $stipend = array_filter($stipend);
         @endphp
-
         <input id="ex1" data-slider-id='ex1Slider' type="text" name="stipend"
                data-slider-min="0" data-slider-max="{{ $min_and_max_stipend->max_s}}"
-               data-slider-step="5" data-slider-value="[{{$stipend[0] or $min_and_max_stipend->min_s}},{{$stipend[1] or $min_and_max_stipend->max_s}}]"/>
+               data-slider-step="5" data-slider-value="[{{$stipend[0] or $min_and_max_stipend->min_s or 0}},{{$stipend[1] or $min_and_max_stipend->max_s}}]"/>
       </p>
       <p class="clearfix">
         <span class="pull-left">0</span>

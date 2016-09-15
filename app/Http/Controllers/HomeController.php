@@ -415,6 +415,17 @@ class HomeController extends Controller
       return view('home.internship_list',compact(['internships','internship_fields','states','min_and_max_stipend']));
     }
 
+    public function showInternship($id){
+      $internship = Internship::find($id);
+      $internship_fields = InternshipField::all()->toArray();
+      $states = Helpers::getStates();
+      $min_and_max_stipend = DB::table('internships')
+        ->select(DB::raw('MIN(stipend_from) as min_s'), DB::raw('MAX(stipend_to) as max_s'))
+        ->first();
+      return view('home.show_internship',compact(['internship','internship_fields',
+      'states','min_and_max_stipend']));
+    }
+
 
     /* AJAX CALLS FORM REGISTER FORMS */
 

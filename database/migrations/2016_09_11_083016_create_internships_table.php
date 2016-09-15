@@ -35,9 +35,11 @@ class CreateInternshipsTable extends Migration
           ->default('none');
         $table->enum('payment',['weekly','fortnightly','monthly']);
         $table->date('validity');
+        $table->timestamps();
 
         $table->foreign('internship_field_id')->references('id')
           ->on('internship_fields');
+
 
       });
     }

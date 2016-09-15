@@ -120,3 +120,11 @@ h3 {
 }
 
 /**eof internship_list **/
+
+table.table.table-bordered{
+    tr{
+        td[rowspan]{
+            vertical-align: middle;
+        }
+    }
+}
