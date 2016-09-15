@@ -24,11 +24,11 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group"><label for="" class="control-label">Company Name</label>
-            <input type="text" class="form-control" placeholder="Company Name" name="experience[internship][@{{  }}][company_name]">
+            <input type="text" class="form-control" placeholder="Company Name" name="experience[internship][@{{ $index }}][company_name]">
           </div>
           <div class="form-group"><label for="internship-field-selector" class="control-label">Type Of Job</label>
             @if(isset($get_fields))
-              <select name="experience[internship][@{{ $index }}]['intern]" id="internship-field-selector" class="form-control">
+              <select name="experience[internship][@{{ $index }}][internship_field_id]" id="internship-field-selector" class="form-control">
                 @foreach($get_fields as $field)
                   <option value="{{$field['id']}}" data-name="{{$field['name']}}">{{$field['name']}}</option>
                 @endforeach
@@ -91,7 +91,7 @@
   <div id="vue-experience-job">
     <div class="row">
       <div class="col-xs-12">
-        <label for="">Number of Internship</label>
+        <label for="">Number of Job</label>
         <select name="" id="" v-on:change="addMoreInternship($event)" class="form-control">
           <option value="">Select</option>
           <option value="1">1</option>
@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="experience-internship-list" v-for="experience in internshipList">
-      <h5>Internship @{{ experience + 1}}</h5>
+      <h5>Job @{{ experience + 1}}</h5>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group"><label for="" class="control-label">Company Name</label>
@@ -116,7 +116,7 @@
           </div>
           <div class="form-group"><label for="internship-field-selector" class="control-label">Type Of Job</label>
             @if(isset($get_fields))
-              <select name="experience[job][@{{ $index }}]['intern]" id="internship-field-selector" class="form-control">
+              <select name="experience[job][@{{ $index }}][internship_field_id]" id="internship-field-selector" class="form-control">
                 @foreach($get_fields as $field)
                   <option value="{{$field['id']}}" data-name="{{$field['name']}}">{{$field['name']}}</option>
                 @endforeach
@@ -204,7 +204,7 @@
     </div>
     <div class="form-group">
       <label for="" class="control-label">Description</label>
-      <textarea name="experience[freelance][description]" id="" cols="30" rows="5" class="form-control"></textarea>
+      <textarea name="experience[freelance][job_description]" id="" cols="30" rows="5" class="form-control"></textarea>
     </div>
     <div class="form-group">
       <label for="" class="control-label">Organization</label>
@@ -225,7 +225,7 @@
     </div>
     <div class="form-group">
       <label for="" class="control-label">Description</label>
-      <textarea name="experience[training][description]" id="" cols="30" rows="5" class="form-control"></textarea>
+      <textarea name="experience[training][job_description]" id="" cols="30" rows="5" class="form-control"></textarea>
     </div>
     <div class="form-group">
       <label for="" class="control-label">Organization</label>
@@ -246,7 +246,7 @@
     </div>
     <div class="form-group">
       <label for="" class="control-label">Description</label>
-      <textarea name="experience[other][description]" id="" cols="30" rows="5" class="form-control" placeholder="Description"></textarea>
+      <textarea name="experience[other][job_description]" id="" cols="30" rows="5" class="form-control" placeholder="Description"></textarea>
     </div>
     <div class="form-group">
       <label for="" class="control-label">Organization</label>

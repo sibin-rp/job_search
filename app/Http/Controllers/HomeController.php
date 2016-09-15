@@ -8,6 +8,8 @@ use App\Internship;
 use App\InternshipField;
 use App\InternshipPreference;
 use App\Mail\ConfirmationMail;
+use App\Qualification;
+use App\StudentQualification;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 use Illuminate\Support\Facades\File;
+use League\Flysystem\Exception;
 
 class HomeController extends Controller
 {
@@ -149,7 +152,95 @@ class HomeController extends Controller
       }
     }
     public function saveStudentQualificationData(Request $request){
-      dd($request->all());
+      try{
+        $qualifications = $request->get('internship');
+        $token = $request->session()->get('register_token');
+        $user = User::where('token',$token)->get()->first();
+        if($qualifications['qualification']){
+          $regular_q =  array_except($qualifications['qualification'],'others');
+          foreach ($regular_q as $key=>$value){
+            if($key && !empty(array_filter($value))){
+              $value['type'] = $key;
+              $user->student_qualifications()->create(array_filter($value));
+            }
+          }
+          $other_section = array_only($qualifications['qualification'],'others');
+          if(isset($other_section) && isset($other_section['others'])){
+            foreach ($other_section['others'] as $key => $other){
+              if(isset($other) && array_filter($other)){
+                foreach ($other as $other_key => $other_value){
+                  if(array_filter($other_value)){
+                    $other_value['type'] = $key;
+                    $user->student_qualifications()->create(array_filter($other_value));
+                  }
+                }
+              }
+            }
+          }
+        }
+        return response()->json([
+          'status' => 200,
+          'message' => 'Qualification details saved'
+        ]);
+      }catch (\Exception $e){
+        return response()->json([
+          'status' => 405,
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'code'    => $e->getCode()
+        ]);
+      }
+    }
+
+    public function saveStudentExperienceData(Request $request){
+      try{
+        $experiences = $request->get('experience');
+        $token = $request->session()->get('register_token');
+        $user = User::where('token',$token)->get()->first();
+        if(isset($experiences) && array_filter($experiences)){
+          $main_experience = array_only($experiences,['internship','job']);
+          if($main_experience && sizeof($main_experience)>0 && array_filter($main_experience)){
+            foreach ($main_experience as $exp_key => $exp_value){
+              if(sizeof(array_filter($exp_value)) > 0){
+                foreach ($exp_value as $key2 => $exp2){
+                  try{
+                    if(sizeof(array_filter($exp2)) > 0){
+                      $exp2['experience_type'] = $exp_key;
+                      if($exp2['company_name']!="" && $exp2['internship_field_id']){
+                        $user->experiences()->create(array_filter($exp2));
+                      }
+                    }
+                  }catch (\Exception $ea){
+                    return response()->json([
+                      'status' => 405,
+                      'message' => $ea->getMessage(),
+                      'line'    => $ea->getLine()
+                    ]);
+                  }
+                }
+              }
+            }
+          }
+          $secondary_experience = array_only($experiences,['project','freelance','training','other']);
+          if(isset($secondary_experience) && array_filter($secondary_experience)){
+            foreach ($secondary_experience as $s_key => $s_value){
+              if(sizeof(array_filter($s_value)) > 0){
+                if(isset($s_value['title']) && $s_value['title']!="" && $s_value['job_description']!=""){
+                  $s_value['experience_type'] = $s_key;
+                  $user->experiences()->create(array_filter($s_value));
+                }
+              }
+
+            }
+          }
+        }
+        return response()->json([
+          'status' => 200,
+          'message' => 'Experience data saved successfully'
+        ]);
+      }catch (\Exception $e){
+
+      }
     }
 
   /**

@@ -7,23 +7,23 @@
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
         <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
-               name="internship[experience][10_th][type]">
+               name="internship[qualification][10_th][type]">
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <label for="" class="control-label">Percentage / CGPA</label>
-          <select name="internship[experience][10_th][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][10_th][mark_type]" id="" class="form-control">
             <option value="">Select</option>
-            <option value="">CGPA 4</option>
-            <option value="">CGPA 10</option>
-            <option value="">Percentage</option>
+            <option value="cgpa_4">CGPA 4</option>
+            <option value="cgpa_10">CGPA 10</option>
+            <option value="percentage">Percentage</option>
           </select>
         </div>
         <div class="col-xs-12 col-sm-6">
           <label for="" class="control-label">Performance</label>
-          <input type="text" class="form-control" name="internship[experience][10_th][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][10_th][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -40,11 +40,11 @@
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
         <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
-               name="internship[experience][12_th][type]">
+               name="internship[qualification][12_th][type]">
       </div>
       <div class="form-group">
         <label for="" class="control-label">Stream</label>
-        <select name="internship[experience][12_th][stream]" id="" class="form-control">
+        <select name="internship[qualification][12_th][stream]" id="" class="form-control">
           <option value="">Select</option>
           <option value="biology">Biology</option>
           <option value="computer">Computer</option>
@@ -57,16 +57,16 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <label for="" class="control-label">Percentage / CGPA</label>
-          <select name="internship[experience][12_th][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][12_th][mark_type]" id="" class="form-control">
             <option value="">Select</option>
-            <option value="">CGPA 4</option>
-            <option value="">CGPA 10</option>
-            <option value="">Percentage</option>
+            <option value="cgpa_4">CGPA 4</option>
+            <option value="cgpa_10">CGPA 10</option>
+            <option value="percentage">Percentage</option>
           </select>
         </div>
         <div class="col-xs-12 col-sm-6">
           <label for="" class="control-label">Performance</label>
-          <input type="text" class="form-control" name="internship[experience][12_th][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][12_th][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -80,28 +80,28 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">College Name</label>
-        <input type="text" placeholder="College name" name="internship[experience][graduation][college_name]"
+        <input type="text" placeholder="College name" name="internship[qualification][graduation][college_name]"
                class="form-control">
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][graduation][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][graduation][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][graduation][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][graduation][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
       </div>
       <div class="form-group">
         <label for="" class="control-label">Degree</label>
-        <select name="internship[experience][graduation][degree]" id="" class="form-control">
+        <select name="internship[qualification][graduation][degree]" id="" class="form-control">
           <option value="">Select</option>
           <option value="b_tech">B-Tech</option>
           <option value="bse_physics">BSE - Physics</option>
@@ -113,7 +113,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">Stream</label>
-        <select name="internship[experience][graduation][stream]" id="" class="form-control">
+        <select name="internship[qualification][graduation][stream]" id="" class="form-control">
           <option value="">Select</option>
           <option value="b_tech">B-Tech</option>
           <option value="bse_physics">BSE - Physics</option>
@@ -122,7 +122,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Type</label>
-          <select name="internship[experience][graduation][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][graduation][mark_type]" id="" class="form-control">
             <option value="">Select</option>
             <option value="percentage">Percentage</option>
             <option value="cgpa_4">CGPA 4</option>
@@ -130,7 +130,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][graduation][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -144,28 +144,28 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">College Name</label>
-        <input type="text" placeholder="College name" name="internship[experience][post_graduation][college_name]"
+        <input type="text" placeholder="College name" name="internship[qualification][post_graduation][college_name]"
                class="form-control">
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][post_graduation][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][post_graduation][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][post_graduation][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][post_graduation][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
       </div>
       <div class="form-group">
         <label for="" class="control-label">Degree</label>
-        <select name="internship[experience][post_graduation][degree]" id="" class="form-control">
+        <select name="internship[qualification][post_graduation][degree]" id="" class="form-control">
           <option value="">Select</option>
           <option value="b_tech">B-Tech</option>
           <option value="bse_physics">BSE - Physics</option>
@@ -177,7 +177,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="row">
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Type</label>
-          <select name="internship[experience][post_graduation][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][post_graduation][mark_type]" id="" class="form-control">
             <option value="">Select</option>
             <option value="percentage">Percentage</option>
             <option value="cgpa_4">CGPA 4</option>
@@ -185,7 +185,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][post_graduation][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][post_graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -199,21 +199,21 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">College Name</label>
-        <input type="text" placeholder="College name" name="internship[experience][diploma][college_name]"
+        <input type="text" placeholder="College name" name="internship[qualification][diploma][college_name]"
                class="form-control">
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][diploma][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][diploma][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][diploma][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][diploma][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -223,7 +223,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">Stream</label>
-        <select name="internship[experience][diploma][stream]" id="" class="form-control">
+        <select name="internship[qualification][diploma][stream]" id="" class="form-control">
           <option value="">Select</option>
           <option value="b_tech">B-Tech</option>
           <option value="bse_physics">BSE - Physics</option>
@@ -232,7 +232,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Type</label>
-          <select name="internship[experience][diploma][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][diploma][mark_type]" id="" class="form-control">
             <option value="">Select</option>
             <option value="percentage">Percentage</option>
             <option value="cgpa_4">CGPA 4</option>
@@ -240,7 +240,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[diploma][graduation][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][graduation][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -254,21 +254,21 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">College Name</label>
-        <input type="text" placeholder="College name" name="internship[experience][phd][college_name]"
+        <input type="text" placeholder="College name" name="internship[qualification][phd][college_name]"
                class="form-control">
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">Start Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][phd][started_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][phd][started_at]"
                    placeholder="Started at">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label">End Year</label>
-            <input type="text" class="form-control year-datepicker" name="internship[experience][phd][completed_at]"
+            <input type="text" class="form-control year-datepicker" name="internship[qualification][phd][completed_at]"
                    placeholder="Completed at">
           </div>
         </div>
@@ -278,7 +278,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="form-group">
         <label for="" class="control-label">Stream</label>
-        <select name="internship[experience][phd][stream]" id="" class="form-control">
+        <select name="internship[qualification][phd][stream]" id="" class="form-control">
           <option value="">Select</option>
           <option value="b_tech">B-Tech</option>
           <option value="bse_physics">BSE - Physics</option>
@@ -287,7 +287,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Type</label>
-          <select name="internship[experience][phd][mark_type]" id="" class="form-control">
+          <select name="internship[qualification][phd][mark_type]" id="" class="form-control">
             <option value="">Select</option>
             <option value="percentage">Percentage</option>
             <option value="cgpa_4">CGPA 4</option>
@@ -295,7 +295,7 @@
           </select>
         </div>
         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-          <input type="text" class="form-control" name="internship[experience][phd][mark]" placeholder="Performance">
+          <input type="text" class="form-control" name="internship[qualification][phd][mark]" placeholder="Performance">
         </div>
       </div>
     </div>
@@ -321,15 +321,15 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
                 <input type="text" class="form-control"
-                       name="internship[qualification][academic][@{{ $index }}][title]" placeholder="Title">
+                       name="internship[qualification][others][academic][@{{ $index }}][title]" placeholder="Title">
               </div>
               <div class="form-group"><label for="" class="control-label">Link</label>
-                <input type="text" name="internship[qualification][academic][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
+                <input type="text" name="internship[qualification][others][academic][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Description</label>
-                <textarea name="internship[qualification][academic][@{{ $index }}][description]" id="" cols="30"
+                <textarea name="internship[qualification][others][academic][@{{ $index }}][description]" id="" cols="30"
                           rows="4" class="form-control" placeholder="Description"></textarea>
               </div>
             </div>
@@ -359,15 +359,15 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
                 <input type="text" class="form-control"
-                       name="internship[qualification][sports][@{{ $index }}][title]" placeholder="Title">
+                       name="internship[qualification][others][sports][@{{ $index }}][title]" placeholder="Title">
               </div>
               <div class="form-group"><label for="" class="control-label">Link</label>
-                <input type="text" name="internship[qualification][sports][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
+                <input type="text" name="internship[qualification][others][sports][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Description</label>
-                <textarea name="internship[qualification][sports][@{{ $index }}][description]" id="" cols="30"
+                <textarea name="internship[qualification][others][sports][@{{ $index }}][description]" id="" cols="30"
                           rows="4" class="form-control" placeholder="Description"></textarea>
               </div>
             </div>
@@ -397,15 +397,15 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
                 <input type="text" class="form-control"
-                       name="internship[qualification][arts][@{{ $index }}][title]" placeholder="Title">
+                       name="internship[qualification][others][arts][@{{ $index }}][title]" placeholder="Title">
               </div>
               <div class="form-group"><label for="" class="control-label">Link</label>
-                <input type="text" name="internship[qualification][arts][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
+                <input type="text" name="internship[qualification][others][arts][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Description</label>
-                <textarea name="internship[qualification][arts][@{{ $index }}][description]" id="" cols="30"
+                <textarea name="internship[qualification][others][arts][@{{ $index }}][description]" id="" cols="30"
                           rows="4" class="form-control" placeholder="Description"></textarea>
               </div>
             </div>
@@ -435,15 +435,15 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Tile</label>
                 <input type="text" class="form-control"
-                       name="internship[qualification][others]arts[@{{ $index }}][title]" placeholder="Title">
+                       name="internship[qualification][others][other][@{{ $index }}][title]" placeholder="Title">
               </div>
               <div class="form-group"><label for="" class="control-label">Link</label>
-                <input type="text" name="internship[qualification][others]arts[@{{ $index }}][link]" class="form-control" placeholder="Academic link">
+                <input type="text" name="internship[qualification][others][other][@{{ $index }}][link]" class="form-control" placeholder="Academic link">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group"><label for="" class="control-label">Description</label>
-                <textarea name="internship[qualification][others]arts[@{{ $index }}][description]" id="" cols="30"
+                <textarea name="internship[qualification][others][other][@{{ $index }}][description]" id="" cols="30"
                           rows="4" class="form-control" placeholder="Description"></textarea>
               </div>
             </div>

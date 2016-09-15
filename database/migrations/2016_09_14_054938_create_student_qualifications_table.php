@@ -22,9 +22,9 @@ class CreateStudentQualificationsTable extends Migration
         $table->string('link')->nullable();
         $table->string('title')->nullable();
         $table->string('description')->nullable();
-        $table->date('completed')->nullable();
-        $table->date('started_at')->nullable();
-        $table->date('completed_at')->nullable();
+        $table->string('completed',10)->nullable();
+        $table->string('started_at',25)->nullable();
+        $table->string('completed_at',25)->nullable();
         $table->enum('mark_type',['percentage','cgpa_4','cgpa_10'])->nullable();
         $table->float('mark')->nullable();
         $table->string('degree')->nullable();

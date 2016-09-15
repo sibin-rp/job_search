@@ -42,4 +42,12 @@ class User extends Authenticatable
     public function internship_preferences(){
       return $this->hasMany('App\InternshipPreference');
     }
+
+    public function student_qualifications(){
+      return $this->hasMany('App\StudentQualification');
+    }
+
+    public function experiences(){
+      return $this->hasMany('App\Experience');
+    }
 }

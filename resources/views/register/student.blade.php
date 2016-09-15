@@ -296,6 +296,7 @@
                           </div>
                         </div>
                       </div>
+                      <hr>
                       <div class="form-group text-right">
                         <button class="btn" type="submit">Continue</button>
                       </div>
@@ -338,6 +339,7 @@
                           </div>
                         </div>
                       </div>
+                      <hr>
                       <div class="row">
                         <div class="col-xs-12 text-right">
                           <button type="submit" class="btn">Continue</button>
@@ -380,6 +382,7 @@
                             </div>
                           </div>
                         </div>
+                        <hr>
                         <div class="row">
                           <div class="col-xs-12 text-right">
                             <button class="btn" type="submit">Continue</button>

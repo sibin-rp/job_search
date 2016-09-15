@@ -9,6 +9,9 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
     $('.year-datepicker').datetimepicker({
       format:'YYYY'
+    });
+    $('.normal-date').datetimepicker({
+      format:'YYYY-MM-DD'
     })
     /** EOF DEFAULTS **/
     // Home carousel by OWL Carousel 
@@ -89,6 +92,10 @@ $(document).ready(function() {
           var formData = $(this).serialize();
             $.post(formUrl,formData).then(function(result){
               console.log(result)
+              if(result.status == 200){
+                toastr.success("Internship preference data saved..")
+                $('a[href="#qualificationInfoCollapse"]').click();
+              }
             }, function(error){
               console.log(error)
             })
@@ -101,11 +108,15 @@ $(document).ready(function() {
   if(internshipExperienceForm.length > 0){
     internshipExperienceForm.submit(function(e){
       e.preventDefault();
-      var formUrl = $(this).attr('actione');
+      var formUrl = $(this).attr('action');
       var formData = $(this).serialize();
       $.post(formUrl,formData).then(function(result){
         if(result.status == 200){
-
+          toastr.success(result.message);
+          setTimeout(function(){
+            toastr.info("Thanks for registering on this Website")
+            window.location.href = "/thanks";
+          },1000)
         }
       }, function(error){
 
@@ -119,7 +130,10 @@ $(document).ready(function() {
       var formUrl = $(this).attr('action');
       var formData = $(this).serialize();
       $.post(formUrl,formData).then(function(result){
-
+        if(result.status == 200){
+          toastr.success(result.message);
+          $('a[href="#experienceInfoCollapse"]').click();
+        }
       }, function(error){
 
       })
