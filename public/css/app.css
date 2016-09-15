@@ -10762,6 +10762,13 @@ h3 {
   margin-right: 8px; }
 
 /** end student registration */
+/** thanks page */
+.thankspage .jumbotron {
+  margin-bottom: 0; }
+  .thankspage .jumbotron .gp {
+    color: green;
+    font-size: 50px; }
+
 .register-wrapper {
   display: block;
   padding: 80px 0 120px;
