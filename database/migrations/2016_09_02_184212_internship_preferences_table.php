@@ -19,11 +19,11 @@ class InternshipPreferencesTable extends Migration
           $table->integer('user_id');
           $table->enum('company_type',['any','startup','mnc','ngo','other'])->default('any')->nullable(); // [ANY,STARTUP,MNC,NGO,OTHER]
           $table->string('duration',10)->default(0)->nullable(); // [ANY,0-3MONTH, 3-6MONTH,6-9MONTH,9-12MONTH, 1+YEAR]
-          $table->date('from_date');
-          $table->date('to_date');
+          $table->date('from_date')->nullable();
+          $table->date('to_date')->nullable();
           $table->enum('internship_type',['any','full_time_office','full_time_home','part_time_office','part_time_home'])->default('any');// [FO,PO, WF,WP]
-          $table->float('stipend_from');
-          $table->float('stipend_to');
+          $table->float('stipend_from')->nullable();
+          $table->float('stipend_to')->nullable();
           $table->text('city')->nullable();
           $table->integer('internship_field_id')->nullable();
           $table->timestamps();

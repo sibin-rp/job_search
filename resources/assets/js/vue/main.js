@@ -66,8 +66,13 @@ $(document).ready(function(){
         }
       },
       removeFromList: function(internship,event){
+        console.log(internship)
+        event.preventDefault();
+        this.internships = _.reject(this.internships,function(value){
+          return value.id == internship.id
+        });
         event.stopPropagation();
-        this.internships = _.without(this.internship,internship.id)
+
       },
       onStartDatetimeChanged: function(newStart) {
         var endPicker = this.$.endPicker.control;

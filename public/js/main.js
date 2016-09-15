@@ -6950,7 +6950,9 @@ $(document).ready(function() {
       var formUrl = $(this).attr('actione');
       var formData = $(this).serialize();
       $.post(formUrl,formData).then(function(result){
+        if(result.status == 200){
 
+        }
       }, function(error){
 
       })

@@ -203,9 +203,9 @@
                                     <!-- City of Internship -->
                                     <div class="form-group"><label for="" class="control-label">City of Internship</label>
                                       <div class="clearfix">
-                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city"></div>
-                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city (optional)"></div>
-                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}]['city']" placeholder="Preferable city (optional)"></div>
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}][city][0]" placeholder="Preferable city"></div>
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}][city][1]" placeholder="Preferable city (optional)"></div>
+                                        <div class="form-group"><input type="text" class="form-control" name="internship[@{{ internship.id }}][city][2]" placeholder="Preferable city (optional)"></div>
                                       </div>
                                     </div>
                                     <!-- eof city of internship -->

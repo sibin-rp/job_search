@@ -16,6 +16,10 @@ class Skill extends Model
 
 
   public function internships(){
-    return $this->belongsToMany('App\Skill')->withPivot(['expertise_level']);
+    return $this->belongsToMany('App\Internship')->withPivot(['expertise_level']);
+  }
+
+  public function internship_preferences(){
+    return $this->belongsToMany('App\InternshipPreference')->withPivot('expertise');
   }
 }

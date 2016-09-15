@@ -6,12 +6,14 @@ use App\Company;
 use App\Helpers;
 use App\Internship;
 use App\InternshipField;
+use App\InternshipPreference;
 use App\Mail\ConfirmationMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 use App\User;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -112,10 +114,40 @@ class HomeController extends Controller
     }
 
     public function saveStudentInternshipPreferenceData(Request $request){
-      dd($request->all());
+      try{
+        $internships = $request->get('internship');
+        $token = $request->session()->get('register_token');
+        $user = User::where('token',$token)->get()->first();
+
+        foreach ($internships as $field_id => $internship){
+          $internship['internship_field_id'] = $field_id;
+          $internship['user_id'] = $user->id;
+          if($internship['from_date']=="") $internship = array_except($internship,'from_date');
+          if($internship['to_date']=="") $internship = array_except($internship,'to_date');
+          if(isset($internship['city'])){
+            $internship['city'] = array_filter($internship['city'], function($value){
+              return $value !="";
+            });
+          }
+          $internshipTableOne = array_except($internship,'skill');
+          $internship_insert = InternshipPreference::create($internshipTableOne);
+          if(isset($internship['skill'])){
+            foreach ($internship['skill'] as $skill_id => $skill){
+              $internship_insert->skills()->attach($skill_id,['expertise'=> $skill]);
+            }
+          }
+        }
+        return response()->json([
+          'status' => 200,
+          'message' => 'Fields updated'
+        ]);
+      }catch (\Exception $e){
+        return response()->json([
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine()
+        ]);
+      }
     }
-
-
     public function saveStudentQualificationData(Request $request){
       dd($request->all());
     }
