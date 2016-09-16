@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
@@ -28,7 +29,8 @@ class Experience extends Model
   // Private
 
   private function validateDateString($value){
-    $checkDate = \DateTime::createFromFormat('Y-m-d',$value);
+    $checkDate = Carbon::createFromFormat('Y-m-d',$value);
+    $checkDate = $checkDate->format('Y-m-d');
     return $checkDate == $value?$value:null;
   }
 }
