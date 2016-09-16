@@ -12,7 +12,7 @@ class Internship extends Model
     'eligible_max','num_resume','per_rec_exercise','payment','validity',
     'created_at','updated_at'];
 
-  protected $appends =['duration_type','work_type_option','internship_field_data','state_name'
+  protected $appends =['duration_type','work_type_option','state_name'
   ,'payment_detail'];
 
   public function skills(){

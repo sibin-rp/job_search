@@ -19,3 +19,5 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/get-skills-by-id',['uses'=>'HomeController@getSkillsFromId','as'=>'api_get_skills_by_id']);
 Route::get('/get_fields','HomeController@getFieldJson');
+
+Route::get('/get-internships-list','HomeController@getInternshipListJson');

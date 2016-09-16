@@ -484,6 +484,28 @@ class HomeController extends Controller
     }
 
 
+    public function getInternshipListJson(){
+      try{
+        $internships = Internship::take(10)->with('internship_field')->get();
+        if($internships->count() > 0){
+          return response()->json([
+            'status' => 200,
+            'data'   => json_decode($internships)
+          ]);
+        }else{
+          return response()->json([
+            'status' => 400,
+            'data'    => []
+          ]);
+        }
+      }catch (\Exception $e){
+        return response()->json([
+          'status' => 405,
+          'message' => $e->getMessage()
+        ]);
+      }
+    }
+
 
   private function validateDateString($value){
     $checkDate = Carbon::createFromFormat('Y-m-d',$value);
