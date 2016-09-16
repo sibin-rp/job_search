@@ -46,7 +46,7 @@
 </div>
 <div class="clearfix"></div>
 <!-- Section : List Classified and Icons -->
-<div class="list-wrapper">
+<div class="list-wrapper" id="about-us">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6">

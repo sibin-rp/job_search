@@ -254,6 +254,10 @@ $(document).ready(function() {
 
     /*EOF salary ranger*/
 
+  /*Smooth Scroll*/
+  smoothScroll.init();
+  /*eof smooth scroll*/
+
 });
 
 $(window).on('load', function() {
