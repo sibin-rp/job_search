@@ -50,16 +50,15 @@ class HomeController extends Controller
           return redirect()->route('complete_confirmation')->with(['status'=> 200,'class'=>'alert-success',
           'message' =>'Confirmation send']);
         }else{
-          dd("Hello");
           return redirect()->route('home')->with(['status' => 401,'message' => 'Unknown errors']);
         }
       }catch (QueryException $q){
         $qM = $q->getMessage();
-        dd($qM);
+//        dd($qM);
         return redirect()->route('home')->with(['class'=>'alert-warning','message'=>"User already created"]);
       }catch(\Exception $e){
         $eM = $e->getMessage();
-        dd($eM);
+//        dd($eM);
         return redirect()->route('home')-with(['class'=>'alert-warning','message'=> $eM]);
       }
     }
