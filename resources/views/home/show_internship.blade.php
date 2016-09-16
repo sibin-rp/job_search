@@ -44,11 +44,39 @@
                 <tr>
                   <td>Duration</td>
                   <td colspan="2">
-                    {{$internship->duration}} @if($internship->duration!="1+") Months @else Year @endif
+                    {{ $internship->duration_type  }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Work Type</td>
+                  <td colspan="2">{{$internship->work_type_option}}</td>
+                </tr>
+                <tr>
+                  <td>Internship On</td>
+                  <td colspan="2">
+                    {{$internship->internship_field->name}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Payment</td>
+                  <td colspan="2">
+                    {{$internship->payment_Details}}
                   </td>
                 </tr>
               </table>
             </div>
+            <div class="well">
+              <h4>Location</h4>
+              <hr>
+              <div class="location-info">
+                <p>
+                  @if(isset($internship->company->name)) {{$internship->company->name}}, @endif
+                  @if(isset($internship->city)) {{$internship->city}}, @endif
+                  @if(isset($internship->state)) {{$internship->state_name}}@endif
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
