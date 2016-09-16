@@ -79,17 +79,27 @@ h3 {
     background-color: #000011;
     color: white;
     padding-top: 50px;
-    a {
-        span {
-            color: grey;
+    ul.footer-list-ul{
+        margin: 0 0 15px 0;
+        padding: 0;
+        li{
+            list-style: none;
+            margin-bottom: 5px;
+            a {
+                text-decoration: none;
+                span {
+                    color: grey;
 
+                }
+            }
         }
     }
     p{
         color: grey;
     }
     h4{
-        padding-left: 40px;
+        margin-top: 0;
+        margin-bottom: 30px;
     }
 
 }

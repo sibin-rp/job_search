@@ -10489,12 +10489,21 @@ h3 {
   background-color: #000011;
   color: white;
   padding-top: 50px; }
-  .footer-wrapper a span {
-    color: grey; }
+  .footer-wrapper ul.footer-list-ul {
+    margin: 0 0 15px 0;
+    padding: 0; }
+    .footer-wrapper ul.footer-list-ul li {
+      list-style: none;
+      margin-bottom: 5px; }
+      .footer-wrapper ul.footer-list-ul li a {
+        text-decoration: none; }
+        .footer-wrapper ul.footer-list-ul li a span {
+          color: grey; }
   .footer-wrapper p {
     color: grey; }
   .footer-wrapper h4 {
-    padding-left: 40px; }
+    margin-top: 0;
+    margin-bottom: 30px; }
 
 .red {
   color: red; }
