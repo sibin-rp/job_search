@@ -385,6 +385,9 @@ class HomeController extends Controller
       return view('home.thanks');
     }
 
+    public function showLoginPage(){
+    return view('home.login_page');
+    }
     public function listInternship(Request $request){
       $internship_fields = InternshipField::all()->toArray();
       $states = Helpers::getStates();
