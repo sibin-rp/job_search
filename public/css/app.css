@@ -10440,8 +10440,12 @@ h3 {
 
 .c-navbar {
   height: 80px;
-  background: #fff;
-  margin-bottom: 0; }
+  background: #556790;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0; }
+  .c-navbar .navbar-brand h2 {
+    color: #fff; }
   .c-navbar h1,
   .c-navbar h2,
   .c-navbar h3 {
@@ -10449,8 +10453,10 @@ h3 {
     padding: 10px 0; }
   .c-navbar .navbar-nav > li > a {
     padding-top: 30px;
+    padding-bottom: 30px;
     font-size: 16px;
-    font-weight: bold; }
+    font-weight: bold;
+    color: #fff; }
 
 /** EOF HEADER **/
 .form-control {
@@ -10633,6 +10639,35 @@ table.table.table-bordered tr td[rowspan] {
       font-size: 36px;
       line-height: 110px;
       text-decoration: none; }
+
+.home-lists.round-icon {
+  margin-left: -10px;
+  margin-right: -10px; }
+  .home-lists.round-icon li {
+    padding-left: 10px;
+    padding-right: 10px; }
+    .home-lists.round-icon li .list-s {
+      display: block;
+      border: 1px solid #e3e3e3;
+      box-shadow: 0 4px 4px 0 #ddd;
+      position: relative; }
+      .home-lists.round-icon li .list-s .main-t {
+        background: #fff;
+        position: relative;
+        height: 100%;
+        display: block;
+        padding-bottom: 100%; }
+        .home-lists.round-icon li .list-s .main-t .main-t-inner {
+          position: absolute;
+          padding: 10px;
+          width: 100%;
+          top: 50%;
+          margin-top: 40px; }
+          .home-lists.round-icon li .list-s .main-t .main-t-inner .main-t-content {
+            font-size: 60px;
+            line-height: normal;
+            font-weight: bold;
+            text-align: center; }
 
 .parsley-errors-list.filled {
   margin: 0;
