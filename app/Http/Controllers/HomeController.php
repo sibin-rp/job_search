@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -410,6 +411,24 @@ class HomeController extends Controller
     public function showLoginPage(){
     return view('home.login_page');
     }
+
+    public function postLoginPage(Request $request){
+      $this->validate($request,[
+        'email'     => 'required|email',
+        'password'  => 'required'
+      ]);
+
+      $auth_user = Auth::attempt(['email'=> $request->email,'password'=>$request->password]);
+      if($auth_user){
+        return redirect()->route('home');
+      }else{
+        return back()->with([
+          'class' => 'alert-info',
+          'message' => 'Please use actual email address and password.'
+        ]);
+      }
+    }
+
     public function listInternship(Request $request){
       $internship_fields = InternshipField::all()->toArray();
       $states = Helpers::getStates();

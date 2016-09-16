@@ -10447,7 +10447,7 @@ h3 {
   .c-navbar h3 {
     margin: 0;
     padding: 10px 0; }
-  .c-navbar .navbar-nav li a {
+  .c-navbar .navbar-nav > li > a {
     padding-top: 30px;
     font-size: 16px;
     font-weight: bold; }
@@ -10528,6 +10528,16 @@ h3 {
 /**eof internship_list **/
 table.table.table-bordered tr td[rowspan] {
   vertical-align: middle; }
+
+.main-fixed-alert {
+  position: fixed;
+  pointer-events: none;
+  width: 100%;
+  top: 100px;
+  left: 0;
+  padding: 20px 20%; }
+  .main-fixed-alert .alert {
+    pointer-events: auto; }
 
 .home-slider-inner {
   display: block;
