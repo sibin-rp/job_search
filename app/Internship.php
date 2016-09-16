@@ -103,4 +103,12 @@ class Internship extends Model
       return "No Payment details are saved";
     }
   }
+
+  public function setEligibleMinAttribute($value){
+    $this->attributes['eligible_min'] = isset($value)?$value:21;
+  }
+  public function setEligibleMaxAttribute($value){
+    $this->attributes['eligible_max'] = isset($value)?$value: 35;
+  }
+
 }

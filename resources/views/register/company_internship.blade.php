@@ -208,7 +208,7 @@
                               <div class="form-group"><input type="number" class="form-control" name="internship[default][eligible_min]" min="15" max="40" placeholder="Minimum eligibility Age"></div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                              <div class="form-group"><input type="number" class="form-control" name="internship[default][eligible_max]" min="15" max="40" placeholder="Maximum eligibilty Age"></div>
+                              <div class="form-group"><input type="number" class="form-control" name="internship[default][eligible_max]" min="15" max="40" placeholder="Maximum eligibility Age"></div>
                             </div>
                           </div>
                         </div>
