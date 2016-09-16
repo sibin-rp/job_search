@@ -27,6 +27,7 @@ elixir(mix => {
             './node_modules/toastr/build/toastr.min.js',
             './node_modules/select2/dist/js/select2.min.js',
             './node_modules/dropzone/dist/min/dropzone.min.js',
+            './node_modules/smooth-scroll/dist/js/smooth-scroll.min.js',
             'main.js'
         ],
         'public/js/main.js');

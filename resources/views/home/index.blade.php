@@ -18,6 +18,7 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="box-section text-right">
                       <h3>Register as a Student</h3>
+
                       <div class="clearfix"></div>
                       <a class="btn btn-lg btn-default student register" data-toggle="modal" href='#student-modal-id'>
                         <span class="glyphicon glyphicon-user"></span>
@@ -27,6 +28,7 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="box-section text-left">
                       <h3>Register as a Student</h3>
+
                       <div class="clearfix"></div>
                       <a class="btn btn-lg btn-default company register" data-toggle="modal" href='#company-modal-id'>
                         <span class="glyphicon glyphicon-blackboard"></span>
@@ -44,7 +46,7 @@
   </div>
   <div class="clearfix"></div>
   <!-- Section : List Classified and Icons -->
-  <div class="list-wrapper">
+  <div class="list-wrapper" id="about-us">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12">
@@ -100,9 +102,9 @@
   </div>
   <!-- eof section : list classified and icons -->
   <div class="clearfix"></div>
-@stop
-@section('modals')
-  <!-- Student Modal -->
+  @stop
+  @section('modals')
+    <!-- Student Modal -->
   <div class="modal fade" id="student-modal-id">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -110,6 +112,7 @@
           {{csrf_field()}}
           {{method_field('POST')}}
           <input type="hidden" value="0" name="type">
+
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h3 class="modal-title">Student Register
@@ -146,6 +149,7 @@
           {{csrf_field()}}
           {{method_field('POST')}}
           <input type="hidden" value="1" name="type">
+
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h3 class="modal-title">Register Company
