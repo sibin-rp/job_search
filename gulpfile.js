@@ -46,14 +46,13 @@ elixir(mix => {
         './node_modules/angular-ui-router/release/angular-ui-router.min.js',
         './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
         'admin/light-bootstrap-dashboard.js',
-        'admin/angular/app.js'
     ],
     'public/js/admin/admin.min.js');
 
-    //mix.scriptsIn(
-    //'resources/assets/js/admin/angular/dir',
-    //  'public/js/admin/admin-angular.min.js'
-    //);
+    mix.scriptsIn(
+    'resources/assets/js/admin/angular',
+      'public/js/admin/admin-angular.min.js'
+    );
     // mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts');
 
   //mix.browserSync({
