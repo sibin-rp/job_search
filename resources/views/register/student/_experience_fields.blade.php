@@ -73,7 +73,7 @@
           <div class="form-group"><label for="" class="control-label">Stipend</label>
             <p>
               Applicant receive stipend
-              <label for=""><input type="checkbox" name="experience[internship][@{{ $index }}][stipend]"></label>
+              <label for=""><input type="checkbox" name="experience[internship][@{{ $index }}][stipend]" value="1"></label>
             </p>
           </div>
           <div class="form-group">
@@ -161,7 +161,7 @@
           <div class="form-group"><label for="" class="control-label">Stipend</label>
             <p>
               Applicant receive stipend
-              <label for=""><input type="checkbox" name="experience[job][@{{ $index }}][stipend]"></label>
+              <label for=""><input type="checkbox" name="experience[job][@{{ $index }}][stipend]" value="1"></label>
             </p>
           </div>
           <div class="form-group">
