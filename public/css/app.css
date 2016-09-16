@@ -10854,3 +10854,6 @@ table.table.table-bordered tr td[rowspan] {
 
 .slider.slider-horizontal {
   width: 100%; }
+
+.padding-l-15 {
+  padding-left: 15px; }

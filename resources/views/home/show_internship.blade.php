@@ -7,7 +7,7 @@
           @include('home._vertical_search_form')
         </div>
         <div class="col-xs-12 col-sm-8 col-lg-9">
-          <div class="internship-lists">
+          <div class="internship-lists padding-l-15">
             <div class="page-header">
               <h1>{{$internship->title}}</h1>
             </div>
@@ -60,7 +60,19 @@
                 <tr>
                   <td>Payment</td>
                   <td colspan="2">
-                    {{$internship->payment_Details}}
+                    {{$internship->payment_detail}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Internship Validity</td>
+                  <td colspan="2">
+                    {{$internship->validity}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Internship Prerequisites</td>
+                  <td colspan="2">
+                    {{ucwords(str_replace("_","",$internship->pre_rec_exercise))}}
                   </td>
                 </tr>
               </table>
@@ -70,8 +82,8 @@
               <hr>
               <div class="location-info">
                 <p>
-                  @if(isset($internship->company->name)) {{$internship->company->name}}, @endif
-                  @if(isset($internship->city)) {{$internship->city}}, @endif
+                  @if(isset($internship->company->name) && $internship->company->name!="") {{$internship->company->name}}, @endif
+                  @if(isset($internship->city) && $internship->city!="") {{$internship->city}}, @endif
                   @if(isset($internship->state)) {{$internship->state_name}}@endif
                 </p>
               </div>

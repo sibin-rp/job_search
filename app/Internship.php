@@ -13,7 +13,7 @@ class Internship extends Model
     'created_at','updated_at'];
 
   protected $appends =['duration_type','work_type_option','internship_field_data','state_name'
-  ,'payment_details'];
+  ,'payment_detail'];
 
   public function skills(){
     return $this->belongsToMany('App\Skill')->withPivot(['expertise_level']);
@@ -101,6 +101,20 @@ class Internship extends Model
     $value = $this->attributes['payment'];
     if(!isset($value) && $value == null){
       return "No Payment details are saved";
+    }
+    switch ($value){
+      case 'weekly':
+        return 'Weekly Payment';
+        break;
+      case 'fortnightly':
+        return 'Fortnightly Payment';
+        break;
+      case 'monthly':
+        return 'Monthly Payment';
+        break;
+      default:
+        return "Contact HR";
+        break;
     }
   }
 
