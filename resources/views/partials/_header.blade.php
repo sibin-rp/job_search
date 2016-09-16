@@ -17,7 +17,36 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about-us">About Us</a></li>
-        <li class="login"><a href="#">Login</a></li>
+        @php
+          $user = Auth::user();
+        @endphp
+        @if(isset($user))
+          <li class="login dropdown">
+            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              {{$user->username or 'Hi! User'}}
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dLabel">
+              <li>
+                <a href="">Profile</a>
+              </li>
+              <li>
+                <a href="">Edit</a>
+              </li>
+              <li>
+                <a href="">FAQ</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="">
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        @else
+          <li class="login"><a href="{{route('login_page')}}">Login</a></li>
+        @endif
       </ul>
     </div>
     <!-- /.navbar-collapse -->

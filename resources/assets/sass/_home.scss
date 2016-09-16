@@ -84,6 +84,43 @@
         }
     }
 }
+.home-lists{
+    &.round-icon{
+        margin-left: -10px;
+        margin-right: -10px;
+        li{
+            padding-left: 10px;
+            padding-right: 10px;
+            .list-s{
+                display: block;
+                border: 1px solid #e3e3e3;
+                box-shadow: 0 4px 4px 0 #ddd;
+                position: relative;
+                .main-t{
+                    background: #fff;
+                    position: relative;
+                    height: 100%;
+                    display: block;
+                    padding-bottom: 100%;
+                    .main-t-inner{
+                        position: absolute;
+                        padding: 10px;
+                        width: 100%;
+                        top: 50%;
+                        margin-top: 40px;
+                        .main-t-content{
+                            font-size: 60px;
+                            line-height: normal;
+                            font-weight: bold;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .parsley-errors-list{
     &.filled{
         margin: 0;

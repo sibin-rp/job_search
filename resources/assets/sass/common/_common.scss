@@ -22,6 +22,13 @@ h3 {
     height: 80px;
     background: $TOP_HEADER_BG;
     margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    .navbar-brand{
+        h2{
+            color: $TOP_HEADER_TEXT;
+        }
+    }
     h1,
     h2,
     h3 {
@@ -29,11 +36,13 @@ h3 {
         padding: 10px 0;
     }
     .navbar-nav {
-        li {
-            a {
+       >  li {
+           >  a {
                 padding-top: 30px;
+               padding-bottom: 30px;
                 font-size: 16px;
                 font-weight: bold;
+               color: $TOP_HEADER_LINK;
             }
         }
     }
@@ -136,5 +145,17 @@ table.table.table-bordered{
         td[rowspan]{
             vertical-align: middle;
         }
+    }
+}
+
+.main-fixed-alert{
+    position: fixed;
+    pointer-events: none;
+    width: 100%;
+    top: 100px;
+    left: 0;
+    padding: 20px 20%;
+    .alert{
+        pointer-events: auto;
     }
 }
