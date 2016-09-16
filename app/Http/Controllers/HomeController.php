@@ -10,6 +10,7 @@ use App\InternshipPreference;
 use App\Mail\ConfirmationMail;
 use App\Qualification;
 use App\StudentQualification;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -340,6 +341,27 @@ class HomeController extends Controller
         $getCompany = $getUser->company()->get()->first();
         $internshipDetails = $request->get('internship');
         $internshipDefault = $internshipDetails['default'];
+        if($internshipDetails['duration_start'] && $internshipDetails['duration_end']){
+          if($this->validateDateString($internshipDetails['duration_start']) &&
+          $this->validateDateString($internshipDetails['duration_end'])){
+            $d_start  = Carbon::createFromFormat('Y-m-d',$internshipDetails['duration_start']);
+            $d_end    = Carbon::createFromFormat('Y-m-d',$internshipDetails['duration_end']);
+
+            $diff_month = abs($d_end->diffInMonths($d_start));
+
+            if($diff_month > 0 && $diff_month < 3){
+              $internshipDefault['duration'] = "0_3";
+            }else if($diff_month >= 3 && $diff_month < 6){
+              $internshipDefault['duration'] = "3_6";
+            }else if($diff_month >=6 && $diff_month < 9){
+              $internshipDefault['duration'] = "6_9";
+            }else if($diff_month >=9 && $diff_month < 12){
+              $internshipDefault['duration'] = "9_12";
+            }else{
+              $internshipDefault['duration'] = "1+";
+            }
+          }
+        }
         if($getCompany->internships()->count() == 0){
           $internshipRow = $getCompany->internships()->create($internshipDefault);
         }else{
@@ -354,7 +376,7 @@ class HomeController extends Controller
                 'expertise_level' => $expertise
               ]);
             }catch (\Exception $es){
-              dd($es);
+
             }
           }
         }
@@ -371,7 +393,7 @@ class HomeController extends Controller
         return redirect()->route('home');
 
       }catch (QueryException $q){
-        return back()->with(['class'=>'alert-danger','message'=>'Check your fields, Please fill all fields. No duplicate users will create.']);
+        return back()->with(['class'=>'alert-danger','message'=>$q->getMessage()]);
 
       }catch (\Exception $e){
         return back()->with(['class'=>'alert-danger','message'=>'Unknown errors occured']);
@@ -460,6 +482,14 @@ class HomeController extends Controller
         return response()->json([]);
       }
     }
+
+
+
+  private function validateDateString($value){
+    $checkDate = Carbon::createFromFormat('Y-m-d',$value);
+    $checkDate = $checkDate->format('Y-m-d');
+    return ($checkDate == $value)?$value:null;
+  }
 
 
 }
