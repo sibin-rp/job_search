@@ -23,13 +23,13 @@
       <li>
         <a href="table.html">
           <i class="pe-7s-note2"></i>
-          <p>Table List</p>
+          <p>Users</p>
         </a>
       </li>
       <li>
         <a href="typography.html">
           <i class="pe-7s-news-paper"></i>
-          <p>Typography</p>
+          <p>Company</p>
         </a>
       </li>
       <li>
