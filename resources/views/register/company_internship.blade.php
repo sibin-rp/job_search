@@ -10,7 +10,7 @@
                 <h3 class="">Add Internship</h3>
               </div>
               <div class="panel-body">
-                <form action="{{route('save_company_internship_form')}}" method="post">
+                <form action="{{route('save_company_internship_form')}}" method="post" data-parsley-validate="">
                   {{csrf_field()}}
                   {{method_field('POST')}}
                   <div class="row">
@@ -26,17 +26,18 @@
                       </div>
                       <div class="form-group">
                         <label for="" class="control-label">Job Title</label>
-                        <input type="text" name="internship[default][title]" class="form-control" placeholder="Job Title">
+                        <input type="text" name="internship[default][title]" class="form-control" placeholder="Job Title" required="">
                       </div>
                       <div class="form-group">
                         <label for="" class="control-label">Description</label>
-                        <textarea name="internship[default][description]" id="" cols="30" rows="5" class="form-control" placeholder="Joob description"></textarea>
+                        <textarea name="internship[default][description]" id="" cols="30" rows="5" class="form-control"
+                                  placeholder="Joob description" required=""></textarea>
                       </div>
                       <div class="form-group"><label for="" class="control-label">Stipend <small>(From - To (In Rupees))</small></label>
                         <div class="div clearfix">
                           <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                              <select name="internship[default][stipend_from]" id="" class="form-control">
+                              <select name="internship[default][stipend_from]" id="" class="form-control" required="">
                                 <option value="1000">1000</option>
                                 <option value="2000">2000</option>
                                 <option value="3000">3000</option>
@@ -50,7 +51,7 @@
                               </select>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                              <select name="internship[default][stipend_to]" id="" class="form-control">
+                              <select name="internship[default][stipend_to]" id="" class="form-control" required="">
                                 <option value="1000">1000</option>
                                 <option value="2000">2000</option>
                                 <option value="3000">3000</option>
@@ -70,7 +71,7 @@
                         <label for="" class="control-label">Duration of Internship</label>
                         <div class="clearfix">
                           <p>
-                            <label for=""><input type="radio" name="internship[default][duration]">&nbsp;Any</label>
+                            <label for=""><input type="radio" name="internship[default][duration]" required="" checked="">&nbsp;Any</label>
                             <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;0-3 Month</label>
                             <label for="">&nbsp;<input type="radio" name="internship[default][duration]">&nbsp;3-6 Month</label>
                             <label for="">nbsp;<input type="radio" name="internship[default][duration]">&nbsp;6-9 Month&</label>
@@ -90,7 +91,7 @@
                         <label for="" class="control-label">Type Of Internship</label>
                         <div class="clearfix">
                           <p>
-                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="any">&nbsp;Any&nbsp;</label>
+                            <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="any" required="" checked="">&nbsp;Any&nbsp;</label>
                             <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="full_time_office">Full Time (Office)&nbsp;</label>
                             <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="part_time_office">&nbsp;Part Time (Office)&nbsp;</label>
                             <label for="" class="control-label"><input type="radio" name="internship[default][type]" value="full_time_home">&nbsp;Work from Home (Full time)&nbsp;</label>
@@ -104,7 +105,7 @@
                           <div class="row">
                             <div class="col-xs-12 col-sm-6"><p>City</p>
                             <p>
-                              <input type="text" class="form-control" name="internship[default][city]" placeholder="Internship City">
+                              <input type="text" class="form-control" name="internship[default][city]" placeholder="Internship City" required="">
                             </p></div>
                             <div class="col-xs-12 col-sm-6"><p>State</p>
                               <p>

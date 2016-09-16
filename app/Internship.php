@@ -105,10 +105,10 @@ class Internship extends Model
   }
 
   public function setEligibleMinAttribute($value){
-    $this->attributes['eligible_min'] = isset($value)?$value:21;
+    $this->attributes['eligible_min'] = (isset($value) && $value!="")?$value:21;
   }
   public function setEligibleMaxAttribute($value){
-    $this->attributes['eligible_max'] = isset($value)?$value: 35;
+    $this->attributes['eligible_max'] = (isset($value) && $value!="")?$value: 35;
   }
 
 }

@@ -371,9 +371,10 @@ class HomeController extends Controller
         return redirect()->route('home');
 
       }catch (QueryException $q){
-        dd($q);
+        return back()->with(['class'=>'alert-danger','message'=>'Check your fields, Please fill all fields. No duplicate users will create.']);
+
       }catch (\Exception $e){
-        dd($e);
+        return back()->with(['class'=>'alert-danger','message'=>'Unknown errors occured']);
       }
 
     }
