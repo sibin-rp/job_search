@@ -338,8 +338,10 @@
   }
 }
 
-.thankspage .jumbotron {
+.thankspage .jumbotron,
+.complete-reg .jumbotron{
   min-height: calc(100vh - 516px);
+  margin-bottom: 0;
 }
 
 

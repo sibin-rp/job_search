@@ -60,8 +60,10 @@
                         <div class="col-xs-12 col-sm-6">
                           <div class="form-group"><label for="address-state" class="control-label">State</label>
                             <select name="home_state" id="address-state" class="form-control" required="required">
-                              <option value="1">State 1</option>
-                              <option value="2">State 2</option>
+                              <option value="">Select</option>
+                              @foreach($states as $code => $state)
+                                <option value="{{$code}}">{{$state}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -80,10 +82,10 @@
                               <div class="col-xs-12 col-sm-6">
                                 <div class="form-group"><label for="" class="control-label">Current State</label>
                                   <select name="live_state" id="living-state" class="form-control">
-                                    <option value="">State 1</option>
-                                    <option value="">State 2</option>
-                                    <option value="">State 3</option>
-                                    <option value="">State 4</option>
+                                    <option value="">Select</option>
+                                    @foreach($states as $code => $state)
+                                      <option value="{{$code}}">{{$state}}</option>
+                                    @endforeach
                                   </select>
                                 </div>
                               </div>
