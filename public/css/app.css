@@ -10757,7 +10757,7 @@ table.table.table-bordered tr td[rowspan] {
     margin: 0 -15px 20px;
     padding: 10px;
     display: block;
-    width: calc( 100% + 30px);
+    width: calc(100% + 30px);
     vertical-align: middle; }
     #qualificationInfoCollapse fieldset legend span {
       color: #333;
@@ -10788,7 +10788,7 @@ table.table.table-bordered tr td[rowspan] {
     margin: 0 -15px 20px;
     padding: 10px;
     display: block;
-    width: calc( 100% + 30px);
+    width: calc(100% + 30px);
     vertical-align: middle;
     border-bottom: 1px solid #ccc; }
 
@@ -10814,11 +10814,55 @@ table.table.table-bordered tr td[rowspan] {
   .about-us-wrapper h3 {
     font-size: 26px;
     margin-bottom: 25px; }
+  .about-us-wrapper ul:not(.description) {
+    margin: 0 0 15px 0;
+    padding: 0; }
+    .about-us-wrapper ul:not(.description) > li {
+      font-size: 16px;
+      line-height: 28px;
+      list-style: none;
+      position: relative;
+      padding-left: 25px; }
+      .about-us-wrapper ul:not(.description) > li:before {
+        font-family: 'Glyphicons Halflings','sans-serif';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        content: '\e013';
+        position: absolute;
+        top: 0;
+        left: 0; }
   .about-us-wrapper article {
     margin-bottom: 40px;
     font-size: 16px;
     line-height: 24px;
     word-spacing: 1.1px; }
+  .about-us-wrapper .desc-area {
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    color: #333; }
+    .about-us-wrapper .desc-area h4 {
+      margin: 10px 0 25px 0; }
+  .about-us-wrapper ul.description {
+    margin: 0 0 15px 0;
+    padding: 0; }
+    .about-us-wrapper ul.description li {
+      font-size: 15px;
+      line-height: normal;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+      list-style: none; }
+      .about-us-wrapper ul.description li:before {
+        font-family: 'Glyphicons Halflings','sans-serif';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        content: '\e165';
+        position: absolute;
+        top: 0;
+        left: 0; }
 
 .thankspage .jumbotron,
 .complete-reg .jumbotron {

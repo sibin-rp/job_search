@@ -11,9 +11,7 @@
             <div class="about-us-content">
               <div class="section-c" id="how-it-works">
                 <h3 class="title"># How it Works</h3>
-                <article>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tempus purus. Cras rutrum a erat eu lobortis. Proin quis posuere erat, ut molestie metus. Phasellus est sapien, mollis nec elementum ut, vulputate nec sapien. In nulla lectus, semper sodales vehicula eu, accumsan nec augue. Aenean libero felis, aliquet laoreet tortor id, faucibus dictum dolor. Nam gravida consequat neque quis feugiat.
-                </article>
+                @include('home.about_us._how_it_works')
               </div>
               <div class="section-c" id="why-do-internships">
                 <h3 class="title"># Why do Internships</h3>

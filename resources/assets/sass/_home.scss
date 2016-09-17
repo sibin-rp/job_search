@@ -1,121 +1,122 @@
 .home-slider-inner {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
 
 #home-slider {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  z-index: 1;
+  .image-item {
     overflow: hidden;
-    height: auto;
-    z-index: 1;
-    .image-item {
-        overflow: hidden;
-        height: calc(100vh - 80px);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+    height: calc(100vh - 80px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 .home-content-section {
-    display: block;
-    pointer-events: none;
-    position: absolute;
-    bottom: 0;
-    z-index: 10;
-    left: 0;
-    width: 100%;
-    .content-section {
-        width: 60%;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 20px;
-        background: rgba($HOME_CAROUSEL_CONTENT_BG, 0.7);
-        color: $HOME_CAROUSLE_CONTENT_TEXT;
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  left: 0;
+  width: 100%;
+  .content-section {
+    width: 60%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: rgba($HOME_CAROUSEL_CONTENT_BG, 0.7);
+    color: $HOME_CAROUSLE_CONTENT_TEXT;
+  }
+  .box-section {
+    a.register {
+      margin-top: 30px;
+      font-size: 14px;
+      pointer-events: all;
+      font-weight: bold;
+      @include c-border-radius(4px, 4px, 4px, 4px);
+      border: none;
+      padding: 14px 20px;
+      @include c-transition(all, 0.4s, ease-out, 0.05s);
+      &:hover,
+      &:active,
+      &:focus {
+        background: #378a77;
+        color: #fff;
+      }
     }
-    .box-section {
-        a.register {
-            margin-top: 30px;
-            font-size: 14px;
-            pointer-events: all;
-            font-weight: bold;
-            @include c-border-radius(4px, 4px, 4px, 4px);
-            border: none;
-            padding: 14px 20px;
-            @include c-transition(all, 0.4s, ease-out, 0.05s);
-            &:hover,
-            &:active,
-            &:focus {
-                background: #378a77;
-                color: #fff;
-            }
-        }
-    }
+  }
 }
 
 .list-wrapper {
-    padding: 40px;
-    background: #eee;
-}
-.home-lists{
-    &.round-icon{
-        margin-left: -10px;
-        margin-right: -10px;
-        li{
-            width: 20%;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin-bottom: 20px;
-            display: block;
-            float: left;
-            a.list-s{
-                display: block;
-                border: 1px solid #e3e3e3;
-                box-shadow: 0 4px 4px 0 #ddd;
-                position: relative;
-                overflow: hidden;
-                border-radius: 50%;
-                cursor: pointer;
-                text-decoration: none;
-                color: #333;
-                .main-t{
-                    background: #fff;
-                    position: relative;
-                    width: 210px;
-                    height: 210px;
-                    display: table;
-                    .main-t-inner{
-                        display: table-cell;
-                        width: 100%;
-                        height: 100%;
-                        vertical-align: middle;
-                        padding: 15px;
-                        text-align: center;
-                        color: #333;
-                        .main-t-content{
-                            width: 100%;
-                            font-size: 21px;
-                            font-weight: bold;
-                        }
-                    }
-                }
-            }
-        }
-    }
+  padding: 40px;
+  background: #eee;
 }
 
-.parsley-errors-list{
-    &.filled{
-        margin: 0;
-        padding: 0;
-        li{
-            background: #db3b3b;
-            color: #fff;
-            padding: 5px;
+.home-lists {
+  &.round-icon {
+    margin-left: -10px;
+    margin-right: -10px;
+    li {
+      width: 20%;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 20px;
+      display: block;
+      float: left;
+      a.list-s {
+        display: block;
+        border: 1px solid #e3e3e3;
+        box-shadow: 0 4px 4px 0 #ddd;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+        .main-t {
+          background: #fff;
+          position: relative;
+          width: 210px;
+          height: 210px;
+          display: table;
+          .main-t-inner {
+            display: table-cell;
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            padding: 15px;
+            text-align: center;
+            color: #333;
+            .main-t-content {
+              width: 100%;
+              font-size: 21px;
+              font-weight: bold;
+            }
+          }
         }
+      }
     }
+  }
+}
+
+.parsley-errors-list {
+  &.filled {
+    margin: 0;
+    padding: 0;
+    li {
+      background: #db3b3b;
+      color: #fff;
+      padding: 5px;
+    }
+  }
 }
 
 /**
@@ -125,221 +126,281 @@
 **/
 
 .loginpage {
-    padding-top: 60px;
-    background: #76b852;
-    height: 600px;
+  padding-top: 60px;
+  background: #76b852;
+  height: 600px;
 }
 
 .admin-form {
-    position: relative;
-    z-index: 1;
-    background: #FFFFFF;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    input {
-        outline: 0;
-        background: #f2f2f2;
-        width: 100%;
-        border: 0;
-        margin: 0 0 15px;
-        padding: 15px;
-        box-sizing: border-box;
-        font-size: 14px;
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover, &:active, &:focus {
+      background: #43A047;
     }
-    button {
-        text-transform: uppercase;
-        outline: 0;
-        background: #4CAF50;
-        width: 100%;
-        border: 0;
-        padding: 15px;
-        color: #FFFFFF;
-        font-size: 14px;
-        cursor: pointer;
-        &:hover, &:active, &:focus {
-            background: #43A047;
-        }
-    }
+  }
 }
+
 /**eof Admin login page**/
 
 /**
 *  Company Registration
 *  13-09-2016
 */
-.skills-box{
-    .well{
-        label{
-            vertical-align: middle;
-            margin-right: 5px;
-            input[type="checkbox"],input[type="radio"]{
-                margin-right: 3px;
-                margin-left: 5px;
-                vertical-align: middle;
-            }
-        }
+.skills-box {
+  .well {
+    label {
+      vertical-align: middle;
+      margin-right: 5px;
+      input[type="checkbox"], input[type="radio"] {
+        margin-right: 3px;
+        margin-left: 5px;
+        vertical-align: middle;
+      }
     }
-    .skill-user-select{
-        input[type="radio"]{
-            position: relative;
-            margin-left: 5px;
-        }
+  }
+  .skill-user-select {
+    input[type="radio"] {
+      position: relative;
+      margin-left: 5px;
     }
+  }
 }
-#qualification-extra{
-    margin-top: 10px;
+
+#qualification-extra {
+  margin-top: 10px;
 }
+
 /** end company registration */
 
 /**
 * Student registration
 * 14-09-2016
 */
-.form-list{
-    &.list-group{
-        .list-group-item{
-            &.active{
-                background: #4bbfa6;
-                border-color: #4bbfa6;
-                color: #fff;
-                font-weight: bold;
-                a{
-                    text-decoration: none;
-                    color: #fff;
-                    font-weight: bold;
-                }
-            }
-            a{
-                vertical-align: middle;
-                &:after,&:before{
-                    content: '';
-                    width: 100%;
-                    height: 0;
-                    display: table;
-                    clear: both;
-                }
-                .glyphicon-trash{
-                    float: right;
-                    font-size: 12px;
-                    position: relative;
-                    margin-top: 4px;
-                    vertical-align: middle;
-                }
-            }
+.form-list {
+  &.list-group {
+    .list-group-item {
+      &.active {
+        background: #4bbfa6;
+        border-color: #4bbfa6;
+        color: #fff;
+        font-weight: bold;
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: bold;
         }
+      }
+      a {
+        vertical-align: middle;
+        &:after, &:before {
+          content: '';
+          width: 100%;
+          height: 0;
+          display: table;
+          clear: both;
+        }
+        .glyphicon-trash {
+          float: right;
+          font-size: 12px;
+          position: relative;
+          margin-top: 4px;
+          vertical-align: middle;
+        }
+      }
     }
+  }
 }
-#qualificationInfoCollapse{
-    fieldset{
-        background: #f9f9f9;
-        margin-bottom: 20px;
-        border-bottom: 3px solid #eee;
-        padding: 10px 15px;
-        legend{
-            background: #f3f3f3;
-            font-weight: bold;
-            font-size: 15px;
-            margin: 0 -15px 20px;
-            padding: 10px;
-            display: block;
-            width: calc( 100% + 30px);
-            vertical-align: middle;
-            span{
-               color: #333;
-               vertical-align: middle;
-                font-size: 12px;
-            }
-        }
-    }
-    .page-header{
-        h4{
-            a{
-                display: inline-block;
-                padding: 10px;
-                border-radius: 50%;
-                background: #4bbfa6;
-                color: #fff;
-                &:hover,&:active,&:focus{
-                    background: darken(#4bbfa6,10%);
-                    color: #fff;
-                }
-            }
-        }
-    }
-}
-#vue-experience-internship{
 
-}
-.experience-internship-list{
+#qualificationInfoCollapse {
+  fieldset {
     background: #f9f9f9;
     margin-bottom: 20px;
     border-bottom: 3px solid #eee;
     padding: 10px 15px;
-    &:first-child{
-        margin-top: 20px;
-    }
-    h5{
-        background: #f3f3f3;
-        font-weight: bold;
-        font-size: 15px;
-        margin: 0 -15px 20px;
-        padding: 10px;
-        display: block;
-        width: calc( 100% + 30px);
+    legend {
+      background: #f3f3f3;
+      font-weight: bold;
+      font-size: 15px;
+      margin: 0 -15px 20px;
+      padding: 10px;
+      display: block;
+      width: calc(100% + 30px);
+      vertical-align: middle;
+      span {
+        color: #333;
         vertical-align: middle;
-        border-bottom: 1px solid #ccc;
+        font-size: 12px;
+      }
     }
-}
-.register-wrapper{
-    .well{
-        >label{
-            margin-right: 8px;
+  }
+  .page-header {
+    h4 {
+      a {
+        display: inline-block;
+        padding: 10px;
+        border-radius: 50%;
+        background: #4bbfa6;
+        color: #fff;
+        &:hover, &:active, &:focus {
+          background: darken(#4bbfa6, 10%);
+          color: #fff;
         }
+      }
     }
+  }
 }
+
+#vue-experience-internship {
+
+}
+
+.experience-internship-list {
+  background: #f9f9f9;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #eee;
+  padding: 10px 15px;
+  &:first-child {
+    margin-top: 20px;
+  }
+  h5 {
+    background: #f3f3f3;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 -15px 20px;
+    padding: 10px;
+    display: block;
+    width: calc(100% + 30px);
+    vertical-align: middle;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.register-wrapper {
+  .well {
+    > label {
+      margin-right: 8px;
+    }
+  }
+}
+
 /** end student registration */
 
 /** thanks page */
 
-.thankspage{
-    .jumbotron{
-        margin-bottom: 0;
-        .gp{
-            color:green;
-            font-size:50px;
-        }
+.thankspage {
+  .jumbotron {
+    margin-bottom: 0;
+    .gp {
+      color: green;
+      font-size: 50px;
     }
+  }
 }
 
-.loginp{
-    .jumbotron{
-        margin-bottom: 50px;
-        margin-top: 50px;
-        background-color: white;
-    }
+.loginp {
+  .jumbotron {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    background-color: white;
+  }
 }
 
-
-.about-us-wrapper{
+.about-us-wrapper {
   padding: 60px 0 100px;
   background: #f3f3f3;
-  h3{
+  h3 {
     font-size: 26px;
     margin-bottom: 25px;
   }
-  article{
+  ul:not(.description) {
+    margin: 0 0 15px 0;
+    padding: 0;
+    > li {
+      font-size: 16px;
+      line-height: 28px;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+      &:before{
+        font-family: 'Glyphicons Halflings','sans-serif';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        content: '\e013';
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  article {
     margin-bottom: 40px;
     font-size: 16px;
     line-height: 24px;
     word-spacing: 1.1px;
   }
+  .desc-area{
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    color: #333;
+    h4{
+      margin: 10px 0 25px 0;
+    }
+  }
+  ul.description{
+    margin: 0 0 15px 0;
+    padding: 0;
+    li{
+      font-size: 15px;
+      line-height: normal;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+      list-style: none;
+      &:before{
+        font-family: 'Glyphicons Halflings','sans-serif';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        content: '\e165';
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
 }
 
 .thankspage .jumbotron,
-.complete-reg .jumbotron{
+.complete-reg .jumbotron {
   min-height: calc(100vh - 516px);
   margin-bottom: 0;
 }

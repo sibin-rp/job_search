@@ -67,7 +67,7 @@
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
-                      Why do Internships
+                      Why  Internships
                     </div>
                   </div>
                 </div>
