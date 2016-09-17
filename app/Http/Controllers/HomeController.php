@@ -395,7 +395,7 @@ class HomeController extends Controller
           }else{}
             $internship->qualification()->create($qualificationData);
         }
-        return redirect()->route('home');
+        return redirect()->route('thanks_page');
 
       }catch (QueryException $q){
         return back()->with(['class'=>'alert-danger','message'=>$q->getMessage()]);

@@ -13,4 +13,6 @@ class Qualification extends Model
   public function internship(){
     return $this->belongsTo('App\Internship');
   }
+
+
 }

@@ -6962,7 +6962,7 @@ $(document).ready(function() {
         if(result.status == 200){
           toastr.success(result.message);
           setTimeout(function(){
-            toastr.info("Thanks for registering on this Website")
+            toastr.info("Thanks for registering on this Website");
             window.location.href = "/thanks";
           },1000)
         }

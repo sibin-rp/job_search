@@ -10820,6 +10820,9 @@ table.table.table-bordered tr td[rowspan] {
     line-height: 24px;
     word-spacing: 1.1px; }
 
+.thankspage .jumbotron {
+  min-height: calc(100vh - 516px); }
+
 .register-wrapper {
   display: block;
   padding: 80px 0 120px;
