@@ -31,6 +31,10 @@ class HomeController extends Controller
       return view('home.index');
     }
 
+    public function about(){
+      return view('home.about');
+    }
+
     public function sendStudentConfirmation(Request $request){
       try {
         $this->validate($request, [

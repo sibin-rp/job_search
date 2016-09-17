@@ -52,7 +52,7 @@
         <div class="col-xs-12 col-sm-12">
           <ul class="circle-icons round-icon home-lists clearfix">
             <li class="clearfix">
-              <a href="" class="list-s clearfix">
+              <a href="{{route('about_us')}}#how-it-works" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="clearfix">
-              <a href="" class="list-s clearfix">
+              <a href="{{route('about_us')}}#why-do-internships" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
@@ -74,7 +74,7 @@
               </a>
             </li>
             <li class="clearfix">
-              <a href="" class="list-s clearfix">
+              <a href="{{route('about_us')}}#for-students" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
@@ -85,7 +85,7 @@
               </a>
             </li>
             <li class="clearfix">
-              <a href="" class="list-s clearfix">
+              <a href="{{route('about_us')}}#for-companies" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
@@ -96,7 +96,7 @@
               </a>
             </li>
             <li class="clearfix">
-              <a href="" class="list-s clearfix">
+              <a href="{{route('about_us')}}#faqs" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">

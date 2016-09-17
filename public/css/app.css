@@ -10808,6 +10808,18 @@ table.table.table-bordered tr td[rowspan] {
   margin-top: 50px;
   background-color: white; }
 
+.about-us-wrapper {
+  padding: 60px 0 100px;
+  background: #f3f3f3; }
+  .about-us-wrapper h3 {
+    font-size: 26px;
+    margin-bottom: 25px; }
+  .about-us-wrapper article {
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 24px;
+    word-spacing: 1.1px; }
+
 .register-wrapper {
   display: block;
   padding: 80px 0 120px;
