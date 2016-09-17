@@ -59,60 +59,45 @@
     padding: 40px;
     background: #eee;
 }
-
-.circle-icons {
-    display: block;
-    margin: 0;
-    padding: 0;
-    li {
-        width: 25%;
-        float: left;
-        display: block;
-        padding: 10px;
-        a {
-            @include c-border-radius(50%, 50%, 50%, 50%);
-            display: block;
-            border: 1px solid #ddd;
-            background: #2cab8f;
-            width: 120px;
-            height: 120px;
-            text-align: center;
-            color: #fff;
-            font-size: 36px;
-            line-height: 110px;
-            text-decoration: none;
-        }
-    }
-}
 .home-lists{
     &.round-icon{
         margin-left: -10px;
         margin-right: -10px;
         li{
+            width: 20%;
             padding-left: 10px;
             padding-right: 10px;
-            .list-s{
+            margin-bottom: 20px;
+            display: block;
+            float: left;
+            a.list-s{
                 display: block;
                 border: 1px solid #e3e3e3;
                 box-shadow: 0 4px 4px 0 #ddd;
                 position: relative;
+                overflow: hidden;
+                border-radius: 50%;
+                cursor: pointer;
+                text-decoration: none;
+                color: #333;
                 .main-t{
                     background: #fff;
                     position: relative;
-                    height: 100%;
-                    display: block;
-                    padding-bottom: 100%;
+                    width: 210px;
+                    height: 210px;
+                    display: table;
                     .main-t-inner{
-                        position: absolute;
-                        padding: 10px;
+                        display: table-cell;
                         width: 100%;
-                        top: 50%;
-                        margin-top: 40px;
+                        height: 100%;
+                        vertical-align: middle;
+                        padding: 15px;
+                        text-align: center;
+                        color: #333;
                         .main-t-content{
-                            font-size: 60px;
-                            line-height: normal;
+                            width: 100%;
+                            font-size: 21px;
                             font-weight: bold;
-                            text-align: center;
                         }
                     }
                 }

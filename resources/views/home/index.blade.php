@@ -6,8 +6,8 @@
           <div class="home-slider-inner">
             <!-- Home image carousel -->
             <div class="owl-carousel" id="home-slider">
-              <div class="image-item" style="background-image:url({{asset('images/home-slider-1.jpg')}})"></div>
               <div class="image-item" style="background-image:url({{asset('images/home-slider-2.jpg')}})"></div>
+              <div class="image-item" style="background-image:url({{asset('images/home-slider-1.jpg')}})"></div>
               <div class="image-item" style="background-image:url({{asset('images/home-slider-3.jpg')}})"></div>
             </div>
             <!-- eof home image carousel -->
@@ -52,48 +52,59 @@
         <div class="col-xs-12 col-sm-12">
           <ul class="circle-icons round-icon home-lists clearfix">
             <li class="clearfix">
-              <div class="list-s clearfix">
+              <a href="" class="list-s clearfix">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
-                      H
+                      How it Works
                     </div>
                   </div>
                 </div>
-                <div class="main-f">
-
-                </div>
-              </div>
+              </a>
             </li>
             <li class="clearfix">
-              <div class="list-s clearfix">
+              <a href="" class="list-s clearfix">
                 <div class="main-t clearfix">
-
+                  <div class="main-t-inner">
+                    <div class="main-t-content">
+                      Why do Internships
+                    </div>
+                  </div>
                 </div>
-                <div class="main-f">
-
-                </div>
-              </div>
+              </a>
             </li>
             <li class="clearfix">
-              <div class="list-s clearfix">
+              <a href="" class="list-s clearfix">
                 <div class="main-t clearfix">
-
+                  <div class="main-t-inner">
+                    <div class="main-t-content">
+                      For Students
+                    </div>
+                  </div>
                 </div>
-                <div class="main-f">
-
-                </div>
-              </div>
+              </a>
             </li>
             <li class="clearfix">
-              <div class="list-s clearfix">
+              <a href="" class="list-s clearfix">
                 <div class="main-t clearfix">
-
+                  <div class="main-t-inner">
+                    <div class="main-t-content">
+                      For Companies
+                    </div>
+                  </div>
                 </div>
-                <div class="main-f">
-
+              </a>
+            </li>
+            <li class="clearfix">
+              <a href="" class="list-s clearfix">
+                <div class="main-t clearfix">
+                  <div class="main-t-inner">
+                    <div class="main-t-content">
+                      FAQs
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -102,9 +113,9 @@
   </div>
   <!-- eof section : list classified and icons -->
   <div class="clearfix"></div>
-  @stop
-  @section('modals')
-    <!-- Student Modal -->
+@stop
+@section('modals')
+  <!-- Student Modal -->
   <div class="modal fade" id="student-modal-id">
     <div class="modal-dialog">
       <div class="modal-content">

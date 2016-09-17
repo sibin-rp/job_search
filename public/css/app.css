@@ -10576,7 +10576,7 @@ table.table.table-bordered tr td[rowspan] {
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    background: rgba(61, 172, 147, 0.7);
+    background: rgba(85, 103, 144, 0.7);
     color: #fff; }
   .home-content-section .box-section a.register {
     margin-top: 30px;
@@ -10607,67 +10607,44 @@ table.table.table-bordered tr td[rowspan] {
   padding: 40px;
   background: #eee; }
 
-.circle-icons {
-  display: block;
-  margin: 0;
-  padding: 0; }
-  .circle-icons li {
-    width: 25%;
-    float: left;
-    display: block;
-    padding: 10px; }
-    .circle-icons li a {
-      -webkit-border-top-right-radius: 50%;
-      -webkit-border-bottom-right-radius: 50%;
-      -webkit-border-bottom-left-radius: 50%;
-      -webkit-border-top-left-radius: 50%;
-      -moz-border-radius-topright: 50%;
-      -moz-border-radius-bottomright: 50%;
-      -moz-border-radius-bottomleft: 50%;
-      -moz-border-radius-topleft: 50%;
-      border-top-right-radius: 50%;
-      border-bottom-right-radius: 50%;
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-      display: block;
-      border: 1px solid #ddd;
-      background: #2cab8f;
-      width: 120px;
-      height: 120px;
-      text-align: center;
-      color: #fff;
-      font-size: 36px;
-      line-height: 110px;
-      text-decoration: none; }
-
 .home-lists.round-icon {
   margin-left: -10px;
   margin-right: -10px; }
   .home-lists.round-icon li {
+    width: 20%;
     padding-left: 10px;
-    padding-right: 10px; }
-    .home-lists.round-icon li .list-s {
+    padding-right: 10px;
+    margin-bottom: 20px;
+    display: block;
+    float: left; }
+    .home-lists.round-icon li a.list-s {
       display: block;
       border: 1px solid #e3e3e3;
       box-shadow: 0 4px 4px 0 #ddd;
-      position: relative; }
-      .home-lists.round-icon li .list-s .main-t {
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333; }
+      .home-lists.round-icon li a.list-s .main-t {
         background: #fff;
         position: relative;
-        height: 100%;
-        display: block;
-        padding-bottom: 100%; }
-        .home-lists.round-icon li .list-s .main-t .main-t-inner {
-          position: absolute;
-          padding: 10px;
+        width: 210px;
+        height: 210px;
+        display: table; }
+        .home-lists.round-icon li a.list-s .main-t .main-t-inner {
+          display: table-cell;
           width: 100%;
-          top: 50%;
-          margin-top: 40px; }
-          .home-lists.round-icon li .list-s .main-t .main-t-inner .main-t-content {
-            font-size: 60px;
-            line-height: normal;
-            font-weight: bold;
-            text-align: center; }
+          height: 100%;
+          vertical-align: middle;
+          padding: 15px;
+          text-align: center;
+          color: #333; }
+          .home-lists.round-icon li a.list-s .main-t .main-t-inner .main-t-content {
+            width: 100%;
+            font-size: 21px;
+            font-weight: bold; }
 
 .parsley-errors-list.filled {
   margin: 0;
@@ -10840,7 +10817,7 @@ table.table.table-bordered tr td[rowspan] {
   margin-bottom: 20px; }
   .register .panel-default .panel-heading {
     padding: 15px 20px;
-    background: #4bbfa6;
+    background: #556790;
     -webkit-border-top-right-radius: 0;
     -webkit-border-bottom-right-radius: 0;
     -webkit-border-bottom-left-radius: 0;
@@ -10864,7 +10841,7 @@ table.table.table-bordered tr td[rowspan] {
   .register .panel-default .panel-body {
     padding: 25px 30px; }
     .register .panel-default .panel-body .btn {
-      background: #4bbfa6;
+      background: #556790;
       color: #fff;
       -webkit-transition: all 0.3s linear 0.03s;
       transition: all 0.3s linear 0.03s;
@@ -10881,7 +10858,7 @@ table.table.table-bordered tr td[rowspan] {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0; }
       .register .panel-default .panel-body .btn:hover, .register .panel-default .panel-body .btn:active, .register .panel-default .panel-body .btn:focus {
-        background: #3fb199;
+        background: #4c5c80;
         color: #fff; }
 
 .internship-lists {
