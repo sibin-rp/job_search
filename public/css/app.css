@@ -10210,10 +10210,6 @@ button.toast-close-button {
         border-right: 6px solid transparent;
         border-bottom: 6px solid #be2626; }
 
-/** HOME CAROUSEL **/
-/** EOF HOME CAROUSEL **/
-/** REGISTER PAGE **/
-/** EOF REGISTER PAGE **/
 /*
  * Slider for Bootstrap
  *
@@ -10425,6 +10421,20 @@ button.toast-close-button {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89cdef', endColorstr='#81bfde',GradientType=0);
     opacity: 1; }
 
+/** HOME CAROUSEL **/
+/** EOF HOME CAROUSEL **/
+/** REGISTER PAGE **/
+/** EOF REGISTER PAGE **/
+@media all and (max-width: 479px) {
+  .col-xxs-12 {
+    width: 100%; }
+  .col-xxs-6 {
+    width: 50%; }
+  .col-xxs-3 {
+    width: 25%; }
+  .col-xxs-9 {
+    width: 75%; } }
+
 /** HEADER SECTION **/
 html,
 body {
@@ -10626,6 +10636,18 @@ table.table.table-bordered tr td[rowspan] {
     padding: 20px;
     background: rgba(85, 103, 144, 0.7);
     color: #fff; }
+    @media all and (max-width: 768px) {
+      .home-content-section .content-section {
+        width: 100%; }
+        .home-content-section .content-section .box-section a.register-btn {
+          font-size: 14px;
+          padding: 10px; }
+          .home-content-section .content-section .box-section a.register-btn .icon-main {
+            font-size: 18px; } }
+    @media all and (max-width: 768px) and (max-width: 360px) {
+      .home-content-section .content-section .box-section a.register-btn .inline-content span {
+        display: block;
+        clear: both; } }
   .home-content-section .box-section a.register-btn {
     margin-top: 30px;
     font-size: 16px;
@@ -10665,7 +10687,9 @@ table.table.table-bordered tr td[rowspan] {
 
 .home-lists.round-icon {
   margin-left: -10px;
-  margin-right: -10px; }
+  margin-right: -10px;
+  padding-left: 0;
+  padding-right: 0; }
   .home-lists.round-icon li {
     width: 20%;
     padding-left: 10px;
@@ -10701,6 +10725,30 @@ table.table.table-bordered tr td[rowspan] {
             width: 100%;
             font-size: 21px;
             font-weight: bold; }
+    @media all and (max-width: 991px) {
+      .home-lists.round-icon li a.list-s {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 210px;
+        overflow: hidden; } }
+    @media all and (max-width: 479px) {
+      .home-lists.round-icon li {
+        width: 100%; } }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      .home-lists.round-icon li {
+        width: 50%; } }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+      .home-lists.round-icon li {
+        width: 33%; } }
+    @media all and (min-width: 992px) and (max-width: 1199px) {
+      .home-lists.round-icon li {
+        width: 25%; }
+        .home-lists.round-icon li a.list-s {
+          width: 210px;
+          margin-left: auto;
+          margin-right: auto;
+          overflow: hidden; } }
 
 .parsley-errors-list.filled {
   margin: 0;

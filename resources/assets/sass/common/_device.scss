@@ -1,0 +1,22 @@
+$xxs: 480px;
+$xs: 768px;
+$sm: 992px;
+$md: 1200px;
+$lg: 1600px;
+$fhd: 1920px;
+
+@media all and (max-width: $xxs - 1){
+  $xxs_width: 100%;
+  .col-xxs-12{
+    width: 100%;
+  }
+  .col-xxs-6{
+    width: 50%;
+  }
+  .col-xxs-3{
+    width: $xxs_width/4;
+  }
+  .col-xxs-9{
+    width: ($xxs_width/4)*3;
+  }
+}

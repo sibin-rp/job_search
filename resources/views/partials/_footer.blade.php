@@ -1,7 +1,7 @@
 <div class="footer-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 ">
+      <div class="col-xs-12 col-sm-4 ">
         <h4>MOVIES BY GENRE</h4>
         <ul class="footer-list-ul">
           <li><a href="#" title="Action"><span>Action</span></a></li>
@@ -16,7 +16,7 @@
           <li><a href="#" title="Family"><span>Family</span></a></li>
         </ul>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-12 col-sm-4">
         <h4>MOVIES BY GENRE</h4>
         <ul class="footer-list-ul">
           <li><a href="#" title="Action"><span>Action</span></a></li>
@@ -31,7 +31,7 @@
           <li><a href="#" title="Family"><span>Family</span></a></li>
         </ul>
       </div>
-      <div class="col-xs-4 ">
+      <div class="col-xs-12 col-sm-4 ">
         <h4>MOVIES BY GENRE</h4>
         <ul class="footer-list-ul">
           <li><a href="#" title="Action"><span>Action</span></a></li>

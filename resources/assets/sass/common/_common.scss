@@ -1,6 +1,7 @@
 @import 'variables';
-@import '_mixins';
-@import './node_modules/bootstrap-slider/src/sass/bootstrap-slider.scss';
+@import 'mixins';
+@import "device";
+
 
 /** HEADER SECTION **/
 

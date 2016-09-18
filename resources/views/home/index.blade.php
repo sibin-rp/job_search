@@ -16,14 +16,14 @@
               <div class="content-section">
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="text-center main-content-text">
+                    <p class="text-center main-content-text hidden-xs">
                       We find the best internships for students on the basis of their resume and the recruiters’ requirements.
                       Information of an internship/intern with the right prospect is made available to students/recruiters
                     </p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-6">
+                  <div class="col-xxs-6 col-xs-6 col-sm-6">
                     <div class="box-section text-right">
                       <h3 class="hidden">Register as a Student</h3>
 
@@ -37,7 +37,7 @@
                       </a>
                     </div>
                   </div>
-                  <div class="col-xs-12 col-sm-6">
+                  <div class="col-xxs-6 col-xs-6 col-sm-6">
                     <div class="box-section text-left">
                       <h3 class="hidden">Register as a Student</h3>
 
