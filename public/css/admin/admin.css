@@ -11027,3 +11027,10 @@ body > .navbar-collapse[data-color="purple"]:after {
 .table-upgrade td:nth-child(2),
 .table-upgrade td:nth-child(3) {
   text-align: center; }
+
+.internship-list {
+  margin: 0;
+  padding: 0; }
+  .internship-list li {
+    display: inline-block;
+    margin-right: 5px; }

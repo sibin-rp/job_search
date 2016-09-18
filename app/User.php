@@ -16,10 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','type','active','admin','super_admin',
-        'profile_image','token'
+        'email', 'password','username','type','active','admin','super_admin',
+        'profile_image','token','alternate_contact','alternate_email','describe',
+        'dob','first_name','last_name','home_address','home_state','live_address',
+        'live_state','phone_no','role','sex','created_at','updated_at'
     ];
 
+    protected $appends = ['name'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -49,6 +52,13 @@ class User extends Authenticatable
 
     public function experiences(){
       return $this->hasMany('App\Experience');
+    }
+
+    public function getNameAttribute(){
+      $first_name = $this->attributes['first_name'];
+      $last_name  = $this->attributes['last_name'];
+      if(!$first_name && !$last_name) return "Not available";
+      return $first_name.' '.$last_name;
     }
 
 }

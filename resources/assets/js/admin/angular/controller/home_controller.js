@@ -25,7 +25,7 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
  * - List all internship fields and skills
  *
  */
-appAccelaar.controller('InternshipController',['$scope', function($scope){
+appAccelaar.controller('HomeInternshipController',['$scope', function($scope){
   $scope.intership_fileds = [
     {
       name:'Web Development',
@@ -38,13 +38,28 @@ appAccelaar.controller('InternshipController',['$scope', function($scope){
 /* EOF HOME INTERNSHIP CONTROLLER */
 
 /* START COMPANY CONTROLLER */
-appAccelaar.controller('CompanyController',['$scope','Company', function($scope,Company){
+appAccelaar.controller('HomeCompanyController',['$scope','Company', function($scope,Company){
   $scope.companies = [];
-  Company.company().query(function(result){
-
+  Company.company().then(function(result){
+    console.log(result)
+    console.log(result.data)
+    $scope.companies = result.data
   }, function(error){
-
+    console.log(error)
+  }, function (update) {
+    console.log(update)
   })
 }]);
 
 /* END COMPANY CONTROLLER */
+
+/* START USER CONTROLLER */
+appAccelaar.controller('HomeUserController',['$scope','User', function($scope,User){
+  $scope.users = [];
+  User.users().then(function(result){
+    $scope.users = result.data;
+  }, function(error){
+
+  })
+}]);
+/* END USER CONTROLLER */

@@ -10,16 +10,28 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
     .state('internship_settings',{
       url:'/internship_settings',
       templateUrl:'/js/admin/templates/internship-settings.html',
-      controller: 'InternshipController'
+      controller: 'HomeInternshipController'
     })
     .state('company_lis',{
       url:'/company_lists',
       templateUrl:'/js/admin/templates/company.html',
-      controller:'CompanyController'
+      controller:'HomeCompanyController'
     })
     .state('users',{
       url:'/users',
       templateUrl:'/js/admin/templates/users.html',
-      controller:'UserController'
+      controller:'HomeUserController'
     })
 }]);
+
+
+/** FILTERS **/
+appAccelaar.filter('company_type', function(){
+  return function(input){
+    if(!input) return null
+    var newInput = input.replace('_',' ');
+    return newInput.charAt(0).toUpperCase()+newInput.substr(1).toLowerCase()
+  }
+});
+
+/** END FILTER **/

@@ -9,6 +9,30 @@
           <div class="content">
             <div class="table-full-width">
               <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>State</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="company in companies">
+                    <td>{{$index + 1}}</td>
+                    <td>{{company.name || 'Not available'}}</td>
+                    <td>{{company.email}}</td>
+                    <td>{{company.organization_type  | company_type}}</td>
+                    <td>{{company.state_name}}</td>
+                    <td>
+                      <a href="" class="btn btn-sm btn-primary">
+                        view
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

@@ -21,3 +21,8 @@ Route::get('/get-skills-by-id',['uses'=>'HomeController@getSkillsFromId','as'=>'
 Route::get('/get_fields','HomeController@getFieldJson');
 
 Route::get('/get-internships-list','HomeController@getInternshipListJson');
+
+Route::group(['prefix'=>'admin'], function(){
+  Route::get('/companies','APIController@getCompanies');
+  Route::get('/users','APIController@getUsers');
+});
