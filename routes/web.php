@@ -14,6 +14,7 @@
 Route::get('/',['uses'=>'HomeController@index','as'=>'home']);
 Route::get('/about',['uses'=>'HomeController@about','as'=>'about_us']);
 Route::get('/faq',['uses'=>'HomeController@faq','as'=>'faq']);
+Route::get('/error',['uses'=>'HomeController@error','as'=>'error']);
 Route::get('/thanks',['uses'=>'HomeController@showThanksPage','as'=>'thanks_page']);
 Route::get('/login_page',['uses'=>'HomeController@showLoginPage','as'=>'login_page']);
 Route::post('/after-login',['uses'=>'HomeController@postLoginPage','as'=>'post_login']);

@@ -415,8 +415,12 @@ class HomeController extends Controller
       return view('home.thanks');
     }
 
-    public function showLoginPage(){
-    return view('home.login_page');
+    public function showLoginPage()
+    {
+      return view('home.login_page');
+    }
+    public function error(){
+      return view('home.error');
     }
 
     public function postLoginPage(Request $request){
