@@ -10894,6 +10894,20 @@ table.table.table-bordered tr td[rowspan] {
   min-height: calc(100vh - 516px);
   margin-bottom: 0; }
 
+/** FAQ Pages **/
+.faq-wrapper .faq .panel.panel-default {
+  margin-bottom: 15px; }
+
+.faq-wrapper .faq .panel-body {
+  font-size: 16px;
+  line-height: 28px; }
+
+.faq-wrapper .faq .panel-title a {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none; }
+
+/** END FAQ Pages **/
 .register-wrapper {
   display: block;
   padding: 80px 0 120px;

@@ -435,3 +435,24 @@
 }
 
 
+/** FAQ Pages **/
+.faq-wrapper{
+  .faq{
+    .panel.panel-default{
+      margin-bottom: 15px;
+    }
+    .panel-body{
+      font-size: 16px;
+      line-height: 28px;
+    }
+    .panel-title{
+      a{
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/** END FAQ Pages **/
