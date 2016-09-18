@@ -11,26 +11,29 @@
               <thead>
               <tr>
                 <th>#</th>
+                <th>Title</th>
+                <th>Company</th>
                 <th>Field</th>
                 <th>Skills</th>
                 <th>Action</th>
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="internship in intership_fileds">
+              <tr ng-repeat="internship in internship_list">
                 <td></td>
-                <td>{{internship.name}}</td>
+                <td>{{internship.title}}</td>
+                <td>{{internship.company.name}}</td>
+                <td>{{internship.internship_field.name}}</td>
                 <td>
                   <ul class="internship-list">
-                    <li ng-repeat="skill in internship.skills track by $index"> {{skill}}</li>
+                    <li ng-repeat="skill in internship.skills track by $index"> {{skill.name}}</li>
                   </ul>
                 </td>
                 <td>
-                  <form action="">
-                    <a href="" class="btn btn-sm btn-primary">
-                      Edit
-                    </a>
-                  </form>
+                  <a ui-sref="internship({id:internship.id})" class="btn btn-sm btn-primary">View</a>
+                  <a href="" class="btn btn-sm btn-primary">
+                    Edit
+                  </a>
                 </td>
               </tr>
               </tbody>

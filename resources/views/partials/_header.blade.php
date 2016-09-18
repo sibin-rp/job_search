@@ -36,9 +36,15 @@
               <li>
                 <a href="">FAQ</a>
               </li>
+              @if($user->admin)
               <li class="divider"></li>
               <li>
-                <a href="">
+                <a href="{{route('admin.index')}}">Dashboard</a>
+              </li>
+              @endif
+              <li class="divider"></li>
+              <li>
+                <a href="{{route('logout_page')}}">
                   Logout
                 </a>
               </li>

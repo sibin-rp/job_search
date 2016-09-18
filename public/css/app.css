@@ -10425,7 +10425,7 @@ button.toast-close-button {
 /** EOF HOME CAROUSEL **/
 /** REGISTER PAGE **/
 /** EOF REGISTER PAGE **/
-@media all and (max-width: 479px) {
+@media all and (max-width: 499px) {
   .col-xxs-12 {
     width: 100%; }
   .col-xxs-6 {
@@ -10732,10 +10732,10 @@ table.table.table-bordered tr td[rowspan] {
         margin-right: auto;
         max-width: 210px;
         overflow: hidden; } }
-    @media all and (max-width: 479px) {
+    @media all and (max-width: 499px) {
       .home-lists.round-icon li {
         width: 100%; } }
-    @media all and (min-width: 480px) and (max-width: 767px) {
+    @media all and (min-width: 500px) and (max-width: 767px) {
       .home-lists.round-icon li {
         width: 50%; } }
     @media all and (min-width: 768px) and (max-width: 991px) {

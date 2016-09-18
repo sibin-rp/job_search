@@ -25,15 +25,16 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
  * - List all internship fields and skills
  *
  */
-appAccelaar.controller('HomeInternshipController',['$scope', function($scope){
-  $scope.intership_fileds = [
-    {
-      name:'Web Development',
-      skills:[
-        'Java','PHP','Rails', 'Javascript','HTML','CSS2'
-      ]
+appAccelaar.controller('HomeInternshipController',['$scope','InternshipService',
+  function($scope,InternshipService){
+  $scope.internship_list = []
+  InternshipService.getInternshipList().then(function(result){
+    if(result.data.status == 200){
+      $scope.internship_list = result.data.data;
     }
-  ]
+  }, function(error){
+    console.log(error)
+  })
 }]);
 /* EOF HOME INTERNSHIP CONTROLLER */
 

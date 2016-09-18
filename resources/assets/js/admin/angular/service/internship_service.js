@@ -1,6 +1,6 @@
 var appAccelaar = window.appAccelaar || angular.module('appAccelaar',[]);
-appAccelaar.factory('InternshipService',['$http','$q',
-    function($http,$q){
+appAccelaar.factory('InternshipService',['$http','$q','$resource',
+    function($http,$q,$resource){
     var getInternshipList = function(){
         return $q(function(resolve,reject){
             $http({
@@ -13,8 +13,12 @@ appAccelaar.factory('InternshipService',['$http','$q',
             })
         })
     };
-
+    var internships = function(){
+        console.log("Hello");
+        return $resource('/api/admin/internships/:id',{id:'@id'})
+    };
     return {
-        getInternshipList: getInternshipList
+        getInternshipList: getInternshipList,
+        internships:internships
     }
 }]);

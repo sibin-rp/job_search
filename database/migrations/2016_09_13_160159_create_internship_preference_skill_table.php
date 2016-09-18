@@ -17,11 +17,11 @@ class CreateInternshipPreferenceSkillTable extends Migration
       Schema::create('internship_preference_skill', function(Blueprint $table){
         $table->increments('id');
         $table->integer('internship_preference_id')->unsigned();
-        $table->integer('skill_id');
+        $table->integer('skill_id')->unsigned();
         $table->enum('expertise',['beginner','intermediate','expert'])->default('beginner');
 
-        $table->foreign('internship_preference_id')->references('id')
-          ->on('internship_preferences')->onDelete('cascade');
+//        $table->foreign('internship_preference_id')->references('id')
+//          ->on('internship_preferences')->onDelete('cascade');
       });
     }
 

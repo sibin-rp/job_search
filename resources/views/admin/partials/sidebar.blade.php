@@ -15,7 +15,7 @@
         </a>
       </li>
       <li>
-        <a ui-sref="internship_settings">
+        <a ui-sref="internships">
           <i class="pe-7s-user"></i>
           <p>Internship</p>
         </a>

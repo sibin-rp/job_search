@@ -16,8 +16,11 @@ Route::get('/about',['uses'=>'HomeController@about','as'=>'about_us']);
 Route::get('/faq',['uses'=>'HomeController@faq','as'=>'faq']);
 Route::get('/error',['uses'=>'HomeController@error','as'=>'error']);
 Route::get('/thanks',['uses'=>'HomeController@showThanksPage','as'=>'thanks_page']);
-Route::get('/login_page',['uses'=>'HomeController@showLoginPage','as'=>'login_page']);
+Route::get('/login-page',['uses'=>'HomeController@showLoginPage','as'=>'login_page']);
 Route::post('/after-login',['uses'=>'HomeController@postLoginPage','as'=>'post_login']);
+Route::get('/logout-page',['uses'=>'LoginController@logout','as'=>'logout_page']);
+
+
 Route::get('/admin_login',['uses'=>'LoginController@admin_login','as'=>'admin_login']);
 Route::get('/complete-confirmation',['uses'=>'HomeController@completeConfirmation','as'=>'complete_confirmation']);
 Route::post('/login_admin',['uses'=>'LoginController@login_admin','as'=>'login_admin']);
