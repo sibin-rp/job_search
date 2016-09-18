@@ -366,6 +366,30 @@
     line-height: 24px;
     word-spacing: 1.1px;
   }
+
+}
+.about-main-section{
+  ul:not(.description) {
+    margin: 0 0 15px 0;
+    padding: 0;
+    > li {
+      font-size: 16px;
+      line-height: 28px;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+      &:before{
+        font-family: 'Glyphicons Halflings','sans-serif';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        content: '\e013';
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
   .desc-area{
     padding: 15px;
     border: 1px solid #ddd;
@@ -378,10 +402,10 @@
   ul.description{
     margin: 0 0 15px 0;
     padding: 0;
-    li{
+    > li{
       font-size: 15px;
-      line-height: normal;
-      margin-bottom: 10px;
+      line-height: 22px;
+      margin-bottom: 20px;
       position: relative;
       padding-left: 25px;
       list-style: none;
@@ -392,13 +416,18 @@
         line-height: 1;
         content: '\e165';
         position: absolute;
-        top: 0;
+        top: 4px;
         left: 0;
       }
     }
   }
+  ol{
+    li{
+      line-height: 22px;
+      margin-bottom: 10px;
+    }
+  }
 }
-
 .thankspage .jumbotron,
 .complete-reg .jumbotron {
   min-height: calc(100vh - 516px);

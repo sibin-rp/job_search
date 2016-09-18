@@ -96,7 +96,7 @@
               </a>
             </li>
             <li class="clearfix">
-              <a href="{{route('about_us')}}#faqs" class="list-s clearfix">
+              <a href="{{route('faq')}}#faqs" class="list-s clearfix" target="_blank">
                 <div class="main-t clearfix">
                   <div class="main-t-inner">
                     <div class="main-t-content">
