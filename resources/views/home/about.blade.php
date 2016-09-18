@@ -25,10 +25,6 @@
                 <h3 class="title"># For Companies</h3>
                 @include('home.about_us._for_companies')
               </div>
-              <div class="section-c" id="faqs">
-                <h3 class="title"># FAQs</h3>
-                @include('home.about_us._faqs')
-              </div>
             </div>
           </div>
         </div>

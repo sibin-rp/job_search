@@ -15,24 +15,40 @@
             <div class="home-content-section hidden">
               <div class="content-section">
                 <div class="row">
+                  <div class="col-xs-12">
+                    <p class="text-center main-content-text">
+                      We find the best internships for students on the basis of their resume and the recruiters’ requirements.
+                      Information of an internship/intern with the right prospect is made available to students/recruiters
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-xs-12 col-sm-6">
                     <div class="box-section text-right">
-                      <h3>Register as a Student</h3>
+                      <h3 class="hidden">Register as a Student</h3>
 
                       <div class="clearfix"></div>
-                      <a class="btn btn-lg btn-default student register" data-toggle="modal" href='#student-modal-id'>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Register</a>
+                      <a class="btn btn-lg btn-default student register-btn" data-toggle="modal" href='#student-modal-id'>
+                        <span class="glyphicon glyphicon-user icon-main"></span>
+                        <div class="inline-content">
+                          <span>Register</span>
+                          <span>Student</span>
+                        </div>
+                      </a>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="box-section text-left">
-                      <h3>Register as a Student</h3>
+                      <h3 class="hidden">Register as a Student</h3>
 
                       <div class="clearfix"></div>
-                      <a class="btn btn-lg btn-default company register" data-toggle="modal" href='#company-modal-id'>
-                        <span class="glyphicon glyphicon-blackboard"></span>
-                        Register</a>
+                      <a class="btn btn-lg btn-default company register-btn" data-toggle="modal" href='#company-modal-id'>
+                        <span class="glyphicon glyphicon glyphicon-folder-close icon-main"></span>
+                        <div class="inline-content">
+                          <span>Register</span>
+                          <span>Company</span>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>

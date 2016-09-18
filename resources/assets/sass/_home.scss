@@ -26,6 +26,11 @@
   z-index: 10;
   left: 0;
   width: 100%;
+  .main-content-text{
+    font-size: 16px;
+    margin: 30px 0 10px;
+    line-height: 25px;
+  }
   .content-section {
     width: 60%;
     position: relative;
@@ -36,20 +41,31 @@
     color: $HOME_CAROUSLE_CONTENT_TEXT;
   }
   .box-section {
-    a.register {
+
+    a.register-btn {
       margin-top: 30px;
-      font-size: 14px;
+      font-size: 16px;
       pointer-events: all;
       font-weight: bold;
       @include c-border-radius(4px, 4px, 4px, 4px);
       border: none;
       padding: 14px 20px;
       @include c-transition(all, 0.4s, ease-out, 0.05s);
+      .icon-main{
+        font-size: 24px;
+        display: block;
+        clear: both;
+        margin-bottom: 10px;
+        color: $TOP_HEADER_BG;
+      }
       &:hover,
       &:active,
       &:focus {
         background: #378a77;
         color: #fff;
+        .icon-main{
+          color: #fff;
+        }
       }
     }
   }
