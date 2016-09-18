@@ -5,11 +5,21 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
   $stateProvider.state('home',{
     url:'/home',
     templateUrl:'/js/admin/templates/home.html',
-    controller: 'homeController'
+    controller: 'HomeController'
   })
     .state('internship_settings',{
       url:'/internship_settings',
       templateUrl:'/js/admin/templates/internship-settings.html',
-      controller: 'homeInternshipController'
+      controller: 'InternshipController'
+    })
+    .state('company_lis',{
+      url:'/company_lists',
+      templateUrl:'/js/admin/templates/company.html',
+      controller:'CompanyController'
+    })
+    .state('users',{
+      url:'/users',
+      templateUrl:'/js/admin/templates/users.html',
+      controller:'UserController'
     })
 }]);

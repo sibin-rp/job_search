@@ -10673,12 +10673,11 @@ table.table.table-bordered tr td[rowspan] {
 **/
 .loginpage {
   padding-top: 60px;
-  background: #76b852;
+  background: #f3f3f3;
   height: 600px; }
 
 .admin-form {
   position: relative;
-  z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;

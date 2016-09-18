@@ -21,13 +21,13 @@
         </a>
       </li>
       <li>
-        <a href="table.html">
+        <a ui-sref="users">
           <i class="pe-7s-note2"></i>
           <p>Users</p>
         </a>
       </li>
       <li>
-        <a href="typography.html">
+        <a ui-sref="company_lis">
           <i class="pe-7s-news-paper"></i>
           <p>Company</p>
         </a>

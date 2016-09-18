@@ -46,7 +46,8 @@ elixir(mix => {
         './node_modules/angular-resource/angular-resource.min.js',
         './node_modules/angular-ui-router/release/angular-ui-router.min.js',
         './node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-        'admin/light-bootstrap-dashboard.js',
+        './node_modules/angular-smart-table/dist/smart-table.min.js',
+        'admin/light-bootstrap-dashboard.js'
     ],
     'public/js/admin/admin.min.js');
 

@@ -3,7 +3,7 @@
  */
 var appAccelaar = window.appAccelaar || angular.module('appAccelaar',[]);
 
-appAccelaar.controller('homeController',['$scope','InternshipService',
+appAccelaar.controller('HomeController',['$scope','InternshipService',
     function($scope,InternshipService){
     $scope.title = "Internship List";
     $scope.internship_list = [];
@@ -25,8 +25,7 @@ appAccelaar.controller('homeController',['$scope','InternshipService',
  * - List all internship fields and skills
  *
  */
-
-appAccelaar.controller('homeInternshipController',['$scope', function($scope){
+appAccelaar.controller('InternshipController',['$scope', function($scope){
   $scope.intership_fileds = [
     {
       name:'Web Development',
@@ -36,5 +35,16 @@ appAccelaar.controller('homeInternshipController',['$scope', function($scope){
     }
   ]
 }]);
-
 /* EOF HOME INTERNSHIP CONTROLLER */
+
+/* START COMPANY CONTROLLER */
+appAccelaar.controller('CompanyController',['$scope','Company', function($scope,Company){
+  $scope.companies = [];
+  Company.company().query(function(result){
+
+  }, function(error){
+
+  })
+}]);
+
+/* END COMPANY CONTROLLER */

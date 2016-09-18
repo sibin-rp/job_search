@@ -9,23 +9,13 @@
         </li>
         <li>
           <a href="#">
-            Company
-          </a>
-        </li>
-        <li>
-          <a href="#">
             Portfolio
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Blog
           </a>
         </li>
       </ul>
     </nav>
     <p class="copyright pull-right">
-      &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+      &copy; 2016 <a href="{{route('home')}}">Accellar</a>, made with <a href="">redpanthers.co</a>
     </p>
   </div>
 </footer>
