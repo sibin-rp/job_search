@@ -44,6 +44,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof TokenMismatchException){
+            return back()->with(['class'=>'alert-warning','message'=>'CSRF token mismatch errors']);
+        }
         return parent::render($request, $exception);
     }
 

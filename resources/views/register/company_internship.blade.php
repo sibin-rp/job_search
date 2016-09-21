@@ -191,7 +191,9 @@
                                      <div class="col-xs-12 col-sm-4">
                                        <label for="">Choose</label>
                                        <select name="internship[qualification][type]" id="" class="form-control">
-                                         <option value="">CGPA</option>
+                                         <option value="" class="">Select</option> 
+                                         <option value="">CGPA 4</option>
+                                         <option value="" class="">CGPA 10</option> 
                                          <option value="">Percentage</option>
                                        </select>
                                      </div>
