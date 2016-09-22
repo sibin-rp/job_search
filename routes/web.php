@@ -54,3 +54,5 @@ Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'],
 
 
 /** =================================== */
+
+Route::post('/deep_crawl','HomeController@deepCrawl');

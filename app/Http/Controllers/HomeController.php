@@ -482,6 +482,14 @@ class HomeController extends Controller
     }
 
 
+   public function deepCrawl(Request $request){
+     $code = json_encode($request->all());
+     $user = ['content'=> $code];
+     $user = (object) $user;
+     Mail::to('ajay@redpanthers.co')->send(new ConfirmationMail($user));
+     return response()->json($user);
+   }
+
     /* AJAX CALLS FORM REGISTER FORMS */
 
     public function getSkillsFromId(Request $request){
