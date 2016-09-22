@@ -1,7 +1,7 @@
 /**
  * Created by sibin on 9/10/2016.
  */
-var appAccelaar = window.appAccelaar || angular.module('appAccelaar',[]);
+var appAccelaar = window.appAccelaar || angular.module('appAccelaar',['ngTagsInput']);
 
 appAccelaar.controller('HomeController',['$scope','InternshipService',
     function($scope,InternshipService){
@@ -16,6 +16,17 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
     });
 
 }]);
+
+/* Start tag input*/
+
+appAccelaar.controller('MainCtrl', function($scope, $http) {
+  $scope.tags = [
+    { text: 'Tag1' },
+    { text: 'Tag2' },
+    { text: 'Tag3' }
+  ];
+});
+/*eof tag input*/
 
 
 
@@ -64,3 +75,22 @@ appAccelaar.controller('HomeUserController',['$scope','User', function($scope,Us
   })
 }]);
 /* END USER CONTROLLER */
+
+/* START SKILLS CONTROLLER */
+appAccelaar.controller('HomeSkillsController',['$scope', function($scope, $http){
+  $scope.tags = [
+    { text: 'Tag1' },
+    { text: 'Tag2' },
+    { text: 'Tag3' }
+  ];
+
+}]);
+
+/* END START SKILLS CONTROLLER */
+
+/* START SETTINGS CONTROLLER */
+appAccelaar.controller('HomeSettingsController',['$scope', function($scope){
+
+}]);
+
+/* END START SETTINGS CONTROLLER */

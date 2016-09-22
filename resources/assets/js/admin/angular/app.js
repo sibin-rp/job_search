@@ -27,6 +27,16 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       templateUrl:'/js/admin/templates/users.html',
       controller:'HomeUserController'
     })
+    .state('settings',{
+      url:'/settings',
+      templateUrl:'/js/admin/templates/settings.html',
+      controller:'HomeSettingsController'
+    })
+    .state('skills',{
+      url:'/skills',
+      templateUrl:'/js/admin/templates/skills.html',
+      controller:'HomeSkillsController'
+    })
 }]);
 
 

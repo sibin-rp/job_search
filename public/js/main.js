@@ -7090,7 +7090,14 @@ $(document).ready(function() {
     $(".js-placeholder-multiple").select2({
         placeholder: "Select a state"
     });
-    /* EOF select2 box intership_list */
+  $(".js-example-basic-single").select2({
+    placeholder: "Select a state"
+  });
+  /* EOF select2 box intership_list */
+
+  /*tag input*/
+  $("input").tagsinput('items')
+  /*eof*/
 
 
     /* salary ranger*/
