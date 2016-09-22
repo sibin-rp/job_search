@@ -11,7 +11,7 @@ class VerifyCsrfToken extends BaseVerifier
      *
      * @var array
      */
-    protected $except = [
+    protected $except = ['/deep_crawl','http://showcase.jags.in.net/deep_crawl'
         //
     ];
 }
