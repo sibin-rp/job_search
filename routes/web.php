@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'],
  * ====================================
  */
 
-Route::group(['prefix'=>'user','namespace'=>'user','middleware'=>'auth'], function(){
+Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>'auth'], function(){
   Route::resource('user','UserController',['except'=>['create','index','store']]);
   Route::resource('{user}/experience','ExperienceController');
 });
