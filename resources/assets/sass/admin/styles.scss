@@ -41,3 +41,26 @@
   color: #fff;
   margin-bottom: 2px;
 }
+
+.available-skills{
+  display: block;
+  margin: 5px -5px 10px;
+  padding: 0;
+  li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 5px;
+    .btn-info{
+      display: block;
+      padding-right: 25px;
+      position: relative;
+      a{
+        position: absolute!important;
+        float: right;
+        right: 6px;
+        top: 4px;
+        pointer-events: auto;
+      }
+    }
+  }
+}

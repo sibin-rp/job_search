@@ -17,16 +17,7 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
 
 }]);
 
-/* Start tag input*/
 
-appAccelaar.controller('MainCtrl', function($scope, $http) {
-  $scope.tags = [
-    { text: 'Tag1' },
-    { text: 'Tag2' },
-    { text: 'Tag3' }
-  ];
-});
-/*eof tag input*/
 
 
 
@@ -78,11 +69,25 @@ appAccelaar.controller('HomeUserController',['$scope','User', function($scope,Us
 
 /* START SKILLS CONTROLLER */
 appAccelaar.controller('HomeSkillsController',['$scope', function($scope, $http){
-  $scope.tags = [
+  $scope.skill_tags = [
     { text: 'Tag1' },
     { text: 'Tag2' },
     { text: 'Tag3' }
   ];
+
+  $scope.loadTags = function(query){
+    General.getSkills().then(function(result){
+      return  result;
+    }, function(error){
+      console.log(error)
+    })
+  };
+
+  $scope.removeSkill = function(event,skill){
+    console.log(skill)
+    toastr.success("Skill removed")
+    event.stopPropagation();
+  }
 
 }]);
 
