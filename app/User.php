@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,7 +23,7 @@ class User extends Authenticatable
         'live_state','phone_no','role','sex','created_at','updated_at'
     ];
 
-    protected $appends = ['name'];
+    protected $appends = ['name','home_state_name','live_state_name'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -59,6 +60,24 @@ class User extends Authenticatable
       $last_name  = $this->attributes['last_name'];
       if(!$first_name && !$last_name) return "Not available";
       return $first_name.' '.$last_name;
+    }
+
+    public function getHomeStateNameAttribute(){
+      $state_code = $this->attributes['home_state'];
+      $states = Helpers::getStates();
+      if(!isset($state_code) && $state_code==null){
+        return "";
+      }
+      return array_get($states,$state_code);
+    }
+
+    public function getLiveStateNameAttribute(){
+      $state_code = $this->attributes['live_state'];
+      $states = Helpers::getStates();
+      if(!isset($state_code) && $state_code==null){
+        return "";
+      }
+      return array_get($states,$state_code);
     }
 
 }

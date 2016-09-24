@@ -7134,11 +7134,6 @@ $(document).ready(function() {
   });
   /* EOF select2 box intership_list */
 
-  /*tag input*/
-  $("input").tagsinput('items')
-  /*eof*/
-
-
     /* salary ranger*/
     $('#ex1').slider({
         formatter: function(value) {
