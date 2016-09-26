@@ -11547,7 +11547,6 @@ tags-input .autocomplete .suggestion-item em {
   color: #fff;
   margin-bottom: 2px; }
 
-
 .image-item {
   overflow: hidden;
   height: calc(100vh - 80px);
@@ -11576,4 +11575,3 @@ tags-input .autocomplete .suggestion-item em {
         right: 6px;
         top: 4px;
         pointer-events: auto; }
-

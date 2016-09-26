@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\User;
 use App\Http\Controllers\Controller;
 
 class QualificationController extends Controller
@@ -14,9 +15,10 @@ class QualificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
+        $qualifications = $user->student_qualifications();
+        return view('user_edit.qualification.index',compact(['user','qualifications']));
     }
 
     /**

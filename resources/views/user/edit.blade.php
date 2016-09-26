@@ -3,13 +3,7 @@
   <div class="container ">
     <div class="row">
 
-      <div class="col-sm-4 col-md-4 col-lg-3">
-        @if($user->profile_path)
-          <img class="img-responsive im" src="images/im.jpg">
-        @else
-          <img src="http://placehold.it/320" alt="" class="img-responsive img-round">
-        @endif
-      </div>
+      @include('user_partial._sidebar')
       <div class="col-sm-8 col-md-8 col-lg-9">
         <form action="{{route('user.update',$user->id)}}" method="POST">
           {{csrf_field()}}
@@ -70,13 +64,14 @@
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="" class="control-label">Alternate Contract</label>
-                <input type="text" name="user[alternate_contract]"
-                       class="form-control" placeholder="Alternate Contract"></div>
+                <input type="text" name="user[alternate_contact]"
+                       class="form-control" placeholder="Alternate Contract" value="{{$user->alternate_contact}}"></div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
                 <label for="" class="control-label">Alternate Email</label>
-                <input type="text" name="user[alternate_email]" class="form-control" placeholder="Alternate Email">
+                <input type="text" name="user[alternate_email]" class="form-control"
+                       placeholder="Alternate Email" value="{{$user->alternate_email}}">
               </div>
             </div>
           </div>

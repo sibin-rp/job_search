@@ -5,13 +5,7 @@
   <div class="container ">
     <div class="row">
 
-      <div class="col-sm-4 col-md-4 col-lg-3">
-        @if($user->profile_path)
-        <img class="img-responsive im" src="images/im.jpg">
-        @else
-          <img src="http://placehold.it/320" alt="" class="img-responsive img-round">
-        @endif
-      </div>
+      @include('user_partial._sidebar')
       <div class="col-sm-8 col-md-8 col-lg-9">
         <h2>Personal profile</h2>
         <div class="table-responsive">

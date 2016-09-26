@@ -527,4 +527,9 @@ class HomeController extends Controller
   }
 
 
+  public function samplePage(){
+    return view('home.sample_page');
+  }
+
+
 }

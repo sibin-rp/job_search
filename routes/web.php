@@ -21,6 +21,8 @@ Route::post('/after-login',['uses'=>'HomeController@postLoginPage','as'=>'post_l
 Route::get('/logout-page',['uses'=>'LoginController@logout','as'=>'logout_page']);
 
 
+Route::get('sample_page','HomeController@samplePage');
+
 Route::get('/admin_login',['uses'=>'LoginController@admin_login','as'=>'admin_login']);
 Route::get('/complete-confirmation',['uses'=>'HomeController@completeConfirmation','as'=>'complete_confirmation']);
 Route::post('/login_admin',['uses'=>'LoginController@login_admin','as'=>'login_admin']);
@@ -63,6 +65,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'],
 Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>'auth'], function(){
   Route::resource('user','UserController',['except'=>['create','index','store']]);
   Route::resource('{user}/experience','ExperienceController');
+  ROute::resource('{user}/qualification','QualificationController');
 });
 
 /**===================================*/

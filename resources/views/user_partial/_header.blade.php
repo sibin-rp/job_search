@@ -19,7 +19,7 @@
         <li><a href="#">Preferences </a>
 
         </li>
-        <li><a href="#">Qualification </a></li>
+        <li><a href="{{route('qualification.index',$user)}}">Qualification </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('home')}}">Home</a></li>
