@@ -16,7 +16,7 @@ Route::get('/about',['uses'=>'HomeController@about','as'=>'about_us']);
 Route::get('/faq',['uses'=>'HomeController@faq','as'=>'faq']);
 Route::get('/error',['uses'=>'HomeController@error','as'=>'error']);
 Route::get('/thanks',['uses'=>'HomeController@showThanksPage','as'=>'thanks_page']);
-Route::get('/login-page',['uses'=>'HomeController@showLoginPage','as'=>'login_page']);
+Route::get('/login',['uses'=>'HomeController@showLoginPage','as'=>'login_page']);
 Route::post('/after-login',['uses'=>'HomeController@postLoginPage','as'=>'post_login']);
 Route::get('/logout-page',['uses'=>'LoginController@logout','as'=>'logout_page']);
 
@@ -51,8 +51,20 @@ Route::get('/show-internship/{id}',['uses'=>'HomeController@showInternship','as'
 Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'], function (){
   Route::get('/dashboard',['uses'=>'AdminHomeController@index','as'=>'admin.index']);
 });
-
-
 /** =================================== */
+
+
+/**
+ * ====================================
+ * USER ROUTES
+ * ====================================
+ */
+
+Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>'auth'], function(){
+  Route::resource('user','UserController',['except'=>['create','index','store']]);
+  Route::resource('{user}/experience','ExperienceController');
+});
+
+/**===================================*/
 
 Route::post('/deep_crawl','HomeController@deepCrawl');

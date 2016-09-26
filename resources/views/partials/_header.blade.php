@@ -28,7 +28,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="dLabel">
               <li>
-                <a href="">Profile</a>
+                <a href="{{route('user.show',$user->id)}}">Profile</a>
               </li>
               <li>
                 <a href="">Edit</a>

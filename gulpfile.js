@@ -16,6 +16,7 @@ elixir.config.sourcemaps = false;
 elixir(mix => {
     mix.sass('app.scss')
     mix.sass('admin/admin.scss','public/css/admin/admin.css');
+    mix.sass('user/user.scss','public/css/user/user.css');
     mix.scripts([
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
@@ -58,6 +59,13 @@ elixir(mix => {
       'public/js/admin/admin-angular.min.js'
     );
     // mix.copy('./node_modules/bootstrap-sass/assets/fonts/**/*', 'public/fonts');
+
+    // User section
+    mix.scripts([
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+    ],'public/js/user/user.js')
+    // end user section
 
   //mix.browserSync({
   //  proxy: 'job_search.dev',
