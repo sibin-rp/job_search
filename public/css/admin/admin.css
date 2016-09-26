@@ -11547,6 +11547,17 @@ tags-input .autocomplete .suggestion-item em {
   color: #fff;
   margin-bottom: 2px; }
 
+
+.image-item {
+  overflow: hidden;
+  height: calc(100vh - 80px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.sec_nav {
+  background-color: #3B4557; }
+
 .available-skills {
   display: block;
   margin: 5px -5px 10px;
@@ -11565,3 +11576,4 @@ tags-input .autocomplete .suggestion-item em {
         right: 6px;
         top: 4px;
         pointer-events: auto; }
+
