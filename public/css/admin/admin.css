@@ -11363,3 +11363,13 @@ tags-input .autocomplete .suggestion-item em {
 .tag a {
   color: #fff;
   margin-bottom: 2px; }
+
+.image-item {
+  overflow: hidden;
+  height: calc(100vh - 80px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.sec_nav {
+  background-color: #3B4557; }
