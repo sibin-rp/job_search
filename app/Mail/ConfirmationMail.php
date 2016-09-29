@@ -31,7 +31,6 @@ class ConfirmationMail extends Mailable
      */
     public function build()
     {
-        $this->user->token = "hello";
         return $this
             ->from('sibinx7@gmail.com')
             ->view('emails.confirmation_mail')

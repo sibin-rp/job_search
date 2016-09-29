@@ -725,9 +725,6 @@ MODULE ROW section for each content block.
   </table>
 </center>
 <center>
-@if($user->content)
-  {!! $user->content!!}
-@endif 
 </center>
 </body>
 
