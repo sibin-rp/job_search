@@ -7,7 +7,7 @@
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
         <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
-               name="internship[qualification][10_th][type]">
+               name="internship[qualification][10_th][completed]">
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
@@ -40,7 +40,7 @@
       <div class="form-group">
         <label for="" class="control-label">Year of Completion</label>
         <input type="text" class="form-control year-datepicker" placeholder="Year of completion"
-               name="internship[qualification][12_th][type]">
+               name="internship[qualification][12_th][completed]">
       </div>
       <div class="form-group">
         <label for="" class="control-label">Stream</label>

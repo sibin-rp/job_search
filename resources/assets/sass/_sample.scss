@@ -1,28 +1,29 @@
-.login-modal{
-  .modal-dialog{
+@import "common/mixins";
+.login-modal {
+  .modal-dialog {
     max-width: 480px;
   }
-  .modal-body{
+  .modal-body {
     padding: 0;
     background: #f9f9f9;
     position: relative;
-    .close{
+    .close {
       position: absolute;
       right: 5px;
       top: 5px;
     }
-    .tab-content{
+    .tab-content {
       padding: 20px;
       margin-bottom: 0;
     }
-    ul.login-nav{
+    ul.login-nav {
       margin: 0;
       padding: 0;
-      li{
+      li {
         width: 50%;
         float: left;
         display: block;
-        a{
+        a {
           display: block;
           margin: 0;
           width: 100%;
@@ -30,11 +31,96 @@
           background: #eee;
           font-size: 18px;
           text-align: center;
+          color: #555;
+          font-weight: bold;
         }
-        &.active{
-          a{
+        &.active {
+          a {
             background: #f9f9f9;
           }
+        }
+      }
+    }
+  }
+}
+.divider{
+  display: block;
+  position: relative;
+  margin: 40px 0;
+  border: 1px solid #eee;
+  width: 100%;
+  &:after{
+    position: absolute;
+    content: 'Or';
+    top: -20px;
+    margin-left: -30px;
+    left: 50%;
+    width: 60px;
+    height: 40px;
+    font-size: 24px;
+    text-transform: uppercase;
+    background: #f9f9f9;
+    color: #aaa;
+    text-align: center;
+  }
+}
+.c-social-media {
+  display: table;
+  margin: 20px auto;
+  padding: 0;
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 5px;
+    &:last-child{
+      margin-right: 0;
+    }
+    a {
+      text-align: center;
+      font-size: 16px;
+      display: block;
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      padding: 10px;
+      @include c-border-radius(4px, 4px, 4px, 4px);
+      border-width: 1px;
+      border-style: solid;
+      @include c-transition(all, 0.3s, ease, 0.03s);
+    }
+    &.facebook {
+      a {
+        background: #3b5998;
+        border-color: darken(#3b5998, 5%);
+        &:hover, &:active, &:focus {
+          background: darken(#3b5998, 5%);
+        }
+      }
+    }
+    &.twitter {
+      a {
+        background: #1b95e0;
+        border-color: darken(#1b95e0, 5%);
+        &:hover, &:active, &:focus {
+          background: darken(#1b95e0, 5%);
+        }
+      }
+    }
+    &.google {
+      a {
+        background: #db4437;
+        border-color: darken(#db4437, 5%);
+        &:hover, &:active, &:focus {
+          background: darken(#db4437, 5%);
+        }
+      }
+    }
+    &.linkedin {
+      a {
+        background: #287bbc;
+        border-color: darken(#287bbc, 5%);
+        &:hover, &:active, &:focus {
+          background: darken(#3b5998, 5%);
         }
       }
     }
