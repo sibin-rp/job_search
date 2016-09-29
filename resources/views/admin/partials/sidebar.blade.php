@@ -32,6 +32,24 @@
           <p>Company</p>
         </a>
       </li>
+      <li>
+        <a ui-sref="skills">
+          <i class="pe-7s-note2"></i>
+          <p>Skills</p>
+        </a>
+      </li>
+      <li>
+        <a ui-sref="singleuser">
+          <i class="pe-7s-note2"></i>
+          <p>Single User</p>
+        </a>
+      </li>
+      <li>
+        <a ui-sref="settings">
+          <i class="pe-7s-note2"></i>
+          <p>Settings</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

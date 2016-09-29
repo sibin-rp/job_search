@@ -1,7 +1,7 @@
 /**
  * Created by sibin on 9/10/2016.
  */
-var appAccelaar = window.appAccelaar || angular.module('appAccelaar',[]);
+var appAccelaar = window.appAccelaar || angular.module('appAccelaar',['ngTagsInput']);
 
 appAccelaar.controller('HomeController',['$scope','InternshipService',
     function($scope,InternshipService){
@@ -16,6 +16,8 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
     });
 
 }]);
+
+
 
 
 
@@ -64,3 +66,59 @@ appAccelaar.controller('HomeUserController',['$scope','User', function($scope,Us
   })
 }]);
 /* END USER CONTROLLER */
+
+/* START SKILLS CONTROLLER */
+appAccelaar.controller('HomeSkillsController',['$scope', function($scope, $http){
+  $scope.skill_tags = [
+    { text: 'Tag1' },
+    { text: 'Tag2' },
+    { text: 'Tag3' }
+  ];
+
+  $scope.loadTags = function(query){
+    General.getSkills().then(function(result){
+      return  result;
+    }, function(error){
+      console.log(error)
+    })
+  };
+
+  $scope.removeSkill = function(event,skill){
+    console.log(skill)
+    toastr.success("Skill removed")
+    event.stopPropagation();
+  }
+
+}]);
+
+/* END START SKILLS CONTROLLER */
+
+/* START SETTINGS CONTROLLER */
+appAccelaar.controller('HomeSettingsController',['$scope', function($scope){
+
+}]);
+
+/* END START SETTINGS CONTROLLER */
+
+/* START SINGLEUSER CONTROLLER */
+appAccelaar.controller('HomeSingleuserController',['$scope', function($scope){
+
+    $scope.tabs = [
+      { title:'Dynamic Title 1', content:'Dynamic content 1' },
+      { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+    ];
+
+    $scope.alertMe = function() {
+      setTimeout(function() {
+        $window.alert('You\'ve selected the alert tab!');
+      });
+    };
+
+    $scope.model = {
+      name: 'Tabs'
+    };
+  $scope.navbarCollapsed = true;
+
+}]);
+
+/* END START SINGLEUSER CONTROLLER */

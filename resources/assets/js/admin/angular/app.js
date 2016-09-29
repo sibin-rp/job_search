@@ -1,4 +1,4 @@
-var appAccelaar = window.appAccelaar = angular.module('appAccelaar',['ngResource','ui.router','ui.bootstrap']);
+var appAccelaar = window.appAccelaar = angular.module('appAccelaar',['ngResource','ui.router','ui.bootstrap','ngTagsInput']);
 
 appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $urlRouterProvider.otherwise('/home');
@@ -26,6 +26,21 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       url:'/users',
       templateUrl:'/js/admin/templates/users.html',
       controller:'HomeUserController'
+    })
+    .state('settings',{
+      url:'/settings',
+      templateUrl:'/js/admin/templates/settings.html',
+      controller:'HomeSettingsController'
+    })
+    .state('skills',{
+      url:'/skills',
+      templateUrl:'/js/admin/templates/skills.html',
+      controller:'HomeSkillsController'
+    })
+    .state('singleuser',{
+      url:'/singleuser',
+      templateUrl:'/js/admin/templates/singleuser.html',
+      controller:'HomeSingleuserController'
     })
 }]);
 

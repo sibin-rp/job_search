@@ -6,3 +6,77 @@
     margin-right: 5px;
   }
 }
+
+
+
+.re-skills {
+
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+
+
+.tag {
+  font-size: 14px;
+  padding: .3em .4em .4em;
+  margin: 0 .1em;
+}
+.tag a {
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.tag a:hover {
+  opacity: 1.0
+}
+.tag .remove {
+  vertical-align: bottom;
+  top: 0;
+}
+.tag a {
+  margin: 0 0 0 .3em;
+}
+.tag a  {
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+
+
+.image-item {
+  overflow: hidden;
+  height: calc(100vh - 80px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+  .sec_nav{
+    background-color: #3B4557;
+  }
+
+.available-skills{
+  display: block;
+  margin: 5px -5px 10px;
+  padding: 0;
+  li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 5px;
+    .btn-info{
+      display: block;
+      padding-right: 25px;
+      position: relative;
+      a{
+        position: absolute!important;
+        float: right;
+        right: 6px;
+        top: 4px;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
