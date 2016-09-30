@@ -17,5 +17,6 @@
   @include('user_partial._header')
   @yield('content')
   @include('user_partial._footer')
+  @yield('modal')
 </body>
 </html>

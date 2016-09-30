@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+
+use App\StudentQualification;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,7 +19,7 @@ class QualificationController extends Controller
      */
     public function index(User $user)
     {
-        $qualifications = $user->student_qualifications();
+        $qualifications = $user->normal_qualification();
         return view('user_edit.qualification.index',compact(['user','qualifications']));
     }
 
@@ -37,9 +39,23 @@ class QualificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         //
+        $qualification = $request->get('internship')['qualification'];
+        $qualification  = array_filter($qualification);
+        if(is_array($qualification)){
+          $type = key($qualification);
+          $qualification = $qualification[$type];
+          $qualification['type'] = $type;
+          try{
+            $user->student_qualifications()->create($qualification);
+            return redirect()->route('qualification.index',['user'=>$user]);
+          }catch (\Exception $e){
+            dd($e->getMessage());
+          }
+
+        }
     }
 
     /**
@@ -59,9 +75,10 @@ class QualificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, StudentQualification $qualification)
     {
         //
+      return view('user_edit.qualification.edit',compact(['user','qualification']));
     }
 
     /**
@@ -71,19 +88,31 @@ class QualificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user, StudentQualification $qualification)
     {
-        //
+        $qualification_data = $request->get('qualification');
+        $qualification->update($qualification_data);
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+  /**
+   * @param User $user
+   * @param StudentQualification $qualification
+   * @return \Illuminate\Http\RedirectResponse
+   */
+    public function destroy(User $user, StudentQualification $qualification)
     {
         //
+        try{
+          if($qualification){
+            $qualification->delete();
+            return redirect()->back()->with(['message'=>'Successfully deleted','class'=>'alert-success']);
+          }
+        }catch (\Exception $e){
+          return redirect()->back()->with([
+            'message' => $e->getMessage(),
+            'class'   => 'alert-danger'
+          ]);
+        }
     }
 }

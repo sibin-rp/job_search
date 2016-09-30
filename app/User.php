@@ -80,4 +80,9 @@ class User extends Authenticatable
       return array_get($states,$state_code);
     }
 
+
+  public  function normal_qualification(){
+    return StudentQualification::whereNotIn('type',['arts','sports','academic']);
+  }
+
 }

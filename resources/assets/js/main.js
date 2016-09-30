@@ -119,6 +119,7 @@ $(document).ready(function() {
           },1000)
         }
       }, function(error){
+      }, function(error){
 
       })
     })

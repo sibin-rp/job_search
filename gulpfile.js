@@ -64,7 +64,10 @@ elixir(mix => {
     mix.scripts([
       './node_modules/jquery/dist/jquery.min.js',
       './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    ],'public/js/user/user.js')
+      './node_modules/moment/moment.js',
+      './node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+      'user/user.js'
+    ],'public/js/user/user.js');
     // end user section
 
   //mix.browserSync({

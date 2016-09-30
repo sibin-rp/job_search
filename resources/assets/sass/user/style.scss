@@ -12,3 +12,30 @@
     position:absolute;
     top:50px; 
 }
+
+/** OVERRIDE BOOTSTRAP CLASSES */
+.form-horizontal{
+    .control-label.text-left{
+        text-align: left;
+    }
+    .form-group.form-group-reset{
+        .form-group{
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
+.c-list-group{
+    .list-group-item{
+        padding: 0;
+        a{
+            padding: 10px 15px;
+            position: relative;
+            display: block;
+            span{
+                float: right;
+            }
+        }
+    }
+}
+/** EOF OVERRIDE BOOTSTRAP CLASSES */
