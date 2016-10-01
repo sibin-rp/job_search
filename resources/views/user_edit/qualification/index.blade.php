@@ -125,9 +125,47 @@
                               <td>{{$qualification->mark}} ({{$qualification->mark_type_name}})</td>
                             </tr>
                           @elseif($qualification->type == 'phd')
-
+                            <tr>
+                              <td>College Name</td>
+                              <td>{{$qualification->college_name}}</td>
+                            </tr>
+                            <tr>
+                              <td>Start Year</td>
+                              <td>{{$qualification->started_at}}</td>
+                            </tr>
+                            <tr>
+                              <td>Completed Year</td>
+                              <td>{{$qualification->completed_at}}</td>
+                            </tr>
+                            <tr>
+                              <td>Steam</td>
+                              <td>{{$qualification->stream}}</td>
+                            </tr>
+                            <tr>
+                              <td>Performance</td>
+                              <td>{{$qualification->mark}} ({{$qualification->mark_type_name}})</td>
+                            </tr>
                           @elseif($qualification->type == 'diploma')
-
+                            <tr>
+                              <td>College Name</td>
+                              <td>{{$qualification->college_name}}</td>
+                            </tr>
+                            <tr>
+                              <td>Started at</td>
+                              <td>{{$qualification->started_at}}</td>
+                            </tr>
+                            <tr>
+                              <td>Completed at</td>
+                              <td>{{$qualification->completed_at}}</td>
+                            </tr>
+                            <tr>
+                              <td>Stream</td>
+                              <td>{{$qualification->stream}}</td>
+                            </tr>
+                            <tr>
+                              <td>Performance</td>
+                              <td>{{$qualification->mark}} ({{$qualification->mark_type_name}})</td>
+                            </tr>
                           @endif
                           </tbody>
                         </table>
