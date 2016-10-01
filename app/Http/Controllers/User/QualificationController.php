@@ -19,8 +19,15 @@ class QualificationController extends Controller
      */
     public function index(User $user)
     {
+
         $qualifications = $user->normal_qualification();
-        return view('user_edit.qualification.index',compact(['user','qualifications']));
+        $extra_qualifications = [];
+        $tmp_extra_qualifications = $user->extra_qualification();
+        foreach ($tmp_extra_qualifications as $key =>$value){
+          $extra_qualifications[$value['type']][$key] = $value;
+        }
+        return view('user_edit.qualification.index',compact(['user','qualifications',
+          'extra_qualifications']));
     }
 
     /**
@@ -42,7 +49,15 @@ class QualificationController extends Controller
     public function store(Request $request, User $user)
     {
         //
-        $qualification = $request->get('internship')['qualification'];
+        $normal_qualification = $request->get('internship');
+        $extra_qualification = $request->get('extra');
+        if(isset($normal_qualification)){
+          $qualification = $request->get('internship')['qualification'];
+        }else if(isset($extra_qualification)){
+          $qualification = $request->get('extra');
+        }else{
+          return redirect()->back()->with(['class'=>'alert-danger','message'=>"Please check your fields"]);
+        }
         $qualification  = array_filter($qualification);
         if(is_array($qualification)){
           $type = key($qualification);
@@ -54,7 +69,6 @@ class QualificationController extends Controller
           }catch (\Exception $e){
             dd($e->getMessage());
           }
-
         }
     }
 

@@ -139,7 +139,7 @@
                             </tr>
                             <tr>
                               <td>Steam</td>
-                              <td>{{$qualification->stream}}</td>
+                              <td>{{strtoupper(str_replace('_',' ',$qualification->stream))}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>
@@ -160,7 +160,7 @@
                             </tr>
                             <tr>
                               <td>Stream</td>
-                              <td>{{$qualification->stream}}</td>
+                              <td>{{strtoupper(str_replace('_',' ',$qualification->stream))}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>
@@ -194,6 +194,90 @@
             </div>
           </div>
           <div class="tab-pane fade" id="tab3">
+            <div class="page-header">
+              <h4>
+                Academic/Sports/Arts
+                <a href="#extra_qualification_modal" class="pull-right" data-toggle="modal">
+                  <span class="glyphicon glyphicon-plus"></span>
+                  Add
+                </a>
+              </h4>
+            </div>
+            @if($extra_qualifications)
+              @foreach($extra_qualifications as $key => $extra)
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4>@qualificationType($key)</h4>
+                  </div>
+                  <div class="panel-body">
+                    @foreach($extra as $extra_2)
+                      <div class="modal fade" id="edit_extra_qua-{{$extra_2->id}}">
+                      	<div class="modal-dialog">
+                      		<div class="modal-content">
+                            <form action="{{route('qualification.update',['user'=> $user,'qualification'=> $extra_2])}}" method="post">
+                              {{csrf_field()}}
+                              {{method_field('PUT')}}
+                            <div class="modal-header">
+                      				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      				<h4 class="modal-title">@qualificationType($key) {{$loop->index + 1}}</h4>
+                      			</div>
+                      			<div class="modal-body">
+                              <div class="form-group"><label for="" class="control-label">Title</label><input
+                                  type="text" class="form-control" name="qualification[title]" value="{{$extra_2->title}}"></div>
+                              <div class="form-group"><label for="" class="control-label">Link</label>
+                                <input type="text" class="form-control" name="qualification[link]" value="{{$extra_2->link}}">
+                              </div>
+                              <div class="form-group"><label for="" class="control-label">Description</label>
+                                <textarea name="qualification[description]" id="" cols="30" class="form-control"
+                                          rows="3">{{$extra_2->description}}</textarea></div>
+                      			</div>
+                      			<div class="modal-footer">
+                      				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      				<button type="submit" class="btn btn-primary">Save changes</button>
+                      			</div>
+                            </form>
+                      		</div><!-- /.modal-content -->
+                      	</div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
+                      <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                          <th colspan="2">
+                            @qualificationType($key) {{$loop->index + 1}}
+                            <form action="{{route('qualification.destroy',['user'=> $user,'qualification'=> $extra_2])}}"
+                                  class="pull-right" method="post">
+                              {{csrf_field()}}
+                              {{method_field('DELETE')}}
+                              <a href="#edit_extra_qua-{{$extra_2->id}}" class="btn btn-xs btn-primary" data-toggle="modal">Edit</a>
+                              <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>Title</td>
+                          <td>{{$extra_2->title}}</td>
+                        </tr>
+                        <tr>
+                          <td>Link</td>
+                          <td>
+                            @if($extra_2->link)
+                              <a href="{{$extra_2->link}}">{{$extra_2->link}}</a>
+                            @endif
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td>{{$extra_2->description}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    @endforeach
+                  </div>
+                </div>
+              @endforeach
+            @endif
           </div>
         </div>
       </div>
@@ -239,4 +323,48 @@
     	</div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   @endforeach
+  <!-- Extra Qualification modal -->
+  <div class="modal fade" id="extra_qualification_modal">
+  	<div class="modal-dialog">
+  		<div class="modal-content">
+        <form action="{{route('qualification.store',['user'=> $user])}}" method="post" id="add_extra_qualification">
+          {{csrf_field()}}
+          {{method_field('POST')}}
+  			<div class="modal-header">
+  				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  				<h4 class="modal-title">Add other Qualification</h4>
+  			</div>
+  			<div class="modal-body">
+          <div class="form-group">
+            <label for="" class="control-label">Type</label>
+            <select name="change_type" id="" class="form-control">
+              <option value="academic" selected="selected">Academic</option>
+              <option value="sports">Sports</option>
+              <option value="arts">Arts</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="" class="control-label">Title</label>
+            <input type="text" class="form-control change-name" placeholder="Title" name="extra[other][title]">
+          </div>
+          <div class="form-group"><label for="" class="control-label">Link</label>
+            <input type="text" class="form-control change-name" placeholder="Link" name="extra[other][link]">
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label">Description</label>
+            <textarea name="extra[other][description]" id="" cols="30" rows="3" class="form-control change-name"
+            placeholder="Description"></textarea>
+          </div>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  				<button type="submit" class="btn btn-primary">Add</button>
+  			</div>
+        </form>
+  		</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  <!-- eof extra qualification modal -->
+  
+  
 @stop
