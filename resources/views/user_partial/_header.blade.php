@@ -16,13 +16,11 @@
       </div>
       <ul class="nav navbar-nav">
 
-        <li><a href="#">Preferences </a>
-
-        </li>
+        <li><a href="{{route('preference.index',$user)}}">Preferences</a></li>
         <li><a href="{{route('qualification.index',$user)}}">Qualification </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('home')}}">Home</a></li>
+        <li><a href="{{route('user.show',$user)}}">Home</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Settings<span
               class="caret"></span></a>
           <ul class="dropdown-menu">

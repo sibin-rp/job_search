@@ -17,4 +17,8 @@ class InternshipField extends Model
   public function internships(){
     return $this->hasMany('App\Internship');
   }
+
+  public function internship_preferences(){
+    return $this->hasMany('App\InternshipPreference');
+  }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\InternshipPreference;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,9 +16,12 @@ class InternshipPreferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         //
+        $preferences = $user->internship_preferences();
+
+        return view('user_edit.preference.index',compact(['preferences','user']));
     }
 
     /**
@@ -46,9 +51,10 @@ class InternshipPreferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user, InternshipPreference $preference)
     {
         //
+      return view('user_edit.preference.show',compact(['user','preference']));
     }
 
     /**

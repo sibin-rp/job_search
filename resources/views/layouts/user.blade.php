@@ -15,7 +15,12 @@
 
 <body class="user-page">
   @include('user_partial._header')
-  @yield('content')
+  <div class="container ">
+    <div class="row">
+      @include('user_partial._sidebar')
+      @yield('content')
+    </div>
+  </div>
   @include('user_partial._footer')
   @yield('modal')
 </body>

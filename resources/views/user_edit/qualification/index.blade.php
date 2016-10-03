@@ -5,9 +5,7 @@
     $available_options = [];
   @endphp
 
-  <div class="container ">
-    <div class="row">
-      @include('user_partial._sidebar')
+
       <div class="col-xs-12 col-sm-8">
         <!-- TAB NAVIGATION -->
         <ul class="nav nav-tabs" role="tablist">
@@ -281,8 +279,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 @stop
 @section('modal')
   @foreach($diff_array as $add_modal)
