@@ -29,9 +29,10 @@ class InternshipPreferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
         //
+        return view('user_edit.preference.create',compact(['user']));
     }
 
     /**
