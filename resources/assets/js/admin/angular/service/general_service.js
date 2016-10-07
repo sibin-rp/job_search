@@ -31,5 +31,15 @@ appAccelaar.service('General',['$http','$q', function($http,$q){
         reject(error)
       })
     });
+  },
+  this.removeSkill = function(skill){
+    return $q(function(resolve,reject){
+      var url = "/api/admin/delete_skill_by_id";
+      $http.post(url,skill).then(function(result){
+        resolve(result)
+      }, function(error){
+        reject(error)
+      })
+    })
   }
 }]);

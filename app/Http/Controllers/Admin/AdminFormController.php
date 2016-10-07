@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\InternshipField;
+use App\Skill;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,6 +27,21 @@ class AdminFormController extends Controller
         'status' => 200,
         'message' => 'Skills saved successfully'
       ]);
+    }catch (\Exception $e){
+      return response()->json(['status'=> 405,'message'=> $e->getMessage()]);
+    }
+
+  }
+
+  public function deleteSkillById(Request $request){
+    try{
+      if(!$request->get('id')) throw new \Exception("Skill ID required");
+      $skill = Skill::destroy($request->get('id'));
+      if($skill){
+        return response()->json(['status'=> 200,'message'=>'Skill deleted']);
+      }else{
+        return response()->json(['status'=> 405,'message'=>'Skill may be already deleted']);
+      }
     }catch (\Exception $e){
       return response()->json(['status'=> 405,'message'=> $e->getMessage()]);
     }

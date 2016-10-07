@@ -81,6 +81,11 @@ appAccelaar.controller('HomeSkillsController',['$scope','General',
   });
 
   $scope.fetchSkills = function(id){
+    $scope.$broadcast('skill_re_fetch',id)
+  };
+
+  $scope.$on('skill_re_fetch', function(event,id){
+    console.log(id)
     General.getSkillsById(id).then(function(result){
       if(result.status == 200){
         if(result.data.status == 200){
@@ -93,7 +98,7 @@ appAccelaar.controller('HomeSkillsController',['$scope','General',
     }, function(error){
       console.log(error)
     })
-  };
+  });
 
   $scope.saveTagsToField = function(){
     if($scope.skill_tag_add){
@@ -124,8 +129,15 @@ appAccelaar.controller('HomeSkillsController',['$scope','General',
   };
 
   $scope.removeSkill = function(event,skill){
-    console.log(skill)
-    toastr.success("Skill removed")
+    General.removeSkill(skill).then(function(result){
+      if(result.status == 200 && result.data.status == 200){
+        $scope.$broadcast('skill_re_fetch',skill.internship_field_id)
+      }
+      toastr.success("Skill removed")
+    }, function(error){
+
+    });
+
     event.stopPropagation();
   }
 
