@@ -26,8 +26,8 @@
             <div class="col-xs-12 col-sm-6 col-lg-6">
               <h5>Skill Details</h5>
 
-              <ul class="available-skills clearfix" ng-repeat="skill in skill_tags">
-                <li>
+              <ul class="available-skills clearfix" >
+                <li ng-repeat="skill in skill_tags">
                   <div class="btn btn-info btn-sm">{{skill.name}}<a class="text-danger" ng-click="removeSkill($event,skill)" href="javascript:void(0)">X</a></div>
                 </li>
               </ul>

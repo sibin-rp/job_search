@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\InternshipField;
 use App\InternshipPreference;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class InternshipPreferenceController extends Controller
     public function create(User $user)
     {
         //
-        return view('user_edit.preference.create',compact(['user']));
+        $internship_fields = InternshipField::all();
+        return view('user_edit.preference.create',compact(['user','internship_fields']));
     }
 
     /**

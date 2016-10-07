@@ -26,4 +26,7 @@ Route::group(['prefix'=>'admin'], function(){
   Route::get('/companies','APIController@getCompanies');
   Route::get('/users','APIController@getUsers');
   Route::resource('/internships','Admin\InternshipAPIController');
+
+  /* POST ROUTES */
+  Route::post('/save_skills_by_id','Admin\AdminFormController@saveSkillsByField');
 });

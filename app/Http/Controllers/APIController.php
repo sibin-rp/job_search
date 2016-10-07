@@ -51,4 +51,21 @@ class APIController extends Controller
       return [];
     }
   }
+
+
+  public function getInternshipFields(){
+    $internship_fields = [];
+    try{
+      $internship_fields =  InternshipField::all();
+      return response()->json([
+        'status' => 200,
+        'data'    => $internship_fields
+      ]);
+    }catch(\Exception $e){
+      return response()->json([
+        'status' => 401,
+        'data'   => []
+      ]);
+    }
+  }
 }

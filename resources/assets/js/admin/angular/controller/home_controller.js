@@ -68,13 +68,53 @@ appAccelaar.controller('HomeUserController',['$scope','User', function($scope,Us
 /* END USER CONTROLLER */
 
 /* START SKILLS CONTROLLER */
-appAccelaar.controller('HomeSkillsController',['$scope', function($scope, $http){
-  $scope.skill_tags = [
-    { text: 'Tag1' },
-    { text: 'Tag2' },
-    { text: 'Tag3' }
-  ];
+appAccelaar.controller('HomeSkillsController',['$scope','General',
+  function($scope, General){
+  $scope.available_fields = [];
+  $scope.skill_tags =  [];
+  General.getSkills().then(function(result){
+    if(result.status == 200){
+      $scope.available_fields = result.data
+    }
+  }, function(error){
+    console.log(error)
+  });
 
+  $scope.fetchSkills = function(id){
+    General.getSkillsById(id).then(function(result){
+      if(result.status == 200){
+        if(result.data.status == 200){
+          $scope.skill_tags = result.data.data;
+        }else{
+          $scope.skill_tags = [];
+
+        }
+      }
+    }, function(error){
+      console.log(error)
+    })
+  };
+
+  $scope.saveTagsToField = function(){
+    if($scope.skill_tag_add){
+      General.saveSkillById($scope.get_field_id, $scope.skill_tag_add).then(function(result){
+        if(result.status == 200 && result.data.status == 200){
+          $scope.skill_tag_add = null;
+          General.getSkillsById($scope.get_field_id).then(function(result){
+            if(result.status == 200){
+              if(result.data.status == 200){
+                $scope.skill_tags = result.data.data;
+              }
+            }
+          }, function(error){
+            console.log(error)
+          })
+        }
+      }, function(error){
+        console.log(error)
+      })
+    }
+  };
   $scope.loadTags = function(query){
     General.getSkills().then(function(result){
       return  result;

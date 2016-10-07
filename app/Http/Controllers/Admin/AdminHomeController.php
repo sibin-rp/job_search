@@ -10,6 +10,7 @@ namespace  App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\InternshipField;
 
 class AdminHomeController extends Controller{
   public function __construct(){
@@ -22,4 +23,5 @@ class AdminHomeController extends Controller{
   public function help(){
 
   }
+
 }

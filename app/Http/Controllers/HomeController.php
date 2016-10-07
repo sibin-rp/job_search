@@ -495,10 +495,16 @@ class HomeController extends Controller
     public function getSkillsFromId(Request $request){
       try{
         $id = $request->get('id');
-        $skills =  InternshipField::find($id)->skills()->get()->toJson();
+        if($id==null || trim($id)=="") throw new \Exception("Id is null");
+        $skills =  InternshipField::find($id)->skills();
+        if($skills->count() > 0){
+          $skills = $skills->get()->toJson();
+        }else{
+          $skills = "";
+        }
         $skills = json_decode($skills);
         return response()->json([
-          'status' => 200,
+          'status' => sizeof($skills)>0?200:405,
           'data'   => $skills?$skills:[]
         ]);
       }catch(\Exception $e){

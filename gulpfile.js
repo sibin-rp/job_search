@@ -73,4 +73,6 @@ elixir(mix => {
   //mix.browserSync({
   //  proxy: 'job_search.dev',
   //})
+
+  mix.copy('resources/assets/js/admin/templates','public/js/admin/templates');
 });
