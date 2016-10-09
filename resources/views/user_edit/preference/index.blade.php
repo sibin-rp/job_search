@@ -27,11 +27,11 @@
             <tbody>
             <tr>
               <td>Company Type</td>
-              <td>{{$preference->company_type}}</td>
+              <td>{{$preference->company_type_name}}</td>
             </tr>
             <tr>
               <td>Duration</td>
-              <td>{{$preference->duration}}</td>
+              <td>{{$preference->duration_type}}</td>
             </tr>
             <tr>
               <td>City</td>
@@ -41,7 +41,7 @@
               <td>Availability</td>
               <td>
                 @if($preference->from_date || $preference->to_date)
-                <table class="table table-stripped">
+                <table class="table table-bordered">
                   <tbody>
                   <tr>
                     <td>Available From</td>

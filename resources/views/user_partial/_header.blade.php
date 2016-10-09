@@ -12,10 +12,10 @@
     <div class="container">
 
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{route('experience.index',$user->id)}}">Internship</a>
+        <a class="navbar-brand" href="{{route('experience.index',$user->id)}}">Home</a>
       </div>
       <ul class="nav navbar-nav">
-
+        <li><a href="{{route('experience.index',$user->id)}}">Experience</a></li>
         <li><a href="{{route('preference.index',$user)}}">Preferences</a></li>
         <li><a href="{{route('qualification.index',$user)}}">Qualification </a></li>
       </ul>

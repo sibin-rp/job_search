@@ -4,7 +4,9 @@
       <div class="col-xs-12 col-sm-8">
         <div class="page-header">
           <h2>
-            Internship Preference >> {{$preference->internship_field->name}}
+            <small>
+              Internship Preference >>
+            </small> {{$preference->internship_field->name}}
           </h2>
         </div>
         <table class="table table-bordered">
