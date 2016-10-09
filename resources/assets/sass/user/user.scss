@@ -3,3 +3,13 @@ $icon-font-path : '../../fonts/bootstrap/';
 @import "node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build";
 @import "bootstrap-theme";
 @import "style";
+
+#skill-box-list{
+  display: block;
+  margin: 0 0 15px;
+  padding: 0;
+  li{
+    display: inline-block;
+    margin: 0 5px 5px 0;
+  }
+}

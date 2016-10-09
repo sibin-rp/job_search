@@ -6302,14 +6302,14 @@ button.close {
   background-repeat: repeat-x;
   border-color: #dcdcdc;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1); }
-.top {
+.nimmy-top {
   height: 70px;
   background: #3B4557; }
 
-.top1 {
+.nimmy-top1 {
   background-color: lightgray; }
 
-.im {
+.nimmy-im {
   position: absolute;
   top: 50px; }
 
@@ -6331,3 +6331,10 @@ button.close {
       float: right; }
 
 /** EOF OVERRIDE BOOTSTRAP CLASSES */
+#skill-box-list {
+  display: block;
+  margin: 0 0 15px;
+  padding: 0; }
+  #skill-box-list li {
+    display: inline-block;
+    margin: 0 5px 5px 0; }

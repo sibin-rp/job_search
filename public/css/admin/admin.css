@@ -11564,7 +11564,8 @@ tags-input .autocomplete .suggestion-item em {
   .available-skills li {
     display: inline-block;
     list-style: none;
-    padding: 0 5px; }
+    padding: 0 5px;
+    margin-bottom: 10px; }
     .available-skills li .btn-info {
       display: block;
       padding-right: 25px;
