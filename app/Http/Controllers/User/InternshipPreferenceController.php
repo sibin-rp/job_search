@@ -133,8 +133,16 @@ class InternshipPreferenceController extends Controller
    * @param  int $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(User $user, InternshipPreference $preference)
   {
     //
+    try{
+      $preference->delete();
+      return redirect()->route('preference.index',compact(['user']))
+        ->with(['class'=>'alert-success','message'=>'Internship preference deleted successfully']);
+    }catch (\Exception $e){
+      return redirect()->route('preference.index',compact(['user'=> $user]))
+        ->with(['class'=>'alert-info','message'=>'Unknown error occurred. itm could not remove']);
+    }
   }
 }
