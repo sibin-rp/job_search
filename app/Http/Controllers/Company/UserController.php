@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Company;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -8,20 +8,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ExperienceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Request $request)
+    public function index()
     {
-        $experience = null;
-        if($request->get('exp_type')){
-            $experience = $user->experiences()->where(['experience_type'=> $request->get('exp_type')])->get();
-        }
-        return view('user_edit.experience.index',compact(['user','experience']));
+        //
     }
 
     /**
@@ -29,7 +25,7 @@ class ExperienceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create()
     {
         //
     }
@@ -40,7 +36,7 @@ class ExperienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user,Request $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,9 +47,10 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user,$id)
+    public function show(User $user)
     {
         //
+        return view('company.user.show',compact(['user']));
     }
 
     /**
@@ -62,7 +59,7 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user,$id)
+    public function edit($id)
     {
         //
     }
@@ -74,7 +71,7 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $user, $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,7 +82,7 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user,$id)
+    public function destroy($id)
     {
         //
     }

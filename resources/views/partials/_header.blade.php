@@ -28,7 +28,11 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="dLabel">
               <li>
-                <a href="{{route('user.show',$user->id)}}">Profile</a>
+                @if($user->type == 1)
+                  <a href="{{route('company_user.show',$user->id)}}">Profile</a>
+                @else
+                  <a href="{{route('user.show',$user->id)}}">Profile</a>
+                @endif
               </li>
               <li>
                 <a href="">Edit</a>

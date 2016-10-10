@@ -19,6 +19,9 @@ class Experience extends Model
     return $this->belongsTo('App\User');
   }
 
+  public function internship_field(){
+    return $this->belongsTo('App\InternshipField');
+  }
   public function setWorkFromAttribute($value){
     $this->attributes['work_from'] = $this->validateDateString($value);
   }

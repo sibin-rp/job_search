@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 
+use App\Company;
+use App\Internship;
 use App\InternshipPreference;
 use App\StudentQualification;
 use App\User;
@@ -31,8 +33,11 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
         Route::model('user',User::class);
+        Route::model('company_user',User::class);
         Route::model('qualification',StudentQualification::class);
         Route::model('preference',InternshipPreference::class);
+        Route::model('company',Company::class);
+        Route::model('internship', Internship::class);
     }
 
     /**

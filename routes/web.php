@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'],
  * ====================================
  */
 
-Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>'auth'], function(){
+Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>['auth','student']], function(){
   Route::resource('user','UserController',['except'=>['create','index','store']]);
   Route::resource('{user}/experience','ExperienceController');
   Route::resource('{user}/qualification','QualificationController');
@@ -71,5 +71,23 @@ Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>'auth'], functi
 });
 
 /**===================================*/
+
+/**
+ * ======================================
+ * COMPANY ROUTES
+ * ======================================
+ */
+
+Route::group(['prefix'=>'company','namespace'=>'Company','middleware'=>['auth','company']], function(){
+  Route::resource('company_user','UserController',[
+    'except'=>['index','create','store']
+  ]);
+  Route::resource('company','CompanyController',['except'=>['create','index','store']]);
+  Route::resource('{company}/internships_program','InternshipProgramController');
+});
+
+
+/**======================================*/
+
 
 Route::post('/deep_crawl','HomeController@deepCrawl');
