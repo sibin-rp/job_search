@@ -14,7 +14,12 @@
 </head>
 
 <body class="user-page">
-  @include('user_partial._header')
+  @if($user->type)
+    @include('company_partials._header')
+  @else
+    @include('user_partial._header')
+  @endif
+
   <div class="container ">
     <div class="row">
       @include('user_partial._sidebar')
