@@ -28,5 +28,6 @@
   </div>
   @include('user_partial._footer')
   @yield('modal')
+  @yield('extra_js')
 </body>
 </html>

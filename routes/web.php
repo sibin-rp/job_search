@@ -45,6 +45,10 @@ Route::post('/save-company-internship-form',['uses'=>'HomeController@saveCompany
 
 Route::match(['GET','POST'],"/list-internship",['uses'=>'HomeController@listInternship','as'=>'internship_list']);
 Route::get('/show-internship/{id}',['uses'=>'HomeController@showInternship','as'=>'show_internship']);
+
+
+
+Route::post('upload-image',['uses'=>'HomeController@sample_photo_upload','as'=>'upload_image']);
 /**
  * ====================================
  * ADMIN ROUTES

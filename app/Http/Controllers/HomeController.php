@@ -537,5 +537,9 @@ class HomeController extends Controller
     return view('home.sample_page');
   }
 
+  public function sample_photo_upload(Request $request){
+    dd($request->file('file'));
+  }
+
 
 }

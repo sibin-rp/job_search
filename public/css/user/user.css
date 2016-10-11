@@ -6334,6 +6334,44 @@ button.close {
       float: right; }
 
 /** EOF OVERRIDE BOOTSTRAP CLASSES */
+/**
+*dev: nimmy
+*date: 10/10/2016
+*feature: sidebar page
+**/
+.rp-glyp {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -12px; }
+
+.image-wrapper {
+  position: relative; }
+  .image-wrapper .glyphicon-folder-open {
+    line-height: inherit; }
+  .image-wrapper .glyphicon-ring {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 60%;
+    border: 1px solid white;
+    color: white;
+    display: inline-table;
+    text-align: center;
+    line-height: 40px; }
+  .image-wrapper .rp-glyp {
+    opacity: 0;
+    cursor: pointer; }
+    .image-wrapper .rp-glyp span {
+      cursor: pointer; }
+  .image-wrapper:hover .rp-glyp, .image-wrapper:active .rp-glyp {
+    opacity: 1; }
+    .image-wrapper:hover .rp-glyp .glyphicon-ring:hover, .image-wrapper:active .rp-glyp .glyphicon-ring:hover {
+      background: #fff;
+      color: #333; }
+      .image-wrapper:hover .rp-glyp .glyphicon-ring:hover span, .image-wrapper:active .rp-glyp .glyphicon-ring:hover span {
+        color: #333; }
+
 #skill-box-list {
   display: block;
   margin: 0 0 15px;
