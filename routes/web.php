@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin','namespace'=>'Admin'],
 
 Route::group(['prefix'=>'user','namespace'=>'User','middleware'=>['auth','student']], function(){
   Route::resource('user','UserController',['except'=>['create','index','store']]);
+  Route::post('{user}/profile/upload',['uses'=>'UserController@user_profile_upload','as'=>'user.profile.upload']);
   Route::resource('{user}/experience','ExperienceController');
   Route::resource('{user}/qualification','QualificationController');
   Route::resource('{user}/preference','InternshipPreferenceController');
@@ -86,6 +87,7 @@ Route::group(['prefix'=>'company','namespace'=>'Company','middleware'=>['auth','
   Route::resource('company_user','UserController',[
     'except'=>['index','create','store']
   ]);
+  Route::post('profile/upload',['uses'=>'CompanyController@logo_upload','as'=>'company.logo.upload']);
   Route::resource('company','CompanyController',['except'=>['create','index','store']]);
   Route::resource('{company}/internships_program','InternshipProgramController');
 });

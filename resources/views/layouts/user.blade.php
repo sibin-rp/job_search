@@ -4,7 +4,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta charset="utf-8">
   <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-
+  <meta content="{{csrf_token()}}" name="csrf_meta">
   <!-- Use title if it's in the page YAML frontmatter -->
   <title>Accellar | User Dashboard</title>
 
@@ -14,7 +14,7 @@
 </head>
 
 <body class="user-page">
-  @if($user->type)
+  @if($user->type=="1")
     @include('company_partials._header')
   @else
     @include('user_partial._header')
@@ -22,7 +22,11 @@
 
   <div class="container ">
     <div class="row">
-      @include('user_partial._sidebar')
+      @if($user->type == "1")
+        @include('company_partials._sidebar')
+      @else
+        @include('user_partial._sidebar')
+      @endif
       @yield('content')
     </div>
   </div>

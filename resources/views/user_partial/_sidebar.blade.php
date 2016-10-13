@@ -12,12 +12,12 @@
     </div>
 </div>
 
-<form method="post" action="{{route('upload_image')}}" enctype="multipart/form-data"
+<form method="post" action="{{route('user.profile.upload',['user'=> $user])}}" enctype="multipart/form-data"
       id="profile-image-upload">
     {{csrf_field()}}
     {{method_field('POST')}}
     <label for="upload">
-        <input type="file" id="upload" style="display: none" name="file">
+        <input type="file" id="user-file-upload" style="display: none" name="file">
     </label>
 
 </form>
@@ -29,47 +29,36 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-                    $("#rp-image-button").click(function () {
-                        console.log("msg");
-                        $("#upload").click();
+            $("#rp-image-button").click(function () {
+                $("#user-file-upload").click();
+            });
+            $('#user-file-upload').on('change', function(e){
+                var fileReader = new FileReader();
+                fileReader.onloadend = function(ev){
+                    $('.image-wrapper').find('img').attr('src', ev.target.result);
 
-                    });
+                    //call ajax
+                    var url = $('#profile-image-upload').attr('action');
+                    var formData = new FormData();
+                    formData.append('profile', e.target.files[0]);
+                    formData.append('_token', $('meta[name="csrf_meta"]').attr('content'));
+                    $.ajax({
+                        url: url,
+                        type:"POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(result){
+                            console.log(result)
+                        },
+                        error: function(error){
+                            console.log(error)
+                        }
+                    })
+                };
+                fileReader.readAsDataURL(e.target.files[0]);
+            })
 
-                    document.getElementById("upload").onchange = function () {
-                        var reader = new FileReader();
-
-                        reader.onload = function (e) {
-                            // get loaded data and render thumbnail.
-                            document.getElementById("image").src = e.target.result;
-                            // Place ajax call
-                            var formElementObject = $('#profile-image-upload');
-                            var formElement = document.querySelector('form');
-                            console.log(formElement[0]);
-                            $.ajax({
-                                url: formElementObject.attr('action'),
-                                type:'POST',
-                                processData: false, // theme 2 are important while sending
-                                contentType: false, // image data
-                                data: new FormData(formElement),
-                                success: function(result){
-                                    console.log(result)
-                                },
-                                error: function(error){
-                                    console.log(error)
-                                }
-                            })
-
-
-                            // end ajax call
-
-
-
-                        };
-
-                        // read the image file as a data URL.
-                        reader.readAsDataURL(this.files[0]);
-                    };
-                }
-        );
+        });
     </script>
 @stop

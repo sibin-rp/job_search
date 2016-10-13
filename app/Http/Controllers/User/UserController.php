@@ -98,4 +98,9 @@ class UserController extends Controller
     {
         //
     }
+
+
+    public function user_profile_upload(User $user, Request $request){
+        dd($request->file('profile'));
+    }
 }
