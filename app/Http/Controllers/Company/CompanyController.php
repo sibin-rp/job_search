@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Company;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use League\OAuth1\Client\Server\User;
 
@@ -59,9 +61,10 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        $user = Auth::user();
+        return view('company.edit',compact(['user','company']));
     }
 
     /**
