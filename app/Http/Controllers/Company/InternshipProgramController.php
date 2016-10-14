@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class InternshipProgramController extends Controller
 {
@@ -14,9 +15,10 @@ class InternshipProgramController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         //
+        return view('company.internship_program.index',compact(['user']));
     }
 
     /**
@@ -24,9 +26,10 @@ class InternshipProgramController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
         //
+        return view('company.internship_program.create',compact(['user']));
     }
 
     /**

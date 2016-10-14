@@ -15,7 +15,8 @@
         <a class="navbar-brand" href="{{route('experience.index',$user->id)}}">Home</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="{{route('experience.index',$user->id)}}">Internship Program</a></li>
+        <li><a href="{{route('internships_program.index',['company_user'=>$user])}}">Internship Program</a></li>
+        <li><a href="{{route('internships_program.create',['company_user'=>$user])}}">Add Internship Program</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('user.show',$user)}}">Home</a></li>
