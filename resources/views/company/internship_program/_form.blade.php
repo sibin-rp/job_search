@@ -1,3 +1,29 @@
+@php
+  $default_option = [
+    'internship_field_id' => null,
+    'title' => null,
+    'description' => null,
+    'stipend_from' => null,
+    'stipend_to' => null,
+    'duration' => null,
+    'type' => null,
+    'city' => null,
+    'state' => null,
+    'eligible_min' => null,
+    'eligible_max' => null,
+    'num_resume' => null,
+    'per_rec_exercise' => null,
+    'payment' => null,
+    'validity' => null
+  ];
+
+  if(isset($internship)){
+    $default_option = array_merge($default_option,$internship->toArray());
+  }
+  $internship = (object) $default_option;
+
+@endphp
+
 <!-- Here You start form -->
 <div class="form-fill">
     <div class="">
@@ -14,13 +40,13 @@
                 </div>
                 <div class="form-group">
                     <label for="comment">Description</label>
-                    <textarea class="form-control" rows="5" placeholder="Job Description" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" placeholder="Job Description" id="comment" name="internship[title]">{{$internship->description}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="sel1">Stipend(From-To(In Rupees))</label>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="stipend-from" name="internship[stipend_from]">
                                 <option>1000</option>
                                 <option>2000</option>
                                 <option>3000</option>
@@ -28,7 +54,7 @@
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="stipend-to" name="internship[stipend_to]">
                                 <option>1000</option>
                                 <option>2000</option>
                                 <option>3000</option>
@@ -40,21 +66,21 @@
 
 
                     <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="">Any&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">0-3months&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">3-6months&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">6-9months&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">9-12months&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">1 year+&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="any" name="internship[duration]" @if($internship->duration=="any") checked="checked" @endif>Any&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="0_3" name="internship[duration]" @if($internship->duration=="0_3") checked="checked" @endif>0-3months&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="3_6" name="internship[duration]" @if($internship->duration=="3_6") checked="checked" @endif>3-6months&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="6_9" name="internship[duration]" @if($internship->duration=="6_9") checked="checked" @endif>6-9months&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="9_12" name="internship[duration]" @if($internship->duration=="9_12") checked="checked" @endif>9-12months&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="1+_year" name="internship[duration]" @if($internship->duration=="1+_year") checked="checked" @endif>1 year+&nbsp;</label>
                     </div>
                 <div class="form-group">
                 <h6>Or Select Date</h6>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" required="required" class="form-control common-date-picker" placeholder="Duration Start" name="text">
+                        <input type="text" required="required" class="form-control common-date-picker" placeholder="Duration Start"  value="" name="internship[duration_start]">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" required="required" class="form-control common-date-picker" placeholder="Duration End" name="text">
+                        <input type="text" required="required" class="form-control common-date-picker" placeholder="Duration End" value="internship[duration_end]">
                     </div>
                 </div>
                     </div>
@@ -64,30 +90,30 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h6>City</h6>
-                        <input type="text" required="required" class="form-control" placeholder="Internship City" name="text">
+                        <input type="text" required="required" class="form-control" placeholder="Internship City" name="internship[city]" value="{{$internship->city}}">
                     </div>
                     <div class="col-md-6">
                         <h6>State</h6>
-                        <select class="form-control" id="sel1">
-                            <option>Andhra Pradesh</option>
-                            <option>Kerala</option>
-                            <option>Kashmir</option>
-                            <option>Assam</option>
+                        <select class="form-control" id="internship-state" name="internship[state]">
+                          @foreach($states as $code => $state)
+                            <option value="{{$code}}" @if($internship->state == $code) selected="selected" @endif>{{$state}}</option>
+                          @endforeach
                         </select>
                     </div>
                 </div>
                 </div>
 
                 <div class="form-group">
-                    <h6>Pre Recruitment exercise for intern</h6>
+                    <label>Pre Recruitment exercise for intern</label>
 
                     <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="">None&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Sample Work&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Telephone Interview&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">One to One Interview&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Chat&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Other&nbsp;</label>
+                        <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="none">None&nbsp;</label>
+                        <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="sample_work">Sample Work&nbsp;</label>
+                        <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="telephone_interview">Telephone Interview&nbsp;</label>
+                        <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="one_to_one_interview">One to One Interview&nbsp;</label>
+                      <label for="" class="control-label"><input type="radio" name="internship[pre_rec_exercise]" value="video_interview">&nbsp;Video Interview&nbsp;</label>
+                      <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="chat">Chat&nbsp;</label>
+                        <label for="" class="control-label">&nbsp; <input type="radio" name="internship[pre_rec_exercise]" value="other">Other&nbsp;</label>
 
                     </div>
                 </div>
@@ -182,7 +208,7 @@
                 </div>
 
                 <div class="form-group"><h6>Validity of Internship</h6>
-                    <input type="text" required="required" class="form-control" placeholder="Validity of Internship" name="text">
+                    <input type="text" required="required" class="form-control date-picker" placeholder="Validity of Internship" name="internship[validity]">
                 </div>
 
 
@@ -195,7 +221,7 @@
     </div>
    <hr size="5">
     <div class="btn pull-right">
-        <button type="button " class="btn btn-primary">Complete Registration</button>
+        <button type="button" class="btn btn-primary">Complete Registration</button>
     </div>
 
     </div>

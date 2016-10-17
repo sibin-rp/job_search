@@ -254,7 +254,7 @@
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="none">&nbsp;None&nbsp;</label>
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="sample_work">&nbsp;Sample Work&nbsp;</label>
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="telephone_interview">&nbsp;Telephone Interview&nbsp;</label>
-                           <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="one_on_one_interview">&nbsp;One to One Interview&nbsp;</label>
+                           <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="one_to_one_interview">&nbsp;One to One Interview&nbsp;</label>
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="video_interview">&nbsp;Video Interview&nbsp;</label>
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="chat">&nbsp;Chat&nbsp;</label>
                            <label for="" class="control-label"><input type="radio" name="internship[default][pre_rec_exercise]" value="other">&nbsp;Other&nbsp;</label>

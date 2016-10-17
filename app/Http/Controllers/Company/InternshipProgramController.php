@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helpers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,7 +30,8 @@ class InternshipProgramController extends Controller
     public function create(User $user)
     {
         //
-        return view('company.internship_program.create',compact(['user']));
+        $states = Helpers::getStates();
+        return view('company.internship_program.create',compact(['user','states']));
     }
 
     /**

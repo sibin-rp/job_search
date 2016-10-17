@@ -8,7 +8,7 @@ class Internship extends Model
 {
     //
   protected $fillable = ['id','company_id','title','description','stipend_from','stipend_to',
-    'duration','type','company_id','internship_field_id','city','state','eligible_min',
+    'duration','type','internship_field_id','city','state','eligible_min',
     'eligible_max','num_resume','per_rec_exercise','payment','validity',
     'created_at','updated_at'];
 

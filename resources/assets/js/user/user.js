@@ -7,7 +7,7 @@
 $(document).ready(function(){
   $('.common-date-picker').datetimepicker({
     format:'YYYY-MM-DD',
-    debug: true
+    //debug: true
   });
 
   $('.year-datepicker').datetimepicker({
