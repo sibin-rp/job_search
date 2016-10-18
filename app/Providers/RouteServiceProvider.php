@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('preference',InternshipPreference::class);
         Route::model('company',Company::class);
         Route::model('internship', Internship::class);
+        Route::model('internships_program', Internship::class);
     }
 
     /**

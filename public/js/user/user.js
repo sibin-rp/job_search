@@ -4546,7 +4546,62 @@ $(document).ready(function(){
     }else{//remove
       chooseSkillLevel.find('.skill-list-item-'+selectedCheckbox.id).remove()
     }
-  })
+  });
+
+
+  /*---------------------------------------
+  | COMPANY INTERNSHIP PROGRAM            |
+  *----------------------------------------*/
+  /* Update Skills set when user select internship field */
+  $('#internship-field').change(function(){
+    var internshipFieldId = $(this).val();
+    $('#skill-info-box').addClass('hidden');
+    var url = $(this).data('url');
+    if($('.skills-box').find('.well').children().length > 0){
+      $('.skills-box').find('.well').children().remove();
+    }
+    $.get(url,{id: internshipFieldId}).done(function(result){
+      if(result.status == 200 && result.data.length > 0){
+        var skillList = result.data.map(function(value,index){
+          return "<label><input type='checkbox' class='skill-checkbox' data-name='"+value.name+"' name='internship_skills["+index+"]' value='"+value.id+"'>"+value.name+"</label>"
+        });
+        $('.skills-box').removeClass('hidden').find('.well').append(skillList)
+      }else{
+        $('.skills-box').addClass('hidden');
+        console.log("Sorry no Skills found for this field")
+      }
+    });
+  });
+  $('.skills-box').find('#skill-well').on('click','.skill-checkbox', function(){
+    var skillUserSelect = $('.skills-box').find('.skill-user-select');
+    var checkedSkillsSet = [];
+    var dataName = $(this).data('name')
+    var idValue = $(this).val();
+    if($(this).prop('checked')){
+      var codeToPush = "<li class='list-group-item clearfix' id='user-skill-set-"+idValue+"'>"+dataName +
+        "<div class='pull-right'> <input type='radio' name='internship[skills]["+idValue+"]' value='beginner'>&nbsp;Beginner" +
+        "<input type='radio' name='internship[skills]["+idValue+"]' value='intermediate'>&nbsp;Intermediate" +
+        "<input type='radio' name='internship[skills]["+idValue+"]' value='expert'>&nbsp;Expert" +
+        "</div></li>";
+
+    }else{
+      $(document).find('#user-skill-set-'+idValue).remove();
+    }
+    var skillUserSelectBox = $(document).find('#skill-user-select');
+    if(skillUserSelectBox.length == 0){
+      skillUserSelectBox= $('<ul/>',{
+        class:"skill-user-select list-group",
+        id:'skill-user-select'
+      });
+    }
+    skillUserSelectBox.append(codeToPush);
+    $('.skills-box').find('#skill-well').after(skillUserSelectBox)
+
+  });
+
+  /** =========================================*/
+
+  /*---------- END -------------------------*/
 
 });
 

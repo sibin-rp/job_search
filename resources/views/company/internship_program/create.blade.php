@@ -5,7 +5,10 @@
             <h3>Add new Internship Preference</h3>
         </div>
         <div class="internship-p-form">
-            @include('company.internship_program._form')
+            <form action="{{route('internships_program.store',['user'=> $user])}}" method="post">
+                {{method_field('POST')}}
+                @include('company.internship_program._form')
+            </form>
         </div>
     </div>
 @stop
