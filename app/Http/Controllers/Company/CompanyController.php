@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Company;
 
 use App\Company;
+use App\Helpers;
+use App\InternshipField;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +22,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $companies = $user->company()->get();
+        return view('company.company.index',compact(['companies','user']));
     }
 
     /**
@@ -28,9 +32,11 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
         //
+        $states = Helpers::getStates();
+
     }
 
     /**
@@ -42,6 +48,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -50,9 +57,12 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Company $company)
     {
         //
+        $user = Auth::user();
+        return view('company.company.show',compact(['company','user']));
+
     }
 
     /**
@@ -64,7 +74,10 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $user = Auth::user();
-        return view('company.edit',compact(['user','company']));
+
+        $states = Helpers::getStates();
+        $fields = InternshipField::all();
+        return view('company.company.edit',compact(['user','company','states','fields']));
     }
 
     /**
@@ -74,10 +87,19 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Company $company,Request $request)
     {
         //
+        try {
+            $company_update = $request->get('company');
+            $company->update($company_update);
+            return redirect()->route('company.show',['company'=>$company]);
+        } catch (\Exception $e) {
+            return back()->withInput()->with(['class'=>'alert-danger','message'=>$e->getMessage()]);
+        }
+
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,9 +107,16 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
+
         //
+        try{
+            $company->delete();
+        }catch (\Exception $e){
+            return back()->with(['class'=>'alert alert-danger','message'=>'Company deleted successfully']);
+        }
+
     }
 
     public function logo_upload(Request $request){

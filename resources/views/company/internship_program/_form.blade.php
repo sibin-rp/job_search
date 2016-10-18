@@ -26,21 +26,30 @@
 
 <!-- Here You start form -->
 <div class="form-fill">
+    {{csrf_field()}}
     <div class="">
         <div class="row">
             <div class="col-md-6">
 
-                <div class="form-group"><label for="sel1">Field of internship</label>
-                    <select class="form-control" id="sel1">
-                        <option>Game Development</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                <div class="form-group"><label for="internship-field">Field of internship</label>
+                    <select class="form-control" id="internship-field" name="internship[internship_field_id]" data-url="{{route('api_get_skills_by_id')}}">
+                        <option value="">Select</option>
+                        @foreach($internship_fields as $field)
+                            <option value="{{$field->id}}" @if($internship->internship_field_id == $field->id) selected="selected" @endif>{{$field->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Company</label>
+                    <select name="internship[company_id]" id="" class="form-control">
+                        @foreach($companies as $comapany)
+                            <option value="{{$comapany->id}}">{{$comapany->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="comment">Description</label>
-                    <textarea class="form-control" rows="5" placeholder="Job Description" id="comment" name="internship[title]">{{$internship->description}}</textarea>
+                    <textarea class="form-control" rows="5" placeholder="Job Description" id="comment" name="internship[description]">{{$internship->description}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="sel1">Stipend(From-To(In Rupees))</label>
@@ -64,6 +73,8 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="">Duration</label>
 
                     <div class="clearfix">
                         <label for="">&nbsp; <input type="radio" value="any" name="internship[duration]" @if($internship->duration=="any") checked="checked" @endif>Any&nbsp;</label>
@@ -73,8 +84,9 @@
                         <label for="">&nbsp; <input type="radio" value="9_12" name="internship[duration]" @if($internship->duration=="9_12") checked="checked" @endif>9-12months&nbsp;</label>
                         <label for="">&nbsp; <input type="radio" value="1+_year" name="internship[duration]" @if($internship->duration=="1+_year") checked="checked" @endif>1 year+&nbsp;</label>
                     </div>
+                </div>
                 <div class="form-group">
-                <h6>Or Select Date</h6>
+                <label>Or Select Date</label>
                 <div class="row">
                     <div class="col-md-6">
                         <input type="text" required="required" class="form-control common-date-picker" placeholder="Duration Start"  value="" name="internship[duration_start]">
@@ -120,7 +132,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group"><label for="" class="control-label">Job Title</label>
-                    <input type="text" required="required" class="form-control" placeholder="Job Title" name="text">
+                    <input type="text" required="required" class="form-control" placeholder="Job Title" name="internship[title]">
                 </div>
 
                 <div class="form-group">
@@ -140,20 +152,20 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <select class="form-control" id="sel1">
-                                <option>Minimum age</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                            <select class="form-control" name="internship[eligible_min]">
+                                <option value="">Minimum age</option>
+                                @for($i=15;$i<45;$i++)
+                                    <option value="{{$i}}" @if($internship->eligible_min==$i) @endif >{{$i}}</option>
+                                @endfor
                             </select>
 
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <select class="form-control" id="sel1">
-                                <option>Maximum age</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                            <select class="form-control" name="internship[eligible_max]">
+                                <option value="">Maximum age</option>
+                                @for($i=15;$i<45;$i++)
+                                    <option value="{{$i}}" @if($internship->eligible_max == $i) selected="selected" @endif>{{$i}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>
@@ -162,53 +174,57 @@
                     <label for="">Type of internship</label>
 
                     <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="">Any&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Full Time(office)&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Part Time(office)&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Work From Home(Full Time&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Work From Home(Part Time)&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[type]" value="any">Any&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[type]" value="full_time_office">Full Time(office)&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[type]" value="part_time_office">Part Time(office)&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[type]" value="full_time_home">Work From Home(Full Time&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[type]" value="part_time_home">Work From Home(Part Time)&nbsp;</label>
 
                     </div>
                 </div>
                 <div class="form-group">
-                    <h6 class="font">Number of resumes to be sent in a single round</h6>
-                    <select class="form-control" id="sel1">
-                        <option>5 resumes</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
+                    <label class="font">Number of resumes to be sent in a single round</label>
+                    <select class="form-control"  name="internship[num_resume]">
+                        @for($i=1;$i<10;$i++)
+                            <option value="{{$i*5}}">{{$i*5}} Resumes</option>
+                        @endfor
                     </select>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="">Skills Required</label>
-                    <h6>Choose skills from below</h6>
+                    <div class="form-group">
+                        <label for="">Skills Required </label>
+                        <div class="alert alert-info" id="skill-info-box">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            Please select Internship field</div>
+                        <div class="skills-box hidden">
+                            <p>
+                                Choose Skills from Below
+                            </p>
+                            <div class="well" id="skill-well">
 
-                    <div class="clearfix">
-                        <label for="">&nbsp; <input type="checkbox" value="">Hitman&nbsp;</label>
-                        <label for="">&nbsp; <input type="checkbox" value="">Games&nbsp;</label>
-                        <label for="">&nbsp; <input type="checkbox" value="">COD&nbsp;</label>
-                        <label for="">&nbsp; <input type="checkbox" value="">EA-Sports&nbsp;</label>
-                        <label for="">&nbsp; <input type="checkbox" value="">Captain-America&nbsp;</label>
-
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <h6>Payment to intern</h6>
+                    <label>Payment to intern</label>
 
                     <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="">Weekly&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Fornightly&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Monthly&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[payment]" value="weekly">Weekly&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[payment]" value="fornightly">Fornightly&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" name="internship[payment]" value="monthly">Monthly&nbsp;</label>
 
 
                     </div>
                 </div>
 
-                <div class="form-group"><h6>Validity of Internship</h6>
-                    <input type="text" required="required" class="form-control date-picker" placeholder="Validity of Internship" name="internship[validity]">
+                <div class="form-group"><label>Validity of Internship</label>
+                    <input type="text" required="required" class="form-control common-date-picker"
+                           value="{{$internship->validity}}"
+                           placeholder="Validity of Internship" name="internship[validity]">
                 </div>
 
 
@@ -221,7 +237,7 @@
     </div>
    <hr size="5">
     <div class="btn pull-right">
-        <button type="button" class="btn btn-primary">Complete Registration</button>
+        <button type="submit" class="btn btn-primary">Complete Registration</button>
     </div>
 
     </div>
