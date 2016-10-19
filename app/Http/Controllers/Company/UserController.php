@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helpers;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -59,9 +60,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
+        $states = Helpers::getStates();
+        return view('company.user.edit',compact(['user','states']));
     }
 
     /**
@@ -71,9 +74,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user,Request $request)
     {
         //
+        try{
+            $company_user = $request->get('company');
+            $company_user = array_filter($company_user);
+            $user->update($company_user);
+            return redirect()->route('company_user.show',['user'=> $user])->with(['class'=>'alert-success',
+            'messsage'=> "User data updated successfully"]);
+        }catch (\Exception $e){
+            dd($e->getMessage());
+            return back()->with(['class'=>'alert-warning','message'=> $e->getMessage()]);
+        }
+
     }
 
     /**
