@@ -85,9 +85,26 @@ $company = (object)$default;
       <label for="">City</label>
       <input type="text" name="company[city]" value="{{$company->city}}" class="form-control"/>
     </div>
-
   </div>
-  <div class="btn pull-right">
-    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <input type="file" name="company_logo" class="btn btn-warning">
+    </div>
+    @if($company->logo)
+      <div class="form-group well">
+        <div class="img-responsive">
+          <img src="{{asset($company->logo)}}" alt="{{$company->name}}" class="img-responsive img-rounded">
+        </div>
+      </div>
+    @endif
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn pull-right">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
   </div>
 </div>

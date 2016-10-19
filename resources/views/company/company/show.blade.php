@@ -55,7 +55,11 @@
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="company-logo">
+          @if($company->logo)
+            <img src="{{asset($company->logo)}}" alt="{{$company->name}}" class="img-responsive img-rounded">
+          @else
           <img src="http://placehold.it/640/640" alt="{{$company->name}}" class="img-responsive img-rounded">
+          @endif
         </div>
       </div>
     </div>

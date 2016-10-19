@@ -1,7 +1,7 @@
 <div class="col-sm-4 col-md-4 col-lg-3">
   <div class="image-wrapper">
-    @if($user->profile_path)
-      <img class="img-responsive im" src="images/im.jpg">
+    @if($user->profile_image)
+      <img class="img-responsive im" src="{{asset($user->profile_image)}}">
     @else
       <img id="image" src="http://placehold.it/320" alt="" class="img-responsive img-round">
     @endif
@@ -10,7 +10,7 @@
       <div class="glyphicon-ring"><i class=" glyphicon glyphicon-folder-open"></i></div>
     </div>
   </div>
-  <form method="post" action="{{route('company.logo.upload',['user'=> $user])}}" enctype="multipart/form-data"
+  <form method="post" action="{{route('company.user.logo.upload',['user'=> $user])}}" enctype="multipart/form-data"
         id="profile-image-upload">
     {{csrf_field()}}
     {{method_field('POST')}}
@@ -49,7 +49,9 @@
             contentType: false,
             processData: false,
             success: function(result){
-              console.log(result)
+              if(result.status == 200){
+                window.location.reload();
+              }
             },
             error: function(error){
               console.log(error)
