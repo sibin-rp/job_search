@@ -19,8 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'email', 'password','username','type','active','admin','super_admin',
         'profile_image','token','alternate_contact','alternate_email','describe',
-        'dob','first_name','last_name','home_address','home_state','live_address',
-        'live_state','phone_no','role','sex','created_at','updated_at'
+        'dob','first_name','last_name','home_address','home_state','home_city','live_address',
+        'live_state','live_city','phone_no','role','sex','created_at','updated_at'
     ];
 
     protected $appends = ['name','home_state_name','live_state_name'];

@@ -17,7 +17,6 @@
     <label for="upload">
       <input type="file" id="user-file-upload" style="display: none" name="file">
     </label>
-
   </form>
 </div>
 
