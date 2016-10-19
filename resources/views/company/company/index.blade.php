@@ -30,7 +30,7 @@
                   <form action="{{route('company.destroy',['company'=> $company])}}" method="post">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
-                    <a href="" class="btn btn-xs btn-primary">Edit</a>
+                    <a href="{{route('company.edit',['company'=> $company])}}" class="btn btn-xs btn-primary">Edit</a>
                     <button class="btn btn-danger btn-xs" type="submit">Delete</button>
                   </form>
                 </td>

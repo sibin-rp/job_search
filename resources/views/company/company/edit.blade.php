@@ -5,7 +5,7 @@
       <h3>Company Information</h3>
     </div>
     <div class="company-info">
-      <form action="{{route('company.update',['company'=> $company])}}" method="post">
+      <form action="{{route('company.update',['company'=> $company])}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         {{method_field('PUT')}}
         @include('company.company._form')

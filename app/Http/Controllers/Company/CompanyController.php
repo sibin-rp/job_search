@@ -92,9 +92,28 @@ class CompanyController extends Controller
         //
         try {
             $company_update = $request->get('company');
-            $company->update($company_update);
+            $company_data_update = $company->update($company_update);
+
+            // File Upload
+
+            $c_logo = $request->file('company_logo');
+            if(isset($c_logo) && $c_logo->isValid()){
+                $c_logo_ext = $c_logo->getClientOriginalExtension();
+                if(!(Storage::disk('local')->exists('public/company'))){
+                    Storage::makeDirectory('public/company');
+                }
+                $c_logo_name = "company-$company->id-logo.$c_logo_ext";
+                Storage::putFileAs('public/company',$c_logo,$c_logo_name,'public');
+                $company->update([
+                   'logo' => asset('storage/company/'.$c_logo_name)
+                ]);
+            }
+
+
             return redirect()->route('company.show',['company'=>$company]);
         } catch (\Exception $e) {
+            dd($e->getMessage());
+
             return back()->withInput()->with(['class'=>'alert-danger','message'=>$e->getMessage()]);
         }
 
@@ -120,17 +139,6 @@ class CompanyController extends Controller
     }
 
     public function logo_upload(Request $request){
-        try{
-            if(!$request->hasFile('logo') && !$request->file('logo')->isValid()) throw new \Exception("FIle not supplied");
-            $logo_file = $request->file('logo');
-            if(!(Storage::disk('local')->exists('company'))){
-                Storage::makeDirectory('company');
-            }
-        }catch (\Exception $e){
-            return response()->json([
-                'status' => 405,
-                'message' => $e->getMessage()
-            ]);
-        }
+
     }
 }
