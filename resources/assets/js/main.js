@@ -180,6 +180,15 @@ $(document).ready(function() {
               $('#qualification-extra').removeClass('hidden');
           }
       });
+      $('.internship-qualification-select-twelve').click(function(){
+        var extraFieldExist = $(this).data('extra');
+          if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
+              $('#qualification-extra2').addClass('hidden');
+          }else{
+              $('#qualification-extra2').removeClass('hidden');
+          }
+      });
+
       /* Update Skills set when user select internship field */
       $('#internship-field').change(function(){
           var internshipFieldId = $(this).val();

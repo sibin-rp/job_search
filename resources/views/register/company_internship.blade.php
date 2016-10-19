@@ -127,12 +127,62 @@
                          <div class="clearfix">
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="any" checked="checked">&nbsp;Any&nbsp;</label>
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="10th">&nbsp;10 <sup>th</sup>&nbsp;</label>
-                           <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="false" value="12th">&nbsp;12 <sup>th</sup>&nbsp;</label>
+                           <label for="" class="control-label"><input class="internship-qualification-select-twelve" type="radio" name="internship[qualification][qualification]" data-extra="true" value="12th">&nbsp;12 <sup>th</sup>&nbsp;</label>
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="graduation">&nbsp;Graduation&nbsp;</label>
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="post-graduation">&nbsp;Post Graduation&nbsp;</label>
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="diploma">&nbsp;Diploma&nbsp;</label>
                            <label for="" class="control-label"><input class="internship-qualification-select" type="radio" name="internship[qualification][qualification]" data-extra="true" value="phd">&nbsp;PhD&nbsp;</label>
                          </div>
+
+                           <div class="clearfix hidden" id="qualification-extra2">
+                             <div class="panel panel-default">
+                               <div class="panel-heading" role="tab" id="headingTwo">
+                                 <h4 class="panel-title">
+                                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                     Stream
+                                   </a>
+                                 </h4>
+                               </div>
+                               <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                 <div class="panel-body">
+                                   <div class="form-group">
+                                     <label for="">Stream</label>
+                                     <select name="internship[qualification][stream]" id="" class="form-control">
+                                       <option value="en">Arts</option>
+                                       <option value="me">Commerce</option>
+                                       <option value="ar">Science</option>
+                                     </select>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                             <div class="panel panel-default">
+                               <div class="panel-heading" role="tab" id="headingThree">
+                                 <h4 class="panel-title">
+                                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                     Performance
+                                   </a>
+                                 </h4>
+                               </div>
+                               <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                 <div class="panel-body">
+                                   <div class="row">
+                                     <div class="col-xs-12 col-sm-4">
+                                       <label for="">Choose</label>
+                                       <select name="internship[qualification][type]" id="" class="form-control">
+                                         <option value="" class="">Select</option>
+                                         <option value="">CGPA out of 4</option>
+                                         <option value="" class="">CGPA out of 10</option>
+                                         <option value="">Percentage</option>
+                                       </select>
+                                     </div>
+                                     <div class="col-xs-12 col-sm-8 twelth-marks-field"><input type="text" class="form-control dateField" id="field1" name="field1"  placeholder="Marks"></div>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+
                          <div class="clearfix hidden" id="qualification-extra">
                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                              <div class="panel panel-default">
@@ -192,8 +242,8 @@
                                        <label for="">Choose</label>
                                        <select name="internship[qualification][type]" id="" class="form-control">
                                          <option value="" class="">Select</option> 
-                                         <option value="">CGPA 4</option>
-                                         <option value="" class="">CGPA 10</option> 
+                                         <option value="">CGPA out of 4</option>
+                                         <option value="" class="">CGPA out of 10</option>
                                          <option value="">Percentage</option>
                                        </select>
                                      </div>
