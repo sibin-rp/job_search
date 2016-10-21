@@ -1,5 +1,6 @@
 var appAccelaar = window.appAccelaar || angular.module('appAccelaar',[]);
-appAccelaar.service('General',['$http','$q', function($http,$q){
+appAccelaar.service('General',['$http','$q','$resource',
+  function($http,$q,$resource){
   this.getSkills = function(query){
     var defer = $q.defer();
     $http.get('/api/get_fields').then(function(result){
@@ -31,7 +32,7 @@ appAccelaar.service('General',['$http','$q', function($http,$q){
         reject(error)
       })
     });
-  },
+  };
   this.removeSkill = function(skill){
     return $q(function(resolve,reject){
       var url = "/api/admin/delete_skill_by_id";
@@ -41,5 +42,13 @@ appAccelaar.service('General',['$http','$q', function($http,$q){
         reject(error)
       })
     })
-  }
+  };
+
+  this.qualificationType = function(){
+    return $resource('/api/admin/qualification-type/:id',{
+      id:'@id'
+    },{
+      update:{method:'PUT'}
+    })
+  };
 }]);

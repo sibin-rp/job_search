@@ -24,7 +24,8 @@ class InternshipProgramController extends Controller
     public function index(User $user)
     {
         //
-        return view('company.internship_program.index',compact(['user']));
+        $internships = $user->getAllCompaniesInternships($user);
+        return view('company.internship_program.index',compact(['user','internships']));
     }
 
     /**
@@ -102,9 +103,14 @@ class InternshipProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user,Internship $internship)
     {
         //
+        $internship_fields = InternshipField::all();
+        $companies = $user->company()->get();
+        $states = Helpers::getStates();
+        return view('company.internship_program.edit',
+          compact(['internship','user','internship_fields','companies','states']));
     }
 
     /**

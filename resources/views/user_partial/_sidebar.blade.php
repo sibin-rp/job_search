@@ -10,17 +10,18 @@
                 <div class="glyphicon-ring"><i class=" glyphicon glyphicon-folder-open"></i></div>
             </div>
     </div>
+    <form method="post" action="{{route('user.profile.upload',['user'=> $user])}}" enctype="multipart/form-data"
+          id="profile-image-upload">
+        {{csrf_field()}}
+        {{method_field('POST')}}
+        <label for="upload">
+            <input type="file" id="user-file-upload" style="display: none" name="file">
+        </label>
+
+    </form>
+
 </div>
 
-<form method="post" action="{{route('user.profile.upload',['user'=> $user])}}" enctype="multipart/form-data"
-      id="profile-image-upload">
-    {{csrf_field()}}
-    {{method_field('POST')}}
-    <label for="upload">
-        <input type="file" id="user-file-upload" style="display: none" name="file">
-    </label>
-
-</form>
 
 
 

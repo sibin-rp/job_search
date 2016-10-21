@@ -1,34 +1,31 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
+<div class="row">
 
 
-      <div class="col-md-12">
-        <div class="card ">
-          <div class="header">
-            <h4 class="title">{{title}}</h4>
-            <p class="category">Backend development</p>
-          </div>
-          <div class="content">
-            <div class="table-full-width">
-              <table class="table">
-                <tbody>
-                <tr ng-repeat="internship in internship_list">
-                  <td>
-                    <p>{{internship.title}}</p>
-                  </td>
-                </tr>
-                <tr ng-hide="internship_list.length > 0">
-                  <td colspan="2">Sorry we don't have any Internships</td>
-                </tr>
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="header">
+        <h4 class="title">{{title}}</h4>
 
-                </tbody>
-              </table>
-            </div>
+        <p class="category">Backend development</p>
+      </div>
+      <div class="content">
+        <div class="table-full-width">
+          <table class="table">
+            <tbody>
+            <tr ng-repeat="internship in internship_list">
+              <td>
+                <p>{{internship.title}}</p>
+              </td>
+            </tr>
+            <tr ng-hide="internship_list.length > 0">
+              <td colspan="2">Sorry we don't have any Internships</td>
+            </tr>
 
-            <div class="footer">
-            </div>
-          </div>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footer">
         </div>
       </div>
     </div>

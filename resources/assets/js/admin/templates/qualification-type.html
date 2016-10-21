@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="header">
+        <h4 class="title">Add Qualification Types</h4>
+
+        <p class="category">Backend development</p>
+      </div>
+      <div class="content">
+        <div class="well">
+          <form action="" ng-submit="saveFormData($event,qualification)" name="qualificationTypeForm">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="qual-name" class="control-label">Name</label>
+                  <input type="text" class="form-control" id="qual-name" placeholder="Name"
+                         ng-model="qualification.name"></div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="qual-type" class="control-label">Type</label>
+                  <input type="text" class="form-control" id="qual-type" placeholder="Type, Example Steam, Degree"
+                         ng-model="qualification.type"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="" class="control-label">Qualification</label>
+                  <select name="" id="" class="form-control" ng-model="qualification.qualification">
+                    <option value="">Select</option>
+                    <option value="10_th">10<sup>th</sup></option>
+                    <option value="12_th">12<sup>th</sup></option>
+                    <option value="graduation">Graduation</option>
+                    <option value="post_graduation">Post Graduation</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="phd">Phd</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group text-right">
+                  <p class="clearfix"></p>
+
+                  <p class="clearfix"></p>
+
+                  <div class="clearfix"></div>
+                  <button class="btn btn-success" type="submit">
+                    Add Qualification Type
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="page-header">
+          <h4>Qualification Type Data</h4>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Qualification</th>
+              <td>Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="qualification in qualification_types">
+              <td>{{$index + 1}}</td>
+              <td>{{qualification.name}}</td>
+              <td>{{qualification.type}}</td>
+              <td>{{qualification.qualification}}</td>
+              <td>
+                <a href="" class="btn btn-xs btn-primary" ng-click="editModalType($event,qualification)">Edit</a>
+                <a href="" class="btn btn-xs btn-danger" ng-click="deleteType($event,qualification)">Delete</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Qualification Modal Template -->
+<script type="text/ng-template" id="edit_qualification_type_modal">
+  <div class="modal-content" ng-form="edit_modal_form" >
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">&times;</button>
+      <h4 class="modal-title">Edit {{item.name}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group">
+            <label for="" class="control-label"></label>
+            <input type="text" class="form-control" ng-model="item.name" placeholder="Name">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group">
+            <label for="" class="control-label"></label>
+            <input type="text" class="form-control" ng-model="item.type" placeholder="Title">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-xs-12">
+          <label for="" class="control-label">Graduation {{item.qualification}}</label>
+          <select name="" id="" class="form-control">
+            <option value="">Select</option>
+            <option value="10_th" ng-selected="item.qualification == '10_th'">10th</option>
+            <option value="12_th" ng-selected="item.qualification == '12_th'">12th</option>
+            <option value="graduation" ng-selected="item.qualification == 'graduation'">Graduation</option>
+            <option value="post_graduation" ng-selected="item.qualification == 'post_graduation'">Post Graduation</option>
+            <option value="diploma" ng-selected="item.qualification == 'diploma'">Diploma</option>
+            <option value="phd" ng-selected="item.qualification == 'phd'">Phd</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">Close</button>
+      <button type="button" class="btn btn-primary" ng-click="editQualificationSubmit($event, item)">Save changes</button>
+    </div>
+  </div><!-- /.modal-content -->
+</script>
+
+<!-- end qualification modal template -->

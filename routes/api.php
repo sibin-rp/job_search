@@ -26,6 +26,8 @@ Route::group(['prefix'=>'admin'], function(){
   Route::get('/companies','APIController@getCompanies');
   Route::get('/users','APIController@getUsers');
   Route::resource('/internships','Admin\InternshipAPIController');
+  Route::resource('/qualification-type','Admin\QualificationTypeController');
+
 
 
   /* POST ROUTES */

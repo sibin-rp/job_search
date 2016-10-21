@@ -4,6 +4,7 @@ namespace App;
 
 use App\Helpers;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -90,6 +91,19 @@ class User extends Authenticatable
     if($student_extra->count() == 0) return $student_extra->get();
     $student_extra->orderBy('type');
     return $student_extra->get();
+
+  }
+
+
+  public function getAllCompaniesInternships($user){
+    if(!$user) throw new \Exception("User not found");
+
+    $user_companies_internships = DB::table('internships')
+      ->join('companies','internships.company_id','=','companies.id')
+      ->select('*','internships.id as iid','companies.id as cid')
+      ->where('companies.user_id','=',$user->id)->orderBy('validity','DESC')->get();
+   //dd($user_companies_internships);
+    return $user_companies_internships;
 
   }
 

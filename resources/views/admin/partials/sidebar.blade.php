@@ -39,6 +39,11 @@
         </a>
       </li>
       <li>
+        <a ui-sref="qualification">
+          <p>Qualification Types</p>
+        </a>
+      </li>
+      <li>
         <a ui-sref="singleuser">
           <i class="pe-7s-note2"></i>
           <p>Single User</p>

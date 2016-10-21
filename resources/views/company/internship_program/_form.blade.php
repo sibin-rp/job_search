@@ -137,15 +137,167 @@
 
                 <div class="form-group">
                     <label for="">Minimum Qualification</label>
+                    <div class="min-qual">
+                        <div class="clearfix">
+                            <label for="">&nbsp; <input type="radio" value="any">Any&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="10_th">10th&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="12_th">12th&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="graduation">Graduation&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="post_graduation">PG&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="diploma">Diploma&nbsp;</label>
+                            <label for="">&nbsp; <input type="radio" value="phd">Phd&nbsp;</label>
+                        </div>
+                        <div class="min-qualification-form">
+                            <!-- 10th standard -->
+                            <div class="qualification-section" id="quali-10_th">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end 10th standard -->
 
-                    <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="">Any&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">10th&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">12th&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Graduation&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">PG&nbsp;</label>
-                        <label for="">&nbsp; <input type="radio" value="">Phd&nbsp;</label>
+                            <!-- 12th standard -->
+                            <div class="qualification-section" id="quali-12_th">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <select name="" id="" data-qualify="12_th">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end 12th standard -->
+
+                            <!-- Graduation -->
+                            <div class="qualification-section" id="quali-graduation">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end graduation -->
+
+                            <!-- Post graduation -->
+                            <div class="qualification-section" id="quali-post_graduation">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end post graduation -->
+
+                            <!-- Diploma -->
+                            <div class="qualification-section" id="quali-diploma">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end diploma -->
+
+                            <!-- Phd -->
+                            <div class="qualification-section" id="quali-phd">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Scale</label>
+                                        <select name="" id="q-type" class="form-control">
+                                            <option value="cgpa_4">CGPA 4</option>
+                                            <option value="cgpa_10">CGPA 10</option>
+                                            <option value="percentage">Percentage</option>
+                                        </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="form-group">
+                                            <label for="" class="control-label">Mark</label>
+                                            <input type="text" class="form-control q-mark" placeholder="Mark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Phd -->
+
+                        </div>
                     </div>
+
                 </div>
                 <div class="form-group">
                     <label for="sel1">Eligibility</label>
@@ -241,7 +393,7 @@
     </div>
 
     </div>
-</div>
+
 
 
 <!-- end form -->

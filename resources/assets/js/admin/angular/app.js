@@ -42,6 +42,11 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       templateUrl:'/js/admin/templates/singleuser.html',
       controller:'HomeSingleuserController'
     })
+    .state('qualification',{
+      url:'/qualification-type',
+      templateUrl:'/js/admin/templates/qualification-type.html',
+      controller:'HomeQualificationController'
+    })
 }]);
 
 

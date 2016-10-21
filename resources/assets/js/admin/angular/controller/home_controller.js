@@ -174,3 +174,112 @@ appAccelaar.controller('HomeSingleuserController',['$scope', function($scope){
 }]);
 
 /* END START SINGLEUSER CONTROLLER */
+
+/* START QUALIFICATION TYPE CONTROLLER */
+appAccelaar.controller('HomeQualificationController',[
+  '$scope','General','$uibModal',
+  function($scope,General,$uibModal){
+
+    /* Load first */
+    fetch_all_qualification = function(){
+      $scope.qualification_types = [];
+
+      General.qualificationType().query(function(result){
+        if(result.length > 0) $scope.qualification_types = result
+      }, function(error){
+        console.log(error)
+      })
+    };
+    /* end load first */
+
+
+
+    fetch_all_qualification();
+    /**
+     *
+     * @param event {event}
+     * @param formData
+     * @use Create/Add qualification data
+     */
+    $scope.saveFormData = function(event, formData){
+      event.preventDefault();
+      General.qualificationType().save(formData, function(result){
+        if(result.status == 200){
+          $scope.qualification = {}; // empty fields
+          $scope.qualificationTypeForm.$setPristine();
+          fetch_all_qualification()
+        }
+      }, function(error){
+        console.log(error)
+      })
+    };
+
+    /**
+     *
+     * @param event {event}
+     * @param s_type {object}
+     * @use Delete selected qualification type
+     * @return Re fetch data
+     */
+    $scope.deleteType = function(event,s_type){
+      if(!s_type.id) throw new Error("Id is not found");
+
+      General.qualificationType().remove({id:s_type.id}, function(result){
+        if(result.status == 200){
+          fetch_all_qualification();
+        }
+      }, function(error){
+        console.log(error)
+      })
+    };
+
+    $scope.editModalType = function(event, data){
+      event.preventDefault();
+      var editQTypeModal = $uibModal.open({
+        templateUrl:"edit_qualification_type_modal",
+        controller:'homeEditQualificationTypeCtrl',
+        size:'md',
+        resolve:{
+          item: function(){
+            return data
+          }
+        }
+      });
+
+      editQTypeModal.result.then(function(status){
+        console.log(status);
+        if(status.status == 200){
+          fetch_all_qualification();
+        }
+      });
+    }
+  }
+]);
+
+/* END QUALIFICATION TYPE CONTROLLER */
+
+/* START QUALIFICATION EDIT MODAL CONTROLLER */
+appAccelaar.controller('homeEditQualificationTypeCtrl',[
+  '$scope','$uibModalInstance','item','General',
+  function($scope,$uiModalInstance,item,General){
+    $scope.item = item;
+
+    $scope.closeModal = function(){
+      $uiModalInstance.dismiss('cancel')
+    };
+
+    $scope.editQualificationSubmit = function(event, data){
+      General.qualificationType().update({id: data.id},data, function(result){
+        if(result.status == 200){
+          $uiModalInstance.close(result)
+        }
+      }, function(error){
+        console.log(error)
+      })
+    };
+  }
+
+
+]);
+
+/* END QUALIFICATION EDIT MODAL CONTROLLER */

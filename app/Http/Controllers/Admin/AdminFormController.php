@@ -45,6 +45,6 @@ class AdminFormController extends Controller
     }catch (\Exception $e){
       return response()->json(['status'=> 405,'message'=> $e->getMessage()]);
     }
-
   }
+
 }
