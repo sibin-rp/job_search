@@ -52,7 +52,7 @@ class User extends Authenticatable
       return $this->hasMany('App\StudentQualification');
     }
 
-    public function tokeexperiences(){
+    public function experiences(){
       return $this->hasMany('App\Experience');
     }
 

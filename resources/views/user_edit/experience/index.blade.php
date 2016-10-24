@@ -15,6 +15,7 @@
     </ul>
     @else
       <div class="panel-group" id="exp-accordion" aria-multiselectable="true">
+        @if($experience->count() > 0)
         @foreach($experience as $exp)
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -59,6 +60,11 @@
             </div>
           </div>
         @endforeach
+          @else
+          <div class="well">
+            We don't find anything...
+          </div>
+        @endif
       </div>
     @endif 
   </div>
