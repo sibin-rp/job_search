@@ -19,7 +19,7 @@
           @if($user->company()->get()->count() > 0)
             <a href="{{route('company.index')}}">Companies</a>
           @else
-            <a href="{{route('company.show')}}">Add Company</a>
+            <a href="{{route('company.create')}}">Add Company</a>
           @endif
         </li>
         <li><a href="{{route('internships_program.index',['company_user'=>$user])}}">Internship Program</a></li>

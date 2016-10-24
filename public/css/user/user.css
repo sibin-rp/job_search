@@ -6383,3 +6383,10 @@ button.close {
 .common-form-wrapper {
   display: block;
   padding: 0 0 40px; }
+
+.qualification-fields {
+  display: block; }
+  .qualification-fields .qualification-section {
+    display: none; }
+    .qualification-fields .qualification-section.open {
+      display: block; }

@@ -5,6 +5,7 @@
       <h3>
         {{$company->name}}
         <small class="pull-right">
+          <a href="{{route('company.index')}}" class="btn btn-sm btn-success">List</a>
           <a href="{{route('company.edit',['company'=> $company])}}" class="btn btn-sm btn-primary">
             <span class="fa fa-edit"></span>
             Edit

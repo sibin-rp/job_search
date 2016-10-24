@@ -6,6 +6,7 @@ use App\Company;
 use App\Helpers;
 use App\Internship;
 use App\InternshipField;
+use App\QualificationType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -38,9 +39,10 @@ class InternshipProgramController extends Controller
         //
         $states = Helpers::getStates();
         $internship_fields = InternshipField::all();
-        $companies = $user->company()->get();
-        //dd($internship_fields);
-        return view('company.internship_program.create',compact(['user','states','internship_fields','companies']));
+        $companies = $user->company->get();
+
+        $qualifications = QualificationType::all()->groupBy('qualification')->toArray();
+        return view('company.internship_program.create',compact(['user','states','internship_fields','companies','qualifications']));
     }
 
     /**
@@ -107,8 +109,9 @@ class InternshipProgramController extends Controller
     {
         //
         $internship_fields = InternshipField::all();
-        $companies = $user->company()->get();
+        $companies = $user->company->get();
         $states = Helpers::getStates();
+
         return view('company.internship_program.edit',
           compact(['internship','user','internship_fields','companies','states']));
     }

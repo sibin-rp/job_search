@@ -48,10 +48,12 @@
           <td>State</td>
           <td>{{$user->home_state_name}}</td>
         </tr>
+        @if($user->company)
         <tr>
           <td>Company</td>
-          <td>{{$user->company->name}}</td>
+          <td>{{$user->company->name or 'None'}}</td>
         </tr>
+        @endif
         <tr>
           <td>Position</td>
           <td>{{$user->role}}</td>

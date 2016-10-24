@@ -10,7 +10,7 @@
       <div class="glyphicon-ring"><i class=" glyphicon glyphicon-folder-open"></i></div>
     </div>
   </div>
-  <form method="post" action="{{route('company.user.logo.upload',['user'=> $user])}}" enctype="multipart/form-data"
+  <form method="post" action="{{route('company_user_logo_upload',['user'=> $user])}}" enctype="multipart/form-data"
         id="profile-image-upload">
     {{csrf_field()}}
     {{method_field('POST')}}

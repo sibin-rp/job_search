@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Company;
 use App\Helpers;
+use App\Internship;
 use App\InternshipField;
 use Illuminate\Http\Request;
 
@@ -32,11 +33,13 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create()
     {
         //
+        $user = Auth::user();
         $states = Helpers::getStates();
-
+        $fields = InternshipField::all();
+        return view('company.company.create',compact(['user','states','fields']));
     }
 
     /**
@@ -48,6 +51,15 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+      try{
+        $user = Auth::user();
+        $company = $request->get('company');
+        $company = array_filter($company);
+        $user->company()->create($company);
+        return redirect()->route('company.index')->with(['class'=>'alert-success','message'=>'New company added successfully']);
+      }catch (\Exception $e){
+        return back()->with(['class'=>'alert-danger','message'=> $e->getMessage(),'line'=> $e->getLine()]);
+      }
 
     }
 

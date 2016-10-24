@@ -87,8 +87,7 @@ Route::group(['prefix'=>'company','namespace'=>'Company','middleware'=>['auth','
   Route::resource('company_user','UserController',[
     'except'=>['index','create','store']
   ]);
-  Route::post('/{company_user}/profile_upload',['uses'=>'UserController@profile_upload','as'=>'company.user.logo.upload
-  ']);
+  Route::post('/{company_user}/profile_upload',['uses'=>'UserController@profile_upload','as'=>'company_user_logo_upload']);
   Route::post('/company/profile/upload',['uses'=>'CompanyController@logo_upload','as'=>'company.logo.upload']);
   Route::resource('company','CompanyController');
   Route::resource('{company_user}/internships_program','InternshipProgramController');

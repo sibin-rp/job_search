@@ -14,7 +14,7 @@
 </head>
 
 <body class="user-page">
-  @if($user->type=="1")
+ @if($user->type=="1")
     @include('company_partials._header')
   @else
     @include('user_partial._header')

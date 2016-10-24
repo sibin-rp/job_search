@@ -92,7 +92,7 @@ $company = (object)$default;
     <div class="form-group">
       <input type="file" name="company_logo" class="btn btn-warning">
     </div>
-    @if($company->logo)
+    @if(isset($company) && isset($company->logo) && $company->logo)
       <div class="form-group well">
         <div class="img-responsive">
           <img src="{{asset($company->logo)}}" alt="{{$company->name}}" class="img-responsive img-rounded">

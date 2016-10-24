@@ -142,6 +142,57 @@ $(document).ready(function(){
 
   /*---------- END -------------------------*/
 
+
+
+  /*=================== USER/COMPANY DASHBOARD ============= */
+
+  /**
+   * Show/Close minimum qualification section
+   */
+  $('.min_qual_radio').click(function(){
+    $('.qualification-section').removeClass('open');
+    var currentValue = $(this).val();
+    if($(this).prop('checked')){
+      $('#quali-'+currentValue).addClass('open')
+    }else{
+      $('#quali-'+currentValue).removeClass('open')
+    }
+  });
+
+  /**
+   * Change Min-Max When user select CGPA4/10 and Percentage
+   */
+  $('.q-type').on('change', function(){
+    var selectedValue = $(this).val();
+    var closestInputField = $(this).parents('.qualification-section').find('.q-mark');
+    var minAndMax = {min:0,max:100}
+    switch (selectedValue){
+      case 'cgpa_4':
+        minAndMax = {min:0,max:4};
+        break;
+      case 'cgpa_10':
+        minAndMax = {min:0,max:10};
+        break;
+      case 'percentage':
+        minAndMax = {min:0,max:100};
+        break;
+      default:
+        minAndMax = {min:0,max:100};
+        break
+    }
+    closestInputField.attr(minAndMax)
+  });
+
+  $('.q-mark').on('blue change keyup', function(){
+    var minValue = $(this).attr('min');
+    var maxValue = $(this).attr('max');
+    var currentValue = $(this).val();
+    if(currentValue> maxValue){
+      $(this).val(maxValue)
+    }
+  });
+
+  /*================= EMD =================================*/
 });
 
 
