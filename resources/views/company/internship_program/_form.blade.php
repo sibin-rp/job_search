@@ -77,7 +77,9 @@
                     <label for="">Duration</label>
 
                     <div class="clearfix">
-                        <label for="">&nbsp; <input type="radio" value="any" name="internship[duration]" @if($internship->duration=="any") checked="checked" @endif>Any&nbsp;</label>
+                        <label for="">&nbsp; <input type="radio" value="any" name="internship[duration]"
+                                                    @if($internship->duration==null) checked="checked" @endif
+                                                    @if($internship->duration=="any") checked="checked" @endif>Any&nbsp;</label>
                         <label for="">&nbsp; <input type="radio" value="0_3" name="internship[duration]" @if($internship->duration=="0_3") checked="checked" @endif>0-3months&nbsp;</label>
                         <label for="">&nbsp; <input type="radio" value="3_6" name="internship[duration]" @if($internship->duration=="3_6") checked="checked" @endif>3-6months&nbsp;</label>
                         <label for="">&nbsp; <input type="radio" value="6_9" name="internship[duration]" @if($internship->duration=="6_9") checked="checked" @endif>6-9months&nbsp;</label>
@@ -159,7 +161,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][10_th][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -169,7 +171,7 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4">
+                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4" name="internship[qualification][10_th][mark]">
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +189,7 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="">Stream</label>
-                                                    <select name="" id="" data-qualify="12_th" class="form-control">
+                                                    <select name="internship[qualification][12_th][stream]" id="" data-qualify="12_th" class="form-control">
                                                         <option value="">Select
                                                         @if(isset($qualifications['12_th']))
                                                             @foreach($qualifications['12_th'] as $qualification)
@@ -202,7 +204,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][12_th][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -212,7 +214,9 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4">
+                                                    <input type="number" class="form-control q-mark" placeholder="Mark"
+                                                           name="internship[qualification][12_th][mark]"
+                                                           step="0.01"  min="0" max="4">
                                                 </div>
                                             </div>
                                         </div>
@@ -233,7 +237,7 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Degree</label>
-                                                    <select  name="" id="" class="form-control">
+                                                    <select  name="internship[qualification][graduation][degree]" id="" class="form-control">
                                                         <option value="">Select</option>
                                                         @if(isset($qualifications['graduation']))
                                                             @php
@@ -254,7 +258,7 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Stream</label>
-                                                    <select  name="" id="" class="form-control">
+                                                    <select  name="internship[qualification][graduation][stream]" id="" class="form-control">
                                                         <option value="">Select</option>
                                                         @if(isset($qualifications['graduation']))
                                                             @php
@@ -275,7 +279,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][graduation][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -285,7 +289,9 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4">
+                                                    <input type="number" class="form-control q-mark"
+                                                           name="internship[qualification][graduation][mark]"
+                                                           placeholder="Mark" step="0.01"  min="0" max="4">
                                                 </div>
                                             </div>
                                         </div>
@@ -305,9 +311,9 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Degree</label>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="internship[qualification][post_graduation][degree]" id="" class="form-control">
                                                         <option value="">Select</option>
-                                                        @if($qualifications['post_graduation'])
+                                                        @if(isset($qualifications['post_graduation']))
                                                             @foreach($qualifications['post_graduation'] as $qualification)
                                                                 <option value="{{$qualification['id']}}">{{$qualification['name']}}</option>
                                                             @endforeach
@@ -320,7 +326,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][post_graduation][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -330,7 +336,9 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4">
+                                                    <input type="number" class="form-control q-mark"
+                                                           name="internship[qualification][post_graduation][mark]"
+                                                           placeholder="Mark" step="0.01"  min="0" max="4">
                                                 </div>
                                             </div>
                                         </div>
@@ -350,7 +358,7 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Stream</label>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="internship[qualification][diploma][stream]" id="" class="form-control">
                                                         <option value="">Select</option>
                                                         @if(isset($qualifications['diploma']))
                                                             @foreach($qualifications['diploma'] as $qualification)
@@ -365,7 +373,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][diploma][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -375,7 +383,9 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01"  min="0" max="4">
+                                                    <input type="number" class="form-control q-mark"
+                                                           name="internship[qualification][diploma][mark]"
+                                                           placeholder="Mark" step="0.01"  min="0" max="4">
                                                 </div>
                                             </div>
                                         </div>
@@ -395,7 +405,7 @@
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Stream</label>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="internship[qualification][phd][stream]" id="" class="form-control">
                                                         <option value="">Select</option>
                                                         @if(isset($qualifications['phd']))
                                                             @foreach($qualifications['phd'] as $qualification)
@@ -410,7 +420,7 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Scale</label>
-                                                    <select name="" id="" class="q-type form-control">
+                                                    <select name="internship[qualification][phd][mark_type]" id="" class="q-type form-control">
                                                         <option value="cgpa_4">CGPA 4</option>
                                                         <option value="cgpa_10">CGPA 10</option>
                                                         <option value="percentage">Percentage</option>
@@ -420,7 +430,9 @@
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Mark</label>
-                                                    <input type="number" class="form-control q-mark" placeholder="Mark" step="0.01" min="0" max="4">
+                                                    <input type="number" class="form-control q-mark"
+                                                           name="internship[qualification][phd][mark]"
+                                                           placeholder="Mark" step="0.01" min="0" max="4">
                                                 </div>
                                             </div>
                                         </div>

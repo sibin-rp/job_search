@@ -71,6 +71,15 @@ class InternshipProgramController extends Controller
                     }
                 }
             }
+            if(isset($internship['qualification'])){
+                $qualifications = array_filter($internship['qualification']);
+                if($internship['min_qualification']!="any"){
+                    dd($qualifications[$internship['min_qualification']]);
+                }else{
+                    dd("HELLO");
+                }
+
+            }
             return redirect()->route('internships_program.show',['user'=> $user,
             'internship_program'=> $internshipObject])->with([
               'class'=>'alert-info',

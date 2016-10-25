@@ -184,10 +184,10 @@ $(document).ready(function(){
   });
 
   $('.q-mark').on('blue change keyup', function(){
-    var minValue = $(this).attr('min');
-    var maxValue = $(this).attr('max');
-    var currentValue = $(this).val();
-    if(currentValue> maxValue){
+    var minValue = parseFloat($(this).attr('min'));
+    var maxValue = parseFloat($(this).attr('max'));
+    var currentValue = parseFloat($(this).val());
+    if(currentValue > maxValue){
       $(this).val(maxValue)
     }
   });
