@@ -4,6 +4,11 @@
     <div class="page-header">
       <h3>
         {{$internship->title}}
+
+        <small class="pull-right">
+          <a href="{{route('internships_program.edit',['internship_program'=> $internship,
+          'company_user'=> $user])}}" class="btn btn-xs btn-primary">Edit</a>
+        </small>
       </h3>
     </div>
    <div class="internship-program">
@@ -50,6 +55,10 @@
            <td>{{$internship->duration}}</td>
          </tr>
          <tr>
+           <td>Validity</td>
+           <td>{{$internship->validity}}</td>
+         </tr>
+         <tr>
            <td>City</td>
            <td>{{$internship->city}}</td>
          </tr>
@@ -60,7 +69,40 @@
          <tr>
            <td>Qualification</td>
            <td>
-             {{$internship->qualification}}
+             <table class="table table-bordered">
+               <tbody>
+               <tr>
+                 <td>Qualification</td>
+                 <td>
+                   @if(isset($internship->qualification))
+                    {{$internship->qualification->qualification_name}}
+                   @else
+                    Any
+                   @endif
+                 </td>
+               </tr>
+               @if(isset($internship->qualification))
+               <tr>
+                 <td>Mark</td>
+                 <td>
+                    {{$internship->qualification->mark}} ({{$internship->qualification->mark_type_name}})
+                 </td>
+               </tr>
+               @if($internship->qualification->degree)
+               <tr>
+                 <td>Degree</td>
+                 <td>{{$internship->qualification->degree}}</td>
+               </tr>
+                @endif
+               @if($internship->qualification->stream)
+               <tr>
+                 <td>Stream</td>
+                 <td>{{$internship->qualification->stream}}</td>
+               </tr>
+               @endif
+               @endif
+               </tbody>
+             </table>
            </td>
          </tr>
          <tr>
@@ -78,6 +120,29 @@
                  <td>{{$internship->eligible_min}}</td>
                  <td>{{$internship->eligible_max}}</td>
                </tr>
+               </tbody>
+             </table>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             Skills
+           </td>
+           <td>
+             <table class="table table-bordered">
+               <thead>
+               <tr>
+                 <td>Skill</td>
+                 <td>Level</td>
+               </tr>
+               </thead>
+               <tbody>
+               @foreach($internship->skills()->get() as $skill)
+                <tr>
+                  <td>{{$skill->name}}</td>
+                  <td>{{$skill->pivot->expertise_level}}</td>
+                </tr>
+               @endforeach
                </tbody>
              </table>
            </td>

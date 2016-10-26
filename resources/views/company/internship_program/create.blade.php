@@ -6,7 +6,7 @@
         </div>
         <div class="internship-p-form">
             <form action="{{route('internships_program.store',['user'=> $user])}}"
-                  method="post" novalidate="">
+                  method="post" novalidate="" class="main-forms">
                 {{method_field('POST')}}
                 @include('company.internship_program._form')
             </form>

@@ -5,7 +5,9 @@
       {{$internship->title}}
     </div>
     <div class="internship-edit-form">
-      <form action="{{route('internship_program.update',$internship->id)}}" method="post" novalidate="">
+      <form action="{{route('internships_program.update',['company_user'=> $user,
+      'internships_program' => $internship])}}" method="post" novalidate=""
+        class="main-forms">
         {{method_field('PUT')}}
         @include('company.internship_program._form')
       </form>

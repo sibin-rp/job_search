@@ -71,14 +71,19 @@ class InternshipProgramController extends Controller
                     }
                 }
             }
+
             if(isset($internship['qualification'])){
                 $qualifications = array_filter($internship['qualification']);
                 if($internship['min_qualification']!="any"){
-                    dd($qualifications[$internship['min_qualification']]);
-                }else{
-                    dd("HELLO");
-                }
+                    try{
+                        $qualification_array = $qualifications[$internship['min_qualification']];
+                        $qualification_array['qualification'] = $internship['min_qualification'];
+                        $internshipObject->qualification()->create($qualification_array);
+                    }catch (\Exception $e){
+                        dd($e->getMessage());
+                    }
 
+                }
             }
             return redirect()->route('internships_program.show',['user'=> $user,
             'internship_program'=> $internshipObject])->with([
@@ -118,11 +123,12 @@ class InternshipProgramController extends Controller
     {
         //
         $internship_fields = InternshipField::all();
+        $internship_skills = InternshipField::find($internship->internship_field_id)->skills()->get();
         $companies = $user->company->get();
         $states = Helpers::getStates();
 
         return view('company.internship_program.edit',
-          compact(['internship','user','internship_fields','companies','states']));
+          compact(['internship','user','internship_fields','companies','states','internship_skills']));
     }
 
     /**
@@ -132,9 +138,56 @@ class InternshipProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user,Internship $internshipObject, Request $request)
     {
         //
+        try{
+            $internship = $request->get('internship');
+
+            $internshipObject->update($internship);
+
+            // add skills
+            if(isset($internship['skills'])){
+                $internshipObject->skills()->detach();
+                foreach($internship['skills'] as $key => $value){
+                    try{
+                        $internshipObject->skills()->attach($key,[
+                          'expertise_level' => $value
+                        ]);
+                    }catch (\Exception $e){
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            // add qualification
+            if(isset($internship['qualification'])){
+
+                $qualifications = array_filter($internship['qualification']);
+
+                if($internship['min_qualification']!="any"){
+
+                    try{
+                        $internshipObject->qualification()->delete();
+                        $qualification_array = $qualifications[$internship['min_qualification']];
+                        $qualification_array['qualification'] = $internship['min_qualification'];
+                        $internshipObject->qualification()->create($qualification_array);
+                    }catch (\Exception $e){
+                        dd($e->getMessage());
+                    }
+
+                }
+            }
+            return redirect()->route('internships_program.show',[
+                'user' => $user,
+                'internship_program' => $internshipObject
+            ])->with([
+                'class' => 'alert-success',
+                'message' => 'Internship updated successfully'
+            ]);
+        }catch (\Exception $e){
+            dd($e->getMessage());
+        }
+
     }
 
     /**
