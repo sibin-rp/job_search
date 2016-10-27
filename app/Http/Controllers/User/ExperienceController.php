@@ -73,7 +73,6 @@ class ExperienceController extends Controller
     public function show(User $user,Experience $experience)
     {
         //
-
         return view('user_edit.experience.show',compact(['user','experience']));
     }
 

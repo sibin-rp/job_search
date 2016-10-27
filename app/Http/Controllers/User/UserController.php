@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -101,6 +102,30 @@ class UserController extends Controller
 
 
     public function user_profile_upload(User $user, Request $request){
-        dd($request->file('profile'));
+        try{
+            if(!$request->hasFile('logo') && !$request->file('logo')->isValid()) throw new \Exception("FIle not supplied");
+            $logo_file = $request->file('logo');
+
+            $logo_ext = $logo_file->getClientOriginalExtension();
+
+            if(!(Storage::disk('local')->exists('public/profile-images'))){
+                Storage::makeDirectory('public/profile-images');
+            }
+
+            $logo_name = "profile-$user->id.$logo_ext";
+            Storage::putFileAs('public/profile-images',$logo_file,$logo_name,'public');
+            $user->update([
+              'profile_image' => asset('storage/profile-images/'.$logo_name)
+            ]);
+            return response()->json([
+              'status' => 200,
+              'message' => 'Profile image saved successfully'
+            ]);
+        }catch (\Exception $e){
+            return response()->json([
+              'status' => 405,
+              'message' => $e->getMessage()
+            ]);
+        }
     }
 }

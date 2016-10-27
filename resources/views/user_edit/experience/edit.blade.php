@@ -6,7 +6,8 @@
     </div>
     <div class="form-section">
       @include('user_edit.experience._form',
-        ['_method'=>"PUT", '_route_url'=> route('experience.store',['user'=> $user , 'experience' => $experience])]
+        ['_method'=>"PUT", '_route_url'=> route('experience.update',
+        ['user'=> $user , 'experience' => $experience])]
       )
     </div>
   </div>
