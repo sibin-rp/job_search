@@ -52,7 +52,11 @@
          </tr>
          <tr>
            <td>Duration</td>
-           <td>{{$internship->duration}}</td>
+           <td>{{$internship->duration_type}}</td>
+         </tr>
+         <tr>
+           <td>Work Type</td>
+           <td>{{$internship->work_type_option}}</td>
          </tr>
          <tr>
            <td>Validity</td>
@@ -64,7 +68,7 @@
          </tr>
          <tr>
            <td>State</td>
-           <td>{{$internship->state}}</td>
+           <td>{{$internship->state_name}}</td>
          </tr>
          <tr>
            <td>Qualification</td>

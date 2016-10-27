@@ -51,7 +51,7 @@
                     <label for="" class="control-label">Company</label>
                     <select name="internship[company_id]" id="" class="form-control">
                         @foreach($companies as $company)
-                            <option value="{{$company->id}}" @if($company->id == $internship->company_id) @endif >{{$company->name}}</option>
+                            <option value="{{$company->id}}" @if(isset($internship->company_id) && $company->id == $internship->company_id) @endif >{{$company->name}}</option>
                         @endforeach
                     </select>
                 </div>
