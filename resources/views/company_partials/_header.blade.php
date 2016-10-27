@@ -26,14 +26,14 @@
         <li><a href="{{route('internships_program.create',['company_user'=>$user])}}">Add Internship Program</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('user.show',$user)}}">Home</a></li>
+        <li><a href="{{route('company_user.show',$user)}}">Home</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Settings<span
               class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{route('company.edit',$user->company)}}">Company Details</a></li>
             <li class="divider"></li>
-            <li><a href="{{route('user.show',$user->id)}}">Profile</a></li>
-            <li><a href="{{route('user.edit',$user->id)}}">Edit</a></li>
+            <li><a href="{{route('company_user.show',$user->id)}}">Profile</a></li>
+            <li><a href="{{route('company_user.edit',$user->id)}}">Edit</a></li>
             <li><a href="#">Page </a></li>
           </ul>
         </li>

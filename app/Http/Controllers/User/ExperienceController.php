@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Experience;
+use App\Internship;
+use App\InternshipField;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -32,6 +35,8 @@ class ExperienceController extends Controller
     public function create(User $user)
     {
         //
+        $internship_fields = InternshipField::all();
+        return view('user_edit.experience.create',compact(['user','internship_fields']));
     }
 
     /**
@@ -43,6 +48,20 @@ class ExperienceController extends Controller
     public function store(User $user,Request $request)
     {
         //
+        try{
+            $experience = $request->get('experience');
+            $experience = array_filter($experience);
+
+            //dd($experience);
+            $user->experiences()->create($experience);
+
+            return redirect()->route('experience.index',[
+                'user' => $user
+            ])->with(['class'=>'alert-success','message' => 'Experience added successfully']);
+        }catch (\Exception $e){
+            var_dump($e->getLine());
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -51,9 +70,11 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user,$id)
+    public function show(User $user,Experience $experience)
     {
         //
+
+        return view('user_edit.experience.show',compact(['user','experience']));
     }
 
     /**
@@ -62,9 +83,13 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user,$id)
+    public function edit(User $user,Experience $experience)
     {
         //
+        $internship_fields = InternshipField::all();
+        return view('user_edit.experience.edit',compact([
+            'user','experience','internship_fields'
+        ]));
     }
 
     /**
@@ -74,9 +99,19 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $user, $id)
+    public function update(Request $request,User $user, Experience $experience)
     {
         //
+        try{
+            $experience_data = $request->get('experience');
+            $experience_data = array_filter($experience_data);
+            $experience->update($experience_data);
+            return redirect()->route('experience.show',['user'=> $user,'experience'=> $experience])
+              ->with(['class'=>'alert-success','Experience updated successfully']);
+        }catch (\Exception $e){
+            dd($e->getMessage());
+        }
+
     }
 
     /**
