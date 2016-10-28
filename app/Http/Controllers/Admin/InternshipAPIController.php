@@ -15,10 +15,26 @@ class InternshipAPIController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $internships = Internship::all()->toJson();
-
+        try{
+            $pagination = json_decode($request->get('pagination'));
+            $internship_count = Internship::all()->count();
+            $internship = Internship::skip($pagination->start)
+              ->take($pagination->number)->get()->toArray();
+            return response()->json([
+              'status' => 200,
+              'totalItemCount' => $internship_count,
+              'numberOfPages'  => ceil($internship_count/$pagination->number),
+              'data' => $internship
+            ]);
+        }catch (\Exception $e){
+            return response()->json([
+                'status' => 405,
+                'data' => [],
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -48,9 +64,22 @@ class InternshipAPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Internship $internship)
     {
-      return Internship::with('internship_field','skills','company','company.user')->find($id)->toJson();
+
+      try{
+          $internship_data = Internship::with('internship_field','skills','company','company.user')->find($internship->id);
+          return response()->json([
+            'status' => 200,
+            'data'   => $internship_data
+          ]);
+      }catch (\Exception $e){
+          return response()->json([
+              'status' => 405,
+              'message' => $e->getMessage(),
+              'data'=> []
+          ]);
+      }
     }
 
     /**

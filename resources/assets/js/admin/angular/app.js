@@ -1,4 +1,5 @@
-var appAccelaar = window.appAccelaar = angular.module('appAccelaar',['ngResource','ui.router','ui.bootstrap','ngTagsInput']);
+var appAccelaar = window.appAccelaar = angular.module('appAccelaar',
+  ['ngResource','ui.router','ui.bootstrap','ngTagsInput','smart-table']);
 
 appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $urlRouterProvider.otherwise('/home');

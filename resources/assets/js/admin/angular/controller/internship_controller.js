@@ -5,7 +5,9 @@ appAccelaar.controller('InternshipController', ['$scope','InternshipService','$s
   console.log($stateParams);
   $scope.internship = {};
   InternshipService.internships().get({id:$stateParams.id}, function(result){
-    $scope.internship = result;
+    if(result.status== 200){
+      $scope.internship = result.data;
+    }
   }, function(error){
     console.log(error)
   })

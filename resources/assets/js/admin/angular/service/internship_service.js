@@ -14,8 +14,9 @@ appAccelaar.factory('InternshipService',['$http','$q','$resource',
         })
     };
     var internships = function(){
-        console.log("Hello");
-        return $resource('/api/admin/internships/:id',{id:'@id'})
+        return $resource('/api/admin/internships/:id',{id:'@id'},{
+            query:{ method:'GET',isArray:false }
+        })
     };
     return {
         getInternshipList: getInternshipList,

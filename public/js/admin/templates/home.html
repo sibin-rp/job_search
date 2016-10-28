@@ -10,18 +10,36 @@
       </div>
       <div class="content">
         <div class="table-full-width">
-          <table class="table">
+          <table class="table" st-table="internship_list"
+            st-pipe="getInternshipData">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Internships</th>
+            </tr>
+            </thead>
             <tbody>
             <tr ng-repeat="internship in internship_list">
+              <td>{{$index + 1}}</td>
               <td>
-                <p>{{internship.title}}</p>
+                <p>
+                  <a ui-sref="internship({id:internship.id})">
+                    {{internship.title}}
+                  </a>
+                </p>
               </td>
             </tr>
             <tr ng-hide="internship_list.length > 0">
               <td colspan="2">Sorry we don't have any Internships</td>
             </tr>
-
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">
+                  <div st-pagination="" st-items-by-page="10"></div>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
 

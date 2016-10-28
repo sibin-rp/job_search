@@ -7,14 +7,17 @@ appAccelaar.controller('HomeController',['$scope','InternshipService',
     function($scope,InternshipService){
     $scope.title = "Internship List";
     $scope.internship_list = [];
-    InternshipService.getInternshipList().then(function(result){
-        console.log(result)
-        if(result.data.status == 200){
-            $scope.internship_list = result.data.data
+    $scope.getInternshipData = function(tableState){
+      tableState.pagination.number = tableState.pagination.number || 10;
+      tableState.pagination.start  = tableState.pagination.start  || 0;
+      InternshipService.internships().query(tableState, function(result){
+        if(result.status == 200){
+          //tableState.pagination.totalItemCount = result.totalItemCount;
+          tableState.pagination.numberOfPages  = result.numberOfPages;
+          $scope.internship_list = result.data;
         }
-        console.log($scope.internship_list)
-    });
-
+      });
+    };
 }]);
 
 
