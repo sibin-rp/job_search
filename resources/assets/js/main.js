@@ -124,7 +124,7 @@ $(document).ready(function() {
       })
     })
   }
-  var internshipQualificationForm = $('#internship-qualification-form');
+  var internshipQualificationForm = $('.internship-qualification-form');
   if(internshipQualificationForm.length > 0){
     internshipQualificationForm.submit(function(e){
       e.preventDefault();
@@ -133,7 +133,7 @@ $(document).ready(function() {
       $.post(formUrl,formData).then(function(result){
         if(result.status == 200){
           toastr.success(result.message);
-          $('a[href="#experienceInfoCollapse"]').click();
+          $('a[href="#'+result.key+'"]').click();
         }
       }, function(error){
 
@@ -291,6 +291,43 @@ $(document).ready(function() {
   /*Smooth Scroll*/
   smoothScroll.init();
   /*eof smooth scroll*/
+
+
+  /**
+   * Change Min-Max When user select CGPA4/10 and Percentage
+   */
+  $('.q-type').on('change', function(){
+    var selectedValue = $(this).val();
+    var closestInputField = $(this).parents('.qualification-section').find('.q-mark');
+    var minAndMax = {min:0,max:100}
+    switch (selectedValue){
+      case 'cgpa_4':
+        minAndMax = {min:0,max:4};
+        break;
+      case 'cgpa_10':
+        minAndMax = {min:0,max:10};
+        break;
+      case 'percentage':
+        minAndMax = {min:0,max:100};
+        break;
+      default:
+        minAndMax = {min:0,max:100};
+        break
+    }
+    closestInputField.attr(minAndMax)
+  });
+
+  $('.q-mark').on('blur change keyup', function(){
+    var minValue = parseFloat($(this).attr('min'));
+    var maxValue = parseFloat($(this).attr('max'));
+    var currentValue = parseFloat($(this).val());
+    if(currentValue > maxValue){
+      $(this).val(maxValue)
+    }
+  });
+
+  /*================= EMD =================================*/
+
 
 });
 

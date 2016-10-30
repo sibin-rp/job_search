@@ -25,25 +25,30 @@
       <label for="" class="control-label">Degree</label>
       <select name="internship[qualification][post_graduation][degree]" id="" class="form-control">
         <option value="">Select</option>
-        <option value="b_tech">B-Tech</option>
-        <option value="bse_physics">BSE - Physics</option>
-        <option value="bse_maths">BSE - Maths</option>
+        @if(isset($qualifications['post_graduation']))
+          @foreach($qualifications['post_graduation'] as $post_graduation)
+            <option value="{{$post_graduation['id']}}">{{$post_graduation['name']}}</option>
+          @endforeach
+        @endif
       </select>
     </div>
-
   </div>
   <div class="col-xs-12 col-sm-6">
+    <div class="qualification-section">
     <div class="row">
       <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Type</label>
-        <select name="internship[qualification][post_graduation][mark_type]" id="" class="form-control">
-          <option value="percentage" selected>Percentage</option>
-          <option value="cgpa_4">CGPA 4</option>
+        <select name="internship[qualification][post_graduation][mark_type]" id="" class="q-type form-control">
+          <option value="cgpa_4" selected="selected">CGPA 4</option>
           <option value="cgpa_10">CGPA 10</option>
+          <option value="percentage">Percentage</option>
         </select>
       </div>
       <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
-        <input type="text" class="form-control" name="internship[qualification][post_graduation][mark]" placeholder="Performance">
+        <input type="number" class="q-mark form-control" name="internship[qualification][post_graduation][mark]"
+               placeholder="Performance"
+               step="0.01"  min="0" max="4">
       </div>
     </div>
+      </div>
   </div>
 </div>

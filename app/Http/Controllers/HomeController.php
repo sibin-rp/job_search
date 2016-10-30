@@ -9,6 +9,7 @@ use App\InternshipField;
 use App\InternshipPreference;
 use App\Mail\ConfirmationMail;
 use App\Qualification;
+use App\QualificationType;
 use App\StudentQualification;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -83,11 +84,12 @@ class HomeController extends Controller
         $getUser = $getUser->get()->first();
         $request->session()->put('register_token',$token);
         $states = Helpers::getStates();
+        $qualifications = QualificationType::all()->groupBy('qualification')->toArray();
         if($getUser->type==1){// company user
           return view('register.company',compact(['states']));
         }else{ // student
           $get_fields = InternshipField::all()->toArray();
-          return view('register.student',compact(['states','get_fields']));
+          return view('register.student',compact(['states','get_fields','qualifications']));
         }
       }else{
         return redirect()->route('home');
@@ -165,20 +167,33 @@ class HomeController extends Controller
         $qualifications = $request->get('internship');
         $token = $request->session()->get('register_token');
         $user = User::where('token',$token)->get()->first();
+        $picked_arrays = ['10_th','12_th','graduation','post_graduation','diploma',
+          'phd','academic','sports','arts','other','experienceInfoCollapse'];
+        $current_key = '10_th';
         if($qualifications['qualification']){
           $regular_q =  array_except($qualifications['qualification'],'others');
-          foreach ($regular_q as $key=>$value){
-            if($key && !empty(array_filter($value))){
-              $value['type'] = $key;
-              $user->student_qualifications()->updateOrCreate(array_filter($value));
+          if(sizeof($regular_q) > 0){
+            $current_key = key($regular_q);
+            foreach ($regular_q as $key=>$value){
+              if($key && !empty(array_filter($value))){
+                $value['type'] = $key;
+                $q_exist = $user->student_qualifications()->where(['type'=> $value['type']])->count();
+                if($q_exist > 0){
+                  $user->student_qualifications()->update(array_filter($value));
+                }else{
+                  $user->student_qualifications()->create(array_filter($value));
+                }
+
+              }
             }
           }
           $other_section = array_only($qualifications['qualification'],'others');
           if(isset($other_section) && isset($other_section['others'])){
             foreach ($other_section['others'] as $key => $other){
               if(isset($other) && array_filter($other)){
+                $current_key = $key;
                 foreach ($other as $other_key => $other_value){
-                  if(array_filter($other_value)){
+                  if(array_filter($other_value) && sizeof(array_filter($other_value)) > 0){
                     $other_value['type'] = $key;
                     $user->student_qualifications()->updateOrCreate(array_filter($other_value));
                   }
@@ -187,9 +202,12 @@ class HomeController extends Controller
             }
           }
         }
+        $current_position = array_search($current_key,$picked_arrays);
+        $current_key = $picked_arrays[$current_position+1];
         return response()->json([
           'status' => 200,
-          'message' => 'Qualification details saved'
+          'message' => 'Qualification details saved',
+          'key' => $current_key
         ]);
       }catch (\Exception $e){
         return response()->json([

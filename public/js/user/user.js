@@ -4644,7 +4644,7 @@ $(document).ready(function(){
     closestInputField.attr(minAndMax)
   });
 
-  $('.q-mark').on('blue change keyup', function(){
+  $('.q-mark').on('blur change keyup', function(){
     var minValue = parseFloat($(this).attr('min'));
     var maxValue = parseFloat($(this).attr('max'));
     var currentValue = parseFloat($(this).val());
