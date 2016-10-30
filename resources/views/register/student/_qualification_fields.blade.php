@@ -2,7 +2,18 @@
   <div class="page-header">
     <h4>10<sup>th</sup> Standards</h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._10_th')
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="12_th">
   <div class="page-header">
@@ -10,33 +21,92 @@
       12<sup>th</sup> Standard
     </h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._12_th')
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="graduation">
   <div class="page-header">
     <h4>Graduation</h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._graduation')
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="post_graduation">
   <div class="page-header">
     <h4>Post Graduation</h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._post_graduation')
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="diploma">
   <div class="page-header">
     <h4>Diploma</h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._diploma')
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="phd">
   <div class="page-header">
     <h4>PhD</h4>
   </div>
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+  {{csrf_field()}}
+  {{method_field('POST')}}
   @include('register.student.qual_partials._phd')
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="academic">
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+    {{csrf_field()}}
+    {{method_field('POST')}}
   <div id="vue-academic-section">
     <div class="page-header">
       <h4 class="clearfix">
@@ -73,8 +143,19 @@
       </div>
     </div>
   </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+    </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="sports">
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+    {{csrf_field()}}
+    {{method_field('POST')}}
   <div id="vue-sports-section">
     <div class="page-header">
       <h4 class="clearfix">
@@ -111,8 +192,19 @@
       </div>
     </div>
   </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="arts">
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+    {{csrf_field()}}
+    {{method_field('POST')}}
   <div id="vue-arts-section">
     <div class="page-header">
       <h4 class="clearfix">
@@ -149,8 +241,19 @@
       </div>
     </div>
   </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div role="tabpanel" class="tab-pane" id="other">
+  <form action="{{route('save_student_qualification')}}" method="post" id="internship-qualification-form">
+    {{csrf_field()}}
+    {{method_field('POST')}}
   <div id="vue-others-section">
     <div class="page-header">
       <h4 class="clearfix">
@@ -187,4 +290,12 @@
       </div>
     </div>
   </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="" class="control-label">College Name</label>
       <input type="text" placeholder="College name" name="internship[qualification][phd][college_name]"
-             class="form-control">
+             class="form-control college-name">
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-6">

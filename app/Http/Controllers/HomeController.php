@@ -170,7 +170,7 @@ class HomeController extends Controller
           foreach ($regular_q as $key=>$value){
             if($key && !empty(array_filter($value))){
               $value['type'] = $key;
-              $user->student_qualifications()->create(array_filter($value));
+              $user->student_qualifications()->updateOrCreate(array_filter($value));
             }
           }
           $other_section = array_only($qualifications['qualification'],'others');
@@ -180,7 +180,7 @@ class HomeController extends Controller
                 foreach ($other as $other_key => $other_value){
                   if(array_filter($other_value)){
                     $other_value['type'] = $key;
-                    $user->student_qualifications()->create(array_filter($other_value));
+                    $user->student_qualifications()->updateOrCreate(array_filter($other_value));
                   }
                 }
               }

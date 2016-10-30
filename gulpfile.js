@@ -29,6 +29,8 @@ elixir(mix => {
             './node_modules/select2/dist/js/select2.min.js',
             './node_modules/dropzone/dist/min/dropzone.min.js',
             './node_modules/smooth-scroll/dist/js/smooth-scroll.min.js',
+            './node_modules/typeahead.js/dist/bloodhound.min.js',
+            './node_modules/typeahead.js/dist/typeahead.jquery.min.js',
             'main.js'
         ],
         'public/js/main.js');

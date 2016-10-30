@@ -238,6 +238,28 @@ $(document).ready(function() {
 
     /** =========================================*/
 
+    /* COLLEGE NAME AUTOCOMPLETE */
+  var collegeName = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    // url points to a json file that contains an array of country names, see
+    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
+    prefetch: '/api/get-colleges',
+    remote: {
+      url: '/api/get-colleges/%QUERY',
+      wildcard: '%QUERY'
+    }
+  });
+    $('.college-name').typeahead({
+      minLength:1
+    },{
+      source: collegeName,
+      display:'name'
+    });
+
+    /* END COLLEGE NAME AUTOCOMPLETE */
+
+
     /* COMMON SELECT 2 BOX */
     $('.select-2-select').select2({
         theme:'bootstrap',

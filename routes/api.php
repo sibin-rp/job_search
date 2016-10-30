@@ -22,6 +22,8 @@ Route::get('/get_fields','HomeController@getFieldJson');
 
 Route::get('/get-internships-list','APIController@getInternshipListJson');
 Route::get('/get-states','APIController@getStates');
+Route::get('/get-colleges/{query?}','APIController@companyName');
+
 
 Route::group(['prefix'=>'admin'], function(){
   Route::get('/companies','APIController@getCompanies');

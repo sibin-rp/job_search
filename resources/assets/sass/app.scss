@@ -14,11 +14,22 @@
 @import "node_modules/dropzone/src/basic";
 @import "node_modules/dropzone/src/dropzone";
 @import './node_modules/bootstrap-slider/src/sass/bootstrap-slider.scss';
-@import "node_modules/ng-tags-input/build/ng-tags-input.bootstrap.css";
-@import "node_modules/ng-tags-input/build/ng-tags-input.css";
+
 // Common styles, mixins, keyframes 
 @import "common/common";
 // Pages 
 @import "home";
 @import "register";
 @import "internship_show";
+
+.twitter-typeahead{
+  width: 100%;
+  clear: both;
+}
+.tt-menu{
+  @extend .dropdown-menu;
+  .tt-suggestion{
+    padding: 10px 15px;
+    display: block;
+  }
+}

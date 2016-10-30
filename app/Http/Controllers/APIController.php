@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\College;
 use App\Company;
 use App\Helpers;
 use App\User;
@@ -84,6 +85,21 @@ class APIController extends Controller
         'data'   => [],
         'message' => $e->getMessage()
       ]);
+    }
+  }
+
+  public function companyName ( $search){
+    $search = trim($search);
+    try{
+      if($search){
+        $colleges = College::orderBy('name','ASC')->where('name','like','%'.$search.'%')->take(20)->get();
+      }else{
+        $colleges = College::orderBy('name','ASC')->take(20)->get();
+      }
+
+      return response()->json($colleges);
+    }catch (\Exception $e){
+      return response()->json([]);
     }
   }
 }
