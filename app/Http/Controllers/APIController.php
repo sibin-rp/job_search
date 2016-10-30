@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Helpers;
 use App\User;
 use App\Internship;
 use Illuminate\Http\Request;
@@ -65,6 +66,23 @@ class APIController extends Controller
       return response()->json([
         'status' => 401,
         'data'   => []
+      ]);
+    }
+  }
+
+
+  public function getStates(){
+    try{
+      $states = Helpers::getStates();
+      return response()->json([
+        'status' => 200,
+        'data'   => $states
+      ]);
+    }catch (\Exception $e){
+      return response()->json([
+        'status' => 405,
+        'data'   => [],
+        'message' => $e->getMessage()
       ]);
     }
   }

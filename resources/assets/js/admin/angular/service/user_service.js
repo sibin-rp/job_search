@@ -3,7 +3,9 @@
  */
 'use-strict';
 
-appAccelaar.service('User',['$http','$q', function($http,$q){
+appAccelaar.service('User',[
+  '$http','$q','$resource',
+  function($http,$q, $resource){
   this.users = function(){
     var defer = $q.defer();
     $http.get('/api/admin/users').then(function(result){
@@ -12,5 +14,8 @@ appAccelaar.service('User',['$http','$q', function($http,$q){
       defer.reject(error)
     });
     return defer.promise;
+  };
+  this.user = function(){
+    return $resource('/api/admin/people/:id')
   }
 }]);

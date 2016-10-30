@@ -44,9 +44,9 @@
         </a>
       </li>
       <li>
-        <a ui-sref="singleuser">
+        <a ui-sref="colleges">
           <i class="pe-7s-note2"></i>
-          <p>Single User</p>
+          <p>Colleges</p>
         </a>
       </li>
       <li>

@@ -18,7 +18,12 @@
             <tbody>
             <tr ng-repeat="user in users">
               <td>{{$index + 1}}</td>
-              <td>{{user.name}}</td>
+              <td>
+                <a ui-sref="user_show({id: user.id})" data-user="{{user.id}}">
+                  {{user.name}}
+                </a>
+
+              </td>
               <td>{{user.username}}</td>
               <td>{{user.type == 1 ? 'Company':'Student'}}</td>
             </tr>

@@ -21,12 +21,15 @@ Route::get('/get-skills-by-id',['uses'=>'HomeController@getSkillsFromId','as'=>'
 Route::get('/get_fields','HomeController@getFieldJson');
 
 Route::get('/get-internships-list','APIController@getInternshipListJson');
+Route::get('/get-states','APIController@getStates');
 
 Route::group(['prefix'=>'admin'], function(){
   Route::get('/companies','APIController@getCompanies');
   Route::get('/users','APIController@getUsers');
   Route::resource('/internships','Admin\InternshipAPIController');
   Route::resource('/qualification-type','Admin\QualificationTypeController');
+  Route::resource('/people','Admin\UserController');
+  Route::resource('/college','Admin\CollegeController');
 
 
 

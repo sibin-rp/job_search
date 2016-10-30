@@ -51,4 +51,24 @@ appAccelaar.service('General',['$http','$q','$resource',
       update:{method:'PUT'}
     })
   };
+
+  this.college = function(){
+    return $resource('/api/admin/college/:id',{id:'@id'},{
+      update:{method:'PUT'}
+    })
+  };
+  this.getStates = function(){
+    var defer = $q.defer();
+    $http.get(
+      '/api/get-states'
+    ).then(function(result){
+      defer.resolve(result);
+    }, function(error){
+      console.log(error);
+      defer.reject(error)
+    });
+
+    return defer.promise;
+  };
+
 }]);

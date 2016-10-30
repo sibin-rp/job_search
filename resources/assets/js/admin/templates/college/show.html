@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="header">
+        <h2 class="clearfix">
+          {{college.name}}
+          <small class="pull-right">
+            <a ui-sref="colleges" class="btn btn-info btn-xs">Back</a>
+            <a ui-sref="colleges_form({id:college.id})" class="btn btn-primary btn-xs">Edit</a>
+            <a ng-click="deleteCollege($event, college)" class="btn btn-danger btn-xs">Delete</a>
+          </small>
+        </h2>
+      </div>
+      <div class="content">
+        <table class="table table bordered">
+          <tbody>
+          <tr>
+            <td>Phone</td>
+            <td>{{college.phone}}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{college.email}}</td>
+          </tr>
+          <tr>
+            <td>About</td>
+            <td>{{college.about}}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{college.address}}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{{college.city}}</td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td>{{college.state_name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

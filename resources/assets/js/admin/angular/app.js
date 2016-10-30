@@ -28,6 +28,11 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       templateUrl:'/js/admin/templates/users.html',
       controller:'HomeUserController'
     })
+    .state('user_show',{
+      url:'/user/:id',
+      templateUrl:'/js/admin/templates/user/show.html',
+      controller:'UserController'
+    })
     .state('settings',{
       url:'/settings',
       templateUrl:'/js/admin/templates/settings.html',
@@ -38,10 +43,20 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       templateUrl:'/js/admin/templates/skills.html',
       controller:'HomeSkillsController'
     })
-    .state('singleuser',{
-      url:'/singleuser',
-      templateUrl:'/js/admin/templates/singleuser.html',
-      controller:'HomeSingleuserController'
+    .state('colleges',{
+      url:'/colleges',
+      templateUrl:'/js/admin/templates/college/index.html',
+      controller:'CollegeController'
+    })
+    .state('colleges_show',{
+      url:'/college/:id',
+      templateUrl:'/js/admin/templates/college/show.html',
+      controller:'CollegeShowController'
+    })
+    .state('colleges_form',{
+      url:'/college_form?id',
+      templateUrl:'/js/admin/templates/college/create.html',
+      controller:'CollegeFormController'
     })
     .state('qualification',{
       url:'/qualification-type',
@@ -54,7 +69,7 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
 /** FILTERS **/
 appAccelaar.filter('company_type', function(){
   return function(input){
-    if(!input) return null
+    if(!input) return null;
     var newInput = input.replace('_',' ');
     return newInput.charAt(0).toUpperCase()+newInput.substr(1).toLowerCase()
   }

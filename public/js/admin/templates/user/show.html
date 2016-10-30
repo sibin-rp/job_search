@@ -5,7 +5,7 @@
         <div class="card">
           <div class="header">
             <h4 class="title">
-              {{internship.title}}
+              {{user.name}}
             </h4>
           </div>
           <div class="content">
@@ -13,21 +13,23 @@
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
-                    <label>Company</label>
-                    <p>{{internship.company.name}}</p>
+                    <label>Company/Student</label>
+                    <p>
+                      {{user.type? 'Company':'Student'}}
+                    </p>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Username</label>
-                    <p>{{internship.company.user.name}}</p>
+                    <p>{{user.username}}</p>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Email address</label>
                     <p>
-                      {{internship.company.email}}
+                     {{user.email}}
                     </p>
                   </div>
                 </div>
@@ -38,7 +40,7 @@
                   <div class="form-group">
                     <label>Description</label>
                     <article>
-                      {{internship.description}}
+                      {{user.describe}}
                     </article>
                   </div>
                 </div>
@@ -49,58 +51,66 @@
                   <div class="form-group">
                     <label>Address</label>
                     <p>
-                      {{internship.city}}, {{internship.state_name}}
+                      {{user.home_city}}
+                    </p>
+                    <p>
+                      {{user.home_address}}
+                    </p>
+                    <p>
+                      {{user.home_state_name}}
                     </p>
                   </div>
                 </div>
               </div>
-
+              <!-- Company Section -->
+              <div ng-if="user.company">
               <div class="row">
                 <div class="col-xs-12">
-                  <h4>Internship Details</h4>
+                  <h4>Company</h4>
                   <div class="internship-details">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-4">
-                        <div class="form-group"><label for="">Internship Field</label>
+                    <table class="table table-responsive">
+                      <tbody>
+                      <tr>
+                        <td>Company Name</td>
+                        <td>{{user.company.name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td>{{user.company.email}}</td>
+                      </tr>
+                      <tr>
+                        <td>Phone</td>
+                        <td>{{user.company.phone}}</td>
+                      </tr>
+                      <tr>
+                        <td>Website</td>
+                        <td>
+                          <a ng-href="{{user.company.website}}" target="_blank">
+                            {{user.company.website}}
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Address</td>
+                        <td>
                           <p>
-                            {{internship.internship_field.name}}
+                            {{user.company.city}}
                           </p>
-                        </div>
-                      </div>
-                      <div class="col-xs-12 col-sm-6">
-                        <div class="form-group"><label for="">Skills required</label>
                           <p>
-                            <span ng-repeat="skill in internship.skills">
-                              {{skill.name}} ({{skill.pivot.expertise_level}})<span
-                              ng-show="$index < (internship.skills.length - 1)">,</span>
-                            </span>
+                            {{user.company.address}}
                           </p>
-                        </div>
-                      </div>
-                    </div>
+                          <p>
+                            {{user.company.state_name}}
+                          </p>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Duration</label>
-                    <p>{{internship.duration_type}}</p>
-                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-12"><label for="">Stipend (from - to)</label></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-4">Rs : {{internship.stipend_from}}</div>
-                    <div class="col-xs-12 col-sm-4">Rs : {{internship.stipend_to}}</div>
-                  </div>
-                </div>
-              </div>
+              <!-- end company section -->
               <div class="clearfix"></div>
             </form>
           </div>
@@ -115,15 +125,15 @@
           <div class="content">
             <div class="author">
               <a href="#">
-                <img class="avatar border-gray" ng-src="{{internship.company.user.profile_image}}" alt="..."/>
+                <img class="avatar border-gray" ng-src="{{user.profile_image}}" alt="..." ng-if="user.profile_image"/>
 
-                <h4 class="title">{{internship.company.user.name }}<br/>
-                  <small>{{ internship.company.user.username}}</small>
+                <h4 class="title"><br/>
+                  <small>{{user.name}}</small>
                 </h4>
               </a>
             </div>
             <p class="description text-center">
-              {{internship.company.user.describe}}
+              {{user.describe}}
             </p>
           </div>
         </div>

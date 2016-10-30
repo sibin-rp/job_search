@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="header">
+        <h2>
+          Colleges
+          <small class="pull-right">
+            <a ui-sref="colleges_form" class="btn-sm btn btn-success">Add College</a>
+          </small>
+        </h2>
+      </div>
+      <div class="content">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>College Name</th>
+            <th>State</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="college in colleges">
+            <td>{{$index + 1}}</td>
+            <td>
+              <a ui-sref="colleges_show({id: college.id})">
+              {{college.name}}
+              </a>
+            </td>
+            <td>{{ college.state_name}}</td>
+            <td>
+              <a ui-sref="colleges_form({id: college.id})" class="btn btn-xs btn-primary">
+                Edit
+              </a>
+              <a href="javascript:void(0)" class="btn btn-xs btn-danger"
+                ng-click="deleteCollege($event,college)">
+                Delete
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
