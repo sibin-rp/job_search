@@ -88,7 +88,7 @@ class APIController extends Controller
     }
   }
 
-  public function companyName ( $search){
+  public function companyName ($search=null){
     $search = trim($search);
     try{
       if($search){

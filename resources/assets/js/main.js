@@ -174,18 +174,11 @@ $(document).ready(function() {
 
       $('.internship-qualification-select').click(function(){
         var extraFieldExist = $(this).data('extra');
+        $('.qualification-inbox').addClass('hidden');
           if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
               $('#qualification-extra').addClass('hidden');
           }else{
               $('#qualification-extra').removeClass('hidden');
-          }
-      });
-      $('.internship-qualification-select-twelve').click(function(){
-        var extraFieldExist = $(this).data('extra');
-          if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
-              $('#qualification-extra2').addClass('hidden');
-          }else{
-              $('#qualification-extra2').removeClass('hidden');
           }
       });
 
