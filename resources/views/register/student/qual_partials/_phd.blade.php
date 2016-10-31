@@ -30,7 +30,7 @@
         <option value="">Select</option>
         @if(isset($qualifications['phd']))
           @foreach($qualifications['phd'] as $phd)
-            <option value="{{$phd['id']}}">{{$php['name']}}</option>
+            <option value="{{$phd['id']}}">{{$phd['name']}}</option>
           @endforeach
         @endif
       </select>

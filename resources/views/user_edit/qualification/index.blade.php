@@ -11,7 +11,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Qualification</a></li>
           <li><a href="#tab2" role="tab" data-toggle="tab">Add new Qualification</a></li>
-          <li><a href="#tab3" role="tab" data-toggle="tab">Academic/Sports/Arts</a></li>
+          <li><a href="#tab3" role="tab" data-toggle="tab">Academic/Sports/Arts/Others</a></li>
         </ul>
         <!-- TAB CONTENT -->
         <div class="tab-content">
@@ -180,6 +180,19 @@
             @endphp
             <div class="qualification add-new">
               <ul class="list-group c-list-group">
+                @if(sizeof($diff_array)==0)
+                  <li class="list-group-item clearfix well">
+                    <div class="col-xs-12">
+                      <div class="">
+                        <p></p>
+                        <p>
+                          Already filled all Qualifications.Please delete any or edit existing qualifications.
+                        </p>
+                        <p></p>
+                      </div>
+                    </div>
+                  </li>
+                @endif
                 @foreach($diff_array as $add_new)
                   <li class="list-group-item clearfix">
                     <a href="" class="clearfix" data-toggle="modal" data-target="#{{$add_new}}">
@@ -194,7 +207,7 @@
           <div class="tab-pane fade" id="tab3">
             <div class="page-header">
               <h4>
-                Academic/Sports/Arts
+                Academic/Sports/Arts/Other
                 <a href="#extra_qualification_modal" class="pull-right" data-toggle="modal">
                   <span class="glyphicon glyphicon-plus"></span>
                   Add

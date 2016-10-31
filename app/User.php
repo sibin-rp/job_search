@@ -83,11 +83,11 @@ class User extends Authenticatable
 
 
   public  function normal_qualification(){
-    return StudentQualification::whereNotIn('type',['arts','sports','academic']);
+    return StudentQualification::whereNotIn('type',['arts','sports','academic','other']);
   }
 
   public function extra_qualification(){
-    $student_extra = StudentQualification::whereIn('type',['academic','sports','arts']);
+    $student_extra = StudentQualification::whereIn('type',['academic','sports','arts','other']);
     if($student_extra->count() == 0) return $student_extra->get();
     $student_extra->orderBy('type');
     return $student_extra->get();
