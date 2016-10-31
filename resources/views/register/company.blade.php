@@ -28,7 +28,7 @@
                           <option value="">Select</option>
                           <option value="ceo">CEO</option>
                           <option value="cto">CTO</option>
-                          <option value="team_lead">Leam Lead</option>
+                          <option value="team_lead">Team Lead</option>
                           <option value="recruiter">Recruiter</option>
                         </select>
                       </div>
