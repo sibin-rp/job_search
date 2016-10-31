@@ -23,6 +23,7 @@
         <tr>
           <td>Gender</td>
           <td>{{$user->sex}}</td>
+        
         </tr>
         <tr>
           <td>Email</td>

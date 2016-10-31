@@ -39,7 +39,7 @@ class InternshipProgramController extends Controller
         //
         $states = Helpers::getStates();
         $internship_fields = InternshipField::all();
-        $companies = $user->company->get();
+        $companies = $user->company()->get();
 
         $qualifications = QualificationType::all()->groupBy('qualification')->toArray();
         return view('company.internship_program.create',compact(['user','states','internship_fields','companies','qualifications']));
@@ -196,9 +196,17 @@ class InternshipProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user,Internship $internship)
     {
         //
+
+        try{
+            $internship->delete();
+            return back();
+        }catch(\Excepion $e){
+            dd($e->getMessage());
+            return back();
+        }
 
     }
 
@@ -208,3 +216,4 @@ class InternshipProgramController extends Controller
         return ($checkDate == $value)?$value:null;
     }
 }
+ 
