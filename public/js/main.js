@@ -7075,18 +7075,17 @@ $(document).ready(function() {
 
       $('.internship-qualification-select').click(function(){
         var extraFieldExist = $(this).data('extra');
-          if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
-              $('#qualification-extra').addClass('hidden');
+        var currentValue    = $(this).val();
+        console.log(currentValue)
+        $('.qualification-inbox').each(function(index,element){
+         if(!$(element).hasClass('hidden')){
+           $(element).addClass('hidden');
+         }
+        });
+          if($(this).prop('checked')){
+             $('[data-box="'+currentValue+'"]').removeClass('hidden')
           }else{
-              $('#qualification-extra').removeClass('hidden');
-          }
-      });
-      $('.internship-qualification-select-twelve').click(function(){
-        var extraFieldExist = $(this).data('extra');
-          if(typeof extraFieldExist!="undefined" &&extraFieldExist==false){
-              $('#qualification-extra2').addClass('hidden');
-          }else{
-              $('#qualification-extra2').removeClass('hidden');
+            $('[data-box="'+currentValue+'"]').addClass('hidden')
           }
       });
 
