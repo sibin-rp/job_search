@@ -160,7 +160,6 @@
                         <!-- QUALIFICATION START -->
                         <div class="form-group">
                           <label for="" class="control-label">Minimum Qualification</label>
-
                           <div class="clearfix">
                             <label for="" class="control-label"><input class="internship-qualification-select"
                                                                        type="radio"
@@ -215,7 +214,7 @@
                                     <div class="row">
                                       <div class="col-xs-12 col-sm-4">
                                         <label for="">Choose</label>
-                                        <select name="internship[qualification][10_th][type]" id=""
+                                        <select name="internship[qualification][10_th][mark_type]" id=""
                                                 class="q-type form-control">
                                           <option value="cgpa_4" selected="selected">CGPA 4</option>
                                           <option value="cgpa_10" class="">CGPA 10</option>
@@ -235,8 +234,6 @@
                             <!-- end 10th standard -->
                             <!-- 12th standard -->
                             <div class="qualification-inbox hidden" data-box="12_th">
-                              <h4></h4>
-
                               <div class="clearfix ">
                                 <div class="panel panel-default">
                                   <div class="panel-heading" role="tab" id="headingTwo">
@@ -265,7 +262,7 @@
                                     <div class="row qualification-section">
                                       <div class="col-xs-12 col-sm-4">
                                         <label for="">Choose</label>
-                                        <select name="internship[qualification][12_th][type]" id=""
+                                        <select name="internship[qualification][12_th][mark_type]" id=""
                                                 class="q-type form-control">
                                           <option value="cgpa_4" selected="selected">CGPA 4</option>
                                           <option value="cgpa_10" class="">CGPA 10</option>
@@ -345,8 +342,8 @@
                                       <div class="row qualification-section">
                                         <div class="col-xs-12 col-sm-4">
                                           <label for="">Type</label>
-                                          <select name="internship[qualification][graduation][type]" id=""
-                                                  class="form-control">
+                                          <select name="internship[qualification][graduation][mark_type]" id=""
+                                                  class="form-control q-type">
                                             <option value="cgpa_4" selected="selected">CGPA 4</option>
                                             <option value="cgpa_10" class="">CGPA 10</option>
                                             <option value="percentage">Percentage</option>
@@ -396,8 +393,8 @@
                                       <div class="row qualification-section">
                                         <div class="col-xs-12 col-sm-4">
                                           <label for="">Type</label>
-                                          <select name="internship[qualification][post_graduation][type]" id=""
-                                                  class="form-control">
+                                          <select name="internship[qualification][post_graduation][mark_type]" id=""
+                                                  class="form-control q-type">
                                             <option value="cgpa_4" selected="selected">CGPA 4</option>
                                             <option value="cgpa_10" class="">CGPA 10</option>
                                             <option value="percentage">Percentage</option>
@@ -406,7 +403,7 @@
                                         <div class="col-xs-12 col-sm-8">
                                           <div class="form-group">
                                             <label for="" class="control-label">Mark</label>
-                                            <input type="number" class="form-control" placeholder="Mark"
+                                            <input type="number" class="form-control q-mark" placeholder="Mark"
                                                    name="internship[qualification][post_graduation][mark]"
                                                    step="0.01" min="0" max="4">
                                           </div>
@@ -437,7 +434,7 @@
                                                     id="" class="form-control">
                                               <option value="">Select</option>
                                               @if(isset($qualifications['diploma']))
-                                                @foreach($qualifications['dipoma'] as $diploma)
+                                                @foreach($qualifications['diploma'] as $diploma)
                                                   <option value="{{$diploma['id']}}">{{$diploma['name']}}</option>
                                                 @endforeach
                                               @endif
@@ -448,7 +445,7 @@
                                       <div class="row qualification-section">
                                         <div class="col-xs-12 col-sm-4">
                                           <label for="">Type</label>
-                                          <select name="internship[qualification][diploma][type]" id=""
+                                          <select name="internship[qualification][diploma][mark_type]" id=""
                                                   class="form-control q-type">
                                             <option value="cgpa_4" selected="selected">CGPA 4</option>
                                             <option value="cgpa_10" class="">CGPA 10</option>
@@ -482,24 +479,26 @@
                                     </div>
                                     <div class="panel-body">
                                       <div class="row">
-                                        <div class="form-group">
-                                          <label for="">Degree</label>
-                                          <select name="internship[qualification][phd][degree]"
-                                                  id="" class="form-control">
-                                            <option value="">Select</option>
-                                            @if(isset($qualifications['phd']))
-                                              @foreach($qualifcations['phd'] as $phd)
-                                                <option value="{{$phd['id']}}">{{$phd['name']}}</option>
-                                              @endforeach
-                                            @endif
-                                          </select>
+                                        <div class="col-xs-12">
+                                          <div class="form-group">
+                                            <label for="">Degree</label>
+                                            <select name="internship[qualification][phd][degree]"
+                                                    id="" class="form-control">
+                                              <option value="">Select</option>
+                                              @if(isset($qualifications['phd']))
+                                                @foreach($qualifications['phd'] as $phd)
+                                                  <option value="{{$phd['id']}}">{{$phd['name']}}</option>
+                                                @endforeach
+                                              @endif
+                                            </select>
+                                          </div>
                                         </div>
                                       </div>
                                       <div class="row qualification-section">
                                         <div class="col-xs-12 col-sm-4">
                                           <label for="">Type</label>
-                                          <select name="internship[qualification][phd][type]" id=""
-                                                  class="form-control">
+                                          <select name="internship[qualification][phd][mark_type]" id=""
+                                                  class="q-type form-control">
                                             <option value="cgpa_4" selected="selected">CGPA 4</option>
                                             <option value="cgpa_10" class="">CGPA 10</option>
                                             <option value="percentage">Percentage</option>
@@ -508,7 +507,7 @@
                                         <div class="col-xs-12 col-sm-8">
                                           <div class="form-group">
                                             <label for="" class="control-label">Mark</label>
-                                            <input type="number" class="form-control" placeholder="Mark"
+                                            <input type="number" class="form-control q-mark" placeholder="Mark"
                                                    name="internship[qualification][phd][mark]" step="0.01" min="0"
                                                    max="4">
                                           </div>
@@ -520,6 +519,7 @@
                               </div>
                               <!-- end phd -->
                             </div>
+                            <!-- end phd -->
                           </div>
                         </div>
                         <!--  END QUALIFICATION SECTION -->

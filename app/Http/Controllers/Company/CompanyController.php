@@ -143,7 +143,20 @@ class CompanyController extends Controller
 
         //
         try{
-            $company->delete();
+            $user = Auth::user();
+            if($user->company()->count() > 1){
+                $company->delete();
+                return redirect()->route('company.index')->with([
+                    'class' => 'alert-success',
+                    'message' => 'Company deleted successfully'
+                ]);
+            }else{
+                return redirect()->route('company.index')->with([
+                  'class' => 'alert-warning',
+                    'message' => 'At least one company required'
+                ]);
+            }
+
         }catch (\Exception $e){
             return back()->with(['class'=>'alert alert-danger','message'=>'Company deleted successfully']);
         }

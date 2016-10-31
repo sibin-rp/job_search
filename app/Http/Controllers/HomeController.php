@@ -389,6 +389,7 @@ class HomeController extends Controller
             }
           }
         }
+
         if($getCompany->internships()->count() == 0){
           $internshipRow = $getCompany->internships()->create($internshipDefault);
         }else{
@@ -409,13 +410,23 @@ class HomeController extends Controller
         }
         if(isset($internshipDetails['qualification']) && sizeof($internshipDetails['qualification']) > 0){
           $qualificationData = $internshipDetails['qualification'];
-          $internship = $getCompany->internships()->get()->first();
+          $qualificationType = $qualificationData['qualification'];
 
+          $qualificationData = $qualificationData[$qualificationData['qualification']];
+          $qualificationData['qualification'] = $qualificationType;
+          $internship = $getCompany->internships()->get()->first();
           $qualification = $internship->qualification()->get()->first();
-          if($qualification){
-            $qualification->update($qualificationData);
-          }else{}
-            $internship->qualification()->create($qualificationData);
+
+          $accepted_qualifications = ['10_th','12_th','graduation','post_graduation','diploma','phd'];
+
+          if(in_array($qualificationType,$accepted_qualifications)){
+            if($qualification){
+              $qualification->update($qualificationData);
+            }else{
+              $internship->qualification()->create($qualificationData);
+            }
+          }
+
         }
         return redirect()->route('thanks_page');
 

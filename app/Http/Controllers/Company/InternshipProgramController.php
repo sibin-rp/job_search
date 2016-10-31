@@ -199,6 +199,7 @@ class InternshipProgramController extends Controller
     public function destroy($id)
     {
         //
+
     }
 
     private function validateDateString($value){
