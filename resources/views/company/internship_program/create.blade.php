@@ -6,7 +6,7 @@
         </div>
         <div class="internship-p-form">
             <form data-parsley-validate="" action="{{route('internships_program.store',['user'=> $user])}}"
-                  method="post" novalidate="" class="main-forms" id="parsley-form">
+                  method="post"  class="main-forms" id="add_internship_parsley_form">
                 {{method_field('POST')}}
                 @include('company.internship_program._form')
             </form>

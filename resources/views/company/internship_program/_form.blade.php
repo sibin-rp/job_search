@@ -33,7 +33,7 @@ $internship = (object) $default_option;
         <div class="row">
             <div class="col-md-6">
                     <div class="form-group"><label for="internship-field">Field of internship</label>
-                        <select class="form-control" data-parsley-error-message="This field  is required" required="required" id="internship-field" name="internship[internship_field_id]"
+                        <select class="form-control"  data-parsley-trigger="change"  required="required" id="internship-field" name="internship[internship_field_id]"
                             data-url="{{route('api_get_skills_by_id')}}">
                         <option value="">Select</option>
                         @foreach($internship_fields as $field)
@@ -43,7 +43,7 @@ $internship = (object) $default_option;
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Company</label>
-                        <select name="internship[company_id]" id="" class="form-control" required="required">
+                        <select name="internship[company_id]" id="" class="form-control" data-parsley-trigger="change"  required="required">
                         @foreach($companies as $company)
                             <option value="{{$company->id}}" @if(isset($internship->company_id) && $company->id == $internship->company_id) @endif >{{$company->name}}</option>
                         @endforeach
@@ -51,13 +51,13 @@ $internship = (object) $default_option;
                     </div>
                     <div class="form-group">
                         <label for="comment">Description</label>
-                        <textarea class="form-control" rows="5" required="" placeholder="Job Description" id="comment" name="internship[description]">{{$internship->description}}</textarea>
+                        <textarea class="form-control" rows="5" data-parsley-trigger="change"  required="" placeholder="Job Description" id="comment" name="internship[description]">{{$internship->description}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="sel1">Stipend(From-To(In Rupees))</label>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
-                                <select class="form-control" id="stipend-from" name="internship[stipend_from]" required="">
+                                <select class="form-control" id="stipend-from" name="internship[stipend_from]" data-parsley-trigger="change"  required="">
                                 <option value="">Select</option>
                                 @for($i=1;$i<10;$i++)
                                     <option value="{{$i * 1000}}"  @if($internship->stipend_from == $i * 1000) selected="selected" @endif >{{$i * 1000}}</option>
@@ -65,7 +65,7 @@ $internship = (object) $default_option;
                             </select>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                                <select class="form-control" id="stipend-to" name="internship[stipend_to]" required="">
+                                <select class="form-control" id="stipend-to" name="internship[stipend_to]" data-parsley-trigger="change"  required="">
                                 <option value="">Select</option>
                                 @for($i=1;$i<=10;$i++)
                                     <option value="{{$i * 1000}}" @if($internship->stipend_to == $i * 1000) selected="selected" @endif >{{$i * 1000}}</option>
@@ -110,7 +110,7 @@ $internship = (object) $default_option;
                             </div>
                             <div class="col-md-6">
                                 <h6>State</h6>
-                                <select class="form-control" id="internship-state" name="internship[state]">
+                                <select class="form-control" required="required" id="internship-state" name="internship[state]">
                           @foreach($states as $code => $state)
                             <option value="{{$code}}" @if($internship->state == $code) selected="selected" @endif>{{$state}}</option>
                           @endforeach

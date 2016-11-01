@@ -77,15 +77,12 @@ $(document).ready(function() {
         });
         /* EOF STUDENT REGISTER FORM */
     };
-
+ 
 
     /** add intership  */
- var parsleyForm = $('#parsley_form');
-    if(parsleyForm.length > 0){
-        parsleyForm.submit(function(event){
-            event.preventDefault();
-        });
-       parsleyForm.parsley();
+ var addInternshipParsleyForm = $('#add_internship_parsley_form');
+
+      addInternshipParsleyForm.parsley();
 
        /* eof add intership*/
 
