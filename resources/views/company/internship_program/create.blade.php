@@ -5,8 +5,8 @@
             <h3>Add new Internship Preference</h3>
         </div>
         <div class="internship-p-form">
-            <form action="{{route('internships_program.store',['user'=> $user])}}"
-                  method="post" novalidate="" class="main-forms">
+            <form data-parsley-validate="" action="{{route('internships_program.store',['user'=> $user])}}"
+                  method="post" novalidate="" class="main-forms" id="parsley-form">
                 {{method_field('POST')}}
                 @include('company.internship_program._form')
             </form>

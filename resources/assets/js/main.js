@@ -79,6 +79,16 @@ $(document).ready(function() {
     };
 
 
+    /** add intership  */
+ var parsleyForm = $('#parsley_form');
+    if(parsleyForm.length > 0){
+        parsleyForm.submit(function(event){
+            event.preventDefault();
+        });
+       parsleyForm.parsley();
+
+       /* eof add intership*/
+
     /** EOF STUDENT REGISTER FORM **/
 
 
@@ -140,6 +150,9 @@ $(document).ready(function() {
       })
     })
   }
+
+
+
     /** EOF INTERNSHIP INFO FORM **/
 
 
