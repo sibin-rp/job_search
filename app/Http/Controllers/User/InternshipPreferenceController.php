@@ -50,7 +50,10 @@ class InternshipPreferenceController extends Controller
       sizeof(array_filter($request->get('preference')))){
       $form_data = $request->get('preference');
       $preferences_only = array_except($form_data,'skill');
-      $skills = ($form_data['skill']);
+      $skills = [];
+      if(isset($form_data['skill']) && ($form_data['skill'])){
+        $skills = ($form_data['skill']);
+      }
       try{
         $user_preferences = $user->internship_preferences()->create($preferences_only);
         if(is_array(array_filter($skills)) && sizeof(array_filter($skills))){
