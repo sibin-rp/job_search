@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\QualificationType;
 
 class QualificationController extends Controller
 {
@@ -21,13 +22,17 @@ class QualificationController extends Controller
     {
 
         $qualifications = $user->normal_qualification();
+        $qualifications_type = QualificationType::all()->groupBy('qualification')->toArray();
         $extra_qualifications = [];
         $tmp_extra_qualifications = $user->extra_qualification();
         foreach ($tmp_extra_qualifications as $key =>$value){
           $extra_qualifications[$value['type']][$key] = $value;
         }
+        if($qualifications->count()){
+          $qualifications = [];
+        }
         return view('user_edit.qualification.index',compact(['user','qualifications',
-          'extra_qualifications']));
+          'extra_qualifications','qualifications_type']));
     }
 
     /**

@@ -304,21 +304,21 @@
             {{method_field('POST')}}
     			<div class="modal-header">
     				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    				<h4 class="modal-title">@qualificationType($add_new)</h4>
+    				<h4 class="modal-title">@qualificationType($add_modal)</h4>
     			</div>
     			<div class="modal-body">
     				@if($add_modal=="10_th")
-              @include('register.student.qual_partials._10_th')
+              @include('register.student.qual_partials._10_th',['qualifications'=> $qualifications_type])
             @elseif($add_modal == "12_th")
-              @include('register.student.qual_partials._12_th')
+              @include('register.student.qual_partials._12_th',['qualifications'=> $qualifications_type])
             @elseif($add_modal == "graduation")
-              @include('register.student.qual_partials._graduation')
+              @include('register.student.qual_partials._graduation',['qualifications'=> $qualifications_type])
             @elseif($add_modal == "post_graduation")
-              @include('register.student.qual_partials._post_graduation')
+              @include('register.student.qual_partials._post_graduation',['qualifications'=> $qualifications_type])
             @elseif($add_modal == 'phd')
-              @include('register.student.qual_partials._phd')
+              @include('register.student.qual_partials._phd',['qualifications'=> $qualifications_type])
             @elseif($add_modal == 'diploma')
-              @include('register.student.qual_partials._diploma')
+              @include('register.student.qual_partials._diploma',['qualifications'=> $qualifications_type])
             @endif
     			</div>
     			<div class="modal-footer">

@@ -22,7 +22,9 @@
         </tr>
         <tr>
           <td>Gender</td>
-          <td>{{$user->sex}}</td>
+          <td>
+            @if($user->sex== "1") Male @else Female @endif
+          </td>
         
         </tr>
         <tr>
