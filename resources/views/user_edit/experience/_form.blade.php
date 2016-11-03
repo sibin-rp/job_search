@@ -16,11 +16,11 @@
     'certificate'         => null,
     'mark'                => null
   ];
-  $actaul_experience     = [];
+  $actual_experience     = [];
   if(isset($experience)){
-    $actaual_experience   = $experience->toArray();
+    $actual_experience   = $experience->toArray();
   }
-  $experience = array_merge($default_experience, $actaual_experience);
+  $experience = array_merge($default_experience, $actual_experience);
   $experience = (object) $experience;
 @endphp
 
