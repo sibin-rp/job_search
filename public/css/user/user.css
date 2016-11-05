@@ -6400,3 +6400,12 @@ form.main-forms {
     width: 100%;
     height: 0;
     position: relative; }
+
+.parsley-errors-list.filled {
+  padding: 0;
+  margin: 0; }
+  .parsley-errors-list.filled .parsley-required {
+    padding: 5px;
+    background: red;
+    color: #fff;
+    font-size: 12px; }

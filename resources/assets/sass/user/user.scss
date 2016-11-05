@@ -40,3 +40,16 @@ form.main-forms{
     position: relative;
   }
 }
+
+.parsley-errors-list{
+  &.filled{
+    padding: 0;
+    margin: 0;
+    .parsley-required{
+      padding: 5px;
+      background: red;
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}

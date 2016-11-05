@@ -68,6 +68,7 @@ elixir(mix => {
       './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
       './node_modules/moment/moment.js',
       './node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+      './node_modules/parsleyjs/dist/parsley.js',
       'user/user.js'
     ],'public/js/user/user.js');
     // end user section

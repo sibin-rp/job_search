@@ -23,7 +23,9 @@ $preference_object = (object) $current_array;
   <div class="col-xs-12 col-sm-6">
     <div class="form-group">
       <label for="" class="control-label">Internship Field</label>
-      <select name="preference[internship_field_id]" id="internship_field_select" class="form-control"  @if($preference_object->internship_field_id) disabled="disabled" @endif>
+      <select name="preference[internship_field_id]" id="internship_field_select"
+              required="required"
+              class="form-control"  @if($preference_object->internship_field_id) disabled="disabled" @endif>
         <option value="">Select</option>
         @foreach($internship_fields as $field)
           <option value="{{$field->id}}" @if($preference_object->internship_field_id == $field->id) selected="selected" @endif>{{$field->name}}</option>
@@ -34,7 +36,9 @@ $preference_object = (object) $current_array;
   <div class="col-xs-12 col-sm-6">
     <div class="form-group">
       <label for="" class="control-label">City of internship</label>
-      <input type="text" name="preference[city]" placeholder="Preferred City" class="form-control" value="@if($preference_object->city){{$preference_object->city}} @endif">
+      <input type="text" name="preference[city]" placeholder="Preferred City"
+             required="required"
+             class="form-control" value="@if($preference_object->city){{$preference_object->city}} @endif">
     </div>
   </div>
 </div>
@@ -95,7 +99,7 @@ $preference_object = (object) $current_array;
         <div class="row">
           <div class="col-md-6">
             <label class="control-label"> From:</label>
-            <select name="preference[stipend_from]" id="" class="form-control">
+            <select name="preference[stipend_from]" id="" class="form-control" required="required">
               @for($i=1;$i<=50;$i++)
                 <option value="{{$i*500}}" @if($preference_object->stipend_from == ($i*500) || $i==2) selected="selected" @endif>{{$i*500}}</option>
               @endfor
@@ -103,7 +107,7 @@ $preference_object = (object) $current_array;
           </div>
           <div class="col-md-6">
             <label class="control-label"> To:</label>
-            <select name="preference[stipend_to]" id="" class="form-control">
+            <select name="preference[stipend_to]" id="" class="form-control" required="required">
               @for($i=1;$i<=50;$i++)
                 <option value="{{$i*500}}" @if($preference_object->stipend_to == ($i*500) || $i==10) selected="selected" @endif>{{$i*500}}</option>
               @endfor
@@ -122,13 +126,13 @@ $preference_object = (object) $current_array;
       <div class="col-xs-12 col-sm-6">
         <div class="form-group"><label for="" class="control-label">From</label>
         <input name="preference[from_date]" value="@if($preference_object->from_date) {{$preference_object->from_date}} @endif"
-               type="text" class="form-control common-date-picker" placeholder="Available from">
+               type="text" class="form-control common-date-picker" placeholder="Available from" required="required">
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="form-group"><label for="" class="control-label">To</label>
         <input name="preference[to_date]" value="@if($preference_object->to_date){{$preference_object->to_date}} @endif"
-               type="text" class="form-control common-date-picker" placeholder="Available to">
+               type="text" class="form-control common-date-picker" placeholder="Available to" required="required">
         </div>
       </div>
     </div>

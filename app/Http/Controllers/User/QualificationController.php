@@ -28,9 +28,6 @@ class QualificationController extends Controller
         foreach ($tmp_extra_qualifications as $key =>$value){
           $extra_qualifications[$value['type']][$key] = $value;
         }
-        if($qualifications->count()){
-          $qualifications = [];
-        }
         return view('user_edit.qualification.index',compact(['user','qualifications',
           'extra_qualifications','qualifications_type']));
     }

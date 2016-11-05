@@ -54,6 +54,7 @@ class InternshipPreferenceController extends Controller
       if(isset($form_data['skill']) && ($form_data['skill'])){
         $skills = ($form_data['skill']);
       }
+      $preferences_only = (array_filter($preferences_only));
       try{
         $user_preferences = $user->internship_preferences()->create($preferences_only);
         if(is_array(array_filter($skills)) && sizeof(array_filter($skills))){

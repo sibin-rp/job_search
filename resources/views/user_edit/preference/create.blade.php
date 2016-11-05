@@ -5,7 +5,7 @@
       <h4>Add Internship Preference</h4>
     </div>
     <div class="form-section">
-      <form action="{{route('preference.store',['user'=> $user])}}" method="post">
+      <form action="{{route('preference.store',['user'=> $user])}}" method="post" data-parsley-validate="">
         {{csrf_field()}}
         {{method_field('POST')}}
         @include('user_edit.preference._partial_form')
