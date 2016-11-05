@@ -38,11 +38,17 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
+
+          <div class="form-group"><label for="" class="control-label">Username</label>
+            <input type="text" class="form-control" name="user[username]" value="{{$user->username}}"
+              placeholder="Username"></div>
+
           <div class="form-group">
             <label for="" class="control-label">Describe</label>
             <input type="text" class="form-control" name="user[describe]"
                    value="{{$user->describe}}" placeholder="Describe">
           </div>
+
           <div class="form-group"><label for="s" class="control-label">Bio</label>
             <textarea class="form-control" name="user[bio]" placeholder="Bio">{{$user->bio}}</textarea>
           </div>
@@ -120,11 +126,12 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
+          <div class="form-group text-right">
             <button class="btn btn-md btn-success" type="submit">Update User</button>
           </div>
         </div>
       </div>
     </form>
+    <hr>
   </div>
 @stop
