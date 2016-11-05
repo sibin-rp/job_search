@@ -5,7 +5,7 @@
       <h3>Company Information</h3>
     </div>
     <div class="company-info">
-      <form action="{{route('company.store')}}" method="post" enctype="multipart/form-data">
+      <form action="{{route('company.store')}}" method="post" enctype="multipart/form-data" data-parsley-validate="">
         {{csrf_field()}}
         {{method_field('POST')}}
         @include('company.company._form')

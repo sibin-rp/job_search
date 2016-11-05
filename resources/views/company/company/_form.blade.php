@@ -24,12 +24,12 @@ $company = (object)$default;
   <div class="col-md-6">
     <div class="form-group"><label for="">Name</label>
       <input type="text" required="required" class="form-control" value="{{$company->name}}"
-             placeholder="Name" name="company[name]">
+             placeholder="Name" name="company[name]" >
     </div>
     <div class="form-group">
       <label for="information">Information</label>
       <textarea name="company[information]" class="form-control" rows="5" placeholder="Information"
-                id="information">{{$company->information}}</textarea>
+                id="information" required="required">{{$company->information}}</textarea>
     </div>
     <div class="form-group"><label for="website">Website</label>
       <input type="text" required="required" class="form-control" placeholder="Website" id="website"
@@ -37,7 +37,7 @@ $company = (object)$default;
     </div>
     <div class="form-group">
       <label for="">Industry</label>
-      <select name="company[industry]" id="" class="form-control">
+      <select name="company[industry]" id="" class="form-control" required="required">
         @foreach($fields as $field)
           <option value="{{$field->id}}">{{$field->name}}</option>
         @endforeach
@@ -47,7 +47,7 @@ $company = (object)$default;
     </div>
     <div class="form-group">
       <label for="">State</label>
-      <select class="form-control" id="" name="company[state]">
+      <select class="form-control" id="" name="company[state]" required="required">
         @foreach($states as $code => $state)
           <option value="{{$code}}" @if($company->state == $code) @endif >{{$state}}</option>
         @endforeach
@@ -58,7 +58,9 @@ $company = (object)$default;
   <div class="col-md-6">
     <div class="form-group">
       <label for="comment">Address</label>
-      <textarea class="form-control" rows="5" placeholder="Address" id="comment" name="company[address]">{{$company->address}}</textarea>
+      <textarea class="form-control" rows="5" placeholder="Address" id="comment"
+                required="required"
+                name="company[address]">{{$company->address}}</textarea>
     </div>
     <div class="form-group"><label for="">Email</label>
       <input type="email" required="required" class="form-control" placeholder="Email" name="company[email]"
