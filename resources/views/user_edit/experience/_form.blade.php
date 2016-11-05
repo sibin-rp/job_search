@@ -33,9 +33,6 @@
     <li><a href="#tab3" role="tab" data-toggle="tab">Project/Freelance/Training/Other</a></li>
 </ul>
 @endif
-
-  {{$experience->experience_type}}
-  {{$experience->experience_type == null || $experience->experience_type == 'job'}}
 <!-- TAB CONTENT -->
 <div class="tab-content">
   <!-- INTERNSHIP TAB -->
@@ -43,7 +40,7 @@
   <div class="tab-pane active fade in" id="tab1">
     <h2>Internship</h2>
     <!-- INTERNSHIP FORM -->
-    <form action="{{$_route_url}}" method="post">
+    <form action="{{$_route_url}}" method="post" data-parsley-validate="">
       @if($_method=="PUT")
         {{method_field('PUT')}}
       @else
@@ -77,7 +74,7 @@
   <div class="tab-pane fade in @if($experience->experience_type == 'job') active @endif " id="tab2">
     <h2>Job</h2>
     <!-- JOB FORM -->
-    <form action="{{$_route_url}}" method="post">
+    <form action="{{$_route_url}}" method="post" data-parsley-validate="">
       @if($_method=="PUT")
         {{method_field('PUT')}}
       @else
@@ -112,7 +109,7 @@
   ['project','freelance','training','other'])) active @endif" id="tab3">
     <h2>Project/Freelance/Training/Other</h2>
     <!-- PROJECT/FREELANCE FORM -->
-    <form action="{{$_route_url}}" method="post">
+    <form action="{{$_route_url}}" method="post" data-parsley-validate="">
       @if($_method=="PUT")
         {{method_field('PUT')}}
       @else
