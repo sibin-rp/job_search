@@ -20,6 +20,8 @@
               <input type="text" class="form-control" placeholder="Last Name" name="company[last_name]"
                      value="{{$user->last_name}}"/>
             </div>
+            <div class="form-group"><label for="" class="control-label">Username</label>
+              <input type="text" class="form-control" name="company[username]" placeholder="Username" value="{{$user->username}}"></div>
             <div class="form-group">
               <label for="" class="control-label">Phone</label>
               <input type="text" placeholder="Phone number" value="{{$user->phone_no}}" class="form-control" name="company[phone_no]">
