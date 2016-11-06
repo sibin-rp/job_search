@@ -32,8 +32,9 @@ Route::group(['prefix'=>'admin'], function(){
   Route::resource('/qualification-type','Admin\QualificationTypeController');
   Route::resource('/people','Admin\UserController');
   Route::resource('/college','Admin\CollegeController');
-
-
+  Route::get('/people/{user}/experiences',['uses'=>'Admin\ExperienceController@index','as'=>'admin.user.experience']);
+  Route::get('/people/{user}/qualifications',['uses'=>'Admin\QualificationController@index','as'=>'admin.user.qualification']);
+  Route::get('/people/{user}/preferences',['uses'=>'Admin\PreferenceController@index','as'=>'admin.user.preference']);
 
   /* POST ROUTES */
   Route::post('/save_skills_by_id','Admin\AdminFormController@saveSkillsByField');

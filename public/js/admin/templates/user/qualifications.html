@@ -1,0 +1,16 @@
+<div class="page-header">
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Job" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.job || experience.job.length > 0">
+        <li class="list-group-item" ng-repeat="job in experiences.job">
+          <a href="" ng-click="openModal($event,job)">
+            {{job.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.job || experience.job.length > 0">
+        Job details not available
+      </p>
+    </div>
+  </uib-accordion>
+</div>

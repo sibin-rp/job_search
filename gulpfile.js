@@ -52,6 +52,7 @@ elixir(mix => {
         './node_modules/ng-tags-input/build/ng-tags-input.min.js',
         './node_modules/angular-smart-table/dist/smart-table.min.js',
         './node_modules/toastr/build/toastr.min.js',
+        './node_modules/underscore/underscore-min.js',
         'admin/light-bootstrap-dashboard.js'
     ],
     'public/js/admin/admin.min.js');

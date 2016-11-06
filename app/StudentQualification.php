@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\QualificationType;
 
 class StudentQualification extends Model
 {
@@ -12,12 +13,15 @@ class StudentQualification extends Model
   'title','description','completed','started_at','completed_at',
   'mark_type','mark','degree','stream','created_at','updated_at'];
 
-  protected $appends = ['qualification_type','mark_type_name'];
+  protected $appends = ['qualification_type','mark_type_name','stream_type','degree_type'];
 
   public function user(){
     return $this->hasOne('App\User');
   }
 
+//  public function qualification_type(){
+//    return $this->hasOne('App\QualificationType');
+//  }
 
   public function setMarkAttribute($value){
     $this->attributes['mark'] = floatval($value);
@@ -54,6 +58,7 @@ class StudentQualification extends Model
         break;
       default;
         return 'Others';
+
         break;
 
     }
@@ -76,4 +81,21 @@ class StudentQualification extends Model
 
     }
   }
+
+  public function getDegreeTypeAttribute(){
+    try{
+      return QualificationType::find($this->attributes['degree'])->name;
+    }catch (\Exception $e){
+      return $this->attributes['degree'];
+    }
+  }
+
+  public function getStreamTypeAttribute(){
+    try{
+      return QualificationType::find($this->attributes['stream'])->name;
+    }catch (\Exception $e){
+      return $this->attributes['stream'];
+    }
+  }
+
 }

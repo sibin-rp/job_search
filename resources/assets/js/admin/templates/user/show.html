@@ -62,8 +62,25 @@
                   </div>
                 </div>
               </div>
+              <!-- Student section -->
+              <div ng-if="user.type==0">
+                <!-- TAB NAVIGATION -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li><a ui-sref="user_show.qualification({id:user.id})" role="tab" data-toggle="tab">Qualification</a></li>
+                  <li><a ui-sref="user_show.experience({id:user.id})" role="tab" data-toggle="tab">Experience</a></li>
+                  <li><a ui-sref="user_show.preference({id:user.id})" role="tab" data-toggle="tab">Preference</a></li>
+                </ul>
+                <!-- TAB CONTENT -->
+                <div class="tab-content">
+                  <div class="active tab-pane fade in" id="tab1">
+                   <ui-view></ui-view>
+                  </div>
+                </div>
+
+              </div>
+              <!-- end student section -->
               <!-- Company Section -->
-              <div ng-if="user.company">
+              <div ng-if="user.type==1">
               <div class="row">
                 <div class="col-xs-12">
                   <h4>Company</h4>

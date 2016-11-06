@@ -1,0 +1,210 @@
+<div class="page-header">
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="10th standard" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['10_th'] || qualification['10_th'].length > 0">
+        <li class="list-group-item" ng-repeat="ten_th in qualification['10_th']">
+          <a href="" ng-click="openModal($event,ten_th)">
+            {{ten_th.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['10_th'] || qualification['10_th'].length > 0">
+        10<sup>th</sup> standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- 12th standard -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="12th standard" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['12_th'] || qualification['12_th'].length > 0">
+        <li class="list-group-item" ng-repeat="twleve_th in qualification['12_th']">
+          <a href="" ng-click="openModal($event,twleve_th)">
+            {{twleve_th.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['12_th'] || qualification['12_th'].length > 0">
+        12<sup>th</sup> standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+
+  <!-- end 12th standard -->
+
+  <!-- Graduation -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Graduation" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['graduation'] || qualification['graduation'].length > 0">
+        <li class="list-group-item" ng-repeat="graduation in qualification['graduation']">
+          <a href="" ng-click="openModal($event,graduation)">
+            {{graduation.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['graduation'] || qualification['graduation'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+
+  <!-- end graduation -->
+
+  <!-- Post Graduation -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Post Graduation" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['post_graduation'] || qualification['post_graduation'].length > 0">
+        <li class="list-group-item" ng-repeat="post_graduation in qualification['post_graduation']">
+          <a href="" ng-click="openModal($event,post_graduation)">
+            {{post_graduation.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['post_graduation'] || qualification['post_graduation'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end post graduation -->
+
+  <!-- Diploma -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Diploma" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['diploma'] || qualification['diploma'].length > 0">
+        <li class="list-group-item" ng-repeat="diploma in qualification['diploma']">
+          <a href="" ng-click="openModal($event,diploma)">
+            {{diploma.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['diploma'] || qualification['diploma'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end diploma -->
+
+  <!-- Arts --->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Arts" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['arts'] || qualification['arts'].length > 0">
+        <li class="list-group-item" ng-repeat="common in qualification['arts']">
+          <a href="" ng-click="openModal($event,common)">
+            {{common.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['arts'] || qualification['arts'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end arts -->
+
+  <!-- Sports -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Sports" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['sports'] || qualification['sports'].length > 0">
+        <li class="list-group-item" ng-repeat="common in qualification['sports']">
+          <a href="" ng-click="openModal($event,common)">
+            {{common.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['sports'] || qualification['sports'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end sports -->
+
+  <!-- Academic -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Academic" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['academic'] || qualification['academic'].length > 0">
+        <li class="list-group-item" ng-repeat="common in qualification['academic']">
+          <a href="" ng-click="openModal($event,common)">
+            {{common.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['academic'] || qualification['academic'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end academic -->
+
+  <!-- Other -->
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Other" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="qualification['other'] || qualification['other'].length > 0">
+        <li class="list-group-item" ng-repeat="common in qualification['other']">
+          <a href="" ng-click="openModal($event,common)">
+            {{common.qualification_type}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="qualification['other'] || qualification['other'].length > 0">
+        Graduation standard details missing..
+      </p>
+    </div>
+  </uib-accordion>
+  <!-- end other -->
+</div>
+
+
+
+<!-- UI Bootstrap Template -->
+<script type="text/ng-template" id="student-qualification-modal.html">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+              ng-click="closeModal($event)"
+              aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title"> {{item.qualification_type}}</h4>
+    </div>
+    <div class="modal-body">
+      <table class="table table-bordered">
+        <tbody>
+        <tr ng-if="item.started_at">
+          <td>Started</td>
+          <td>{{item.started_at}}</td>
+        </tr>
+        <tr ng-if="item.completed_at">
+          <td>Completed</td>
+          <td>{{item.completed_at}}</td>
+        </tr>
+        <tr ng-if="item.stream">
+          <td>Steam</td>
+          <td>{{ item.stream_type }}</td>
+        </tr>
+        <tr ng-if="item.degree">
+          <td>Degree</td>
+          <td>{{item.degree_type}}</td>
+        </tr>
+        <tr ng-if="item.mark">
+          <td>Mark</td>
+          <td>{{item.mark}} ({{item.mark_type_name}})</td>
+        </tr>
+        <tr ng-if="item.description">
+          <td>Description</td>
+          <td>{{item.description}}</td>
+        </tr>
+        <tr ng-if="item.link">
+          <td>Link</td>
+          <td><a href="{{item.link}}" target="_blank">{{item.link}}</a></td>
+        </tr>
+        <tr ng-if="item.college_name">
+          <td>College Name</td>
+          <td>{{item.college_name}}</td>
+        </tr>
+        <tr ng-if="item.completed">
+          <td>Completed</td>
+          <td>{{item.completed}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+<!-- end ui bootstrap template -->

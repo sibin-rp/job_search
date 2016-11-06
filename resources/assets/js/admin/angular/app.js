@@ -33,6 +33,21 @@ appAccelaar.config(['$stateProvider','$urlRouterProvider',function($stateProvide
       templateUrl:'/js/admin/templates/user/show.html',
       controller:'UserController'
     })
+    .state('user_show.experience',{
+      url:'/experience',
+      templateUrl:'/js/admin/templates/user/experience.html',
+      controller:'UserExperienceController'
+    })
+    .state('user_show.qualification',{
+      url:'/qualification',
+      templateUrl:'/js/admin/templates/user/qualification.html',
+      controller:'UserQualificationController'
+    })
+    .state('user_show.preference',{
+      url:'/preference',
+      templateUrl:'/js/admin/templates/user/preference.html',
+      controller:'UserPreferenceController'
+    })
     .state('settings',{
       url:'/settings',
       templateUrl:'/js/admin/templates/settings.html',

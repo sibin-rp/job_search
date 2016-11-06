@@ -119,8 +119,20 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user,$id)
+    public function destroy(User $user,Experience $experience)
     {
         //
+        try{
+            $experience->delete();
+            return redirect()->route('experience.index')->with([
+                'class' => 'alert-success',
+                'message' => 'Experience deleted successfully'
+            ]);
+        }catch (\Exception $e){
+            return redirect()->route('experience.index')->with([
+               'class'=>'alert-danger',
+                'message' => 'Error occurred'
+            ]);
+        }
     }
 }

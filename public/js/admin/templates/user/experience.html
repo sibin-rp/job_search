@@ -1,0 +1,129 @@
+<div class="page-header">
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Job" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.job || experience.job.length > 0">
+        <li class="list-group-item" ng-repeat="job in experiences.job">
+          <a href="" ng-click="openModal($event,job)">
+            {{job.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.job || experience.job.length > 0">
+        Job details not available
+      </p>
+    </div>
+  </uib-accordion>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Internship" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.internship || experience.internship.length > 0">
+        <li class="list-group-item" ng-repeat="internship in experiences.internship">
+          <a href="" ng-click="openModal($event,internship)">
+            {{internship.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.internship || experience.internship.length > 0">
+        Job details not available
+      </p>
+    </div>
+  </uib-accordion>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Projects" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="project in experiences.project">
+          <a href="" ng-click="openModal($event,project)">
+            {{project.title}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.project || experience.project.length > 0">
+        Project details not found.
+      </p>
+    </div>
+  </uib-accordion>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Freelance" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.freelamce || experience.freelance.length > 0">
+        <li class="list-group-item" ng-repeat="freelance in experiences.freelance">
+          <a href="">
+            {{freelance.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.freelance || experience.freelance.length > 0">
+        Freelance details not found.
+      </p>
+    </div>
+  </uib-accordion>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Training" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.training || experience.training.length > 0">
+        <li class="list-group-item" ng-repeat="training in experiences.training">
+          <a href="" ng-click="openModal($event,training)">
+            {{training.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.training || experience.training.length > 0">
+       Training details not found.
+      </p>
+    </div>
+  </uib-accordion>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Other" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+      <ul class="list-group" ng-show="experiences.other || experience.other.length > 0">
+        <li class="list-group-item" ng-repeat="other in experiences.training">
+          <a href="" ng-click="openModal($event,other)">
+            {{other.company_name}}
+          </a>
+        </li>
+      </ul>
+      <p ng-hide="experiences.other || experience.other.length > 0">
+        Other details not found..
+      </p>
+    </div>
+  </uib-accordion>
+</div>
+
+<!-- UI Bootstrap Template -->
+<script type="text/ng-template" id="student-modal.html">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+              ng-click="closeModal($event)"
+              aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title"> {{item.company_name || item.title}}</h4>
+    </div>
+    <div class="modal-body">
+      <table class="table table-bordered">
+        <tbody>
+        <tr ng-if="item.internship_field && item.internship_field.name">
+          <td>Field</td>
+          <td>{{item.internship_field.name}}</td>
+        </tr>
+        <tr ng-if="item.work_from">
+          <td>Work From</td>
+          <td>{{item.work_from}}</td>
+        </tr>
+        <tr ng-if="item.work_to">
+          <td>Work To</td>
+          <td>{{item.work_to}}</td>
+        </tr>
+        <tr ng-if="item.organization">
+          <td>Organization</td>
+          <td>{{ item.organization }}</td>
+        </tr>
+        <tr ng-if="item.link">
+          <td>Link</td>
+          <td>{{item.link}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{item.job_description}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+<!-- end ui bootstrap template -->

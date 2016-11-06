@@ -1,0 +1,79 @@
+<div class="page-header">
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="preference in preferences">
+      <a href="javascript:void(0)" ng-click="openModal($event,preference)">
+        {{preference.internship_field.name}}
+      </a>
+    </li>
+  </ul>
+</div>
+
+<script type="text/ng-template" id="student-preference-modal.html">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">
+        {{item.internship_field.name}}
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <table class="table table-bordered">
+            <tr>
+              <td>Internship</td>
+              <td>{{item.internship_field.name}}</td>
+            </tr>
+            <tr>
+              <td>Company Type</td>
+              <td>{{item.company_type_name}}</td>
+            </tr>
+            <tr>
+              <td>Duration</td>
+              <td>{{item.duration_type}}</td>
+            </tr>
+            <tr>
+              <td>Location</td>
+              <td>{{item.city}}</td>
+            </tr>
+            <tr>
+              <td>Work Type</td>
+              <td>{{item.work_type_option}}</td>
+            </tr>
+            <tr>
+              <td>Stipend (Expected) </td>
+              <td>
+                {{item.stipend_from}} - {{item.stipend_to}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <table class="table table-bordered">
+            <tr>
+              <td>Available From</td>
+              <td>{{item.from_date}}</td>
+            </tr>
+            <tr>
+              <td>Available To</td>
+              <td>{{item.to_date}}</td>
+            </tr>
+
+            <tr>
+              <td>Skills</td>
+              <td>
+                <ul class="list-group clearfix">
+                  <li class="list-group-item clearfix" ng-repeat="skill in item.skills">
+                    <a href="">
+                      {{skill.name}}
+                    </a>
+                    <labe class="badge pull-right">{{skill.pivot.expertise}}</labe>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>

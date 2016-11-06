@@ -1,8 +1,3 @@
-/**
- * Created by sibin on 9/18/2016.
- */
-'use-strict';
-
 appAccelaar.service('User',[
   '$http','$q','$resource',
   function($http,$q, $resource){
@@ -17,5 +12,39 @@ appAccelaar.service('User',[
   };
   this.user = function(){
     return $resource('/api/admin/people/:id')
+  };
+  this.user_experience = function(id){
+    var id = parseInt(id);
+    var url = '/api/admin/people/'+id+'/experiences';
+    return $q(function(resolve,reject){
+      $.get(url).then(function(result){
+        resolve(result)
+      }, function(error){
+        console.log(error)
+        reject(error)
+      })
+    });
+  };
+  this.user_qualification = function(id){
+    var id = parseInt(id);
+    var url = '/api/admin/people/'+id+'/qualifications';
+    return $q(function(resolve,reject){
+      $.get(url).then(function(result){
+        resolve(result)
+      }, function(error){
+        reject(error)
+      })
+    })
+  };
+  this.user_preference = function(id){
+    var id = parseInt(id);
+    var url = '/api/admin/people/'+id+'/preferences';
+    return $q(function(resolve,reject){
+      $.get(url).then(function(result){
+        resolve(result)
+      }, function(error){
+        reject(error)
+      })
+    })
   }
 }]);
