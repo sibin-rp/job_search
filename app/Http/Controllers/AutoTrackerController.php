@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AutoTracker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AutoTrackerController extends Controller
 {
@@ -89,5 +90,18 @@ class AutoTrackerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function getImage(Request $request){
+        Log::info($request->get('data'));
+        header('Content-Type: image/gif');
+        die(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
+    }
+
+    public function getFormData(Request $request){
+        Log::info(json_encode($request->get('all')));
+        header('Content-Type: image/gif');
+        die(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
     }
 }
