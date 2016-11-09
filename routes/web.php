@@ -98,6 +98,8 @@ Route::group(['prefix'=>'company','namespace'=>'Company','middleware'=>['auth','
 
 
 Route::post('/deep_crawl','HomeController@deepCrawl');
-Route::resource('/auto-tracker','AutoTrackerController');
-Route::get('/auto-tracker-image.gif','AutoTrackerController@getImage');
-Route::match(['get','post','put'],'/auto-tracker-form.gif','AutoTrackerController@getFormData');
+Route::group(['middleware'=>'cors'], function(){
+  Route::resource('/auto-tracker','AutoTrackerController');
+  Route::get('/auto-tracker-image.gif','AutoTrackerController@getImage');
+  Route::match(['get','post','put'],'/auto-tracker-form.gif','AutoTrackerController@getFormData');
+});

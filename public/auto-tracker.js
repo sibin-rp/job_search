@@ -38,6 +38,8 @@ function AutoTrackerClass(options){
   this.visitorsId   = "";
   this.pageUrl      = "http://job_search.dev/auto-tracker-image.gif";
   this.formUrl      = "http://job_search.dev/auto-tracker-form.gif";
+  this.queueFormData = [];
+  this.ajaxOnProcess = false;
 
   /**
    * Generate secrets key
@@ -152,6 +154,121 @@ function AutoTrackerClass(options){
   this.setVisitIds('visitorsId',"visitorsId",this.generateSecretKey(),options.visitorExpire);
   /** END VISITORS ID */
 
+
+
+this.sendPageViewData = function(url){
+  if(allDataObject['view_change_data'] && Array.isArray(allDataObject['view_change_data']) && ['view_change_data'].length > 0){
+    var sendViewData = new XMLHttpRequest();
+    var sendData = (JSON.stringify(allDataObject['view_change_data']));
+    sendViewData.open('GET',url+'?data='+sendData,false);
+    sendViewData.send();
+  }
+};
+  /* Track Url Changes */
+ window.onbeforeunload  = function(){
+   _this.getSessionData('view_change_data');
+   _this.sendPageViewData(_this.pageUrl)
+ };
+  /* end Track Url changes */
+
+
+this.sendFormDataToQueue = function(formData){
+  _this.queueFormData.push({
+    formData: formData,
+    time: (new Date()).getTime(),
+    queued: true
+  });
+  _this.setSessionData('form_submit_data',_this.queueFormData)
+};
+
+  /**
+   *
+   * @param currentFormData { FORM DATA }
+   * @param form {CurrentForm}
+   */
+this.sendFormDataToServer = function(currentFormData,form){
+  try{
+    var sendFormData = new XMLHttpRequest();
+    sendFormData.open('POST',_this.formUrl,true);
+    sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData))}))
+    sendFormData.onreadystatechange= function(){
+      if(sendFormData.readyState == XMLHttpRequest.DONE && sendFormData.status== 200){
+        var serverResponse = JSON.parse(sendFormData.response);
+        if(serverResponse.status == 200){
+          if(typeof form !="undefined"){
+            form.submit();
+          }
+          return true;
+        }else{
+          _this.sendFormDataToQueue(currentFormData);
+          if(typeof form !="undefined"){
+            form.submit();
+          }
+        }
+      }
+    }
+  }catch(e){
+    _this.sendFormDataToQueue(currentFormData)
+  }
+};
+this.formDataSubmission = function(){
+  if(1==1){// no selected forms, go for all forms
+    var allForms = document.querySelectorAll('form');
+
+    for(var form of allForms){
+
+      try{
+        form.addEventListener('submit', function(event){
+          var currentFormData = [];
+          event.preventDefault();
+          var elements = this.elements;
+          try{
+            var shouldNotInclude = ['submit','button'];
+            for(var element of elements){
+              try{
+                if(shouldNotInclude.indexOf(element.type) == - 1){
+                  if(element.value!=""){
+                    var shouldSave = {
+                      name: element.name || '',
+                      value: element.value || '',
+                      type: element.type,
+                      time: (new Date()).getTime()
+                    };
+                    if(element.type =="checkbox" || element.type == "radio"){
+                      shouldSave['checked'] = typeof element.checked!="undefined" ? element.checked:false
+                    }
+                    currentFormData.push(shouldSave)
+
+                  }
+                }
+              }catch(e){
+                console.log(e)
+                // Save currentFormData if ajax failed
+              }
+            }
+            if(Array.isArray(currentFormData) && currentFormData.length > 0){
+              _this.sendFormDataToServer(currentFormData,form)
+            }
+          }catch(e){
+            console.log(e)
+          }
+          return true;
+        })
+      }catch(er){
+        console.log(er)
+      }
+    }
+  }
+}
+
+  /* FORM SUBMISSION SECTION */
+
+
+  // Support form on submit
+
+
+
+  /* END FORM SUBMISSION */
   /* For the first page */
 
   window.addEventListener('load', function(event){
@@ -176,90 +293,25 @@ function AutoTrackerClass(options){
       console.log(e)
 
     }
+
+    _this.formDataSubmission();
     // visit cookie
   });
 
-this.sendPageViewData = function(url){
-  if(allDataObject['view_change_data'] && Array.isArray(allDataObject['view_change_data']) && ['view_change_data'].length > 0){
-    var sendViewData = new XMLHttpRequest();
-    var sendData = (JSON.stringify(allDataObject['view_change_data']));
-    sendViewData.open('GET',url+'?data='+sendData,false);
-    sendViewData.send();
-  }
-};
-  /* Track Url Changes */
- window.onbeforeunload  = function(){
-   _this.getSessionData('view_change_data');
-   _this.sendPageViewData(_this.pageUrl)
- };
-  /* end Track Url changes */
 
-
-
-
-
-  /* FORM SUBMISSION SECTION */
-  if(1==1){// no selected forms, go for all forms
-    var allForms = document.querySelectorAll('form');
-
-    for(var form of allForms){
-
-      try{
-        form.addEventListener('submit', function(event){
-          var currentFormData = [];
-          event.preventDefault();
-          var elements = this.elements;
-          try{
-            console.log("Hello World")
-            console.log(elements)
-            var shouldNotInclude = ['submit','button'];
-            for(var element of elements){
-              try{
-                if(shouldNotInclude.indexOf(element.type) == - 1){
-                  if(element.value!=""){
-                    var shouldSave = {
-                      name: element.name || '',
-                      value: element.value || '',
-                      type: element.type
-                    };
-                    if(element.type =="checkbox" || element.type == "radio"){
-                      shouldSave['checked'] = typeof element.checked!="undefined" ? element.checked:false
-                    }
-                    currentFormData.push(shouldSave)
-
-                  }
-                }
-              }catch(e){
-                console.log(e)
-              }
-            }
-            if(Array.isArray(currentFormData) && currentFormData.length > 0){
-              var sendFormData = new XMLHttpRequest();
-              sendFormData.open('POST',_this.formUrl,false);
-              sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData))}))
-              sendFormData.onreadystatechange= function(){
-                if(sendFormData.readyState= XMLHttpRequest.DONE && sendFormData.status== 200){
-                  console.log(sendFormData.status, sendFormData.statusText)
-                  return true;
-                }
-              }
-            }
-
-            console.log(currentFormData)
-          }catch(e){
-            console.log(e)
-          }
-          return true;
-        })
-      }catch(er){
-        console.log(er)
+  /* INTERVAL TO SEND QUEUED */
+  setInterval(function(){
+    if(_this.ajaxOnProcess){//If ajax not running
+      _this.getSessionData('form_submit_data');
+      if(Array.isArray(allDataObject['form_submit_data']) && allDataObject['form_submit_data'].length > 0){
+        for(formDataQueue of allDataObject['form_submit_data']){
+          _this.sendFormDataToServer(formDataQueue.formData);
+          if(allDataObject['form_submit_data'].length > 0)
+            allDataObject['form_submit_data'].pop();
+        }
       }
     }
-  }
+  },3000);
 
-  // Support form on submit
-
-
-
-  /* END FORM SUBMISSION */
+  /* END INTERVAL */
 }
