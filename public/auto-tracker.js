@@ -285,7 +285,7 @@ this.formDataSubmission = function(){
       _this.setVisitIds('visitId',"visitId",_this.generateSecretKey(),options.visitExpire);
       _this.getSessionData('view_change_data');
       var currentPageDetails = {
-        url: encodeURIComponent(window.location.href),
+        url: encodeURIComponent(location.host+location.pathname),
         time: (new Date()).getTime(),
         title: document.title,
         screenWidth: window.screen.width,
