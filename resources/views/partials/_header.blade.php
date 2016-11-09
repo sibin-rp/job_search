@@ -22,7 +22,7 @@
         @endphp
         @if(isset($user))
           <li class="login dropdown">
-            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               {{$user->username  or 'Hi User'}}
               <span class="caret"></span>
             </a>
