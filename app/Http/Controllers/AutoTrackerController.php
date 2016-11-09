@@ -100,8 +100,8 @@ class AutoTrackerController extends Controller
     }
 
     public function getFormData(Request $request){
-        Log::info(json_encode($request->get('all')));
-            return response()->json(['status'=> 400]);
+        Log::info(json_encode($request->all()));
+        return response()->json(['status'=> 200]);
 //        header('Content-Type: image/gif');
 //        die(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
     }

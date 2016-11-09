@@ -91,19 +91,23 @@ function AutoTrackerClass(options){
   this.setSessionData = function(key,data,clear){
     if(typeof clear=="undefined") clear=false;
     if(clear){
+      console.log("Remove")
      _this.removeSessionData(key);
     }
     _this.getSessionData(key);
-
-    if(Array.isArray(data)){
-      for(var ai=0; ai<data.length; ai++){
-        allDataObject[key].push(data[ai]);
+    if(allDataObject[key].length < 5){
+      if(Array.isArray(data)){
+        for(var ai=0; ai<data.length; ai++){
+          allDataObject[key].push(data[ai]);
+        }
+      }else{
+        allDataObject[key].push(data);
       }
+      sessionStorage.setItem(key,JSON.stringify(allDataObject[key]))
     }else{
-      allDataObject[key].push(data);
+      _this.removeSessionData(key)
     }
-    sessionStorage.setItem(key,JSON.stringify(allDataObject[key]))
-  }
+  };
 
   /* end session data */
 
@@ -172,12 +176,14 @@ this.sendPageViewData = function(url){
   /* end Track Url changes */
 
 
-this.sendFormDataToQueue = function(formData){
-  _this.queueFormData.push({
+this.sendFormDataToQueue = function(formData,form){
+
+  _this.queueFormData = [{
     formData: formData,
     time: (new Date()).getTime(),
-    queued: true
-  });
+    queued: true,
+    formId: (form && form.id) ? form.id : null,
+  }];
   _this.setSessionData('form_submit_data',_this.queueFormData)
 };
 
@@ -188,19 +194,21 @@ this.sendFormDataToQueue = function(formData){
    */
 this.sendFormDataToServer = function(currentFormData,form){
   try{
+    _this.ajaxOnProcess = true;
     var sendFormData = new XMLHttpRequest();
     sendFormData.open('POST',_this.formUrl,true);
     sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData))}))
     sendFormData.onreadystatechange= function(){
       if(sendFormData.readyState == XMLHttpRequest.DONE && sendFormData.status== 200){
         var serverResponse = JSON.parse(sendFormData.response);
+        _this.ajaxOnProcess = false;
         if(serverResponse.status == 200){
           if(typeof form !="undefined"){
             form.submit();
           }
           return true;
         }else{
-          _this.sendFormDataToQueue(currentFormData);
+          _this.sendFormDataToQueue(currentFormData,form);
           if(typeof form !="undefined"){
             form.submit();
           }
@@ -301,17 +309,34 @@ this.formDataSubmission = function(){
 
   /* INTERVAL TO SEND QUEUED */
   setInterval(function(){
-    if(_this.ajaxOnProcess){//If ajax not running
+    console.log("Hello")
+    if(!_this.ajaxOnProcess){//If ajax not running
       _this.getSessionData('form_submit_data');
       if(Array.isArray(allDataObject['form_submit_data']) && allDataObject['form_submit_data'].length > 0){
+        allDataObject['form_submit_data'] = _removeDuplicates(allDataObject['form_submit_data'],'time')
         for(formDataQueue of allDataObject['form_submit_data']){
           _this.sendFormDataToServer(formDataQueue.formData);
-          if(allDataObject['form_submit_data'].length > 0)
-            allDataObject['form_submit_data'].pop();
+          allDataObject['form_submit_data'].pop();
         }
+        _this.setSessionData('form_submit_data',allDataObject['form_submit_data'],true)
       }
     }
-  },3000);
+  },10 * 1000);
 
   /* END INTERVAL */
+}
+
+
+function _removeDuplicates(originalArray, prop) {
+  console.log(originalArray,prop)
+  var newArray = [];
+  var lookupObject  = {};
+  for(var i in originalArray) {
+    lookupObject[originalArray[i][prop]] = originalArray[i];
+  }
+  for(i in lookupObject) {
+    newArray.push(lookupObject[i]);
+  }
+  console.log(newArray)
+  return newArray;
 }
