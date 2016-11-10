@@ -49,12 +49,6 @@
           <p>Colleges</p>
         </a>
       </li>
-      <li>
-        <a ui-sref="settings">
-          <i class="pe-7s-note2"></i>
-          <p>Settings</p>
-        </a>
-      </li>
     </ul>
   </div>
 </div>
