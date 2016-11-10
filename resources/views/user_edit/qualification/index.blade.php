@@ -68,7 +68,7 @@
                             @if($qualification->stream)
                               <tr>
                                 <td>Stream</td>
-                                <td>{{$qualification->stream}}</td>
+                                <td>{{$qualification->stream_type or null}}</td>
                               </tr>
                             @endif
                             <tr>
@@ -91,11 +91,11 @@
                             </tr>
                             <tr>
                               <td>Degree</td>
-                              <td>{{strtoupper(str_replace('_',' ',$qualification->degree))}}</td>
+                              <td>{{strtoupper($qualification->degree_type)}}</td>
                             </tr>
                             <tr>
                               <td>Stream</td>
-                              <td>{{strtoupper(str_replace('_',' ',$qualification->stream))}}</td>
+                              <td>{{strtoupper($qualification->stream_type)}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>
@@ -116,7 +116,7 @@
                             </tr>
                             <tr>
                               <td>Degree</td>
-                              <td>{{strtoupper(str_replace('_',' ',$qualification->degree))}}</td>
+                              <td>{{strtoupper($qualification->degree_type)}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>
@@ -137,7 +137,7 @@
                             </tr>
                             <tr>
                               <td>Steam</td>
-                              <td>{{strtoupper(str_replace('_',' ',$qualification->stream))}}</td>
+                              <td>{{strtoupper($qualification->stream_type)}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>
@@ -158,7 +158,7 @@
                             </tr>
                             <tr>
                               <td>Stream</td>
-                              <td>{{strtoupper(str_replace('_',' ',$qualification->stream))}}</td>
+                              <td>{{strtoupper($qualification->stream_type)}}</td>
                             </tr>
                             <tr>
                               <td>Performance</td>

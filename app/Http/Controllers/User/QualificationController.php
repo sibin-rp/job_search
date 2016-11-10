@@ -94,7 +94,8 @@ class QualificationController extends Controller
     public function edit(User $user, StudentQualification $qualification)
     {
         //
-      return view('user_edit.qualification.edit',compact(['user','qualification']));
+      $qualifications_type = QualificationType::all()->groupBy('qualification')->toArray();
+      return view('user_edit.qualification.edit',compact(['user','qualification','qualifications_type']));
     }
 
     /**
