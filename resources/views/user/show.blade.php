@@ -15,11 +15,11 @@
         </tr>
         <tr>
           <td>Age/Date</td>
-          <td></td>
+          <td>{{$user->dob}}</td>
         </tr>
         <tr>
           <td>Gender</td>
-          <td>{{$user->gender}}</td>
+          <td>{{$user->sex=="1"?"Male":"Female"}}</td>
         </tr>
         <tr>
           <td>Email</td>

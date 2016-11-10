@@ -56,8 +56,8 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <label for=""><input type="radio" name="user[sex]" value="1">&nbsp;Male</label>
-          <label for=""><input type="radio" name="user[sex]" value="2">&nbsp;Female</label>
+          <label for=""><input type="radio" name="user[sex]" value="1" @if($user->sex == "1") checked="checked" @endif>&nbsp;Male</label>
+          <label for=""><input type="radio" name="user[sex]" value="2" @if($user->sex == "2") checked="checked" @endif>&nbsp;Female</label>
         </div>
       </div>
       <hr>
