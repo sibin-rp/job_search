@@ -278,29 +278,70 @@ this.formDataSubmission = function(){
 
   /* END FORM SUBMISSION */
   /* For the first page */
-
+  this.getQueryParams = function(){
+    var queryParamCheck =  /(.*?)(?:\=(.*?))?(&|$)/g;
+    var currentQueryParams = {};
+    var queryParams = document.location.href.match(/\?(.*?)(#|$)/);
+    console.log(queryParams)
+    if(!queryParams) return {};
+    queryParams = typeof queryParams[1]!="undefined"? queryParams[1]:[];
+    console.log(queryParams);
+    debugger
+    for(;;){
+      console.log('HELLLO')
+      var getEachParamsCheck = queryParamCheck.exec(queryParams);
+      console.log(getEachParamsCheck[1])
+      if(!getEachParamsCheck[1]){
+        console.log(getEachParamsCheck[1])
+        break; // If second element not present break loop
+      }
+      currentQueryParams[getEachParamsCheck[1]] = getEachParamsCheck[2];
+    }
+    console.log(currentQueryParams);
+    return currentQueryParams || {};
+  };
+  this.getUTMParams = function(){
+    var utmParams = {};
+    var getCurrentQueryParams = _this.getQueryParams();
+    var allowedUTMPParams = ["utm_campaign", "utm_source", "utm_medium", "utm_term", "utm_content"];
+    for(var keys in getCurrentQueryParams){
+      if(getCurrentQueryParams.hasOwnProperty(keys)){
+        if(allowedUTMPParams.indexOf(keys)!=-1){
+          utmParams[keys] = getCurrentQueryParams[keys]
+        }
+      }
+    }
+    return utmParams || {};
+  };
   window.addEventListener('load', function(event){
-    try{
+    debugger
+    var currentUTMParams = {};
+    //try{
       // Create visit id in every browser load
       _this.setVisitIds('visitId',"visitId",_this.generateSecretKey(),options.visitExpire);
       _this.getSessionData('view_change_data');
       var currentPageDetails = {
-        url: encodeURIComponent(location.host+location.pathname),
-        time: (new Date()).getTime(),
-        title: document.title,
-        screenWidth: window.screen.width,
-        screenHeight: window.screen.height,
-        platform: (navigator.platform || null),
-        referrer: document.referrer || "",
-        visitorId: _this.visitorsId,
-        visitId: _this.visitId
+        l: encodeURIComponent(location.host+location.pathname),
+        ts: (new Date()).getTime(),
+        tt: document.title,
+        sW: window.screen.width,
+        sH: window.screen.height,
+        p: (navigator.platform || null),
+        referrer: document.referrer,
+        vsId: _this.visitorsId,
+        vId: _this.visitId
       };
+      currentUTMParams = _this.getUTMParams();
+      if(typeof currentUTMParams != "undefined" && Object.keys(currentUTMParams).length > 0){
+        currentPageDetails['utm'] = currentUTMParams
+      }
+      console.log(currentUTMParams)
       allDataObject['view_change_data'] =[(currentPageDetails)];
       _this.setSessionData('view_change_data',allDataObject['view_change_data'],true);
-    }catch(e){
-      console.log(e)
-
-    }
+    //}catch(e){
+    //  console.log(e)
+    //
+    //}
 
     _this.formDataSubmission();
     // visit cookie
