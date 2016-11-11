@@ -197,6 +197,7 @@ this.sendFormDataToServer = function(currentFormData,form){
     _this.ajaxOnProcess = true;
     var sendFormData = new XMLHttpRequest();
     sendFormData.open('POST',_this.formUrl,true);
+    sendFormData.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData)),vId:_this.visitId,vsId: _this.visitorsId}))
     sendFormData.onreadystatechange= function(){
       console.log(sendFormData.status)
