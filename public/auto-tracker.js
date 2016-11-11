@@ -36,8 +36,8 @@ function AutoTrackerClass(options){
   var _this         = this;
   this.visitId      = "";
   this.visitorsId   = "";
-  this.pageUrl      = "http://job_search.dev/auto-tracker-image.gif";
-  this.formUrl      = "http://job_search.dev/auto-tracker-form.gif";
+  this.pageUrl      = "http://426864a0.ngrok.io/tracker.gif"; //"http://job_search.dev/auto-tracker-image.gif";
+  this.formUrl      = "http://426864a0.ngrok.io/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
   this.queueFormData = [];
   this.ajaxOnProcess = false;
 
@@ -197,22 +197,23 @@ this.sendFormDataToServer = function(currentFormData,form){
     _this.ajaxOnProcess = true;
     var sendFormData = new XMLHttpRequest();
     sendFormData.open('POST',_this.formUrl,true);
-    sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData))}))
+    sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData)),vId:_this.visitId,vsId: _this.visitorsId}))
     sendFormData.onreadystatechange= function(){
-      if(sendFormData.readyState == XMLHttpRequest.DONE && sendFormData.status== 200){
-        var serverResponse = JSON.parse(sendFormData.response);
+      console.log(sendFormData.status)
+      debugger
+      if((sendFormData.readyState == 4)  && sendFormData.status== 200){
         _this.ajaxOnProcess = false;
-        if(serverResponse.status == 200){
-          if(typeof form !="undefined"){
-            form.submit();
-          }
-          return true;
-        }else{
-          _this.sendFormDataToQueue(currentFormData,form);
-          if(typeof form !="undefined"){
-            form.submit();
-          }
+        console.log(form)
+        if(typeof form !="undefined"){
+          form.submit();
         }
+      }else if(sendFormData.status!=200){
+        _this.sendFormDataToQueue(currentFormData,form);
+        if(typeof form !="undefined"){
+          form.submit();
+        }
+      }else{
+        //nothing 
       }
     }
   }catch(e){
@@ -237,7 +238,7 @@ this.formDataSubmission = function(){
                 if(shouldNotInclude.indexOf(element.type) == - 1){
                   if(element.value!=""){
                     var shouldSave = {
-                      name: element.name || '',
+                      name: element.name || element.id,
                       value: element.value || '',
                       type: element.type,
                       time: (new Date()).getTime()
@@ -245,6 +246,40 @@ this.formDataSubmission = function(){
                     if(element.type =="checkbox" || element.type == "radio"){
                       shouldSave['checked'] = typeof element.checked!="undefined" ? element.checked:false
                     }
+                    // Map form
+                    var guessAssumptionList = [
+                      'company|organization',
+                      'last|lname',
+                      'first|fullname|contact_name|fname|name',
+                      'middle|mname',
+                      'title|role',
+                      'salutation|greeting',
+                      'nick',
+                      'email',
+                      'tel|phone|contact',
+                      'address|city|town|location',
+                      'employee|employer|team',
+                      'birthday|dob',
+                      'fax',
+                      'site|link|url',
+                      'postal|zip|code',
+                      'country|nation',
+                      'twitter',
+                      'facebook',
+                      'google',
+                      'linkedin'
+                    ];
+
+                    for(var ri=0; ri < guessAssumptionList.length;ri++){
+                      if((new RegExp(guessAssumptionList[ri],'i')).test(element.name)){
+                        console.log(new RegExp(guessAssumptionList[ri],'i'))
+                        var guessArray = element.name.match(new RegExp(guessAssumptionList[ri],'i'));
+                        if(Array.isArray(guessArray) && guessArray.length > 0){
+                          shouldSave['guess'] = guessArray[0];
+                        }
+                      }
+                    }
+
                     currentFormData.push(shouldSave)
 
                   }
@@ -327,9 +362,10 @@ this.formDataSubmission = function(){
         sW: window.screen.width,
         sH: window.screen.height,
         p: (navigator.platform || null),
-        referrer: document.referrer,
+        referrer: encodeURIComponent(document.referrer),
         vsId: _this.visitorsId,
-        vId: _this.visitId
+        vId: _this.visitId,
+        ev:'visit'
       };
       currentUTMParams = _this.getUTMParams();
       if(typeof currentUTMParams != "undefined" && Object.keys(currentUTMParams).length > 0){
