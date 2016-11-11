@@ -213,11 +213,11 @@ this.sendFormDataToServer = function(currentFormData,form){
           form.submit();
         }
       }else{
-        //nothing 
+        //nothing
       }
     }
   }catch(e){
-    _this.sendFormDataToQueue(currentFormData)
+   // _this.sendFormDataToQueue(currentFormData)
   }
 };
 this.formDataSubmission = function(){
