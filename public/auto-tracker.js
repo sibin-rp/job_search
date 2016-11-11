@@ -197,10 +197,10 @@ this.sendFormDataToServer = function(currentFormData,form){
     _this.ajaxOnProcess = true;
     var sendFormData = new XMLHttpRequest();
     sendFormData.open('POST',_this.formUrl,true);
-    sendFormData.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData)),vId:_this.visitId,vsId: _this.visitorsId}))
+    sendFormData.setRequestHeader("Content-Type", "application/json");
     sendFormData.onreadystatechange= function(){
       console.log(sendFormData.status)
+
       debugger
       if((sendFormData.readyState == 4)  && sendFormData.status== 200){
         _this.ajaxOnProcess = false;
@@ -217,6 +217,7 @@ this.sendFormDataToServer = function(currentFormData,form){
         //nothing
       }
     }
+    sendFormData.send(JSON.stringify({data:(JSON.stringify(currentFormData)),vId:_this.visitId,vsId: _this.visitorsId}));
   }catch(e){
    // _this.sendFormDataToQueue(currentFormData)
   }
