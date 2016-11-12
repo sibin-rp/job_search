@@ -19,8 +19,11 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="qual-type" class="control-label">Type</label>
-                  <input type="text" class="form-control" id="qual-type" placeholder="Type, Example Steam, Degree"
-                         ng-model="qualification.type"></div>
+                  <select name="" id="qual-type" class="form-control" ng-model="qualification.type">
+                    <option value="">Select</option>
+                    <option value="stream">Stream</option>
+                    <option value="degree">Degree</option>
+                  </select></div>
               </div>
             </div>
             <div class="row">
@@ -104,14 +107,18 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label for="" class="control-label"></label>
-            <input type="text" class="form-control" ng-model="item.type" placeholder="Title">
+            <select name="" class="form-control" ng-model="item.type">
+              <option value="">Select</option>
+              <option value="stream">Stream</option>
+              <option value="degree">Degree</option>
+            </select>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 col-xs-12">
           <label for="" class="control-label">Graduation {{item.qualification}}</label>
-          <select name="" id="" class="form-control">
+          <select name="" id="" class="form-control" ng-model="item.qualification">
             <option value="">Select</option>
             <option value="10_th" ng-selected="item.qualification == '10_th'">10th</option>
             <option value="12_th" ng-selected="item.qualification == '12_th'">12th</option>
