@@ -54,7 +54,17 @@
                       <div class="col-xs-12 col-sm-6">
                         <label for="" class="q-mark control-label">Performance</label>
                         <input type="text" class="form-control" value="{{$qualification->mark}}"
-                               name="qualification[mark]" placeholder="Performance">
+                               name="qualification[mark]" placeholder="Performance"
+                          step="0.01" min="0"
+                               @if(isset($qualification->mark_type) && $qualification->mark_type=="cgpa_4")
+                               max="4"
+                               @elseif(isset($qualification->mark_type) && $qualification->mark_type == "cgpa_10")
+                               max="10"
+                               @elseif(isset($qualification->mark_type) && $qualification->mark_type == "percentage")
+                               max="10"
+                               @else
+                               max="4"
+                          @endif>
                       </div>
                     </div>
                   </div>
@@ -135,6 +145,16 @@
                           </div>
                           <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
                             <input type="text" class="q-mark form-control" name="qualification[mark]" placeholder="Performance"
+                               step="0.01" min="0"
+                                   @if(isset($qualification->mark_type) && $qualification->mark_type=="cgpa_4")
+                                   max="4"
+                                   @elseif(isset($qualification->mark_type) && $qualification->mark_type == "cgpa_10")
+                                   max="10"
+                                   @elseif(isset($qualification->mark_type) && $qualification->mark_type == "percentage")
+                                   max="10"
+                                   @else
+                                   max="4"
+                                   @endif
                             value="{{$qualification->mark}}">
                           </div>
                         </div>
@@ -171,13 +191,14 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="" class="control-label">Stream</label>
-                          <select name="qualification[stream]" id="" class="form-control">
+                          <label for="" class="control-label">Degree</label>
+                          <select name="qualification[degree]" id="" class="form-control">
                             <option value="">Select</option>
+
                             @if(isset($qualifications_type['post_graduation']))
                               @foreach($qualifications_type['post_graduation'] as $post_graduation)
                                 <option value="{{$post_graduation['id']}}"
-                                  @if(isset($qualification->stream) && $qualification->stream == $post_graduation['id']) selected="selected" @endif
+                                  @if(isset($qualification->degree) && $qualification->degree == $post_graduation['id']) selected="selected" @endif
                                   >{{$post_graduation['name']}}</option>
                               @endforeach
                             @endif
@@ -197,6 +218,16 @@
                           </div>
                           <div class="col-xs-12 col-sm-6"><label for="" class=" control-label">Mark</label>
                             <input type="text" class="q-mark form-control" name="qualification[mark]" placeholder="Performance"
+                                   min="0"
+                                   @if(isset($qualification->mark_type) && $qualification->mark_type=="cgpa_4")
+                                   max="4"
+                                   @elseif(isset($qualification->mark_type) && $qualification->mark_type == "cgpa_10")
+                                   max="10"
+                                   @elseif(isset($qualification->mark_type) && $qualification->mark_type == "percentage")
+                                   max="10"
+                                   @else
+                                   max="4"
+                                   @endif
                                    value="{{$qualification->mark }}">
                           </div>
                         </div>
@@ -260,7 +291,16 @@
                         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
                           <input type="number" class="q-mark form-control" name="qualification[mark]"
                                  placeholder="Performance"
-                                 step="0.01"  min="0" max="4"
+                                 step="0.01"  min="0"
+                                 @if(isset($qualification->mark_type) && $qualification->mark_type=="cgpa_4")
+                                   max="4"
+                                 @elseif(isset($qualification->mark_type) && $qualification->mark_type == "cgpa_10")
+                                   max="10"
+                                 @elseif(isset($qualification->mark_type) && $qualification->mark_type == "percentage")
+                                   max="10"
+                                 @else
+                                   max="4"
+                                 @endif
                                  value="{{$qualification->mark}}">
                         </div>
                       </div>
@@ -324,7 +364,17 @@
                         <div class="col-xs-12 col-sm-6"><label for="" class="control-label">Mark</label>
                           <input type="number" class="q-mark form-control" name="qualification[mark]"
                                  placeholder="Performance"
-                                 step="0.01"  min="0" max="4" value="{{$qualification->mark}}">
+                                 step="0.01"  min="0"
+                                 @if(isset($qualification->mark_type) && $qualification->mark_type=="cgpa_4")
+                                 max="4"
+                                 @elseif(isset($qualification->mark_type) && $qualification->mark_type == "cgpa_10")
+                                 max="10"
+                                 @elseif(isset($qualification->mark_type) && $qualification->mark_type == "percentage")
+                                 max="10"
+                                 @else
+                                 max="4"
+                                 @endif
+                                 value="{{$qualification->mark}}">
                         </div>
                       </div>
                     </div>
