@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Exception;
 
 class HomeController extends Controller
@@ -109,6 +110,7 @@ class HomeController extends Controller
         $token = $request->session()->get('register_token');
         try{
           $userData = $request->except(['_token','_method']);
+          $userData = array_filter($userData);
           $user = User::where('token', $token)->update($userData);
           if($user){
             return response()->json(['status'=> 200,'message'=>"Successfully update User information. Please Login to your Account"]);
@@ -280,8 +282,8 @@ class HomeController extends Controller
       if($request->session()->exists('register_token')){
         if($request->hasFile('logo') && $request->file('logo')->isValid()){
           try{
-            $file = $request->file('logo');
-            $file_ext = $file->extension();
+            $c_logo = $request->file('logo');
+            $c_logo_ext = $c_logo->extension();
             $token = $request->session()->get('register_token');
             $user =  User::where('token',$token)->get()->first();
             $check_company_user = Company::where('user_id',$user->id);
@@ -296,18 +298,23 @@ class HomeController extends Controller
             try{
 
               $companyId = $company->id;
-              $logo_name = "logo-$companyId.$file_ext";
-              if(!file_exists(public_path("images/company/$companyId"))){
-                File::makeDirectory(public_path("images/company/$companyId"),0777);
+              $c_logo_name = "logo-$companyId.$c_logo_ext";
+
+              if(isset($c_logo) && $c_logo->isValid()){
+                $c_logo_ext = $c_logo->getClientOriginalExtension();
+                if(!(Storage::disk('local')->exists('public/company'))){
+                  Storage::makeDirectory('public/company');
+                }
+                $c_logo_name = "company-$company->id-logo.$c_logo_ext";
+                Storage::putFileAs('public/company',$c_logo,$c_logo_name,'public');
+                $company->update([
+                  'logo' => asset('storage/company/'.$c_logo_name)
+                ]);
               }
-              $file_path = $file->storePubliclyAs("public/company/$companyId",$logo_name);
-              $company->update([
-                'logo' => asset("storage/company/$companyId/$logo_name")
-              ]);
               return response()->json([
                 'status' => 200,
                 'message' => 'Logo saved successfully',
-                'logo'    => $file_path
+                'logo'    => asset('storage/company/'.$c_logo_name)
               ]);
             }catch (QueryException $e){
               return response()->json([

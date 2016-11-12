@@ -466,8 +466,13 @@
                       </div>
                       <hr>
                       <div class="row">
-                        <div class="col-xs-12 text-right">
-                          <button class="btn" type="submit">Continue</button>
+                        <div class="col-xs-12 ">
+                          <p>
+                            Please fill all sections Job, Internship, Training, Freelancer, all Fields and Submit Form.
+                          </p>
+                          <p class="text-right">
+                            <button class="btn" type="submit">Continue</button>
+                          </p>
                         </div>
                       </div>
                     </form>

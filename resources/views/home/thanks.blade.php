@@ -39,7 +39,7 @@
               <input type="email" required="required" class="form-control" placeholder="Enter your Email ID" name="email">
             </div>
             <div class="form-group"><label for="" class="control-label">Password</label>
-              <input type="text" required="required" class="form-control"
+              <input type="password" required="required" class="form-control"
                      placeholder="Enter your Password" name="password"></div>
           </div>
           <div class="modal-footer">

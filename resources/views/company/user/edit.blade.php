@@ -53,7 +53,7 @@
               <label for="home-city" class="control-label">Home State</label>
               <select name="company[home_state]" id="" class="form-control">
                 @foreach($states as $code => $state)
-                  <option value="{{$code}}" @if($user->home_state == $code) @endif >{{$state}}</option>
+                  <option value="{{$code}}" @if($user->home_state == $code) selected="selected" @endif >{{$state}}</option>
                 @endforeach
               </select>
             </div>
@@ -83,7 +83,7 @@
               <label for="" class="control-label">Current State</label>
               <select name="company[live_state]" id="" class="form-control">
                 @foreach($states as $code => $state)
-                  <option value="{{$code}}" @if($user->live_state == $code) @endif >{{$state}}</option>
+                  <option value="{{$code}}" @if($user->live_state == $code) selected="selected" @endif >{{$state}}</option>
                 @endforeach
               </select>
             </div>
