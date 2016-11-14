@@ -36,8 +36,9 @@ function AutoTrackerClass(options){
   var _this         = this;
   this.visitId      = "";
   this.visitorsId   = "";
-  this.pageUrl      = "http://426864a0.ngrok.io/tracker.gif"; //"http://job_search.dev/auto-tracker-image.gif";
-  this.formUrl      = "http://426864a0.ngrok.io/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
+  this.pageUrl      = "https://ffd00d78.ngrok.io/tracker.gif"; //"http://job_search.dev/auto-tracker-image.gif";
+  this.formUrl      = "http://0f0098d9.ngrok.io/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
+  this.guessPersonality = "http://job_search.dev/auto-tracker-guess.gif";
   this.queueFormData = [];
   this.ajaxOnProcess = false;
 
@@ -314,6 +315,36 @@ this.formDataSubmission = function(){
 
 
   /* END FORM SUBMISSION */
+  this.sendGuessName = function(input){
+
+    _matchRegeXAndReturnValue(input, function(key,value){
+      console.log(key,value)
+      if(key && value){
+        var guess = {};
+        guess['visitId'] = _this.visitId;
+        guess['visitorId'] = _this.visitorsId;
+        guess[key] = value;
+        guess['guess'] = key;
+        console.log(guess)
+        var sendGuessRequest = new XMLHttpRequest();
+        var url = _this.guessPersonality+'?data='+encodeURIComponent(JSON.stringify(guess));
+        sendGuessRequest.open('GET',url,true);
+        sendGuessRequest.send();
+      }
+    });
+  };
+  this.guessSession = function(){
+    var allInputElements = document.getElementsByTagName('input');
+    for(var input = 0; input< allInputElements.length;input++){
+      console.log(input, allInputElements[input]);
+      if(typeof allInputElements[input]!= "undefined"){
+        allInputElements[input].addEventListener('blur', function(e){
+          console.log(e.target)
+          _this.sendGuessName(e.target)
+        })
+      }
+    }
+  }
   /* For the first page */
   this.getQueryParams = function(){
     var queryParamCheck =  /(.*?)(?:\=(.*?))?(&|$)/g;
@@ -382,6 +413,7 @@ this.formDataSubmission = function(){
     //}
 
     _this.formDataSubmission();
+    _this.guessSession();
     // visit cookie
   });
 
@@ -409,6 +441,8 @@ this.formDataSubmission = function(){
   /* EVENT HANDLER */
 
 
+
+
   /* END EVENT HANDLER */
 }
 
@@ -425,4 +459,24 @@ function _removeDuplicates(originalArray, prop) {
   }
   console.log(newArray)
   return newArray;
+}
+
+function _matchRegeXAndReturnValue(input,callback){
+  var name = input.name || null;
+  var value = input.value || null;
+  var firstCheck = [];
+  if((/name/i).test(name)){
+    firstCheck = (name).match(/name/i);
+  }
+  else if((/email/i).test(name)) {
+    firstCheck = (name).match(/email/i);
+  }else if((/company|organization/i).test(name)){
+    firstCheck = (name).match(/company|organization/i)
+  }
+  if(firstCheck && firstCheck[0]){
+    callback(firstCheck[0], value)
+  }else{
+    callback(null,null)
+  }
+
 }
