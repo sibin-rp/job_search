@@ -36,7 +36,7 @@ function AutoTrackerClass(options){
   var _this         = this;
   this.visitId      = "";
   this.visitorsId   = "";
-  this.pageUrl      = "https://ffd00d78.ngrok.io/tracker.gif"; //"http://job_search.dev/auto-tracker-image.gif";
+  this.pageUrl      = " http://0f0098d9.ngrok.io/tracker.gif "; //"http://job_search.dev/auto-tracker-image.gif";
   this.formUrl      = "http://0f0098d9.ngrok.io/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
   this.guessPersonality = "http://job_search.dev/auto-tracker-guess.gif";
   this.queueFormData = [];
@@ -202,7 +202,7 @@ this.sendFormDataToServer = function(currentFormData,form){
     sendFormData.onreadystatechange= function(){
       console.log(sendFormData.status)
 
-      debugger
+      //debugger
       if((sendFormData.readyState == 4)  && sendFormData.status== 200){
         _this.ajaxOnProcess = false;
         console.log(form)
@@ -354,7 +354,7 @@ this.formDataSubmission = function(){
     if(!queryParams) return {};
     queryParams = typeof queryParams[1]!="undefined"? queryParams[1]:[];
     console.log(queryParams);
-    debugger
+    //debugger
     for(;;){
       console.log('HELLLO')
       var getEachParamsCheck = queryParamCheck.exec(queryParams);
@@ -382,7 +382,7 @@ this.formDataSubmission = function(){
     return utmParams || {};
   };
   window.addEventListener('load', function(event){
-    debugger
+    //debugger
     var currentUTMParams = {};
     //try{
       // Create visit id in every browser load

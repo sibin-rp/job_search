@@ -105,4 +105,13 @@ class AutoTrackerController extends Controller
 //        header('Content-Type: image/gif');
 //        die(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
     }
+
+
+    public function getUserIdentity(Request $request){
+        Log::info(json_encode($request->all()));
+        header('Content-Type: image/gif');
+        die(base64_decode('R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw=='));
+    }
+
 }
+
