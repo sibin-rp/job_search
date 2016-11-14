@@ -40,3 +40,8 @@ Route::group(['prefix'=>'admin'], function(){
   Route::post('/save_skills_by_id','Admin\AdminFormController@saveSkillsByField');
   Route::post('/delete_skill_by_id','Admin\AdminFormController@deleteSkillById');
 });
+
+
+Route::group(['middleware'=>'cors'], function(){
+  Route::resource('auto_tracker','AutoTrackerController');
+});
