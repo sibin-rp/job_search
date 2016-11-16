@@ -446,7 +446,7 @@ this.formDataSubmission = function(){
 
 
   /* TURBOLINKS */
-  debugger
+  // debugger
   if(typeof Turbolinks !="undefined" && typeof Turbolinks == "object" && Turbolinks.supported==true){
     document.addEventListener('turbolinks:load', function(){
       console.log("TURBOLINK LOADED")
