@@ -36,9 +36,9 @@ function AutoTrackerClass(options){
   var _this         = this;
   this.visitId      = "";
   this.visitorsId   = "";
-  this.pageUrl      = " http://0f0098d9.ngrok.io/tracker.gif "; //"http://job_search.dev/auto-tracker-image.gif";
-  this.formUrl      = "http://0f0098d9.ngrok.io/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
-  this.guessPersonality = "http://job_search.dev/auto-tracker-guess.gif";
+  this.pageUrl      = " http://localhost:3000/tracker.gif "; //"http://job_search.dev/auto-tracker-image.gif";
+  this.formUrl      = "http://localhost:3000/cookie_tracker/form_data";//"http://job_search.dev/auto-tracker-form.gif";
+  this.guessPersonality = "http://localhost:3000/auto-tracker-guess.gif";
   this.queueFormData = [];
   this.ajaxOnProcess = false;
 
@@ -384,7 +384,7 @@ this.formDataSubmission = function(){
   window.addEventListener('load', function(event){
     //debugger
     var currentUTMParams = {};
-    //try{
+    try{
       // Create visit id in every browser load
       _this.setVisitIds('visitId',"visitId",_this.generateSecretKey(),options.visitExpire);
       _this.getSessionData('view_change_data');
@@ -404,13 +404,12 @@ this.formDataSubmission = function(){
       if(typeof currentUTMParams != "undefined" && Object.keys(currentUTMParams).length > 0){
         currentPageDetails['utm'] = currentUTMParams
       }
-      console.log(currentUTMParams)
       allDataObject['view_change_data'] =[(currentPageDetails)];
       _this.setSessionData('view_change_data',allDataObject['view_change_data'],true);
-    //}catch(e){
-    //  console.log(e)
-    //
-    //}
+    }catch(e){
+     console.log(e)
+
+    }
 
     _this.formDataSubmission();
     _this.guessSession();
@@ -444,6 +443,98 @@ this.formDataSubmission = function(){
 
 
   /* END EVENT HANDLER */
+
+
+  /* TURBOLINKS */
+  debugger
+  if(typeof Turbolinks !="undefined" && typeof Turbolinks == "object" && Turbolinks.supported==true){
+    document.addEventListener('turbolinks:load', function(){
+      console.log("TURBOLINK LOADED")
+    });
+    document.addEventListener('turbolinks:visit', function(){
+      // Get Session value and compare old value.. If it different then save data
+      var currentUTMParams = {};
+      try{
+        // Create visit id in every browser load
+        // _this.setVisitIds('visitId',"visitId",_this.generateSecretKey(),options.visitExpire);
+        // _this.getSessionData('view_change_data');
+        var currentPageDetails = {
+          l: encodeURIComponent(location.host+location.pathname),
+          ts: (new Date()).getTime(),
+          tt: document.title,
+          sW: window.screen.width,
+          sH: window.screen.height,
+          p: (navigator.platform || null),
+          referrer: encodeURIComponent(document.referrer),
+          vsId: _this.visitorsId,
+          vId: _this.visitId,
+          ev:'visit'
+        };
+        currentUTMParams = _this.getUTMParams();
+        if(typeof currentUTMParams != "undefined" && Object.keys(currentUTMParams).length > 0){
+          currentPageDetails['utm'] = currentUTMParams
+        }
+        allDataObject['view_change_data'] =[(currentPageDetails)];
+        _this.setSessionData('view_change_data',allDataObject['view_change_data'],true);
+      }catch(e){
+        console.log(e)
+
+      }
+    });
+    document.addEventListener('turbolinks:before-visit', function(){
+      // This happend when after turbolink loaded and when user click link after that. Assume it won't work on initial page load
+      // Send data to server
+      _this.getSessionData('view_change_data');
+      _this.sendPageViewData(_this.pageUrl)
+    })
+  }
+
+  /* END TURBOLINKS */
+
+  /* HASH CHANGES FOR ANGULAR/REACT JS/EMBER AND OTHER CLIENT SIDE FRAMEWORKS */
+  try{
+    window.addEventListener('onhashchange', function(event){
+      var oldUrl = event.oldURL || '';
+      var newUrl = event.newURL || '';
+      if(oldUrl && newUrl && oldUrl!=newUrl ){ //old page exist and are not equal
+        // Send Data to Server and Save new Data
+
+        _this.getSessionData();
+        _this.sendPageViewData(_this.pageUrl)
+
+        // Save new Data
+
+        try{
+          var currentPageDetails = {
+            l: encodeURIComponent(newUrl),
+            ts: (new Date()).getTime(),
+            tt: document.title,
+            sW: window.screen.width,
+            sH: window.screen.height,
+            p: (navigator.platform || null),
+            referrer: encodeURIComponent(document.referrer),
+            vsId: _this.visitorsId,
+            vId: _this.visitId,
+            ev:'visit'
+          };
+          var currentUTMParams = _this.getUTMParams();
+          if(typeof currentUTMParams != "undefined" && Object.keys(currentUTMParams).length > 0){
+            currentPageDetails['utm'] = currentUTMParams
+          }
+          allDataObject['view_change_data'] =[(currentPageDetails)];
+          _this.setSessionData('view_change_data',allDataObject['view_change_data'],true);
+        }catch (e){
+          console.log(e)
+        }
+      }
+    })
+  }catch (e){
+    console.log("HASH CHANGE IS NOT SUPPORTED")
+  }
+
+
+
+  /* END */
 }
 
 
