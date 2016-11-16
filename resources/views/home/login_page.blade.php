@@ -18,10 +18,6 @@
                     <label for="pwd">Password:</label>
                     <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter password" required="" data-parsley-error-message="Password is required">
                 </div>
-                <div class="form-group"><label for="" class="control-label">First Name</label><input type="text" name="first_name" value="" placeholder="First Name"
-                                                                                             class="form-control"></div>
-                <div class="form-group"><label for="" class="control-label">Last Name</label><input type="text" name="last_name"  value="" placeholder="Last Name"
-                                                                                            class="form-control"></div>
                 <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
