@@ -12,11 +12,11 @@
                 {{method_field('POST')}}
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" name="passwordA" class="form-control" id="pwd" placeholder="Enter password" required="" data-parsley-error-message="Password is required">
+                    <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter password" required="" data-parsley-error-message="Password is required">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="emailA" class="form-control" id="email" placeholder="Enter email" required="" data-parsley-error-message="Email address is required">
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter email" required="" data-parsley-error-message="Email address is required">
                 </div>
 
                 <div class="checkbox">
