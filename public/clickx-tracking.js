@@ -12,7 +12,7 @@
  */
 
 
-var AutoTracker = {
+var ClickxTracker = {
   init: function(options){
     var default_options = {
       visitExpire: 4*60*60*1000,
@@ -27,11 +27,11 @@ var AutoTracker = {
         }
       }
     }
-    new AutoTrackerClass(options)
+    new ClickxTrackerClass(options)
   }
 };
 
-function AutoTrackerClass(options){
+function ClickxTrackerClass(options){
 
   var _this         = this;
   this.visitId      = "";
